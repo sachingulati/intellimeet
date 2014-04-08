@@ -19,7 +19,7 @@
 
 <body class="${pageProperty(name: 'body.class')}">
 <a href="#content" class="sr-only"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-<g:render template="/templates/navbar" />
+<g:render template="/templates/navbar"/>
 <g:layoutBody/>
 <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 <r:layoutResources/>
