@@ -5,6 +5,15 @@ dataSource {
     username = "sa"
     password = ""
 }
+grails {
+    mongo {
+        host = "localhost"
+        port = 27017
+        username = ""
+        password = ""
+        databaseName = "intellimeet"
+    }
+}
 hibernate {
     cache.use_second_level_cache = true
     cache.use_query_cache = false
