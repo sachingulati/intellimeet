@@ -1,20 +1,16 @@
 package embedded
 
-import com.ig.intellimeet.User
-
-/**
- * Created by intelligrape on 9/4/14.
- */
 class Feedback {
 
-    User filledBy;
-    Date fillDate;
-    Integer score;
-    String comment;
-    Answer answer;
+    Long filledByUserId
+    Date fillDate
+    Integer score
+    List<Answer> answers
+    String comment
 
     static constraints = {
-        score (range: 1..5);
-        comment (nullable: true);
+        score range: 1..5
+        comment nullable: true
+        filledByUserId nullable: true
     }
 }

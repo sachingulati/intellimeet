@@ -2,18 +2,20 @@ package com.ig.intellimeet
 
 class IntelliMeet {
 
-    String title;
-    String description;
-    String place;
+    String title
+    String description
+    String place
 
-    Date dateCreated;
-    Date lastUpdated;
-    Date dateOfEvent;
+    Date dateCreated
+    Date lastUpdated
+    Date dateOfEvent
 
-    static hasMany = [organisers : Long]
+    List<Long> organisers
+
+    static mapWith = "mongo"
 
     static constraints = {
-        place (nullable: true);
+        place (nullable: true)
 
     }
 }

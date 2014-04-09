@@ -5,29 +5,31 @@ import enums.SessionStatusEnum
 
 class Session {
 
-    String title;
-    String description;
-    Integer maxCapacity;
-    Integer minCapacity;
-    Integer score;
-    Integer topicId;
+    String title
+    String description
+    Integer maxCapacity
+    Integer minCapacity
+    Integer score
+    Topic topic
 
-    List <Long> ownerIds;
-    List <Long> attendeeIds;
-    List <Feedback> feedbackList;
+    List <Long> ownerIds
+    List <Long> attendeeIds
+    List <Feedback> feedbackList
 
-    Date dateCreated;
-    Date lastUpdated;
+    Date dateCreated
+    Date lastUpdated
 
-    SessionStatusEnum sessionStatus;
+    SessionStatusEnum sessionStatus
+
+    static mapWith = "mongo"
 
     static embedded = ['feedbackList']
 
     static belongsTo = [intelliMeet : IntelliMeet]
 
     static constraints = {
-        maxCapacity(nullable: true);
-        minCapacity (nullable: true);
-        score (nullable: true, range: 1..5);
+        maxCapacity(nullable: true)
+        minCapacity (nullable: true)
+        score (nullable: true, range: 1..5)
     }
 }
