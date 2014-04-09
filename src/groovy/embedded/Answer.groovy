@@ -3,7 +3,7 @@ package embedded
 class Answer {
 
     String question;
-    String answer;
+    Integer answer;
     String comment;
 
     static constraints = {

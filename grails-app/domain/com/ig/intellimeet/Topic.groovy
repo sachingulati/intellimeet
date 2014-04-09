@@ -2,15 +2,19 @@ package com.ig.intellimeet
 
 class Topic {
 
-    String name;
-    String description;
+    String name
+    String description
 
-    Date dateCreated;
-    Date lastUpdated;
+    Date dateCreated
+    Date lastUpdated
 
-    // TopicStatusEnum statusInfoList;
+    List<Long> interestedUsers
+    List<Long> interestedOwners
+    List<String> expectations
 
-    static hasMany = [interestedUsers : Long, interestedOwners : Long, expections : String];
+    static mapWith = "mongo"
+
+    // TopicStatusEnum statusInfoList
 
     static constraints = {
     }
