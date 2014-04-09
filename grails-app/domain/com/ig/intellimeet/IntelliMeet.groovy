@@ -6,18 +6,21 @@ class IntelliMeet {
     String description
     String place
 
-    List<Long> organizers
-
     Date dateCreated
     Date lastUpdated
     Date dateOfEvent
 
+    List<Long> organizers
+
     static mapWith = "mongo"
 
     static constraints = {
-        title nullable: false
+        title blank: false
         description nullable: true
-        place nullable: false
+        place nullable: true
     }
 
+    static mapping = {
+        description type: 'text'
+    }
 }
