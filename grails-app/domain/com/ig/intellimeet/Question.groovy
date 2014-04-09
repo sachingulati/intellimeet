@@ -1,6 +1,6 @@
 package com.ig.intellimeet
 
-import embedded.Option
+import com.ig.intellimeet.embedded.Option
 
 class Question {
 
@@ -12,5 +12,6 @@ class Question {
     static mapWith = "mongo"
 
     static constraints = {
+        text blank: false
     }
 }
