@@ -26,10 +26,15 @@ modules = {
     }
 
     signin {
-        resource url:'css/signin.css'
+        resource url: 'css/signin.css'
     }
 
     topic {
         resource url: 'css/topic/app.css'
+        resource url: 'js/topic/app.js'
+    }
+
+    about {
+        resource url: 'js/about/app.js'
     }
 }

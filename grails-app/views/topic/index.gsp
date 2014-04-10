@@ -11,19 +11,20 @@
 <body>
 <a href="#list-topic" class="sr-only" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
-<div class="container">
+<div class="container" id="list-topic">
 
     <div class="row">
         <div class="col-lg-8">
-            <g:each in="${topicInstanceList}" var="topic">
-                <g:render template="topicEntry" model="[topic: topic]"/>
+            <g:each in="${topicInstanceList}" var="topic" status="index">
+                <span id="topic${index}"></span>
+                <g:render template="topicEntry" model="[topic: topic, index: index]"/>
                 <hr/>
             </g:each>
         </div>
 
         <div class="col-lg-4">
             <div class="well">
-                <h4>Blog Search</h4>
+                <h4>Topic Search</h4>
 
                 <div class="input-group">
                     <input type="text" class="form-control">
@@ -33,11 +34,10 @@
                         </button>
                     </span>
                 </div>
-                <!-- /input-group -->
             </div>
-            <!-- /well -->
+
             <div class="well">
-                <h4>Popular Blog Categories</h4>
+                <h4>Popular Topic Categories</h4>
 
                 <div class="row">
                     <div class="col-lg-6">
@@ -68,10 +68,13 @@
                 </div>
             </div>
             <!-- /well -->
-            <div class="well">
-                <h4>Side Widget Well</h4>
-
-                <p>Bootstrap's default wells work great for side widgets! What is a widget anyways...?</p>
+            <div class="bs-docs-sidebar hidden-print">
+                <ul class="nav bs-docs-sidenav">
+                    <g:each in="${topicInstanceList}" var="topic" status="index">
+                        <li><a href="#topic${index}">${topic?.name}</a></li>
+                    </g:each>
+                </ul>
+                <a class="back-to-top" href="#list-topic">Back to top</a>
             </div>
             <!-- /well -->
         </div>

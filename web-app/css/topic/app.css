@@ -1,3 +1,4 @@
 body {
     padding-top: 100px;
 }
+.bs-docs-sidebar.affix {width: 340px;top:100px;}

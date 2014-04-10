@@ -24,6 +24,25 @@
 <a href="#content" class="sr-only"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 <g:render template="/templates/navbar"/>
 <g:layoutBody/>
+<footer class="bs-docs-footer" role="contentinfo">
+    <div class="container">
+        <div class="bs-docs-social">
+            <ul class="bs-docs-social-buttons">
+                <li class="follow-btn">
+                    <a href="https://twitter.com/IntelliGrape " class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @IntelliGrape</a>
+                </li>
+            </ul>
+        </div>
+
+
+        <p>Designed and built with all the love in the world by <a href="http://twitter.com/puneetbhl" target="_blank">@puneetbhl</a> and <a href="http://twitter.com/faridiflex"
+                                                                                                                                             target="_blank">@faridiflex</a>.</p>
+
+        <p>Maintained by the <a href="/about#coreTeam">core team</a></p>
+
+        <p>Copyright © 2014 <a href="http://intelligrape.com/" target="_blank">Intelligrape</a>. All rights reserved. </p>
+    </div>
+</footer>
 <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 <r:layoutResources/>
 </body>

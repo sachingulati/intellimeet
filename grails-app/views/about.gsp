@@ -3,6 +3,7 @@
 <head>
     <meta name="layout" content="public"/>
     <title>About</title>
+    <r:require module="about" />
 </head>
 
 <body>
