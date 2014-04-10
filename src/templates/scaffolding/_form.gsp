@@ -13,11 +13,11 @@
 	props = domainClass.properties.findAll { persistentPropNames.contains(it.name) && !excludedProps.contains(it.name) && (domainClass.constrainedProperties[it.name] ? domainClass.constrainedProperties[it.name].display : true) }
 	Collections.sort(props, comparator.constructors[0].newInstance([domainClass] as Object[]))
 	for (p in props) {
-		if (p.com.ig.intellimeet.embedded) {
+		if (p.embedded) {
 			def embeddedPropNames = p.component.persistentProperties*.name
 			def embeddedProps = p.component.properties.findAll { embeddedPropNames.contains(it.name) && !excludedProps.contains(it.name) }
 			Collections.sort(embeddedProps, comparator.constructors[0].newInstance([p.component] as Object[]))
-			%><fieldset class="com.ig.intellimeet.embedded"><legend><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></legend><%
+			%><fieldset class="embedded"><legend><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></legend><%
 				for (ep in p.component.properties) {
 					renderFieldForProperty(ep, p.component, "${p.name}.")
 				}
@@ -43,7 +43,7 @@ private renderFieldForProperty(p, owningClass, prefix = "") {
 		<% if (required) { %><span class="required-indicator">*</span><% } %>
 	</label>
     <div class="col-sm-10">
-	${renderEditor(p)}
+	    ${renderEditor(p)}
         <g:if test="\${hasErrors(bean: ${propertyName}, field: '${prefix}${p.name}', 'has-error')}">
             <span class="help-block"><g:fieldError bean='\${${propertyName}}' field='${prefix}${p.name}' /></span>
         </g:if>
