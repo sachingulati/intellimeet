@@ -1,21 +1,29 @@
 package com.ig.intellimeet
 
+import com.ig.intellimeet.embedded.TopicStatusInfo
+
 class Topic {
 
-    String name
-    String description
+    String name;
+    String description;
 
-    Date dateCreated
-    Date lastUpdated
-
-    List<Long> interestedUsers
-    List<Long> interestedOwners
     List<String> expectations
+    List<Long> interestedUsers
+    List<TopicStatusInfo> statusInfoList
+
+    Date dateCreated;
+    Date lastUpdated;
 
     static mapWith = "mongo"
 
-    // TopicStatusEnum statusInfoList
+    static embedded = ['statusInfoList']
 
     static constraints = {
+        name blank: false
+        description blank: false
+    }
+
+    static mapping = {
+        description type: "text"
     }
 }
