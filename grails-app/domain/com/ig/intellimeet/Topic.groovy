@@ -16,7 +16,7 @@ class Topic {
 
     static mapWith = "mongo"
 
-    static embedded = ['expectations', 'interestedUsers', 'statusInfoList']
+    static embedded = ['statusInfoList']
 
     static constraints = {
         name blank: false
