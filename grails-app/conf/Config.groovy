@@ -108,6 +108,10 @@ log4j = {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
 
+    warn   'grails.plugin.springsecurity',
+            'grails.plugin.springsecurity.oauth',
+            'org.springframework.security'
+
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
@@ -126,13 +130,36 @@ log4j = {
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.ig.intellimeet.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.ig.intellimeet.UserRole'
 grails.plugin.springsecurity.authority.className = 'com.ig.intellimeet.Role'
+
+grails.plugin.springsecurity.logout.postOnly = false
+
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/':                              ['permitAll'],
-	'/index':                         ['permitAll'],
-	'/index.gsp':                     ['permitAll'],
-	'/**/js/**':                      ['permitAll'],
-	'/**/css/**':                     ['permitAll'],
-	'/**/images/**':                  ['permitAll'],
-	'/**/favicon.ico':                ['permitAll']
+
+        '/index':                         ['permitAll'],
+        '/index.gsp':                     ['permitAll'],
+        '/**/js/**':                      ['permitAll'],
+        '/**/css/**':                     ['permitAll'],
+        '/**/images/**':                  ['permitAll'],
+        '/**/favicon.ico':                ['permitAll'],
+        '/oauth/**':                      ['permitAll'],
+        '/**':                            ['permitAll']
+
 ]
 
+def appName = grails.util.Metadata.current.'app.name'
+def baseURL = grails.serverURL ?: "http://127.0.0.1:${System.getProperty('server.port', '8080')}/${appName}"
+oauth {
+    providers {
+        google {
+            api = org.grails.plugin.springsecurity.oauth.GoogleApi20
+            key = '43704140835-m2mrjp5pl2b4at15803hlgoi3o3pn36u.apps.googleusercontent.com'
+            secret = 'hY3VN1IBDKsDA6k_K8kVNikg'
+            successUri = '/oauth/google/success'
+            failureUri = '/oauth/google/error'
+            callback = "${baseURL}/oauth/google/callback"
+            scope = 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'
+        }
+    }
+}
+// Added by the Spring Security OAuth plugin:
+grails.plugin.springsecurity.oauth.domainClass = 'com.ig.intellimeet.OauthId'

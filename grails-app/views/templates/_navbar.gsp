@@ -19,6 +19,9 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">Expo</a></li>
                 <li><a href="#">Blog</a></li>
+                <sec:ifLoggedIn>
+                <li><g:link controller="logout">Log Out</g:link></li>
+                </sec:ifLoggedIn>
             </ul>
         </nav>
     </div>
