@@ -46,7 +46,9 @@
         <g:hiddenField name="version" value="\${${propertyName}?.version}" />
         <g:render template="form"/>
         <div class="form-group">
-            <g:actionSubmit class="btn btn-lg btn-primary form-control" action="update" value="\${message(code: 'default.button.update.label', default: 'Update')}" />
+            <div class="col-sm-offset-2 col-sm-10">
+                <g:actionSubmit class="btn btn-lg btn-primary" action="update" value="\${message(code: 'default.button.update.label', default: 'Update')}" />
+            </div>
         </div>
         </g:form>
     </div>
