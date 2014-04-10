@@ -43,10 +43,7 @@ private renderFieldForProperty(p, owningClass, prefix = "") {
 		<% if (required) { %><span class="required-indicator">*</span><% } %>
 	</label>
     <div class="col-sm-10">
-	    ${renderEditor(p)}
-        <g:if test="\${hasErrors(bean: ${propertyName}, field: '${prefix}${p.name}', 'has-error')}">
-            <span class="help-block"><g:fieldError bean='\${${propertyName}}' field='${prefix}${p.name}' /></span>
-        </g:if>
+	    <p class="form-control-static">\${fieldValue(bean: ${propertyName}, field: '${prefix}${p.name}')}</p>
     </div>
 </div>
 <%  }   } %>

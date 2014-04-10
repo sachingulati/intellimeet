@@ -14,15 +14,12 @@
     <link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
     <g:layoutHead/>
     <r:require module="core"/>
-    <style>
-    body { padding-top: 50px; }
-    </style>
     <r:layoutResources/>
 </head>
 
 <body class="${pageProperty(name: 'body.class')}">
 <a href="#content" class="sr-only"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-<g:render template="/templates/navbar"/>
+<g:render template="/templates/navbarPublic"/>
 <g:layoutBody/>
 <div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 <r:layoutResources/>
