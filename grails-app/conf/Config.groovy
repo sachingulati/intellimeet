@@ -127,12 +127,14 @@ grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.ig.intellimee
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.ig.intellimeet.UserRole'
 grails.plugin.springsecurity.authority.className = 'com.ig.intellimeet.Role'
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/':                              ['permitAll'],
-	'/index':                         ['permitAll'],
-	'/index.gsp':                     ['permitAll'],
-	'/**/js/**':                      ['permitAll'],
-	'/**/css/**':                     ['permitAll'],
-	'/**/images/**':                  ['permitAll'],
-	'/**/favicon.ico':                ['permitAll']
+        '/':                              ['permitAll'],
+        '/index':                         ['permitAll'],
+        '/about':                         ['permitAll'],
+        '/about.gsp':                         ['permitAll'],
+        '/index.gsp':                     ['permitAll'],
+        '/**/js/**':                      ['permitAll'],
+        '/**/css/**':                     ['permitAll'],
+        '/**/images/**':                  ['permitAll'],
+        '/**/favicon.ico':                ['permitAll']
 ]
 
