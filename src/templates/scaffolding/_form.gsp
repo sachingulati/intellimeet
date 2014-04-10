@@ -3,18 +3,21 @@
 
 <%  excludedProps = Event.allEvents.toList() << 'version' << 'dateCreated' << 'lastUpdated'
 	persistentPropNames = domainClass.persistentProperties*.name
-	boolean hasHibernate = pluginManager?.hasGrailsPlugin('hibernate')
-	if (hasHibernate && org.codehaus.groovy.grails.orm.hibernate.cfg.GrailsDomainBinder.getMapping(domainClass)?.identity?.generator == 'assigned') {
-		persistentPropNames << domainClass.identifier.name
+	boolean hasHibernate = pluginManager?.hasGrailsPlugin('hibernate') || pluginManager?.hasGrailsPlugin('hibernate4')
+	if (hasHibernate) {
+		def GrailsDomainBinder = getClass().classLoader.loadClass('org.codehaus.groovy.grails.orm.hibernate.cfg.GrailsDomainBinder')
+		if (GrailsDomainBinder.newInstance().getMapping(domainClass)?.identity?.generator == 'assigned') {
+			persistentPropNames << domainClass.identifier.name
+		}
 	}
-	props = domainClass.properties.findAll { persistentPropNames.contains(it.name) && !excludedProps.contains(it.name) }
+	props = domainClass.properties.findAll { persistentPropNames.contains(it.name) && !excludedProps.contains(it.name) && (domainClass.constrainedProperties[it.name] ? domainClass.constrainedProperties[it.name].display : true) }
 	Collections.sort(props, comparator.constructors[0].newInstance([domainClass] as Object[]))
 	for (p in props) {
-		if (p.embedded) {
+		if (p.com.ig.intellimeet.embedded) {
 			def embeddedPropNames = p.component.persistentProperties*.name
 			def embeddedProps = p.component.properties.findAll { embeddedPropNames.contains(it.name) && !excludedProps.contains(it.name) }
 			Collections.sort(embeddedProps, comparator.constructors[0].newInstance([p.component] as Object[]))
-			%><fieldset class="embedded"><legend><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></legend><%
+			%><fieldset class="com.ig.intellimeet.embedded"><legend><g:message code="${domainClass.propertyName}.${p.name}.label" default="${p.naturalName}" /></legend><%
 				for (ep in p.component.properties) {
 					renderFieldForProperty(ep, p.component, "${p.name}.")
 				}
@@ -25,7 +28,7 @@
 	}
 
 private renderFieldForProperty(p, owningClass, prefix = "") {
-	boolean hasHibernate = pluginManager?.hasGrailsPlugin('hibernate')
+	boolean hasHibernate = pluginManager?.hasGrailsPlugin('hibernate') || pluginManager?.hasGrailsPlugin('hibernate4')
 	boolean display = true
 	boolean required = false
 	if (hasHibernate) {
@@ -34,13 +37,13 @@ private renderFieldForProperty(p, owningClass, prefix = "") {
 		required = (cp ? !(cp.propertyType in [boolean, Boolean]) && !cp.nullable && (cp.propertyType != String || !cp.blank) : false)
 	}
 	if (display) { %>
-<div class="form-group \${hasErrors(bean: ${propertyName}, field: '${prefix}${p.name}', 'has-error')}">
+<div class="form-group \${hasErrors(bean: ${propertyName}, field: '${prefix}${p.name}', 'has-error')} ${required ? 'required' : ''}">
 	<label for="${prefix}${p.name}" class="col-sm-2 control-label">
 		<g:message code="${domainClass.propertyName}.${prefix}${p.name}.label" default="${p.naturalName}" />
 		<% if (required) { %><span class="required-indicator">*</span><% } %>
 	</label>
-    <div class="col-sm-3">
-	    ${renderEditor(p)}
+    <div class="col-sm-10">
+	${renderEditor(p)}
         <g:if test="\${hasErrors(bean: ${propertyName}, field: '${prefix}${p.name}', 'has-error')}">
             <span class="help-block"><g:fieldError bean='\${${propertyName}}' field='${prefix}${p.name}' /></span>
         </g:if>

@@ -16,9 +16,9 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><g:link action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
                 <li><g:link action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-            </ul>
+			</ul>
         </nav>
-        <div class="container">
+		<div id="edit-${domainClass.propertyName}" class="container" role="main">
             <g:if test="\${flash.message}">
                 <div class="alert alert-success alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -31,17 +31,22 @@
                     <strong>Error!</strong> \${flash.message}.
                 </div>
             </g:if>
-            <g:form class="form-horizontal" method="post" <%= multiPart ? ' enctype="multipart/form-data"' : '' %>>
-                <g:hiddenField name="id" value="\${${propertyName}?.id}" />
-                <g:hiddenField name="version" value="\${${propertyName}?.version}" />
-                <g:render template="form"/>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <g:actionSubmit class="btn btn-lg btn-primary" action="update" value="\${message(code: 'default.button.update.label', default: 'Update')}" />
-                        <g:actionSubmit class="btn btn-lg btn-danger" action="delete" value="\${message(code: 'default.button.delete.label', default: 'Delete')}" formnovalidate="" onclick="return confirm('\${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                    </div>
+            <g:hasErrors bean="\${${propertyName}}">
+                <div class="alert alert-danger alert-dismissable">
+                    <ul class="list-unstyled" role="alert">
+                        <g:eachError bean="\${${propertyName}}" var="error">
+                            <li <g:if test="\${error in org.springframework.validation.FieldError}">data-field-id="\${error.field}"</g:if>><g:message error="\${error}"/></li>
+                        </g:eachError>
+                    </ul>
                 </div>
-            </g:form>
-         </div>
+            </g:hasErrors>
+			<g:form class="form-horizontal" url="[resource:${propertyName}, action:'update']" method="PUT" <%= multiPart ? ' enctype="multipart/form-data"' : '' %>>
+				<g:hiddenField name="version" value="\${${propertyName}?.version}" />
+					<g:render template="form"/>
+				<div class="form-group">
+					<g:actionSubmit class="btn btn-lg btn-primary" action="update" value="\${message(code: 'default.button.update.label', default: 'Update')}" />
+				</div>
+			</g:form>
+		</div>
 	</body>
 </html>
