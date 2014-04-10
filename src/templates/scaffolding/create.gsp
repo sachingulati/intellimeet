@@ -13,7 +13,7 @@
                 <a class="navbar-brand" href="#"><g:message code="default.create.label" args="[entityName]"/></a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><g:link action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+                <li><g:link action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</nav>
 		<div id="create-${domainClass.propertyName}" class="container" role="main">

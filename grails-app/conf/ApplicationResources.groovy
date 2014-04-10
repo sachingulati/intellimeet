@@ -13,6 +13,7 @@ modules = {
     bootstrap {
         dependsOn 'jquery'
         resource url: '/css/bootstrap.min.css'
+//        resource url: '/css/bootstrap-theme.min.css'
         resource url: '/js/bootstrap.min.js'
     }
 
@@ -23,5 +24,9 @@ modules = {
 
     font_awesome {
         resource url: 'css/font-awesome.min.css'
+    }
+
+    signin {
+        resource url:'css/signin.css'
     }
 }
