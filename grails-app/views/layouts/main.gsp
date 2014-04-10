@@ -15,7 +15,7 @@
     <g:layoutHead/>
     <r:require module="core"/>
     <style>
-    body { padding-top: 70px; }
+    body { padding-top: 50px; }
     </style>
     <r:layoutResources/>
 </head>
