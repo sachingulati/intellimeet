@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-lg-8">
             <g:each in="${topicInstanceList}" var="topic" status="index">
-                <span id="topic${index}"></span>
+                <div id="topic${index}"></div>
                 <g:render template="topicEntry" model="[topic: topic, index: index]"/>
                 <hr/>
             </g:each>
