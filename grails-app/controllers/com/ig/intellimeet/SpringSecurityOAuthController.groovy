@@ -105,6 +105,9 @@ class SpringSecurityOAuthController {
             //Create new account
             String password = RandomStringUtils.randomAlphabetic(DEAFULT_PASSWORD_LENGTH)
             User newUser = new User (username: oAuthToken.socialId, password: password, enabled: true ).save(flush: true, failOnError: true);
+            //Defining Roles for spring security
+            def userRole = Role.findByAuthority("ROLE_USER") ?: new Role(authority: "ROLE_USER").save(flush: true);
+            UserRole.create(newUser, userRole)
             newUser.addToOauthIds(provider: oAuthToken.providerName, accessToken: oAuthToken.socialId, user: newUser)
             if (newUser.validate() && newUser.save()) {
                 oAuthToken = updateOAuthToken(oAuthToken, newUser)
