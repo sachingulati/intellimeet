@@ -15,6 +15,9 @@
                 <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName }}">
                     <li><g:link controller="${c.logicalPropertyName}">${c.name}</g:link></li>
                 </g:each>
+                <sec:ifLoggedIn>
+                    <li><g:link controller="logout">Log Out</g:link></li>
+                </sec:ifLoggedIn>
             </ul>
         </nav>
     </div>
