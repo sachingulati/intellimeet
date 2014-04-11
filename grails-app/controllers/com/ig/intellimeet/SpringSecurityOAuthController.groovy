@@ -19,6 +19,7 @@ import grails.plugin.springsecurity.oauth.OAuthToken
 import grails.plugin.springsecurity.userdetails.GormUserDetailsService
 import grails.plugin.springsecurity.userdetails.GrailsUser
 import grails.plugin.springsecurity.SpringSecurityUtils
+import org.apache.commons.lang.RandomStringUtils
 import org.springframework.security.core.authority.GrantedAuthorityImpl
 import org.springframework.security.core.context.SecurityContextHolder
 
@@ -29,6 +30,8 @@ import org.springframework.security.core.context.SecurityContextHolder
 class SpringSecurityOAuthController {
 
     public static final String SPRING_SECURITY_OAUTH_TOKEN = 'springSecurityOAuthToken'
+
+    static final Integer DEAFULT_PASSWORD_LENGTH = 10;
 
     def grailsApplication
     def oauthService
@@ -81,13 +84,30 @@ class SpringSecurityOAuthController {
     }
 
     def askToLinkOrCreateAccount = {
+
+        //Create user with default username and password
+        println "no user found for command : ${session[SPRING_SECURITY_OAUTH_TOKEN]}";
+        OAuthToken oAuthToken = session[SPRING_SECURITY_OAUTH_TOKEN]
+        assert oAuthToken, "There is no auth token in the session!"
+
+        println "springSecurityService.loggedIn ${springSecurityService.loggedIn}"
         if (springSecurityService.loggedIn) {
             def currentUser = springSecurityService.currentUser
-            OAuthToken oAuthToken = session[SPRING_SECURITY_OAUTH_TOKEN]
-            assert oAuthToken, "There is no auth token in the session!"
+
+
             currentUser.addToOauthIds(provider: oAuthToken.providerName, accessToken: oAuthToken.socialId, user: currentUser)
             if (currentUser.validate() && currentUser.save()) {
                 oAuthToken = updateOAuthToken(oAuthToken, currentUser)
+                authenticateAndRedirect(oAuthToken, defaultTargetUrl)
+                return
+            }
+        } else {
+            //Create new account
+            String password = RandomStringUtils.randomAlphabetic(DEAFULT_PASSWORD_LENGTH)
+            User newUser = new User (username: oAuthToken.socialId, password: password, enabled: true ).save(flush: true, failOnError: true);
+            newUser.addToOauthIds(provider: oAuthToken.providerName, accessToken: oAuthToken.socialId, user: newUser)
+            if (newUser.validate() && newUser.save()) {
+                oAuthToken = updateOAuthToken(oAuthToken, newUser)
                 authenticateAndRedirect(oAuthToken, defaultTargetUrl)
                 return
             }

@@ -35,6 +35,7 @@ class OauthId implements Serializable {
     }
 
     static mapping = {
+        table ("oauthid")
         provider index: "identity_idx"
         accessToken index: "identity_idx"
     }
