@@ -22,8 +22,11 @@
             </g:each>
         </div>
 
+
         <div class="col-lg-4">
+
             <div class="well">
+
                 <h4>Topic Search</h4>
 
                 <div class="input-group">
@@ -34,34 +37,36 @@
                         </button>
                     </span>
                 </div>
+
+                <a href="#" class="btn btn-primary btn-block" style="margin-top: 10px;">Register New Topic</a>
             </div>
 
             <div class="well">
-                <h4>Popular Topic Categories</h4>
+                <h4>Topic Categories</h4>
 
                 <div class="row">
                     <div class="col-lg-6">
                         <ul class="list-unstyled">
-                            <li><a href="#dinosaurs">Dinosaurs</a>
+                            <li><a href="#dinosaurs">Dinosaurs (10)</a>
                             </li>
-                            <li><a href="#spaceships">Spaceships</a>
+                            <li><a href="#spaceships">Spaceships (2)</a>
                             </li>
-                            <li><a href="#fried-foods">Fried Foods</a>
+                            <li><a href="#fried-foods">Fried Foods (1)</a>
                             </li>
-                            <li><a href="#wild-animals">Wild Animals</a>
+                            <li><a href="#wild-animals">Wild Animals (12)</a>
                             </li>
                         </ul>
                     </div>
 
                     <div class="col-lg-6">
                         <ul class="list-unstyled">
-                            <li><a href="#alien-abductions">Alien Abductions</a>
+                            <li><a href="#alien-abductions">Alien Abductions (5)</a>
                             </li>
-                            <li><a href="#business-casual">Business Casual</a>
+                            <li><a href="#business-casual">Business Casual(12)</a>
                             </li>
-                            <li><a href="#robots">Robots</a>
+                            <li><a href="#robots">Robots (2)</a>
                             </li>
-                            <li><a href="#fireworks">Fireworks</a>
+                            <li><a href="#fireworks">Fireworks (1)</a>
                             </li>
                         </ul>
                     </div>

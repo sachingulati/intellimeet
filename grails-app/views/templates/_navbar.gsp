@@ -11,10 +11,7 @@
             <a href="/" class="navbar-brand">IntelliMeet</a>
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-            <ul class="nav navbar-nav">
-                <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName }}">
-                    <li><g:link controller="${c.logicalPropertyName}">${c.name}</g:link></li>
-                </g:each>
+            <ul class="nav navbar-nav pull-right">
                 <sec:ifLoggedIn>
                     <li><g:link controller="logout">Log Out</g:link></li>
                 </sec:ifLoggedIn>

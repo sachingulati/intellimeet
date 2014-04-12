@@ -9,5 +9,5 @@
 %{--<img src="http://placehold.it/900x300" class="img-responsive">--}%
 %{--<hr>--}%
 <p>${topic?.description}</p>
-<a class="btn btn-default" href="#"><span class="glyphicon glyphicon-thumbs-up"></span></a>
+<a class="btn btn-default" href="#">+1</a>
 <a class="btn btn-default" href="#">Register as Presenter <span class="fa fa-sign-in"></span></a>
