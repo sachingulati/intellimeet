@@ -41,7 +41,7 @@ modules = {
     wysi_html5 {
         dependsOn 'jquery, bootstrap'
         resource url: 'css/bootstrap3-wysiwyg5.css'
-        resource url: 'js/wysihtml5-0.3.0.min.js'
+        resource url: 'js/wysihtml5-0.3.0.js'
         resource url: 'js/bootstrap3-wysihtml5.js'
         resource url: 'js/wysi.js'
     }

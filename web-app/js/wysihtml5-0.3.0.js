@@ -7248,7 +7248,47 @@ wysihtml5.Commands = Base.extend(
       return undef;
     }
   };
-})(wysihtml5);/**
+})(wysihtml5);
+
+/*
+*  Code blocks
+* */
+(function(wysihtml5){
+    var undef
+    wysihtml5.commands.formatCode = {
+        exec: function(composer) {
+            var pre = this.state(composer);
+            if (pre) {
+                // caret is already within a <pre><code>...</code></pre>
+                composer.selection.executeAndRestore(function() {
+                    var code = pre.querySelector("code");
+                    wysihtml5.dom.replaceWithChildNodes(pre);
+                    if (code) {
+                        wysihtml5.dom.replaceWithChildNodes(pre);
+                    }
+                });
+            } else {
+                // Wrap in <pre><code>...</code></pre>
+                var range = composer.selection.getRange(),
+                    selectedNodes = range.extractContents(),
+                    pre = composer.doc.createElement("pre"),
+                    code = composer.doc.createElement("code");
+                pre.appendChild(code);
+                code.appendChild(selectedNodes);
+                range.insertNode(pre);
+                composer.selection.selectNode(pre);
+            }
+        },
+        state: function(composer) {
+            var selectedNode = composer.selection.getSelectedNode();
+            return wysihtml5.dom.getParentElement(selectedNode, { nodeName: "CODE" }) && wysihtml5.dom.getParentElement(selectedNode, { nodeName: "PRE" });
+        },
+        value: function() {
+            return undef;
+        }
+    };
+})(wysihtml5);
+/**
  * formatInline scenarios for tag "B" (| = caret, |foo| = selected text)
  *
  *   #1 caret in unformatted text:

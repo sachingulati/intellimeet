@@ -93,6 +93,13 @@
                 "</li>";
         },
 
+        "format-code": function(locale, options) {
+            var size = (options && options.size) ? ' btn-'+options.size : '';
+            return "<li>"+
+                "<a class='btn btn-" + size + " btn-default' data-wysihtml5-command='formatCode' title='" + locale.format_code + "' tabindex='-1'><span class='fa fa-code'></span></a>" +
+                "</li>"
+        },
+
         "html": function(locale, options) {
             var size = (options && options.size) ? ' btn-'+options.size : '';
             return "<li>" +
@@ -212,6 +219,15 @@
                     toolbar.append(options.toolbar[key]);
                 }
             }
+
+            toolbar.find("a[data-wysihtml5-command='formatCode']").click(function(e) {
+                var activeButton = $(this).hasClass("wysihtml5-command-active");
+                if(activeButton) {
+                    $(this).removeClass('wysihtml5-command-active');
+                } else {
+                    $(this).addClass('wysihtml5-command-active');
+                }
+            });
 
             toolbar.find("a[data-wysihtml5-command='formatBlock']").click(function(e) {
                 var target = e.target || e.srcElement;
@@ -402,6 +418,7 @@
         "link": true,
         "image": true,
         "size": 'sm',
+        "format-code": false,
         events: {},
         parserRules: {
             classes: {
@@ -460,7 +477,7 @@
                 "pre": 1
             }
         },
-        stylesheets: ["./css/bootstrap3-wysiwyg5-color.css"], // (path_to_project/lib/css/bootstrap3-wysiwyg5-color.css)
+        stylesheets: ["/css/bootstrap3-wysiwyg5-color.css"], // (path_to_project/lib/css/bootstrap3-wysiwyg5-color.css)
         locale: "en"
     };
 
@@ -495,6 +512,7 @@
                 cancel: "Cancel",
                 target: "Open link in new window"
             },
+            format_code: "Highlight code",
             image: {
                 insert: "Insert image",
                 cancel: "Cancel"
