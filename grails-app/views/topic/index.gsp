@@ -38,7 +38,7 @@
                     </span>
                 </div>
 
-                <a href="#" class="btn btn-primary btn-block" style="margin-top: 10px;">Register New Topic</a>
+                <g:link controller="topic" action="create" href="#" class="btn btn-primary btn-block" style="margin-top: 10px;">Register New Topic</g:link>
             </div>
 
             <div class="well">
