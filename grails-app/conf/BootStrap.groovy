@@ -7,6 +7,7 @@ import com.mongodb.DBCollection
 class BootStrap {
 
     def init = { servletContext ->
+
         bootstrapSomeDummyDataForDev()
     }
 

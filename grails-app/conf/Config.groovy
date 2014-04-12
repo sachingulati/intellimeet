@@ -130,22 +130,24 @@ log4j = {
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.ig.intellimeet.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.ig.intellimeet.UserRole'
 grails.plugin.springsecurity.authority.className = 'com.ig.intellimeet.Role'
-
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/topic/index'
+grails.plugin.springsecurity.successHandler.alwaysUseDefault = true
 grails.plugin.springsecurity.logout.postOnly = false
 
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-	'/':                              ['permitAll'],
-	'/index':                         ['permitAll'],
-	'/index.gsp':                     ['permitAll'],
+        '/':                              ['permitAll'],
+        '/index':                         ['permitAll'],
+        '/index.gsp':                     ['permitAll'],
         '/about':                         ['permitAll'],
-        '/about.gsp':                         ['permitAll'],
-
+        '/about.gsp':                     ['permitAll'],
+        '/accessDenied':                  ['permitAll'],
+        '/accessDenied.gsp':              ['permitAll'],
         '/**/js/**':                      ['permitAll'],
-	'/**/css/**':                     ['permitAll'],
-	'/**/images/**':                  ['permitAll'],
-	'/**/favicon.ico':                ['permitAll'],
-        '/oauth/**':                  ['permitAll'],
-        '/**':                        ['permitAll']
+        '/**/css/**':                     ['permitAll'],
+        '/**/images/**':                  ['permitAll'],
+        '/**/favicon.ico':                ['permitAll'],
+        '/oauth/**':                      ['permitAll'],
+        '/**':                            ['permitAll']
 ]
 
 def appName = grails.util.Metadata.current.'app.name'
@@ -154,8 +156,8 @@ oauth {
     providers {
         google {
             api = org.grails.plugin.springsecurity.oauth.GoogleApi20
-            key = '43704140835-m2mrjp5pl2b4at15803hlgoi3o3pn36u.apps.googleusercontent.com'
-            secret = 'hY3VN1IBDKsDA6k_K8kVNikg'
+            key = '369979967640.apps.googleusercontent.com'
+            secret = 'ABwQ35TPxqdgKpF86QsGvhb9'
             successUri = '/oauth/google/success'
             failureUri = '/oauth/google/error'
             callback = "${baseURL}/oauth/google/callback"

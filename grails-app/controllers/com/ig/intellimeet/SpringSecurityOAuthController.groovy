@@ -34,6 +34,8 @@ class SpringSecurityOAuthController {
     public static final String SPRING_SECURITY_OAUTH_TOKEN = 'springSecurityOAuthToken'
 
     static final Integer DEAFULT_PASSWORD_LENGTH = 10;
+    static final String DEFAULT_ALLOWED_DOMAIN = "intelligrape.com"
+    static final String ACCESS_DENIED_PAGE = "/"//"""/accessDenied.gsp"
 
     def grailsApplication
     def oauthService
@@ -87,11 +89,17 @@ class SpringSecurityOAuthController {
 
     def askToLinkOrCreateAccount = {
         //Create user with default username and password
-        log.info "no user found for command : ${session[SPRING_SECURITY_OAUTH_TOKEN]}";
+        println "no user found for command : ${session[SPRING_SECURITY_OAUTH_TOKEN]}";
         OAuthToken oAuthToken = session[SPRING_SECURITY_OAUTH_TOKEN]
         assert oAuthToken, "There is no auth token in the session!"
 
-        log.info "springSecurityService.loggedIn ${springSecurityService.loggedIn}"
+        String[] emailContents = oAuthToken.socialId.split("@");
+        if(!DEFAULT_ALLOWED_DOMAIN.equalsIgnoreCase(emailContents[1])) {
+           log.info "Unauthorized Oauth id: ${oAuthToken.socialId} tried to access topic page."
+           return redirect(uri:ACCESS_DENIED_PAGE)
+        }
+
+        println "springSecurityService.loggedIn ${springSecurityService.loggedIn}"
         if (springSecurityService.loggedIn) {
             User currentUser = springSecurityService.currentUser as User
             currentUser.addToOauthIds(provider: oAuthToken.providerName, accessToken: oAuthToken.socialId, user: currentUser)
