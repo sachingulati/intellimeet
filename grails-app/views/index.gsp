@@ -11,17 +11,14 @@
 <main class="bs-docs-masthead" id="content" role="main">
     <div class="container">
         <span class="bs-docs-booticon bs-docs-booticon-lg bs-docs-booticon-outline">IM</span>
+
         <p class="lead">Let's learn together</p>
         <sec:ifNotLoggedIn>
             <p class="lead">
-                <a href="#" class="btn btn-outline-inverse btn-lg">Register Now</a>
+                <oauth:connect provider="google" id="google-connect-link" class="btn btn-outline-inverse btn-lg">
+                    <span class="fa fa-google-plus"></span>&nbsp;Register Now
+                </oauth:connect>
             </p>
-            <oauth:connect provider="google" id="google-connect-link" class="btn-google-plus">
-                    <i class="fa fa-google-plus"></i><g:message code="google.signin"/>
-            </oauth:connect>
-
-            %{--<s2o:ifLoggedInWith provider="google">yes</s2o:ifLoggedInWith>
-            <s2o:ifNotLoggedInWith provider="google">no</s2o:ifNotLoggedInWith>--}%
         </sec:ifNotLoggedIn>
     </div>
 </main>
@@ -78,16 +75,16 @@
 
 
         <p>Designed and built with all the love in the world by <a href="http://twitter.com/puneetbhl" target="_blank">@puneetbhl</a> and <a href="http://twitter.com/faridiflex"
-                                                                                                                                 target="_blank">@faridiflex</a>.</p>
+                                                                                                                                             target="_blank">@faridiflex</a>.</p>
 
         <p>Maintained by the <a href="/about#coreTeam">core team</a></p>
 
-        <p>Copyright © 2014 <a href="http://intelligrape.com/" target="_blank">Intelligrape</a>. All rights reserved. </p>
+        <p>Copyright © 2014 <a href="http://intelligrape.com/" target="_blank">Intelligrape</a>. All rights reserved.</p>
     </div>
 </footer>
 <r:script>
-   $("#topNav li").removeClass("active");
-   $("#topNav li#home").addClass("active");
+    $("#topNav li").removeClass("active");
+    $("#topNav li#home").addClass("active");
 </r:script>
 </body>
 </html>

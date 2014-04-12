@@ -15,10 +15,12 @@
  */
 package com.ig.intellimeet
 
+import com.ig.intellimeet.co.OAuthCreateAccountCommand
+import com.ig.intellimeet.co.OAuthLinkAccountCommand
+import grails.plugin.springsecurity.SpringSecurityUtils
 import grails.plugin.springsecurity.oauth.OAuthToken
 import grails.plugin.springsecurity.userdetails.GormUserDetailsService
 import grails.plugin.springsecurity.userdetails.GrailsUser
-import grails.plugin.springsecurity.SpringSecurityUtils
 import org.apache.commons.lang.RandomStringUtils
 import org.springframework.security.core.authority.GrantedAuthorityImpl
 import org.springframework.security.core.context.SecurityContextHolder
@@ -84,17 +86,14 @@ class SpringSecurityOAuthController {
     }
 
     def askToLinkOrCreateAccount = {
-
         //Create user with default username and password
-        println "no user found for command : ${session[SPRING_SECURITY_OAUTH_TOKEN]}";
+        log.info "no user found for command : ${session[SPRING_SECURITY_OAUTH_TOKEN]}";
         OAuthToken oAuthToken = session[SPRING_SECURITY_OAUTH_TOKEN]
         assert oAuthToken, "There is no auth token in the session!"
 
-        println "springSecurityService.loggedIn ${springSecurityService.loggedIn}"
+        log.info "springSecurityService.loggedIn ${springSecurityService.loggedIn}"
         if (springSecurityService.loggedIn) {
-            def currentUser = springSecurityService.currentUser
-
-
+            User currentUser = springSecurityService.currentUser as User
             currentUser.addToOauthIds(provider: oAuthToken.providerName, accessToken: oAuthToken.socialId, user: currentUser)
             if (currentUser.validate() && currentUser.save()) {
                 oAuthToken = updateOAuthToken(oAuthToken, currentUser)
@@ -106,7 +105,7 @@ class SpringSecurityOAuthController {
             String password = RandomStringUtils.randomAlphabetic(DEAFULT_PASSWORD_LENGTH)
             User newUser = new User (username: oAuthToken.socialId, password: password, enabled: true ).save(flush: true, failOnError: true);
             //Defining Roles for spring security
-            def userRole = Role.findByAuthority("ROLE_USER") ?: new Role(authority: "ROLE_USER").save(flush: true);
+            def userRole = Role.findByAuthority("ROLE_ATTENDEE") ?: new Role(authority: "ROLE_ATTENDEE").save(flush: true);
             UserRole.create(newUser, userRole)
             newUser.addToOauthIds(provider: oAuthToken.providerName, accessToken: oAuthToken.socialId, user: newUser)
             if (newUser.validate() && newUser.save()) {
@@ -243,106 +242,6 @@ class SpringSecurityOAuthController {
         return oAuthToken
     }
 
-/*
-    private def updateUser(User user, OAuthToken oAuthToken) {
-        if (!user.validate()) {
-            return
-        }
-
-        if (oAuthToken instanceof TwitterOAuthToken) {
-            TwitterOAuthToken twitterOAuthToken = (TwitterOAuthToken) oAuthToken
-
-            if (!user.username) {
-                user.username = twitterOAuthToken.twitterProfile.screenName
-                if (!user.validate()) {
-                    user.username = null
-                }
-            }
-
-            if (!user.firstName || !user.lastName) {
-                def names = twitterOAuthToken.twitterProfile.name?.split(' ')
-                if (names) {
-                    if (!user.lastName) {
-                        user.lastName = names[0]
-                        if (!user.validate()) {
-                            user.lastName = null
-                        }
-                    }
-
-                    if (!user.firstName) {
-                        user.firstName = names[-1]
-                        if (!user.validate()) {
-                            user.firstName = null
-                        }
-                    }
-                }
-            }
-        } else if (oAuthToken instanceof FacebookOAuthToken) {
-            FacebookOAuthToken facebookOAuthToken = (FacebookOAuthToken) oAuthToken
-
-            if (!user.username) {
-                user.username = facebookOAuthToken.facebookProfile.username
-                if (!user.validate()) {
-                    user.username = null
-                }
-            }
-
-            if (!user.email) {
-                user.email = facebookOAuthToken.facebookProfile.email
-                if (!user.validate()) {
-                    user.email = null
-                }
-            }
-
-            if (!user.lastName) {
-                user.lastName = facebookOAuthToken.facebookProfile.lastName
-                if (!user.validate()) {
-                    user.lastName = null
-                }
-            }
-
-            if (!user.firstName) {
-                user.firstName = facebookOAuthToken.facebookProfile.firstName
-                if (!user.validate()) {
-                    user.firstName = null
-                }
-            }
-        } else if (oAuthToken instanceof GoogleOAuthToken) {
-            GoogleOAuthToken googleOAuthToken = (GoogleOAuthToken) oAuthToken
-
-            if (!user.email) {
-                user.email = googleOAuthToken.email
-                if (!user.validate()) {
-                    user.email = null
-                }
-            }
-        } else if (oAuthToken instanceof YahooOAuthToken) {
-            YahooOAuthToken yahooOAuthToken = (YahooOAuthToken) oAuthToken
-
-            if (!user.username) {
-                user.username = yahooOAuthToken.profile.nickname
-                if (!user.validate()) {
-                    user.username = null
-                }
-            }
-
-            if (!user.lastName) {
-                user.lastName = yahooOAuthToken.profile.familyName
-                if (!user.validate()) {
-                    user.lastName = null
-                }
-            }
-
-            if (!user.firstName) {
-                user.firstName = yahooOAuthToken.profile.givenName
-                if (!user.validate()) {
-                    user.firstName = null
-                }
-            }
-        }
-    }
-*/
-
     protected Map getDefaultTargetUrl() {
         def config = SpringSecurityUtils.securityConfig
         def savedRequest = SpringSecurityUtils.getSavedRequest(session)
@@ -360,52 +259,6 @@ class SpringSecurityOAuthController {
 
         SecurityContextHolder.context.authentication = oAuthToken
         redirect(redirectUrl instanceof Map ? redirectUrl : [uri: redirectUrl])
-    }
-
-}
-
-class OAuthCreateAccountCommand {
-
-    String username
-    String password1
-    String password2
-
-    static constraints = {
-        username blank: false, validator: { String username, command ->
-            User.withNewSession { session ->
-                if (username && User.countByUsername(username)) {
-                    return 'OAuthCreateAccountCommand.username.error.unique'
-                }
-            }
-        }
-        password1 blank: false, minSize: 8, maxSize: 64, validator: { password1, command ->
-            if (command.username && command.username.equals(password1)) {
-                return 'OAuthCreateAccountCommand.password.error.username'
-            }
-
-            if (password1 && password1.length() >= 8 && password1.length() <= 64 &&
-                    (!password1.matches('^.*\\p{Alpha}.*$') ||
-                     !password1.matches('^.*\\p{Digit}.*$') ||
-                     !password1.matches('^.*[!@#$%^&].*$'))) {
-                return 'OAuthCreateAccountCommand.password.error.strength'
-            }
-        }
-        password2 nullable: true, blank: true, validator: { password2, command ->
-            if (command.password1 != password2) {
-                return 'OAuthCreateAccountCommand.password.error.mismatch'
-            }
-        }
-    }
-}
-
-class OAuthLinkAccountCommand {
-
-    String username
-    String password
-
-    static constraints = {
-        username blank: false
-        password blank: false
     }
 
 }
