@@ -15,9 +15,9 @@
         <p class="lead">Let's learn together</p>
         <sec:ifNotLoggedIn>
             <p class="lead">
-                <oauth:connect provider="google" id="google-connect-link" class="btn btn-outline-inverse btn-lg">
-                    <span class="fa fa-google-plus"></span>&nbsp;Register Now
-                </oauth:connect>
+                <g:link controller="topic" action="index" class="btn btn-outline-inverse btn-lg">
+                    Register Now
+                </g:link>
             </p>
         </sec:ifNotLoggedIn>
     </div>

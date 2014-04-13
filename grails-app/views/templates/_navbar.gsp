@@ -3,20 +3,21 @@
     <div class="container">
         <div class="navbar-header">
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
+                <span class="sr-only"><g:message code="toggle.nav.label" default="Toggle navigation" /></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="/" class="navbar-brand">IntelliMeet</a>
+            <a href="/" class="navbar-brand"><g:message code="intellimeet.label" default="IntelliMeet" /></a>
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
-                <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName }}">
-                    <li><g:link controller="${c.logicalPropertyName}">${c.name}</g:link></li>
-                </g:each>
+                <li id="topic"><g:link controller="topic" action="index"><g:message code="topic.label" default="Topic" /></g:link></li>
+                <li id="session"><g:link controller="IMSession" action="index"><g:message code="session.label" default="Session" /></g:link></li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
                 <sec:ifLoggedIn>
-                    <li><g:link controller="logout">Log Out</g:link></li>
+                    <li><g:link controller="logout"><g:message code="logout.label" default="Log Out" /></g:link></li>
                 </sec:ifLoggedIn>
             </ul>
         </nav>

@@ -9,5 +9,5 @@
 %{--<img src="http://placehold.it/900x300" class="img-responsive">--}%
 %{--<hr>--}%
 <p>${topic?.description}</p>
-<a class="btn btn-default" href="#"><span class="glyphicon glyphicon-thumbs-up"></span></a>
-<a class="btn btn-default" href="#">Register as Presenter <span class="fa fa-sign-in"></span></a>
+<a class="btn btn-default" href="#"><g:message code="plus.one.label" default="+1" /></a>
+<g:link controller="IMSession" action="createNewSessionFromTopic" params="[topicId: topic?.id]" class="btn btn-default"><g:message code="btn.register.presenter.label" default="Register as Presenter" /> <span class="fa fa-sign-in"></span></g:link>
