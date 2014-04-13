@@ -27,7 +27,7 @@
 
             <div class="well">
 
-                <h4>Topic Search</h4>
+                <h4><g:message code="topic.sidebar.search.label" default="Topic Search" /></h4>
 
                 <div class="input-group">
                     <input type="text" class="form-control">
@@ -38,11 +38,11 @@
                     </span>
                 </div>
 
-                <g:link controller="topic" action="create" href="#" class="btn btn-primary btn-block" style="margin-top: 10px;">Register New Topic</g:link>
+                <g:link controller="topic" action="create" href="#" class="btn btn-primary btn-block" style="margin-top: 10px;"><g:message code="topic.sidebar.propose.new.label" default="Propose New Topic" /></g:link>
             </div>
 
             <div class="well">
-                <h4>Topic Categories</h4>
+                <h4><g:message code="topic.sidebar.categories.label" default="Topic Categories" /></h4>
 
                 <div class="row">
                     <div class="col-lg-6">
@@ -79,11 +79,14 @@
                         <li><a href="#topic${index}">${topic?.name}</a></li>
                     </g:each>
                 </ul>
-                <a class="back-to-top" href="#list-topic">Back to top</a>
+                <a class="back-to-top" href="#list-topic"><g:message code="back.top.label" default="Back to top" /></a>
             </div>
             <!-- /well -->
         </div>
     </div>
 </div>
+<r:script>
+    markAsActive("topic");
+</r:script>
 </body>
 </html>

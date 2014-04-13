@@ -6,7 +6,7 @@
 		<span class="required-indicator">*</span>
 	</label>
     <div class="col-sm-10">
-	    <g:textField name="title" required="" value="${imSessionCO?.title}"class="form-control" />
+	    <g:textField name="title" required="" value="${imSessionCO?.title}" class="form-control" />
 
         <g:if test="${hasErrors(bean: imSessionCO, field: 'title', 'has-error')}">
             <span class="help-block"><g:fieldError bean='${imSessionCO}' field='title' /></span>
@@ -20,7 +20,7 @@
         <span class="required-indicator">*</span>
     </label>
     <div class="col-sm-10">
-        <g:textArea rows="10" name="description" value="${imSessionCO?.description}"class="form-control" />
+        <g:textArea rows="10" name="description" value="${imSessionCO?.description}" class="form-control" />
 
         <g:if test="${hasErrors(bean: imSessionCO, field: 'description', 'has-error')}">
             <span class="help-block"><g:fieldError bean='${imSessionCO}' field='description' /></span>

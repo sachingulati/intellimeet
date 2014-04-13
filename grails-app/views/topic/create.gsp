@@ -12,7 +12,7 @@
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Create New Topic</a>
+            <a class="navbar-brand" href="#"><g:message code="topic.create.label" default="Create New Topic" /></a>
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li><g:link action="index"><span class="fa fa-th-list"></span>&nbsp;<g:message code="default.list.label" args="[entityName]"/></g:link></li>
@@ -51,5 +51,8 @@
         </div>
     </g:form>
 </div>
+<r:script>
+markAsActive("topic");
+</r:script>
 </body>
 </html>

@@ -12,3 +12,8 @@ if (typeof jQuery !== 'undefined') {
         $('.sortable.sorted.desc a').append("\&nbsp\;<span class='glyphicon glyphicon-sort-by-alphabet-alt'></span><i class='cicon-sort-desc'></i>");
     })(jQuery);
 }
+
+var markAsActive = function(id) {
+    $("li#"+id).siblings().removeClass("active");
+    $("li#"+id).addClass("active");
+}
