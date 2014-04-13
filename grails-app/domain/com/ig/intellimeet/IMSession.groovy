@@ -32,6 +32,8 @@ class IMSession {
         maxCapacity nullable: true
         minCapacity nullable: true
         score nullable: true, range: 1..5
+        topicId nullable:true
+        score: nullable: true
     }
 
     static mapping = {
