@@ -16,8 +16,9 @@
     <div class="row">
         <div class="col-lg-8">
             <g:each in="${topicInstanceList}" var="topic" status="index">
-                <div id="topic${index}"></div>
+                <div id="topic${index}" class="topic">
                 <g:render template="topicEntry" model="[topic: topic, index: index]"/>
+                </div>
                 <hr/>
             </g:each>
         </div>
@@ -32,7 +33,7 @@
                 <div class="input-group">
                     <input type="text" class="form-control">
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
+                        <button class="btn btn-default plusOneBtn" type="button">
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
                     </span>
@@ -85,8 +86,24 @@
         </div>
     </div>
 </div>
+<g:javascript>
+
+
+</g:javascript>
+
+
 <r:script>
     markAsActive("topic");
+
+
+    $(function () {
+        $('.plusOneBtn').popover({
+            html: true,
+            trigger: 'hover',
+            content:  function(){
+                return $(this).siblings('.attendeesList').html();
+            }});
+    });
 </r:script>
 </body>
 </html>
