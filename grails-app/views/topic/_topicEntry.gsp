@@ -1,3 +1,4 @@
+<%@ page import="com.ig.intellimeet.User" %>
 <h1><a href="#">${topic?.name}</a>
 </h1>
 <p class="lead">created by <a href="#">${topic?.createdByUsername}</a>
@@ -9,5 +10,11 @@
 %{--<img src="http://placehold.it/900x300" class="img-responsive">--}%
 %{--<hr>--}%
 <p>${topic?.description}</p>
-<a class="btn btn-default" href="#"><g:message code="plus.one.label" default="+1" /></a>
+<a class="btn btn-default plusOneBtn" topicid="${topic?.id}" href="#"><g:message code="plus.one.label" default="+1" /></a>
 <g:link controller="IMSession" action="createNewSessionFromTopic" params="[topicId: topic?.id]" class="btn btn-default"><g:message code="btn.register.presenter.label" default="Register as Presenter" /> <span class="fa fa-sign-in"></span></g:link>
+<div style="display: none;" class="attendeesList">
+    <div><strong>Interested Users</strong></div>
+    <g:each in="${topic?.interestedUsers}" var="interestedUserId">
+        <span>${User.get(interestedUserId)?.username}</span> <br/>
+    </g:each>
+</div>
