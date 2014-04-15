@@ -45,33 +45,7 @@
             <div class="well">
                 <h4><g:message code="topic.sidebar.categories.label" default="Topic Categories" /></h4>
 
-                <div class="row">
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled">
-                            <li><a href="#dinosaurs">Dinosaurs (10)</a>
-                            </li>
-                            <li><a href="#spaceships">Spaceships (2)</a>
-                            </li>
-                            <li><a href="#fried-foods">Fried Foods (1)</a>
-                            </li>
-                            <li><a href="#wild-animals">Wild Animals (12)</a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled">
-                            <li><a href="#alien-abductions">Alien Abductions (5)</a>
-                            </li>
-                            <li><a href="#business-casual">Business Casual(12)</a>
-                            </li>
-                            <li><a href="#robots">Robots (2)</a>
-                            </li>
-                            <li><a href="#fireworks">Fireworks (1)</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <im:categories/>
             </div>
             <!-- /well -->
             <div class="bs-docs-sidebar hidden-print">
