@@ -44,11 +44,7 @@
             </div>
 
             <topic:sideBarCategoriesPanel/>
-            <div class="well">
-                <h4><g:message code="topic.sidebar.categories.label" default="Topic Categories" /></h4>
 
-                <im:categories/>
-            </div>
             <!-- /well -->
             <div class="bs-docs-sidebar hidden-print">
                 <ul class="nav bs-docs-sidenav">
@@ -64,12 +60,11 @@
 </div>
 <r:script>
     markAsActive("topic");
-
-
     $(function () {
         $('.plusOneBtn').popover({
             html: true,
             trigger: 'hover',
+            title: 'Interested Users',
             content:  function(){
                 return $(this).siblings('.attendeesList').html();
             }});
