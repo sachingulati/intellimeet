@@ -109,8 +109,8 @@ log4j = {
     //}
 
     warn   'grails.plugin.springsecurity',
-            'grails.plugin.springsecurity.oauth',
-            'org.springframework.security'
+           'grails.plugin.springsecurity.oauth',
+           'org.springframework.security'
 
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
