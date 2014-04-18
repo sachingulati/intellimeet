@@ -56,4 +56,32 @@ $(function() {
         e.preventDefault()
     });
 
+    $('#search-input').bind('keyup', function () {
+        var searchText = $(this).val();
+        if (searchText != "") {
+            $(".searchable div[id^=topic]").parent().hide();
+            $('.searchable div[id^=topic]').parent(':icontains("' + searchText + '")').show();
+        }
+        else {
+            $(".searchable div[id^=topic]").parent().show();
+        }
+    });
+
+    $.expr[':'].icontains = $.expr.createPseudo(function (text) {
+        return function (elem) {
+            return $(elem).text().toLowerCase().indexOf(text.trim().toLowerCase()) > -1;
+        };
+    });
+
 });
+
+var searchInTopics = function(input) {
+    var searchText = $(this).val();
+    if (searchText != "") {
+        $(".searchable div[id^=topic]").parent().hide();
+        $('.searchable div[id^=topic]').parent(':icontains("' + searchText + '")').show();
+    }
+    else {
+        $(".searchable div[id^=topic]").parent().show();
+    }
+}

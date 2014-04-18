@@ -14,12 +14,13 @@
 <div class="container" id="list-topic">
 
     <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-8 searchable">
             <g:each in="${topicInstanceList}" var="topic" status="index">
-                <div id="topic${index}" class="topic">
-                <g:render template="topicEntry" model="[topic: topic, index: index]"/>
+                <div>
+                    <div id="topic${index}" class="topic"></div>
+                    <g:render template="topicEntry" model="[topic: topic, index: index]"/>
+                    <hr/>
                 </div>
-                <hr/>
             </g:each>
         </div>
 
@@ -31,7 +32,7 @@
                 <h4><g:message code="topic.sidebar.search.label" default="Topic Search" /></h4>
 
                 <div class="input-group">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" id="search-input">
                     <span class="input-group-btn">
                         <button class="btn btn-default plusOneBtn" type="button">
                             <span class="glyphicon glyphicon-search"></span>
@@ -42,11 +43,8 @@
                 <g:link controller="topic" action="create" href="#" class="btn btn-primary btn-block" style="margin-top: 10px;"><g:message code="topic.sidebar.propose.new.label" default="Propose New Topic" /></g:link>
             </div>
 
-            <div class="well">
-                <h4><g:message code="topic.sidebar.categories.label" default="Topic Categories" /></h4>
+            <topic:sideBarCategoriesPanel/>
 
-                <im:categories/>
-            </div>
             <!-- /well -->
             <div class="bs-docs-sidebar hidden-print">
                 <ul class="nav bs-docs-sidenav">
@@ -54,26 +52,19 @@
                         <li><a href="#topic${index}">${topic?.name}</a></li>
                     </g:each>
                 </ul>
-                <a class="back-to-top" href="#list-topic"><g:message code="back.top.label" default="Back to top" /></a>
+                <a class="back-to-top" href="#list-topic"><g:message code="back.top.label" default="Back to top"/></a>
             </div>
             <!-- /well -->
         </div>
     </div>
 </div>
-<g:javascript>
-
-
-</g:javascript>
-
-
 <r:script>
     markAsActive("topic");
-
-
     $(function () {
         $('.plusOneBtn').popover({
             html: true,
             trigger: 'hover',
+            title: 'Interested Users',
             content:  function(){
                 return $(this).siblings('.attendeesList').html();
             }});
