@@ -1,14 +1,20 @@
 package com.ig.intellimeet
 
-
+import com.ig.intellimeet.co.IMSessionCO
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 class IMSessionController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+
+    def createNewSessionFromTopic(Long topicId) {
+        Topic topic = Topic.get(topicId)
+        IMSessionCO imSessionCO = topic ? new IMSessionCO(topic) : new IMSessionCO()
+        render view: 'create', model: [imSessionCO: imSessionCO]
+    }
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
