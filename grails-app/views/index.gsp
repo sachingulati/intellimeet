@@ -13,13 +13,17 @@
         <span class="bs-docs-booticon bs-docs-booticon-lg bs-docs-booticon-outline">IM</span>
 
         <p class="lead">Let's learn together</p>
-        <sec:ifNotLoggedIn>
-            <p class="lead">
-                <g:link controller="topic" action="index" class="btn btn-outline-inverse btn-lg">
-                    Register Now
-                </g:link>
-            </p>
-        </sec:ifNotLoggedIn>
+
+        <p class="lead">
+            <g:link controller="topic" action="index" class="btn btn-outline-inverse btn-lg">
+                Register Now
+            </g:link>
+            <sec:ifNotLoggedIn>
+                <oauth:connect provider="google" id="google-connect-link" class="btn-google-plus">
+                    <i class="fa fa-google-plus"></i><g:message code="google.signin"/>
+                </oauth:connect>
+            </sec:ifNotLoggedIn>
+        </p>
     </div>
 </main>
 
