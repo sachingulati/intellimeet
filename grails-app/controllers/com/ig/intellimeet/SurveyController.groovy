@@ -11,6 +11,9 @@ class SurveyController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def template() {
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Survey.list(params), model:[surveyInstanceCount: Survey.count()]
