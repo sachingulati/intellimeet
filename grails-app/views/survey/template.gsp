@@ -227,7 +227,7 @@
             <!-- end step -->
 
             <div class="submit step" id="complete">
-                <i class="icon-check"></i>
+                <i class="fa fa-square-o"></i>
 
                 <h3>Survey complete! Thank you for you time.</h3>
                 <button type="submit" name="process" class="submit">Submit the survey</button>
