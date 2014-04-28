@@ -465,7 +465,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <ul id="footer-nav">
-                        <li>Copyright©IntelliGrape</li>
+                        <li>Copyright © 2014 <a href="#">IntelliGrape</a>. All rights reserved.</li>
                         <li><a href="#">Terms of Use</a></li>
                         <li><a href="#">Privacy</a></li>
                     </ul>
