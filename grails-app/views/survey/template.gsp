@@ -192,23 +192,6 @@
 
             <div class="step row">
                 <div class="col-md-10">
-                    <h3>Please rate your overall satisfaction about the service provided.</h3>
-                    <ul class="data-list-2">
-                        <li><input name="rate" type="radio" class="required check_radio" value="Not Satisfied"><label>Not
-                        Satisfied</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="Quite Satisfied"><label>Quite
-                        Satisfied</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="Satisfied"><label>Satisfied</label>
-                        </li>
-                        <li><input name="rate" type="radio" class="required check_radio"
-                                   value="Completely Satisfied"><label>Completely Satisfied</label></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- end step -->
-
-            <div class="step row">
-                <div class="col-md-10">
                     <h3>Do you think this session should be repeated and you could own this in future?</h3>
                     <ul class="data-list-2 clearfix">
                         <li><input name="question_2" type="radio" class="required check_radio"
@@ -226,8 +209,54 @@
             </div>
             <!-- end step -->
 
+            <div class="step row">
+                <div class="col-md-10">
+                    <h3>Please rate your overall satisfaction with IntelliMeet orgranizers.</h3>
+                    <ul class="data-list-2">
+                        <li><input name="rate" type="radio" class="required check_radio" value="Not Satisfied"><label>Not
+                        Satisfied</label></li>
+                        <li><input name="rate" type="radio" class="required check_radio" value="Quite Satisfied"><label>Quite
+                        Satisfied</label></li>
+                        <li><input name="rate" type="radio" class="required check_radio" value="Satisfied"><label>Satisfied</label>
+                        </li>
+                        <li><input name="rate" type="radio" class="required check_radio"
+                                   value="Completely Satisfied"><label>Completely Satisfied</label></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end step -->
+
+            <div class="step row">
+                <div class="col-md-10">
+                    <h3>Are you satisfied with the session allotted to you?</h3>
+                    <ul class="data-list-2">
+                        <li><input name="rate" type="radio" class="required check_radio" value="Not Satisfied"><label>Not
+                        Satisfied</label></li>
+                        <li><input name="rate" type="radio" class="required check_radio" value="Quite Satisfied"><label>Quite
+                        Satisfied</label></li>
+                        <li><input name="rate" type="radio" class="required check_radio" value="Satisfied"><label>Satisfied</label>
+                        </li>
+                        <li><input name="rate" type="radio" class="required check_radio"
+                                   value="Completely Satisfied"><label>Completely Satisfied</label></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end step -->
+
+
+            <div class="step row">
+                <div class="col-md-10">
+                    <h3>Would you like to comment about food arrangements?</h3>
+                    <ul class="data-list-2">
+                        <li><strong>Please describe with few words</strong><textarea
+                                name="message_suggest_no" class="form-control"></textarea></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end step -->
+
             <div class="submit step" id="complete">
-                <i class="icon-check"></i>
+                <i class="fa fa-square-o"></i>
 
                 <h3>Survey complete! Thank you for you time.</h3>
                 <button type="submit" name="process" class="submit">Submit the survey</button>
@@ -436,7 +465,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <ul id="footer-nav">
-                        <li>Copyright©IntelliGrape</li>
+                        <li>Copyright © 2014 <a href="#">IntelliGrape</a>. All rights reserved.</li>
                         <li><a href="#">Terms of Use</a></li>
                         <li><a href="#">Privacy</a></li>
                     </ul>
