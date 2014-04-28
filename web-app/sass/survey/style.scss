@@ -1,11 +1,5 @@
-@import "compass";
 $font-stack: 'Open Sans', Arial, sans-serif;
 /*
-Theme Name: PLANO SURVEY
-Theme URI: http://www.ansonika.com/plano/
-Version: 1.0
-Author: Ansonika
-Author URI: http://themeforest.net/user/Ansonika/
 
 CSS STRUCTURE:
 
@@ -290,7 +284,7 @@ button[disabled].backward, button[disabled].forward {
 
 /** Header ==================== **/
 #top-area {
-  background-color: #428bca;
+  background-color: #6f5499;
   height: 500px;
 }
 
@@ -386,7 +380,7 @@ header {
 /** Footer ==================== **/
 footer {
   width: 100%;
-  background: #428bca;
+  background: #6f5499;
   padding: 30px 0 0 0;
   color: #fff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
@@ -394,7 +388,7 @@ footer {
     color: #FF9;
   }
   section {
-    background: url(img/line_header.png) repeat-x left bottom;
+    background: url(/images/line_header.png) repeat-x left bottom;
   }
 }
 
@@ -431,7 +425,7 @@ ul#footer-nav {
 }
 
 #contact {
-  background: url(../img/contact_map.png) no-repeat 90% 90px;
+  background: url(/images/contact_map.png) no-repeat 90% 90px;
 }
 
 /*============================================================================================*/
@@ -454,7 +448,7 @@ ul#footer-nav {
   position: absolute;
   left: 0;
   bottom: -6px;
-  background: url(../img/shadow_top_form.png) no-repeat center top;
+  background: url(/images/shadow_top_form.png) no-repeat center top;
 }
 
 .ui-widget-content {
@@ -743,7 +737,7 @@ input.form-control:focus, select.form-control:focus, textarea.form-control:focus
   width: 100%;
   overflow: hidden;
   height: 44px;
-  background: #fbfbfb url(../img/down_arrow_select.png) no-repeat 98% center;
+  background: #fbfbfb url(/images/down_arrow_select.png) no-repeat 98% center;
   border: 2px solid #d5d5d5;
   margin-bottom: -5px;
 }
@@ -832,14 +826,14 @@ input.qtyminus, input.qtyplus, input.qtyplus:focus {
 }
 
 input.qtyplus {
-  background: white url(../img/plus.png) no-repeat center center;
+  background: white url(/images/plus.png) no-repeat center center;
   right: 0;
   top: 0;
   text-indent: -9999px;
 }
 
 input.qtyminus {
-  background: white url(../img/minus.png) no-repeat center center;
+  background: white url(/images/minus.png) no-repeat center center;
   right: 0;
   top: 21px;
   text-indent: -9999px;
@@ -980,7 +974,7 @@ ul.data-list-2 li label.error {
 
 .divider {
   width: 100%;
-  background: url(../img/divider.png) no-repeat center top;
+  background: url(/images/divider.png) no-repeat center top;
   height: 10px;
   margin: 30px 0;
 }

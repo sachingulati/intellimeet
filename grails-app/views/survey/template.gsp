@@ -192,7 +192,26 @@
 
             <div class="step row">
                 <div class="col-md-10">
-                    <h3>Please rate your overall satisfaction about the service provided.</h3>
+                    <h3>Do you think this session should be repeated and you could own this in future?</h3>
+                    <ul class="data-list-2 clearfix">
+                        <li><input name="question_2" type="radio" class="required check_radio"
+                                   value="No"><label>No</label></li>
+                        <li><input name="question_2" type="radio" class="required check_radio" value="Maybe"><label>Maybe</label>
+                        </li>
+                        <li><input name="question_2" type="radio" class="required check_radio" value="Probably"><label>Probably</label>
+                        </li>
+                        <li><input name="question_2" type="radio" class="required check_radio" value="100% Sure"><label>100%
+                        Sure</label></li>
+                        <li><strong>In no, please describe with few words why</strong><textarea
+                                name="message_suggest_no" class="form-control"></textarea></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end step -->
+
+            <div class="step row">
+                <div class="col-md-10">
+                    <h3>Please rate your overall satisfaction with IntelliMeet orgranizers.</h3>
                     <ul class="data-list-2">
                         <li><input name="rate" type="radio" class="required check_radio" value="Not Satisfied"><label>Not
                         Satisfied</label></li>
@@ -209,17 +228,27 @@
 
             <div class="step row">
                 <div class="col-md-10">
-                    <h3>Do you think this session should be repeated and you could own this in future?</h3>
-                    <ul class="data-list-2 clearfix">
-                        <li><input name="question_2" type="radio" class="required check_radio"
-                                   value="No"><label>No</label></li>
-                        <li><input name="question_2" type="radio" class="required check_radio" value="Maybe"><label>Maybe</label>
+                    <h3>Are you satisfied with the session allotted to you?</h3>
+                    <ul class="data-list-2">
+                        <li><input name="rate" type="radio" class="required check_radio" value="Not Satisfied"><label>Not
+                        Satisfied</label></li>
+                        <li><input name="rate" type="radio" class="required check_radio" value="Quite Satisfied"><label>Quite
+                        Satisfied</label></li>
+                        <li><input name="rate" type="radio" class="required check_radio" value="Satisfied"><label>Satisfied</label>
                         </li>
-                        <li><input name="question_2" type="radio" class="required check_radio" value="Probably"><label>Probably</label>
-                        </li>
-                        <li><input name="question_2" type="radio" class="required check_radio" value="100% Sure"><label>100%
-                        Sure</label></li>
-                        <li><strong>In no, please describe with few words why</strong><textarea
+                        <li><input name="rate" type="radio" class="required check_radio"
+                                   value="Completely Satisfied"><label>Completely Satisfied</label></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end step -->
+
+
+            <div class="step row">
+                <div class="col-md-10">
+                    <h3>Would you like to comment about food arrangements?</h3>
+                    <ul class="data-list-2">
+                        <li><strong>Please describe with few words</strong><textarea
                                 name="message_suggest_no" class="form-control"></textarea></li>
                     </ul>
                 </div>
