@@ -18,6 +18,7 @@
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <sec:ifLoggedIn>
+                    <li ><a href="javascript:void(0);" ><sec:username/></a></li>
                     <li><g:link controller="logout"><g:message code="logout.label" default="Log Out" /></g:link></li>
                 </sec:ifLoggedIn>
             </ul>
