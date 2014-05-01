@@ -8,7 +8,6 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class UserPreferenceController {
 
-    static scaffold = true
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -71,25 +70,6 @@ class UserPreferenceController {
                 redirect userPreferenceInstance
             }
             '*' { respond userPreferenceInstance, [status: OK] }
-        }
-    }
-
-    @Transactional
-    def delete(UserPreference userPreferenceInstance) {
-
-        if (userPreferenceInstance == null) {
-            notFound()
-            return
-        }
-
-        userPreferenceInstance.delete flush: true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'UserPreference.label', default: 'UserPreference'), userPreferenceInstance.id])
-                redirect action: "index", method: "GET"
-            }
-            '*' { render status: NO_CONTENT }
         }
     }
 
