@@ -92,7 +92,7 @@ grails.hibernate.osiv.readonly = false
 environments {
     development {
         grails.logging.jul.usebridge = true
-        grails.serverURL = "http://localhost:8080"
+        grails.serverURL = "http://localhost:8585"
     }
     production {
         grails.logging.jul.usebridge = false
@@ -151,7 +151,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 ]
 
 def appName = grails.util.Metadata.current.'app.name'
-def baseURL = grails.serverURL ?: "http://127.0.0.1:${System.getProperty('server.port', '8080')}/${appName}"
+def baseURL = grails.serverURL ?: "http://127.0.0.1:${System.getProperty('server.port', '8585')}/${appName}"
 oauth {
     providers {
         google {

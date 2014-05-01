@@ -19,8 +19,8 @@
                 Register Now
             </g:link>
             <sec:ifNotLoggedIn>
-                <oauth:connect provider="google" id="google-connect-link" class="btn-google-plus">
-                    <i class="fa fa-google-plus"></i><g:message code="google.signin"/>
+                <oauth:connect provider="google" id="google-connect-link" class="btn btn-outline-inverse btn-lg btn-google-plus">
+                    <i class="fa fa-google-plus"></i> <g:message code="google.signin"/>
                 </oauth:connect>
             </sec:ifNotLoggedIn>
         </p>
