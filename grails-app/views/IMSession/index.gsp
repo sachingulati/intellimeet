@@ -29,7 +29,7 @@
 </nav>
 
 <g:if test="${flash.message}">
-    <div class="container alert alert-success alert-dismissable">
+    <div class="alert alert-success alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <strong>Success!</strong> ${flash.message}.
     </div>
@@ -42,7 +42,7 @@
     </div>
 </g:if>
 
-<table class="table table-striped">
+<div class="container-fluid"><table class="table table-striped">
     <thead>
     <tr>
 
@@ -83,7 +83,7 @@
 
 <div class="pagination">
     <g:paginate total="${IMSessionInstanceCount ?: 0}"/>
-</div>
+</div></div>
 <r:script>
 markAsActive("session");
 </r:script>
