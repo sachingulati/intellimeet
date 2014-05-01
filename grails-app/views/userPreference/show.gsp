@@ -1,14 +1,13 @@
-
-<%@ page import="com.ig.intellimeet.IMSession" %>
+<%@ page import="com.ig.intellimeet.UserPreference" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'IMSession.label', default: 'IMSession')}" />
+		<g:set var="entityName" value="${message(code: 'userPreference.label', default: 'UserPreference')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-    <a href="#show-IMSession" class="sr-only" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+    <a href="#show-userPreference" class="sr-only" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header"><a href="#" class="navbar-brand"><g:message code="default.show.label" args="[entityName]" /></a></div>
@@ -19,7 +18,7 @@
             </ul>
         </div>
     </nav>
-    <div id="show-IMSession" class="container" role="main">
+    <div id="show-userPreference" class="container" role="main">
         <g:if test="${flash.message}">
             <div class="alert alert-success alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -32,14 +31,15 @@
                 <strong>Error!</strong> ${flash.message}.
             </div>
         </g:if>
-        <g:form class="form-horizontal" url="[resource:IMSessionInstance, action:'delete']" method="DELETE">
+        <g:form class="form-horizontal" url="[resource:userPreferenceInstance, action:'delete']" method="DELETE">
             <g:render template="staticForm"/>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <g:link class="btn btn-lg btn-default" action="edit" resource="${IMSessionInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                    <g:link class="btn btn-lg btn-default" action="edit" resource="${userPreferenceInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                     <g:actionSubmit class="btn btn-lg btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                 </div>
             </div>
+        </div>
         </g:form>
     </div>
     </body>
