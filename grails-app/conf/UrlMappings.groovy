@@ -6,6 +6,7 @@ class UrlMappings {
                 // apply constraints here
             }
         }
+        "/preference/user/save" (controller:"userPreference", action: "save")
 
         "/"(view:"/index")
         "/about"(view:"/about")
