@@ -43,28 +43,28 @@
     </div>
 </g:if>
 
-<table class="table table-striped">
+<div class="container-fluid"><table class="table table-striped">
     <thead>
     <tr>
-        
+
         <g:sortableColumn property="title" title="${message(code: 'survey.title.label', default: 'Title')}" />
-        
+
         <g:sortableColumn property="date" title="${message(code: 'survey.date.label', default: 'Date')}" />
-        
+
         <g:sortableColumn property="intelliMeetId" title="${message(code: 'survey.intelliMeetId.label', default: 'Intelli Meet Id')}" />
-        
+
     </tr>
     </thead>
     <tbody>
     <g:each in="${surveyInstanceList}" status="i" var="surveyInstance">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-            
+
             <td><g:link action="show" id="${surveyInstance.id}">${fieldValue(bean: surveyInstance, field: "title")}</g:link></td>
-            
+
             <td><g:formatDate date="${surveyInstance.date}" /></td>
-            
+
             <td>${fieldValue(bean: surveyInstance, field: "intelliMeetId")}</td>
-            
+
         </tr>
     </g:each>
     </tbody>
@@ -72,7 +72,7 @@
 
 <div class="pagination">
     <g:paginate total="${surveyInstanceCount ?: 0}" />
-</div>
+</div></div>
 <r:script>
     markAsActive("survey");
 </r:script>
