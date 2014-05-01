@@ -9,7 +9,7 @@
 <body>
 <a href="#create-survey" class="sr-only" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 <nav class="navbar navbar-default" role="navigation">
-    <div class="container">
+    <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="#"><g:message code="default.create.label" args="[entityName]"/></a>
         </div>
