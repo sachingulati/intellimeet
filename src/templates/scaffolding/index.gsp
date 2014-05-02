@@ -39,7 +39,7 @@
 <g:if test="\${flash.error}">
     <div class="alert alert-danger alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Error!</strong> \${flash.message}.
+        <strong>Error!</strong> \${flash.error}.
     </div>
 </g:if>
 
