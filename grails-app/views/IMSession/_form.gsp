@@ -32,7 +32,7 @@
 <div class="form-group ${hasErrors(bean: imSessionCO, field: 'minCapacity', 'has-error')} ">
     <label for="minCapacity" class="col-sm-2 control-label">
         <g:message code="IMSession.minCapacity.label" default="Min Capacity" />
-        <span class="required-indicator">*</span>
+        %{--<span class="required-indicator">*</span>--}%
     </label>
     <div class="col-sm-10">
         <g:field class="form-control" name="minCapacity" type="number" value="${imSessionCO?.minCapacity}"/>
@@ -45,7 +45,7 @@
 <div class="form-group ${hasErrors(bean: imSessionCO, field: 'maxCapacity', 'has-error')} ">
 	<label for="maxCapacity" class="col-sm-2 control-label">
 		<g:message code="IMSession.maxCapacity.label" default="Max Capacity" />
-        <span class="required-indicator">*</span>
+        %{--<span class="required-indicator">*</span>--}%
 	</label>
     <div class="col-sm-10">
 	    <g:field class="form-control" name="maxCapacity" type="number" value="${imSessionCO?.maxCapacity}"/>
