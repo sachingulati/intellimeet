@@ -1,5 +1,7 @@
 <%@ page import="com.ig.intellimeet.enums.SessionStatus; com.ig.intellimeet.IMSession" %>
 
+<g:hiddenField name="topicId" value="${imSessionCO?.topicId}" />
+
 <div class="form-group ${hasErrors(bean: imSessionCO, field: 'title', 'has-error')} required">
 	<label for="title" class="col-sm-2 control-label">
 		<g:message code="IMSession.title.label" default="Title" />
@@ -28,6 +30,8 @@
     </div>
 </div>
 
+
+<g:if test="${actionName.equalsIgnoreCase("edit")}">
 
 <div class="form-group ${hasErrors(bean: imSessionCO, field: 'maxCapacity', 'has-error')} ">
 	<label for="maxCapacity" class="col-sm-2 control-label">
@@ -70,3 +74,6 @@
         </g:if>
     </div>
 </div>
+</g:if>
+
+

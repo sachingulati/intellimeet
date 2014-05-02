@@ -8,7 +8,6 @@ class ApplicationFilters {
         saveActions(controller:'*', action:'save') {
             before = {
                 params.createdBy = springSecurityService.currentUser?.id
-                println("AppFilter : Params: ${params}")
             }
             after = { Map model ->
 
@@ -20,7 +19,7 @@ class ApplicationFilters {
 
         all(controller:'*', action:'*') {
             before = {
-                log.info(params)
+                println("AppFilter : Params: ${params}")
             }
             after = { Map model ->
 

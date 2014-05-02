@@ -44,7 +44,7 @@
         </g:hasErrors>
         <g:form class="form-horizontal" url="[resource:IMSessionInstance, action:'update']" method="PUT" >
         <g:hiddenField name="version" value="${IMSessionInstance?.version}" />
-        <g:render template="form"/>
+        <g:render template="form" model="[imSessionCO: IMSessionInstance]"/>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <g:actionSubmit class="btn btn-lg btn-primary" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
