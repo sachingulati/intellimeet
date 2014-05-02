@@ -19,7 +19,7 @@ class ApplicationFilters {
 
         all(controller:'*', action:'*') {
             before = {
-                println("AppFilter : Params: ${params}")
+                log.info(params)
             }
             after = { Map model ->
 
