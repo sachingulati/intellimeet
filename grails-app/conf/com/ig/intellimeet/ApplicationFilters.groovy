@@ -1,6 +1,6 @@
-package applicationFilter
+package com.ig.intellimeet
 
-class AppFilterFilters {
+class ApplicationFilters {
 
     def springSecurityService
     def filters = {
@@ -8,7 +8,6 @@ class AppFilterFilters {
         saveActions(controller:'*', action:'save') {
             before = {
                 params.createdBy = springSecurityService.currentUser?.id
-                println("AppFilter : Params: ${params}")
             }
             after = { Map model ->
 

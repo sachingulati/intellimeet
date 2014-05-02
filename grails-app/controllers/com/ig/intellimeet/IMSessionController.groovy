@@ -1,6 +1,7 @@
 package com.ig.intellimeet
 
 import com.ig.intellimeet.co.IMSessionCO
+import com.ig.intellimeet.enums.SessionStatus
 import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
@@ -10,6 +11,8 @@ class IMSessionController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    IntelliMeetService intelliMeetService
+
     def createNewSessionFromTopic(Long topicId) {
         Topic topic = Topic.get(topicId)
         IMSessionCO imSessionCO = topic ? new IMSessionCO(topic) : new IMSessionCO()
@@ -17,8 +20,10 @@ class IMSessionController {
     }
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond IMSession.list(params), model:[IMSessionInstanceCount: IMSession.count()]
+        //params.max = Math.min(max ?: 10, 100)
+        //TODO - Fetch session list based on preference survey completed(Live) or not (prposed).
+        IMSessionCO imSessionCO = intelliMeetService.getIMSessionList(null)
+        respond imSessionCO.sessionList, model:[IMSessionInstanceCount: imSessionCO.totalCount]
     }
 
     def show(IMSession IMSessionInstance) {
@@ -30,30 +35,34 @@ class IMSessionController {
     }
 
     @Transactional
-    def save(IMSession IMSessionInstance) {
-        if (IMSessionInstance == null) {
+    def save(IMSessionCO imSessionCO) {
+        if (imSessionCO == null) {
             notFound()
             return
         }
 
-        if (IMSessionInstance.hasErrors()) {
-            respond IMSessionInstance.errors, view:'create'
+        if (!imSessionCO.validate()) {
+            respond  view:'create', model: [imSessionCO: imSessionCO]
             return
         }
-
-        IMSessionInstance.save flush:true
+        IMSession imSession = new IMSession()
+        bindData(imSession, imSessionCO)
+        imSession.intelliMeetId = intelliMeetService.getCurrentIntelliMeetId()
+        imSession.sessionStatus = SessionStatus.PROPOSED
+        imSession.save( flush:true, failOnError: true)
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'IMSessionInstance.label', default: 'IMSession'), IMSessionInstance.id])
-                redirect IMSessionInstance
+                flash.message = message(code: 'default.created.message', args: [message(code: 'IMSessionInstance.label', default: 'IMSession'), imSession.id])
+                redirect imSession
             }
-            '*' { respond IMSessionInstance, [status: CREATED] }
+            '*' { respond imSession, [status: CREATED] }
         }
     }
 
     def edit(IMSession IMSessionInstance) {
-        respond IMSessionInstance
+        IMSessionInstance = IMSession.get(IMSessionInstance.id)
+        render view: 'edit', model: [IMSessionInstance: IMSessionInstance]
     }
 
     @Transactional

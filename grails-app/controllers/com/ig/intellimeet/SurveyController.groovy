@@ -11,6 +11,10 @@ class SurveyController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def session() {
+
+    }
+
     def template() {
     }
 

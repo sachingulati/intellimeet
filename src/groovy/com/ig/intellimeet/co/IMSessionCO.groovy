@@ -1,5 +1,6 @@
 package com.ig.intellimeet.co
 
+import com.ig.intellimeet.IMSession
 import com.ig.intellimeet.Topic
 import com.ig.intellimeet.enums.SessionStatus
 import grails.validation.Validateable
@@ -20,6 +21,9 @@ class IMSessionCO {
     Date lastUpdated
 
     SessionStatus sessionStatus
+
+    List<IMSession> sessionList
+    Integer totalCount      //For pagination
 
 
     static constraints = {

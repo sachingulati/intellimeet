@@ -1,26 +1,23 @@
-<%@ page import="com.ig.intellimeet.IMSession" %>
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'IMSession.label', default: 'IMSession')}" />
-		<title><g:message code="default.edit.label" args="[entityName]" /></title>
+		<g:set var="entityName" value="${message(code: 'userPreference.label', default: 'UserPreference')}" />
+		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
-    <a href="#edit-IMSession" class="sr-only" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-
+    <a href="#create-userPreference" class="sr-only" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a href="#" class="navbar-brand"><g:message code="default.edit.label" args="[entityName]" /></a>
+                <a class="navbar-brand" href="#"><g:message code="default.create.label" args="[entityName]" /></a>
             </div>
             <ul class="nav navbar-nav navbar-right">
-                <li><g:link action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
                 <li><g:link action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
             </ul>
         </div>
     </nav>
-	<div id="edit-IMSession" class="container" role="main">
+    <div id="create-userPreference" class="container" role="main">
         <g:if test="${flash.message}">
             <div class="alert alert-success alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -33,21 +30,20 @@
                 <strong>Error!</strong> ${flash.message}.
             </div>
         </g:if>
-        <g:hasErrors bean="${IMSessionInstance}">
+        <g:hasErrors bean="${userPreferenceInstance}">
             <div class="alert alert-danger alert-dismissable">
                 <ul class="list-unstyled" role="alert">
-                    <g:eachError bean="${IMSessionInstance}" var="error">
+                    <g:eachError bean="${userPreferenceInstance}" var="error">
                         <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
                     </g:eachError>
                 </ul>
             </div>
         </g:hasErrors>
-        <g:form class="form-horizontal" url="[resource:IMSessionInstance, action:'update']" method="PUT" >
-        <g:hiddenField name="version" value="${IMSessionInstance?.version}" />
-        <g:render template="form" model="[imSessionCO: IMSessionInstance]"/>
+		<g:form class="form-horizontal" url="[resource:userPreferenceInstance, action:'save']" >
+        <g:render template="form"/>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <g:actionSubmit class="btn btn-lg btn-primary" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+                <g:submitButton name="create" class="btn btn-lg btn-primary" value="${message(code: 'default.button.create.label', default: 'Create')}" />
             </div>
         </div>
         </g:form>
