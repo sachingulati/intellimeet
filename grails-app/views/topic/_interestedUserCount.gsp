@@ -1,0 +1,1 @@
+<a class="btn ${currentUserAlreadyOpted?'btn-primary':'btn-default'} plusOneBtn" data-topicid="${topicId}" href="#">+${interestedUserCount}</a>
