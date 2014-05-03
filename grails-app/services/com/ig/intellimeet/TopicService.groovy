@@ -8,7 +8,7 @@ class TopicService {
     def springSecurityService
 
     Topic save(Topic topic) {
-        if(!topic?.validate() || !topic?.save(flush: true)) {
+        if (!topic?.validate() || !topic?.save(flush: true)) {
             topic = null
         }
         topic
@@ -16,7 +16,8 @@ class TopicService {
 
     Topic increaseInterestCount(Topic topic) {
         User user = springSecurityService.currentUser as User
-        if(!topic?.interestedUsers?.contains(user?.id)) {
+        if (!topic?.interestedUsers?.contains(user?.id)) {
+            topic?.interestedUsers = topic?.interestedUsers ?: []
             topic.interestedUsers << user?.id
         }
         topic
@@ -25,6 +26,6 @@ class TopicService {
     List<CategoryTopicCount> countTopicGroupedByCategory() {
         DBCollection topicCollection = Topic.collection
         AggregationOutput aggregationOutput = topicCollection?.aggregate(['$group': ['_id': '$category', 'count': ['$sum': 1]]])
-        aggregationOutput?.results()?.collect {new CategoryTopicCount(category: it['_id'], topicCount: it['count'])}
+        aggregationOutput?.results()?.collect { new CategoryTopicCount(category: it['_id'], topicCount: it['count']) }
     }
 }

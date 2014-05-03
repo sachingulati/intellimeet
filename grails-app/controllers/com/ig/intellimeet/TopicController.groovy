@@ -12,7 +12,7 @@ class TopicController {
     def springSecurityService
 
     def plusOne() {
-        Map mapToRender = ['status':'']
+        Map mapToRender = ['status':'success']
         Integer currentInterestedUsersCount
         User currentUser  = springSecurityService?.currentUser
         mapToRender.username = currentUser?.username
