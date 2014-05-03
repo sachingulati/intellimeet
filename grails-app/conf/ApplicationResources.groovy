@@ -95,4 +95,8 @@ modules = {
     respond {
         resource url: '/js/respond.min.js'
     }
+
+    block_ui {
+        resource url:'/js/jquery.blockUI.js'
+    }
 }

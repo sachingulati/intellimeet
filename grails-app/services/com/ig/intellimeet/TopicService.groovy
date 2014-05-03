@@ -7,10 +7,19 @@ import com.mongodb.DBCollection
 class TopicService {
     def springSecurityService
 
-    Integer increaseInterestCount(Topic topic) {
+    Topic save(Topic topic) {
+        if(!topic?.validate() || !topic?.save(flush: true)) {
+            topic = null
+        }
+        topic
+    }
+
+    Topic increaseInterestCount(Topic topic) {
         User user = springSecurityService.currentUser as User
-        topic.interestedUsers << user?.id
-        topic.interestedUsers?.size()
+        if(!topic?.interestedUsers?.contains(user?.id)) {
+            topic.interestedUsers << user?.id
+        }
+        topic
     }
 
     List<CategoryTopicCount> countTopicGroupedByCategory() {

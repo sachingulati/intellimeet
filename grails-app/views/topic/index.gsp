@@ -5,7 +5,7 @@
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'topic.label', default: 'Topic')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
-    <r:require module="topic"/>
+    <r:require modules="topic,block_ui"/>
 </head>
 
 <body>
@@ -68,6 +68,24 @@
             content:  function(){
                 return $(this).siblings('.attendeesList').html();
             }});
+
+        $('.plusOneBtn').on('click', function() {
+            var plusOneLink = $(this);
+            var data = plusOneLink.data();
+            var jqxhr = $.post( "/api/v1.0/topic/plusOne", { topicId: data.topicid });
+            jqxhr.done(function(data) {
+                if(data.status =='success') {
+                    plusOneLink.removeClass('btn-default');
+                    plusOneLink.text("+"+data.count);
+                    plusOneLink.addClass('btn-primary');
+                    plusOneLink.siblings('.attendeesList').append(data.username);
+                } else if(data.status=='error') {
+                    blockUIWithMsg(data.message);
+                }
+            });
+            jqxhr.fail(function() {console.log("Failed doing plusOne ");});
+            return false;
+        });
     });
 </r:script>
 </body>
