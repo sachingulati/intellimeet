@@ -59,11 +59,11 @@ $(function() {
     $('#search-input').bind('keyup', function () {
         var searchText = $(this).val();
         if (searchText != "") {
-            $(".searchable div[id^=topic]").parent().hide();
-            $('.searchable div[id^=topic]').parent(':icontains("' + searchText + '")').show();
+            $(".searchable div.zone").parent().hide();
+            $('.searchable div.zone').parent(':icontains("' + searchText + '")').show();
         }
         else {
-            $(".searchable div[id^=topic]").parent().show();
+            $(".searchable div.zone").parent().show();
         }
     });
 
@@ -78,10 +78,10 @@ $(function() {
 var searchInTopics = function(input) {
     var searchText = $(this).val();
     if (searchText != "") {
-        $(".searchable div[id^=topic]").parent().hide();
-        $('.searchable div[id^=topic]').parent(':icontains("' + searchText + '")').show();
+        $(".searchable div.zone").parent().hide();
+        $('.searchable div.zone').parent(':icontains("' + searchText + '")').show();
     }
     else {
-        $(".searchable div[id^=topic]").parent().show();
+        $(".searchable div.zone").parent().show();
     }
 }
