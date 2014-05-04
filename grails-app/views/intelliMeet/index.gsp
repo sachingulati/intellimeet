@@ -46,18 +46,15 @@
 <table class="table table-striped">
     <thead>
     <tr>
-        
         <g:sortableColumn property="title" title="${message(code: 'intelliMeet.title.label', default: 'Title')}" />
-        
-        <g:sortableColumn property="description" title="${message(code: 'intelliMeet.description.label', default: 'Description')}" />
         
         <g:sortableColumn property="place" title="${message(code: 'intelliMeet.place.label', default: 'Place')}" />
         
-        <g:sortableColumn property="dateCreated" title="${message(code: 'intelliMeet.dateCreated.label', default: 'Date Created')}" />
+        <g:sortableColumn property="dateCreated" title="${message(code: 'intelliMeet.status.label', default: 'Status')}" />
         
         <g:sortableColumn property="dateOfEvent" title="${message(code: 'intelliMeet.dateOfEvent.label', default: 'Date Of Event')}" />
         
-        <g:sortableColumn property="lastUpdated" title="${message(code: 'intelliMeet.lastUpdated.label', default: 'Last Updated')}" />
+        <g:sortableColumn property="lastUpdated" title="${message(code: 'intelliMeet.dateCreated.label', default: 'Date Created')}" />
         
     </tr>
     </thead>
@@ -67,15 +64,13 @@
             
             <td><g:link action="show" id="${intelliMeetInstance.id}">${fieldValue(bean: intelliMeetInstance, field: "title")}</g:link></td>
             
-            <td>${fieldValue(bean: intelliMeetInstance, field: "description")}</td>
-            
             <td>${fieldValue(bean: intelliMeetInstance, field: "place")}</td>
             
-            <td><g:formatDate date="${intelliMeetInstance.dateCreated}" /></td>
+            <td>${fieldValue(bean: intelliMeetInstance, field: "status")}</td>
             
             <td><g:formatDate date="${intelliMeetInstance.dateOfEvent}" /></td>
             
-            <td><g:formatDate date="${intelliMeetInstance.lastUpdated}" /></td>
+            <td><g:formatDate date="${intelliMeetInstance.dateCreated}" /></td>
             
         </tr>
     </g:each>
