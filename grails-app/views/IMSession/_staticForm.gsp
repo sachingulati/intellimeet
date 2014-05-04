@@ -42,11 +42,11 @@
 
 <div class="form-group ${hasErrors(bean: IMSessionInstance, field: 'description', 'has-error')} ">
 	<label for="description" class="col-sm-2 control-label">
-		<g:message code="IMSession.description.label" default="Description" />
+		<g:message code="IMSession.description.label" default="Agenda" />
 		
 	</label>
     <div class="col-sm-10">
-	    <p class="form-control-static">${fieldValue(bean: IMSessionInstance, field: 'description')}</p>
+	    <p class="form-control-static">${raw(IMSessionInstance?.description)}</p>
     </div>
 </div>
 

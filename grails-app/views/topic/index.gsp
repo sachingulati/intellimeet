@@ -17,7 +17,7 @@
         <div class="col-lg-8 searchable">
             <g:each in="${topicInstanceList}" var="topic" status="index">
                 <div>
-                    <div id="topic${index}" class="topic"></div>
+                    <div id="topic${index}" class="topic zone"></div>
                     <g:render template="topicEntry" model="[topic: topic, index: index]"/>
                     <hr/>
                 </div>

@@ -1,7 +1,5 @@
 <%@ page import="com.ig.intellimeet.IntelliMeet" %>
 
-
-
 <div class="form-group ${hasErrors(bean: intelliMeetInstance, field: 'title', 'has-error')} required">
 	<label for="title" class="col-sm-2 control-label">
 		<g:message code="intelliMeet.title.label" default="Title" />

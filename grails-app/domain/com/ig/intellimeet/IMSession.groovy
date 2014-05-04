@@ -25,6 +25,8 @@ class IMSession {
 
     static mapWith = "mongo"
 
+    static transients = ['attendeesEmails', 'ownersEmail']
+
     static embedded = ['feedbackList']
 
     static constraints = {
@@ -38,5 +40,13 @@ class IMSession {
 
     static mapping = {
         description type:"text"
+    }
+
+    List<String> getAttendeesEmails() {
+        attendeeIds?.collect {User.get(it)?.username}
+    }
+
+    List<String> getOwnersEmail() {
+        ownerIds?.collect{User.get(it)?.username}
     }
 }
