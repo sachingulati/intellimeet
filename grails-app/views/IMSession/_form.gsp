@@ -18,7 +18,7 @@
 
 <div class="form-group ${hasErrors(bean: imSessionCO, field: 'description', 'has-error')} ">
     <label for="description" class="col-sm-2 control-label">
-        <g:message code="IMSession.description.label" default="Description" />
+        <g:message code="IMSession.description.label" default="Agenda" />
         <span class="required-indicator">*</span>
     </label>
     <div class="col-sm-10">

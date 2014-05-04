@@ -1,91 +1,64 @@
-<%@ page import="com.ig.intellimeet.IMSession" %>
+<%@ page import="com.ig.intellimeet.Topic" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="layout" content="main">
-    <g:set var="entityName" value="${message(code: 'IMSession.label', default: 'IMSession')}"/>
+    <g:set var="entityName" value="${message(code: 'imSession.label', default: 'Session')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
+    <r:require modules="topic,block_ui"/>
 </head>
 
 <body>
-<a href="#list-IMSession" class="sr-only" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+<a href="#list-topic" class="sr-only" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
-<nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#"><g:message code="default.list.label" args="[entityName]"/></a>
+<div class="container" id="list-topic">
+
+    <div class="row">
+        <div class="col-lg-8 searchable">
+            <g:each in="${IMSessionInstanceList}" var="imSession" status="index">
+                <div>
+                    <div id="imSession${index}" class="session zone"></div>
+                    <g:render template="sessionEntry" model="[imSession: imSession, index: index]"/>
+                    <hr/>
+                </div>
+            </g:each>
         </div>
 
-        <form class="navbar-form navbar-right" role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+
+        <div class="col-lg-4">
+
+            <div class="well">
+
+                <h4><g:message code="session.sidebar.search.label" default="Session Search" /></h4>
+
+                <div class="input-group">
+                    <input type="text" class="form-control" id="search-input">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default plusOneBtn" type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+
+                <g:link controller="IMSession" action="create" href="#" class="btn btn-primary btn-block" style="margin-top: 10px;"><g:message code="session.sidebar.propose.new.label" default="Propose New Session" /></g:link>
+
             </div>
-            <button type="submit" class="btn btn-default">Go!</button>
-        </form>
-        <ul class="nav navbar-nav navbar-right">
-            <li><g:link action="create"><g:message code="default.new.label" args="[entityName]"/></g:link></li>
-        </ul>
+
+            <!-- /well -->
+            <div class="bs-docs-sidebar hidden-print">
+                <ul class="nav bs-docs-sidenav">
+                    <g:each in="${IMSessionInstanceList}" var="imSession" status="index">
+                        <li><a href="#imSession${index}">${fieldValue(bean: imSession, field: 'title')}</a></li>
+                    </g:each>
+                </ul>
+                <a class="back-to-top" href="#list-topic"><g:message code="back.top.label" default="Back to top"/></a>
+            </div>
+            <!-- /well -->
+        </div>
     </div>
-</nav>
-
-<g:if test="${flash.message}">
-    <div class="alert alert-success alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Success!</strong> ${flash.message}.
-    </div>
-</g:if>
-
-<g:if test="${flash.error}">
-    <div class="alert alert-danger alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Error!</strong> ${flash.message}.
-    </div>
-</g:if>
-
-<div class="container-fluid"><table class="table table-striped">
-    <thead>
-    <tr>
-
-        <g:sortableColumn property="title" title="${message(code: 'IMSession.title.label', default: 'Title')}"/>
-
-        <g:sortableColumn property="maxCapacity" title="${message(code: 'IMSession.maxCapacity.label', default: 'Max Capacity')}"/>
-
-        <g:sortableColumn property="minCapacity" title="${message(code: 'IMSession.minCapacity.label', default: 'Min Capacity')}"/>
-
-        <g:sortableColumn property="score" title="${message(code: 'IMSession.score.label', default: 'Score')}"/>
-
-        <g:sortableColumn property="dateCreated" title="${message(code: 'IMSession.dateCreated.label', default: 'Date Created')}"/>
-
-        <g:sortableColumn property="description" title="${message(code: 'IMSession.description.label', default: 'Description')}"/>
-
-    </tr>
-    </thead>
-    <tbody>
-    <g:each in="${IMSessionInstanceList}" status="i" var="IMSessionInstance">
-        <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
-            <td><g:link action="show" id="${IMSessionInstance.id}">${fieldValue(bean: IMSessionInstance, field: "title")}</g:link></td>
-
-            <td>${fieldValue(bean: IMSessionInstance, field: "maxCapacity")}</td>
-
-            <td>${fieldValue(bean: IMSessionInstance, field: "minCapacity")}</td>
-
-            <td>${fieldValue(bean: IMSessionInstance, field: "score")}</td>
-
-            <td><g:formatDate date="${IMSessionInstance.dateCreated}"/></td>
-
-            <td>${fieldValue(bean: IMSessionInstance, field: "description")}</td>
-
-        </tr>
-    </g:each>
-    </tbody>
-</table>
-
-<div class="pagination">
-    <g:paginate total="${IMSessionInstanceCount ?: 0}"/>
-</div></div>
+</div>
 <r:script>
-markAsActive("session");
+    markAsActive("session");
 </r:script>
 </body>
 </html>

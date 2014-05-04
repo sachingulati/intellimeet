@@ -5,6 +5,7 @@
 		<meta name="layout" content="main">
 		<g:set var="entityName" value="${message(code: 'IMSession.label', default: 'IMSession')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
+        <r:require module="wysi_html5"/>
 	</head>
 	<body>
     <a href="#edit-IMSession" class="sr-only" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
