@@ -1,5 +1,7 @@
 package com.ig.intellimeet
 
+import org.grails.databinding.BindingFormat
+
 class IntelliMeet {
 
     String title
@@ -8,6 +10,8 @@ class IntelliMeet {
 
     Date dateCreated
     Date lastUpdated
+
+    @BindingFormat('MM/dd/yyyy')
     Date dateOfEvent
 
     List<Long> organizers
