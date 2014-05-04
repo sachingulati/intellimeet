@@ -1,6 +1,6 @@
 modules = {
     core {
-        dependsOn 'bootstrap, holder, font_awesome, application'
+        dependsOn 'bootstrap, holder, font_awesome, datepicker, application'
         defaultBundle 'ui'
         resource url: '/css/docs.min.css'
     }
@@ -94,6 +94,12 @@ modules = {
 
     respond {
         resource url: '/js/respond.min.js'
+    }
+
+    datepicker {
+        dependsOn 'jquery'
+        resource url: '/css/datepicker/datepicker3.css'
+        resource url:'/js/datepicker/bootstrap-datepicker.js'
     }
 
     block_ui {

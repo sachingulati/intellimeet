@@ -1,16 +1,17 @@
 package com.ig.intellimeet
 
 import com.ig.intellimeet.co.IMSessionCO
+import com.ig.intellimeet.enums.IntelliMeetStatus
 import com.ig.intellimeet.enums.SessionStatus
 
 class IntelliMeetService {
 
     IntelliMeet getCurrentIntelliMeet() {
-
+        IntelliMeet.findByStatus(IntelliMeetStatus.ACTIVE)
     }
 
     Long getCurrentIntelliMeetId() {
-        return 1L
+        return currentIntelliMeet?.id
     }
 
     /**
