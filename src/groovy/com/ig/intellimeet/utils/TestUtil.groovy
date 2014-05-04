@@ -1,9 +1,11 @@
 package com.ig.intellimeet.utils
 
+import com.ig.intellimeet.IMSession
 import com.ig.intellimeet.Role
 import com.ig.intellimeet.Topic
 import com.ig.intellimeet.User
 import com.ig.intellimeet.UserRole
+import com.ig.intellimeet.enums.SessionStatus
 import com.ig.intellimeet.enums.TopicCategory
 
 class TestUtil {
@@ -37,6 +39,21 @@ class TestUtil {
         topic.category = getRandom(TopicCategory.values()) as TopicCategory
         topic.interestedUsers = User.list([max: 5])*.id
         topic
+    }
+
+    static IMSession createSession(Topic topic, Long intelliMeetId) {
+        IMSession imSession = new IMSession()
+        imSession.topicId = topic?.id
+        imSession.title = topic?.name
+        imSession.description = topic?.description
+        imSession.minCapacity = 0
+        imSession.maxCapacity = 5
+        Object[] userIdList = User.list()*.id
+        imSession.ownerIds = [(Long) getRandom(userIdList)]
+        imSession.attendeeIds = User.list()*.id
+        imSession.sessionStatus  =SessionStatus.PROPOSED
+        imSession.intelliMeetId = intelliMeetId
+        imSession
     }
 
     static User createUser(String username) {

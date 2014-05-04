@@ -1,5 +1,11 @@
 <%@ page import="com.ig.intellimeet.User" %>
-<h1><g:link controller="IMSession" action="edit" id="${imSession?.id}"><i class="glyphicon glyphicon-pencil"></i></g:link> <a href="${createLink(controller: 'IMSession', action: 'show', id: imSession?.id)}">${imSession?.title}</a>
+<h1>
+
+    <im:ifLoggedInUsername username="${imSession?.ownersEmail}">
+        <g:link controller="IMSession" action="edit" id="${imSession?.id}"><i class="glyphicon glyphicon-pencil"></i></g:link>&nbsp;
+    </im:ifLoggedInUsername>
+
+    <a href="${createLink(controller: 'IMSession', action: 'show', id: imSession?.id)}">${imSession?.title}</a>
 </h1>
 
 <p class="lead">owned by <a href="#">${imSession?.ownersEmail?.join(", ")}</a>

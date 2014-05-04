@@ -7,6 +7,7 @@ class ImTagLib {
     //static encodeAsForTags = [tagName: 'raw']
 
     static namespace = "im"
+    def springSecurityService
 
     def categories = { attrs ->
         Map<TopicCategory, Integer> categoryCountMap = [:]
@@ -19,5 +20,12 @@ class ImTagLib {
             }
         }
         out << render(template: '/templates/categories', model: [categoryCountMap: categoryCountMap])
+    }
+
+    def ifLoggedInUsername = { attrs, body ->
+        String currentUsername = springSecurityService?.currentUser?.username
+        if (attrs.username && currentUsername?.equalsIgnoreCase(attrs.username)) {
+            out << body()
+        }
     }
 }
