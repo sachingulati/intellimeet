@@ -105,4 +105,10 @@ modules = {
     block_ui {
         resource url:'/js/jquery.blockUI.js'
     }
+
+    session_allocation {
+        dependsOn 'jquery'
+        resource url: 'js/sessionAllocation/app.js'
+        resource  url: 'css/sessionAllocation/sessionAllocation.css'
+    }
 }
