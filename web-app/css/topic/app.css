@@ -1,5 +1,20 @@
+/* line 1, ../../sass/topic/app.scss */
 body {
-    padding-top: 100px;
+  padding-top: 100px;
 }
-.bs-docs-sidebar.affix {width: 340px;top:100px;}
-#sidebar-categories li a {text-transform: capitalize;}
+
+/* line 4, ../../sass/topic/app.scss */
+.bs-docs-sidebar.affix {
+  width: 340px;
+  top: 100px;
+}
+
+/* line 5, ../../sass/topic/app.scss */
+#sidebar-categories li a {
+  text-transform: capitalize;
+}
+
+/* line 6, ../../sass/topic/app.scss */
+.entry .desc {
+  padding-bottom: 15px;
+}
