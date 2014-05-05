@@ -3,7 +3,7 @@ package com.ig.intellimeet
 import grails.converters.JSON
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
+@Secured(['ROLE_USER'])
 class TopicController {
 
     static scaffold = true

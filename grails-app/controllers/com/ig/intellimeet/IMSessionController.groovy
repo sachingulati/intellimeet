@@ -2,11 +2,14 @@ package com.ig.intellimeet
 
 import com.ig.intellimeet.co.IMSessionCO
 import com.ig.intellimeet.enums.SessionStatus
+import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
 
 @Transactional(readOnly = true)
+
+@Secured(['ROLE_USER'])
 class IMSessionController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -91,7 +94,10 @@ class IMSessionController {
     @Transactional
     def delete(IMSession IMSessionInstance) {
 
-        if (IMSessionInstance == null) {
+        flash.error = message(code: "session.not.deleted")
+        redirect action:"index", method:"GET"
+
+        /*if (IMSessionInstance == null) {
             notFound()
             return
         }
@@ -104,7 +110,7 @@ class IMSessionController {
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
-        }
+        }*/
     }
 
     protected void notFound() {

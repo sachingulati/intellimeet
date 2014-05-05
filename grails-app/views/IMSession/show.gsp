@@ -67,10 +67,7 @@
     </ul>
 
     <br/>
-    <g:form url="[resource: IMSessionInstance, action: 'delete']" method="DELETE">
-        <g:actionSubmit class="btn btn-lg btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-                        onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
-    </g:form>
+
 </div>
 </body>
 </html>
