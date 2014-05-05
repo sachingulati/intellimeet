@@ -1,6 +1,9 @@
+import com.ig.intellimeet.IMSession
+import com.ig.intellimeet.IntelliMeet
 import com.ig.intellimeet.Role
 import com.ig.intellimeet.Topic
 import com.ig.intellimeet.User
+import com.ig.intellimeet.UserPreference
 import com.ig.intellimeet.enums.IntelliMeetStatus
 import com.ig.intellimeet.utils.TestUtil
 import com.mongodb.DBCollection
