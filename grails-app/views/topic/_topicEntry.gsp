@@ -3,10 +3,10 @@
     <im:ifLoggedInUsername username="${topic?.createdByUsername}">
         <g:link controller="topic" action="edit" id="${topic?.id}"><i class="glyphicon glyphicon-pencil"></i></g:link>&nbsp;
     </im:ifLoggedInUsername>
-    <a href="${createLink(controller: 'topic', action: 'show', id: topic?.id)}">${topic?.name}</a>
+    ${topic?.name}
 </h1>
 
-<p class="lead">created by <a href="#">${topic?.createdByUsername}</a>
+<p class="lead">created by <a href="mailto:${topic?.createdByUsername}">${topic?.createdByUsername}</a>
 </p>
 <hr>
 
