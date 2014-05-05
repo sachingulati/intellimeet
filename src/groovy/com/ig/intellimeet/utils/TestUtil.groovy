@@ -10,7 +10,7 @@ import com.ig.intellimeet.enums.TopicCategory
 
 class TestUtil {
 
-    static final List<String> SAMPLE_ROLES = ['ROLE_ATTENDEE', 'ROLE_ADMIN', 'ROLE_PRESENTER', 'ROLE_ORGANIZER']
+    static final List<String> SAMPLE_ROLES = ['ROLE_USER', 'IM_OWNER', 'ROLE_ADMIN']
     static final List<String> SAMPLE_USERNAME_LIST = ['john@rediffmail.com', 'amelia@gmail.com', 'bdegroote@gmail.com', 'dextermorgan@ymail.com', 'debramorgan@miamimetro.com',
             'testUser7@ig.com', 'testUser8@ig.com', 'testUser9@ig.com','testUser10@ig.com', 'testUser11@ig.com', 'testUser13@ig.com', 'testUser14@ig.com','testUser15@ig.com', 'testUser16@ig.com',
             'testUser23@ig.com', 'testUser24@ig.com','testUser25@ig.com', 'testUser32@ig.com', 'testUser33@ig.com', 'testUser34@ig.com','testUser35@ig.com']
