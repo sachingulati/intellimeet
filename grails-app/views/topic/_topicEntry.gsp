@@ -16,7 +16,7 @@
 <hr>
 %{--<img src="http://placehold.it/900x300" class="img-responsive">--}%
 %{--<hr>--}%
-<p>${raw(topic?.description)}</p>
+<div class="desc"><p>${raw(topic?.description)}</p></div>
 <topic:displayInterestedUsersCount topic="${topic}"/>
 &nbsp;<g:link controller="IMSession" action="createNewSessionFromTopic" params="[topicId: topic?.id]" class="btn btn-default"><g:message code="btn.register.presenter.label"
                                                                                                                                          default="Register as Presenter"/> <span
