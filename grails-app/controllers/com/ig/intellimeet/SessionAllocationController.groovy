@@ -3,7 +3,7 @@ package com.ig.intellimeet
 import com.ig.intellimeet.dto.SessionPreference
 import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['IM_OWNER'])
+@Secured(['ROLE_IM_OWNER'])
 class SessionAllocationController {
 
     IntelliMeetService intelliMeetService

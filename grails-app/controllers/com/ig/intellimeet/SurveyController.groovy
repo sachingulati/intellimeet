@@ -1,12 +1,11 @@
 package com.ig.intellimeet
 
-import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
 
 @Transactional(readOnly = true)
-@Secured(['IM_OWNER'])
+//@Secured(['ROLE_IM_OWNER'])
 class SurveyController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -28,7 +27,9 @@ class SurveyController {
     }
 
     def create() {
-        respond new Survey(params)
+        Survey survey = new Survey(params)
+        survey.recipientsEmail = User.list()*.username?.join(", ")
+        respond survey
     }
 
     @Transactional
