@@ -35,8 +35,8 @@ grails.mime.types = [ // the first one is the default format
 //grails.urlmapping.cache.maxsize = 1000
 
 // What URL patterns should be processed by the resources plugin
-grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*']
-grails.resources.adhoc.includes = ['/images/**', '/css/**', '/js/**', '/plugins/**']
+grails.resources.adhoc.patterns = ['/images/*', '/css/*', '/js/*', '/plugins/*', '/fonts/*']
+grails.resources.adhoc.includes = ['/images/**', '/css/**', '/js/**', '/plugins/**', '/fonts/**']
 
 // Legacy setting for codec used to encode data with ${}
 grails.views.default.codec = "html"
@@ -92,6 +92,7 @@ grails.hibernate.osiv.readonly = false
 environments {
     development {
         grails.logging.jul.usebridge = true
+        grails.serverURL = "http://localhost:8585"
     }
     production {
         grails.logging.jul.usebridge = false
@@ -107,6 +108,10 @@ log4j = {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
 
+    warn   'grails.plugin.springsecurity',
+           'grails.plugin.springsecurity.oauth',
+           'org.springframework.security'
+
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
@@ -118,4 +123,48 @@ log4j = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+    info 'grails.app'
 }
+
+
+// Added by the Spring Security Core plugin:
+grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.ig.intellimeet.User'
+grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.ig.intellimeet.UserRole'
+grails.plugin.springsecurity.authority.className = 'com.ig.intellimeet.Role'
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/topic/index'
+grails.plugin.springsecurity.successHandler.alwaysUseDefault = true
+grails.plugin.springsecurity.logout.postOnly = false
+
+grails.plugin.springsecurity.controllerAnnotations.staticRules = [
+        '/':                              ['permitAll'],
+        '/index':                         ['permitAll'],
+        '/index.gsp':                     ['permitAll'],
+        '/about':                         ['permitAll'],
+        '/about.gsp':                     ['permitAll'],
+        '/accessDenied':                  ['permitAll'],
+        '/accessDenied.gsp':              ['permitAll'],
+        '/**/js/**':                      ['permitAll'],
+        '/**/css/**':                     ['permitAll'],
+        '/**/images/**':                  ['permitAll'],
+        '/**/favicon.ico':                ['permitAll'],
+        '/oauth/**':                      ['permitAll'],
+        '/**':                            ['permitAll']
+]
+
+def appName = grails.util.Metadata.current.'app.name'
+def baseURL = grails.serverURL ?: "http://127.0.0.1:${System.getProperty('server.port', '8585')}/${appName}"
+oauth {
+    providers {
+        google {
+            api = org.grails.plugin.springsecurity.oauth.GoogleApi20
+            key = '369979967640.apps.googleusercontent.com'
+            secret = 'ABwQ35TPxqdgKpF86QsGvhb9'
+            successUri = '/oauth/google/success'
+            failureUri = '/oauth/google/error'
+            callback = "${baseURL}/oauth/google/callback"
+            scope = 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'
+        }
+    }
+}
+// Added by the Spring Security OAuth plugin:
+grails.plugin.springsecurity.oauth.domainClass = 'com.ig.intellimeet.OauthId'

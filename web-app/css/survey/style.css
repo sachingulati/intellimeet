@@ -1,0 +1,1440 @@
+/*
+
+CSS STRUCTURE:
+
+1. SITE STRUCTURE and TYPOGRAPHY
+2. CONTENT
+3. FORMS
+4. COMMON
+5. MEDIA QUERIES
+
+/*============================================================================================*/
+/* 1.  SITE STRUCTURE and TYPOGRAPHY */
+/*============================================================================================*/
+/* line 15, ../../sass/survey/style.scss */
+body {
+  background: #fff;
+  font: 13px/20px "Open Sans", Arial, sans-serif;
+  color: #333;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+/** Typography **/
+/* line 29, ../../sass/survey/style.scss */
+h1,
+h2,
+h3,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 10px 0;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 20px;
+  color: inherit;
+  text-rendering: optimizelegibility;
+  font-family: "Open Sans", Arial, sans-serif;
+}
+
+/* line 39, ../../sass/survey/style.scss */
+h1, h2 {
+  text-transform: uppercase;
+  font-weight: 800;
+  text-align: center;
+}
+
+/* line 45, ../../sass/survey/style.scss */
+.main-title {
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  color: #fff;
+}
+
+/* line 50, ../../sass/survey/style.scss */
+.main-title h1 {
+  font-size: 44px;
+  line-height: 40px;
+  margin-top: 60px;
+}
+
+/* line 56, ../../sass/survey/style.scss */
+.main-title p {
+  font-size: 26px;
+  font-weight: 300;
+  margin-top: -5px;
+  text-align: center;
+}
+
+/* line 63, ../../sass/survey/style.scss */
+h2 {
+  font-size: 32px;
+  line-height: 30px;
+  margin-bottom: 45px;
+}
+/* line 67, ../../sass/survey/style.scss */
+h2 span {
+  font-size: 24px;
+  font-weight: 300;
+  text-transform: none;
+  display: block;
+}
+
+/* line 75, ../../sass/survey/style.scss */
+h3 {
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 32px;
+  margin-bottom: 45px;
+}
+/* line 81, ../../sass/survey/style.scss */
+h3 span {
+  font-size: 21px;
+  font-weight: 300;
+  display: block;
+}
+
+/* line 88, ../../sass/survey/style.scss */
+.step h3 {
+  text-transform: none;
+  font-size: 22px;
+  line-height: 26px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+/* line 97, ../../sass/survey/style.scss */
+.box h3 {
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+/* line 103, ../../sass/survey/style.scss */
+footer h3 {
+  text-transform: none;
+  font-weight: 400;
+  text-align: left;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+/* line 111, ../../sass/survey/style.scss */
+.question_box h3 {
+  font-size: 18px;
+  text-align: left;
+  line-height: 22px;
+  margin-bottom: 10px;
+}
+
+/* line 118, ../../sass/survey/style.scss */
+h4 {
+  font-size: 18px;
+  ine-height: 22px;
+}
+
+/* line 123, ../../sass/survey/style.scss */
+h5 {
+  font-size: 14px;
+  line-height: 14px;
+}
+
+/* line 128, ../../sass/survey/style.scss */
+footer h5 {
+  color: #555;
+}
+
+/* line 132, ../../sass/survey/style.scss */
+h6 {
+  font-size: 12px;
+}
+
+/* line 136, ../../sass/survey/style.scss */
+p {
+  margin: 0 0 20px 0;
+}
+
+/** Lists **/
+/* line 142, ../../sass/survey/style.scss */
+ul,
+ol {
+  padding: 0;
+  margin: 0 0 30px 0;
+  list-style: none;
+}
+
+/* line 151, ../../sass/survey/style.scss */
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-bottom: 0;
+}
+
+/* line 155, ../../sass/survey/style.scss */
+li {
+  line-height: 20px;
+}
+
+/* line 159, ../../sass/survey/style.scss */
+hr {
+  margin: 30px 0;
+  border: 0;
+  border-top: 1px solid #dfdfdf;
+}
+
+/** Links color **/
+/* line 166, ../../sass/survey/style.scss */
+a {
+  color: #00aeef;
+  text-decoration: none;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+/* line 171, ../../sass/survey/style.scss */
+a:hover, a:focus {
+  color: #444;
+  text-decoration: none;
+}
+
+/** Buttons **/
+/* line 178, ../../sass/survey/style.scss */
+.button_medium {
+  border: none;
+  background: #282828;
+  color: #fff;
+  padding: 7px 20px;
+  text-decoration: none;
+  transition: background .5s ease;
+  -moz-transition: background .5s ease;
+  -webkit-transition: background .5s ease;
+  -o-transition: background .5s ease;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  outline: none;
+}
+/* line 193, ../../sass/survey/style.scss */
+.button_medium:hover, .button_medium .button_medium:hover {
+  background: #00aeef;
+  color: #fff;
+}
+
+/* line 199, ../../sass/survey/style.scss */
+.button_medium_2 {
+  border: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 2px solid #282828;
+  color: #282828;
+  padding: 7px 20px;
+  text-decoration: none;
+  transition: background .5s ease;
+  -moz-transition: background .5s ease;
+  -webkit-transition: background .5s ease;
+  -o-transition: background .5s ease;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  outline: none;
+  background: #fff;
+}
+/* line 218, ../../sass/survey/style.scss */
+.button_medium_2:hover {
+  background: #00aeef;
+  color: #fff;
+  border: 2px solid #00aeef;
+}
+
+/** Wizard Buttons **/
+/* line 226, ../../sass/survey/style.scss */
+.backward, .forward {
+  border: none;
+  color: #fff;
+  padding: 7px 20px;
+  text-decoration: none;
+  transition: background .5s ease;
+  -moz-transition: background .5s ease;
+  -webkit-transition: background .5s ease;
+  -o-transition: background .5s ease;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  outline: none;
+  background: #282828;
+  position: relative;
+}
+
+/* line 244, ../../sass/survey/style.scss */
+.backward {
+  padding: 7px 20px 7px 30px;
+}
+/* line 246, ../../sass/survey/style.scss */
+.backward:before {
+  content: "\f053";
+  font-family: FontAwesome;
+  text-decoration: inherit;
+  position: absolute;
+  font-weight: normal;
+  top: 8px;
+  left: 20px;
+  text-transform: none;
+  font-size: 9px;
+}
+
+/* line 259, ../../sass/survey/style.scss */
+button[disabled].backward, button[disabled].forward {
+  border: none;
+  background: #ccc;
+  outline: none;
+}
+
+/* line 265, ../../sass/survey/style.scss */
+.forward {
+  padding: 7px 30px 7px 20px;
+}
+/* line 267, ../../sass/survey/style.scss */
+.forward::before {
+  content: "\f054";
+  font-family: FontAwesome;
+  text-decoration: inherit;
+  position: absolute;
+  font-weight: normal;
+  top: 8px;
+  right: 20px;
+  text-transform: none;
+  font-size: 9px;
+}
+
+/* line 280, ../../sass/survey/style.scss */
+.backward:hover, .forward:hover {
+  background: #00aeef;
+  color: #fff;
+}
+
+/** Header ==================== **/
+/* line 286, ../../sass/survey/style.scss */
+#top-area {
+  background-color: #6f5499;
+  height: 500px;
+}
+
+/* line 291, ../../sass/survey/style.scss */
+header {
+  padding: 10px 0;
+  width: 100%;
+  background-color: #fff;
+}
+/* line 296, ../../sass/survey/style.scss */
+header .navbar-brand {
+  color: #563d7c;
+}
+
+/* line 301, ../../sass/survey/style.scss */
+#logo a {
+  text-indent: -99999px;
+  display: block;
+  height: 32px;
+  width: 151px;
+}
+
+/* line 309, ../../sass/survey/style.scss */
+#top-nav ul {
+  float: right;
+  margin: 10;
+  padding: 0;
+  margin-top: 8px;
+  margin-right: -10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* line 319, ../../sass/survey/style.scss */
+#top-nav ul a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* line 324, ../../sass/survey/style.scss */
+#top-nav ul a:hover, #top-nav ul a#active {
+  color: #323232;
+}
+
+/* line 328, ../../sass/survey/style.scss */
+#top-nav ul li {
+  float: left;
+  padding-left: 10px;
+  margin-right: 10px;
+}
+
+/* line 334, ../../sass/survey/style.scss */
+#top-nav ul li:first-child {
+  background: none;
+}
+
+/* line 338, ../../sass/survey/style.scss */
+#top-nav ul li a#purchase {
+  color: #fff200;
+}
+
+/* line 342, ../../sass/survey/style.scss */
+#top-nav ul li a#purchase:hover {
+  color: #323232;
+}
+
+/* Button Responsive Menu*/
+/* line 347, ../../sass/survey/style.scss */
+.btn-responsive-menu {
+  display: none;
+  float: right;
+  padding: 5px;
+  cursor: pointer;
+  margin: 0px 20px 0 0;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background: #333;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/* line 361, ../../sass/survey/style.scss */
+.bar {
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin: 5px;
+  background: #fff;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+}
+
+/* line 372, ../../sass/survey/style.scss */
+.show {
+  display: block !important;
+}
+
+/* line 376, ../../sass/survey/style.scss */
+#main {
+  padding-bottom: 60px;
+}
+
+/** Footer ==================== **/
+/* line 381, ../../sass/survey/style.scss */
+footer {
+  width: 100%;
+  background: #6f5499;
+  padding: 30px 0 0 0;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+/* line 387, ../../sass/survey/style.scss */
+footer a {
+  color: #FF9;
+}
+/* line 390, ../../sass/survey/style.scss */
+footer section {
+  background: url(/images/line_header.png) repeat-x left bottom;
+}
+
+/* line 395, ../../sass/survey/style.scss */
+#footer_2 {
+  width: 100%;
+  background: #fff;
+}
+/* line 398, ../../sass/survey/style.scss */
+#footer_2 a {
+  color: #428bca;
+}
+/* line 400, ../../sass/survey/style.scss */
+#footer_2 a:hover {
+  color: #2a6496;
+  text-decoration: underline;
+}
+
+/* line 407, ../../sass/survey/style.scss */
+ul#footer-nav {
+  color: #563d7c;
+  margin: 25px 0 10px 0;
+}
+/* line 411, ../../sass/survey/style.scss */
+ul#footer-nav li:first-child {
+  margin-right: 30px;
+}
+/* line 414, ../../sass/survey/style.scss */
+ul#footer-nav li {
+  display: inline-block;
+  zoom: 1;
+  margin-right: 10px;
+}
+
+/* line 421, ../../sass/survey/style.scss */
+#copy {
+  padding: 15px 0;
+  background-color: #f8f8f8;
+  font-size: 11px;
+  text-align: center;
+}
+
+/* line 428, ../../sass/survey/style.scss */
+#contact {
+  background: url(/images/contact_map.png) no-repeat 90% 90px;
+}
+
+/*============================================================================================*/
+/* 2.  CONTENT */
+/*============================================================================================*/
+/** Form area ============================= **/
+/* line 436, ../../sass/survey/style.scss */
+#top-wizard {
+  text-align: center;
+  padding: 15px 120px;
+  background-color: #f3f3f3;
+  border-bottom: 1px solid #e7e7e7;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 11px;
+}
+
+/* line 446, ../../sass/survey/style.scss */
+.shadow {
+  width: 100%;
+  height: 6px;
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  background: url(/images/shadow_top_form.png) no-repeat center top;
+}
+
+/* line 455, ../../sass/survey/style.scss */
+.ui-widget-content {
+  background: #fff;
+  color: #222222;
+}
+/* line 458, ../../sass/survey/style.scss */
+.ui-widget-content a {
+  color: #222222;
+}
+
+/* line 463, ../../sass/survey/style.scss */
+.ui-widget-header {
+  background: #f68e56;
+}
+/* line 465, ../../sass/survey/style.scss */
+.ui-widget-header a {
+  color: #222222;
+}
+
+/* line 470, ../../sass/survey/style.scss */
+.ui-progressbar {
+  height: 2em;
+  text-align: left;
+}
+/* line 473, ../../sass/survey/style.scss */
+.ui-progressbar .ui-progressbar-value {
+  margin: -1px;
+  height: 100%;
+}
+
+/* line 479, ../../sass/survey/style.scss */
+#survey_container {
+  background-color: #fff;
+  box-shadow: 0 0 5px #777;
+  margin-top: -300px;
+  margin-bottom: 60px;
+  z-index: 9;
+  position: relative;
+}
+
+/* line 488, ../../sass/survey/style.scss */
+.ie8 #survey_container {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  margin-top: -300px;
+  margin-bottom: 60px;
+  z-index: 9;
+  position: relative;
+}
+
+/* line 497, ../../sass/survey/style.scss */
+#middle-wizard {
+  padding: 50px 125px 35px 125px;
+}
+
+/* line 501, ../../sass/survey/style.scss */
+#bottom-wizard {
+  text-align: center;
+  padding: 15px 120px;
+  border-top: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
+}
+
+/* line 508, ../../sass/survey/style.scss */
+#complete {
+  text-align: center;
+  padding: 0 45px 35px 45px;
+}
+/* line 511, ../../sass/survey/style.scss */
+#complete h3 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+/* line 515, ../../sass/survey/style.scss */
+#complete i {
+  color: #cacaca;
+  margin: 0 0 10px 0;
+  font-size: 160px;
+  padding: 0;
+}
+/* line 521, ../../sass/survey/style.scss */
+#complete button {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 18px;
+  border: 2px solid #8dc63f;
+  color: #8dc63f;
+  padding: 15px 35px;
+  text-decoration: none;
+  transition: background .5s ease;
+  -moz-transition: background .5s ease;
+  -webkit-transition: background .5s ease;
+  -o-transition: background .5s ease;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  outline: none;
+  background: #fff;
+}
+/* line 540, ../../sass/survey/style.scss */
+#complete button:hover {
+  background: #00aeef;
+  color: #fff;
+  border: 2px solid #00aeef;
+}
+
+/** Featuers and Question boxes ============================= **/
+/* line 549, ../../sass/survey/style.scss */
+.box {
+  text-align: center;
+}
+/* line 551, ../../sass/survey/style.scss */
+.box span {
+  font-size: 100px;
+  color: #1ab9a7;
+  font-weight: 800;
+  display: block;
+  margin: 40px 0 43px 0;
+}
+
+/* line 560, ../../sass/survey/style.scss */
+.question_box {
+  padding-left: 40px;
+  position: relative;
+  margin-bottom: 30px;
+}
+/* line 564, ../../sass/survey/style.scss */
+.question_box:before {
+  content: "\f059";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  font-size: 30px;
+  position: absolute;
+  color: #999;
+  top: 5px;
+  left: 0;
+}
+
+/* Team */
+/* line 579, ../../sass/survey/style.scss */
+.thumbnail {
+  border: none;
+  border-radius: 0px;
+  box-shadow: none;
+  display: block;
+  line-height: 0px;
+  -moz-border-radius: 0px;
+  -moz-box-shadow: none;
+  -moz-transition: all 0.2s ease-in-out;
+  o-transition: all 0.2s ease-in-out;
+  padding: 0px;
+  transition: all 0.2s ease-in-out;
+  -webkit-border-radius: 0px;
+  -webkit-box-shadow: none;
+  -webkit-transition: all 0.2s ease-in-out;
+}
+/* line 595, ../../sass/survey/style.scss */
+.thumbnail:hover h4 {
+  margin-top: -40px;
+}
+
+/* line 601, ../../sass/survey/style.scss */
+.caption {
+  background: #f2f2f2;
+}
+
+/* line 605, ../../sass/survey/style.scss */
+.transit-to-top {
+  height: 60px;
+  overflow: hidden;
+  width: 100%;
+  cursor: pointer;
+}
+/* line 610, ../../sass/survey/style.scss */
+.transit-to-top h4 {
+  text-align: center;
+  moz-transition: all 0.3s ease-in-out;
+  o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  margin: 20px 0 0 0;
+  padding: 0;
+}
+
+/* line 621, ../../sass/survey/style.scss */
+.p-title {
+  display: block;
+  height: 40px;
+}
+
+/* line 626, ../../sass/survey/style.scss */
+.widget_nav_menu {
+  min-height: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+/* line 632, ../../sass/survey/style.scss */
+.project-item-image-container {
+  border: none;
+  cursor: pointer;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+/* line 640, ../../sass/survey/style.scss */
+.project-item-image-container:hover, .project-item :hover .project-item-image-container {
+  filter: alpha(opacity=100);
+  -moz-transition: background-color 0.2s ease-out, color 0.1s ease-out;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  opacity: 1;
+  -o-transition: background-color 0.2s ease-out, color 0.1s ease-out;
+  transition: background-color 0.2s ease-out, color 0.1s ease-out;
+  -webkit-transition: background-color 0.2s ease-out, color 0.1s ease-out;
+}
+
+/* line 650, ../../sass/survey/style.scss */
+.project-item-image-container > img {
+  width: 100% !important;
+}
+
+/* line 654, ../../sass/survey/style.scss */
+.phone-info {
+  display: inline-block;
+  margin: 5px 0px 0 0;
+  width: 100%;
+  text-align: center;
+}
+
+/* line 661, ../../sass/survey/style.scss */
+ul.social-bookmarks.team {
+  float: none;
+  margin: 0;
+  padding: 0;
+  margin: auto;
+  display: inline-block;
+}
+
+/* Carousel */
+/* line 670, ../../sass/survey/style.scss */
+#owl-demo .item {
+  margin: 3px;
+}
+
+/* line 674, ../../sass/survey/style.scss */
+#owl-demo .item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/*============================================================================================*/
+/* 3.  FORMS */
+/*============================================================================================*/
+/* line 683, ../../sass/survey/style.scss */
+.form-control::-moz-placeholder {
+  color: #999;
+  opacity: 1;
+}
+
+/* line 688, ../../sass/survey/style.scss */
+.form-control::-webkit-input-placeholder {
+  color: #999;
+}
+
+/* line 692, ../../sass/survey/style.scss */
+input.form-control, select.form-control, textarea.form-control {
+  background: none;
+  background-color: #fbfbfb;
+  border: 2px solid #d5d5d5;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+  color: #999;
+  height: 44px;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 25px;
+  font-family: 'Open Sans', Arial, sans-serif;
+  line-height: 1.428571429;
+  padding: 6px 12px;
+}
+
+/* line 713, ../../sass/survey/style.scss */
+input.form-control:focus, select.form-control:focus, textarea.form-control:focus {
+  border-color: none;
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #555;
+}
+
+/** Drop down select: ex Country select ==================== **/
+/* line 722, ../../sass/survey/style.scss */
+.styled-select select {
+  background: transparent;
+  width: 107%;
+  padding: 5px;
+  padding-left: 15px;
+  border: 0;
+  border-radius: 0;
+  height: 41px;
+  margin: 0;
+  font-weight: 400;
+  -moz-appearance: window;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+/* line 737, ../../sass/survey/style.scss */
+.styled-select {
+  width: 100%;
+  overflow: hidden;
+  height: 44px;
+  background: #fbfbfb url(/images/down_arrow_select.png) no-repeat 98% center;
+  border: 2px solid #d5d5d5;
+  margin-bottom: -5px;
+}
+
+/* line 746, ../../sass/survey/style.scss */
+.styled-select select::-ms-expand, .styled-select-2 select::-ms-expand {
+  display: none;
+}
+
+/** Floated inputs: ex the gender radio ==================== **/
+/* line 751, ../../sass/survey/style.scss */
+ul.floated {
+  padding: 0;
+  margin: 0 0 0 0;
+}
+
+/* line 756, ../../sass/survey/style.scss */
+ul.floated li {
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 30%;
+}
+
+/* line 763, ../../sass/survey/style.scss */
+label.label_gender {
+  padding-left: 50px;
+  line-height: 42px;
+}
+
+/* line 768, ../../sass/survey/style.scss */
+ul.floated li#age {
+  width: 100px;
+  margin-right: 55px;
+}
+
+/* line 773, ../../sass/survey/style.scss */
+ul.data-list li {
+  position: relative;
+}
+
+/* line 777, ../../sass/survey/style.scss */
+ul.data-list-2 li {
+  position: relative;
+  height: 42px;
+  margin-bottom: 15px;
+  width: 100%;
+  display: block;
+}
+
+/* line 785, ../../sass/survey/style.scss */
+ul.data-list-2 li label {
+  float: left;
+  margin-left: 60px;
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 9px;
+  line-height: 22px;
+}
+
+/* line 794, ../../sass/survey/style.scss */
+ul.data-list#terms {
+  font-weight: 400;
+  line-height: 22px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/** Quantity incrementer input==================== **/
+/* line 803, ../../sass/survey/style.scss */
+.qty-buttons {
+  position: relative;
+  width: 100px;
+  height: 40px;
+}
+
+/* line 809, ../../sass/survey/style.scss */
+input.qty {
+  width: 70px;
+}
+
+/* line 813, ../../sass/survey/style.scss */
+input.qtyminus, input.qtyplus, input.qtyplus:focus {
+  position: absolute;
+  width: 35px;
+  height: 23px;
+  border: 2px solid #d5d5d5;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+}
+
+/* line 829, ../../sass/survey/style.scss */
+input.qtyplus {
+  background: white url(/images/plus.png) no-repeat center center;
+  right: 0;
+  top: 0;
+  text-indent: -9999px;
+}
+
+/* line 836, ../../sass/survey/style.scss */
+input.qtyminus {
+  background: white url(/images/minus.png) no-repeat center center;
+  right: 0;
+  top: 21px;
+  text-indent: -9999px;
+}
+
+/* line 843, ../../sass/survey/style.scss */
+.qty-buttons span {
+  position: absolute;
+  top: 10px;
+  display: block;
+  width: 220px;
+  left: 120px;
+  font-weight: bold;
+}
+
+/** Errors validation styles and position ==================== **/
+/** Common style**/
+/* line 854, ../../sass/survey/style.scss */
+label.error {
+  font-size: 11px;
+  position: absolute;
+  top: -28px;
+  right: -15px;
+  z-index: 99;
+  height: 25px;
+  line-height: 25px;
+  background-color: #e34f4f;
+  color: #fff;
+  font-weight: normal;
+  padding: 0 6px;
+}
+
+/* line 868, ../../sass/survey/style.scss */
+label.error:after {
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 0 6px 6px 0;
+  border-color: transparent #e34f4f;
+  display: block;
+  width: 0;
+  z-index: 1;
+  bottom: -6px;
+  left: 20%;
+}
+
+/* line 881, ../../sass/survey/style.scss */
+.styled-select label.error {
+  overflow: visible;
+}
+
+/* line 885, ../../sass/survey/style.scss */
+ul.floated li#age label.error {
+  right: -15px;
+}
+
+/* line 889, ../../sass/survey/style.scss */
+ul.floated li label.error {
+  right: -50px;
+}
+
+/* line 893, ../../sass/survey/style.scss */
+ul.data-list#terms li label.error {
+  left: 45%;
+  display: inline-block;
+  width: 80px;
+}
+
+/** Error styles for survey questions**/
+/* line 900, ../../sass/survey/style.scss */
+ul.data-list-2 li label.error {
+  font-size: 11px;
+  position: absolute;
+  top: -30px;
+  right: -10px;
+  margin: 0;
+  z-index: 99;
+  height: 25px;
+  line-height: 25px;
+  background-color: #e34f4f;
+  color: #fff;
+  font-weight: normal;
+  padding: 0 6px;
+}
+
+/*============================================================================================*/
+/* 4.  COMMON */
+/*============================================================================================*/
+/* twitter feed*/
+/* line 919, ../../sass/survey/style.scss */
+.tweets-next, .tweets-prev {
+  display: inline-block;
+  font-size: 28px;
+  color: #FFF;
+  margin-top: 10px;
+}
+
+/* line 926, ../../sass/survey/style.scss */
+.tweets-prev {
+  margin-right: 10px;
+}
+
+/* line 930, ../../sass/survey/style.scss */
+.tweet_avatar {
+  float: left;
+}
+
+/* line 934, ../../sass/survey/style.scss */
+.tweet_time {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* line 939, ../../sass/survey/style.scss */
+.tweet-control {
+  margin-bottom: 30px;
+}
+
+/* scroll to top */
+/* line 944, ../../sass/survey/style.scss */
+#toTop {
+  width: 100px;
+  background: #111;
+  text-align: center;
+  padding: 5px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+  display: none;
+  color: #fff;
+  font-size: 11px;
+  z-index: 999;
+}
+
+/* spacing */
+/* line 960, ../../sass/survey/style.scss */
+.add_top_30 {
+  margin-top: 30px;
+}
+
+/* line 964, ../../sass/survey/style.scss */
+.add_top_15 {
+  margin-top: 15px;
+}
+
+/* line 968, ../../sass/survey/style.scss */
+.add_bottom_30 {
+  margin-bottom: 30px;
+}
+
+/* line 972, ../../sass/survey/style.scss */
+.add_bottom_15 {
+  margin-bottom: 15px;
+}
+
+/* line 976, ../../sass/survey/style.scss */
+.divider {
+  width: 100%;
+  background: url(/images/divider.png) no-repeat center top;
+  height: 10px;
+  margin: 30px 0;
+}
+
+/* modal */
+/* line 984, ../../sass/survey/style.scss */
+.modal-content {
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 6px;
+  outline: none;
+  -webkit-box-shadow: 0 3px 9px c;
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  background-clip: padding-box;
+}
+
+/* line 995, ../../sass/survey/style.scss */
+.modal-header {
+  min-height: 16.428571429px;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* line 1001, ../../sass/survey/style.scss */
+.modal-footer {
+  padding: 19px 20px 20px;
+  margin-top: 15px;
+  text-align: right;
+  border-top: 1px solid #ddd;
+}
+
+/* line 1008, ../../sass/survey/style.scss */
+.close {
+  float: right;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 1;
+  color: #555;
+  text-shadow: 0 1px 0 #000;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+
+/* line 1020, ../../sass/survey/style.scss */
+.close:hover,
+.close:focus {
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.7;
+  filter: alpha(opacity=70);
+}
+
+/*============================================================================================*/
+/* 5.  MEDIA QUERIES */
+/*============================================================================================*/
+@media (min-width: 768px) and (max-width: 1200px) {
+  /* line 1032, ../../sass/survey/style.scss */
+  #middle-wizard {
+    padding: 40px 60px 35px 60px;
+  }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  /* line 1038, ../../sass/survey/style.scss */
+  #middle-wizard {
+    padding: 40px 60px 35px 60px;
+  }
+
+  /* line 1042, ../../sass/survey/style.scss */
+  #contact {
+    background: none;
+  }
+
+  /* line 1046, ../../sass/survey/style.scss */
+  #footer_2 {
+    text-align: center;
+  }
+
+  /* line 1050, ../../sass/survey/style.scss */
+  #contact {
+    background: none;
+  }
+
+  /* line 1054, ../../sass/survey/style.scss */
+  ul.social-bookmarks {
+    padding: 0;
+    list-style-type: none;
+    float: none;
+    display: inline-block;
+  }
+}
+/* From tablet portrait to mobile */
+@media (max-width: 767px) {
+  /* line 1064, ../../sass/survey/style.scss */
+  #top-nav {
+    width: 100%;
+    float: left;
+  }
+
+  /* line 1069, ../../sass/survey/style.scss */
+  #top-nav {
+    display: none;
+  }
+
+  /* line 1073, ../../sass/survey/style.scss */
+  #top-nav ul {
+    float: none;
+    padding: 20px 0 20px 0;
+    margin: 0;
+  }
+
+  /* line 1079, ../../sass/survey/style.scss */
+  #top-nav ul li {
+    float: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* line 1087, ../../sass/survey/style.scss */
+  #top-nav ul li:last-child {
+    border-bottom: none;
+  }
+
+  /* line 1091, ../../sass/survey/style.scss */
+  #top-nav ul li a {
+    display: block;
+    padding: 5px;
+  }
+
+  /* line 1096, ../../sass/survey/style.scss */
+  #top-nav ul a#active {
+    color: #323232;
+    background-color: #ddd;
+  }
+
+  /* line 1101, ../../sass/survey/style.scss */
+  .btn-responsive-menu {
+    display: block;
+  }
+
+  /* line 1105, ../../sass/survey/style.scss */
+  .main-title h1 {
+    font-size: 32px;
+    line-height: 30px;
+  }
+
+  /* line 1110, ../../sass/survey/style.scss */
+  .main-title p {
+    font-size: 16px;
+  }
+
+  /* line 1114, ../../sass/survey/style.scss */
+  h2, h3 {
+    font-size: 26px;
+    line-height: 26px;
+    margin-bottom: 30px;
+  }
+
+  /* line 1120, ../../sass/survey/style.scss */
+  h2 span, h3 span {
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  /* line 1125, ../../sass/survey/style.scss */
+  #top-wizard {
+    padding: 15px 6 s0px;
+  }
+
+  /* line 1129, ../../sass/survey/style.scss */
+  #middle-wizard {
+    padding: 20px 30px 20px 30px;
+  }
+
+  /* line 1133, ../../sass/survey/style.scss */
+  ul.floated li#age {
+    margin-bottom: -10px;
+  }
+
+  /* line 1137, ../../sass/survey/style.scss */
+  ul.floated li {
+    float: none;
+    margin: 0;
+    padding: 0;
+    width: 50%;
+    padding-bottom: 10px;
+  }
+
+  /* line 1145, ../../sass/survey/style.scss */
+  #footer_2 {
+    text-align: center;
+  }
+
+  /* line 1149, ../../sass/survey/style.scss */
+  #contact {
+    background: none;
+  }
+
+  /* line 1153, ../../sass/survey/style.scss */
+  ul.social-bookmarks {
+    padding: 0;
+    list-style-type: none;
+    float: none;
+    display: inline-block;
+  }
+}
+/* Mobile Landscape */
+@media (max-width: 480px) {
+  /* line 1163, ../../sass/survey/style.scss */
+  .main-title h1 {
+    font-size: 24px;
+    line-height: 26px;
+    margin-top: 30px;
+  }
+
+  /* line 1169, ../../sass/survey/style.scss */
+  .main-title p {
+    font-size: 14px;
+    ine-height: 16px;
+  }
+
+  /* line 1174, ../../sass/survey/style.scss */
+  #top-nav ul {
+    float: none;
+    padding: 20px 0 40px 0;
+    margin: 0;
+  }
+
+  /* line 1180, ../../sass/survey/style.scss */
+  #top-wizard {
+    padding: 15px 30px;
+  }
+
+  /* line 1184, ../../sass/survey/style.scss */
+  #bottom-wizard {
+    padding: 15px 30px;
+  }
+
+  /* line 1188, ../../sass/survey/style.scss */
+  .backward, .forward, button[disabled].backward, button[disabled].forward {
+    text-indent: -9999px;
+    width: 50px;
+    padding: 0;
+    height: 40px;
+  }
+
+  /* line 1195, ../../sass/survey/style.scss */
+  .backward:before, .forward:before, button[disabled].backward:before, button[disabled].forward:before {
+    text-indent: 0;
+    top: 12px;
+    font-size: 16px;
+  }
+
+  /* line 1201, ../../sass/survey/style.scss */
+  .qty-buttons span {
+    top: 10px;
+    display: block;
+    width: 100px;
+    left: 120px;
+    font-weight: bold;
+    line-height: 12px;
+  }
+
+  /* line 1210, ../../sass/survey/style.scss */
+  #complete {
+    padding: 0 25px 15px 25px;
+  }
+
+  /* line 1214, ../../sass/survey/style.scss */
+  #complete h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  /* line 1219, ../../sass/survey/style.scss */
+  #complete i {
+    font-size: 80px;
+    padding: 0;
+  }
+}
+/* Mobile Portrait */
+@media only screen and (max-width: 320px) {
+  /* line 1227, ../../sass/survey/style.scss */
+  .main-title h1 {
+    font-size: 24px;
+    line-height: 26px;
+    margin-top: 25px;
+  }
+
+  /* line 1233, ../../sass/survey/style.scss */
+  #survey_container {
+    margin-top: -330px;
+    margin-bottom: 30px;
+  }
+
+  /* line 1238, ../../sass/survey/style.scss */
+  #top-nav ul {
+    float: none;
+    padding: 20px 0 10px 0;
+    margin: 0;
+  }
+
+  /* line 1245, ../../sass/survey/style.scss */
+  ul#footer-nav li {
+    display: block;
+    margin-right: 0;
+  }
+  /* line 1249, ../../sass/survey/style.scss */
+  ul#footer-nav li:first-child {
+    margin-right: 0;
+  }
+
+  /* line 1254, ../../sass/survey/style.scss */
+  .step h3 {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 20px;
+  }
+
+  /* line 1260, ../../sass/survey/style.scss */
+  #complete {
+    padding: 0 15px 15px 15px;
+  }
+  /* line 1262, ../../sass/survey/style.scss */
+  #complete h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+}
