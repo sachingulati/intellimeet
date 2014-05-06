@@ -6,11 +6,6 @@
     <g:set var="entityName" value="${message(code: 'topic.label', default: 'Topic')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
     <r:require modules="topic,block_ui"/>
-    <style>
-    hr{
-        margin-bottom: 0px!important;
-    }
-    </style>
 </head>
 
 <body>
@@ -24,6 +19,7 @@
                 <div class="entry">
                     <div id="topic${index}" class="topic zone"></div>
                     <g:render template="topicEntry" model="[topic: topic, index: index]"/>
+                    <hr/>
                 </div>
             </g:each>
         </div>
@@ -50,7 +46,7 @@
             <topic:sideBarCategoriesPanel/>
 
             <!-- /well -->
-            <div class="bs-docs-sidebar hidden-print pre-scrollable">
+            <div class="bs-docs-sidebar hidden-print">
                 <ul class="nav bs-docs-sidenav">
                     <g:each in="${topicInstanceList}" var="topic" status="index">
                         <li><a href="#topic${index}">${topic?.name}</a></li>

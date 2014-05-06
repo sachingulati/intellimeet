@@ -1,6 +1,8 @@
 package com.ig.intellimeet.enums
 
 public enum TopicCategory {
+    JAVA,
+    GROOVY,
     GRAILS,
     NODE_JS,
     ANGULAR_JS,
@@ -9,8 +11,5 @@ public enum TopicCategory {
     CQ5,
     ANDROID,
     IOS,
-    TESTING,
-    BIG_DATA,
-    JAVA_SCRIPT,
     OTHERS
 }
