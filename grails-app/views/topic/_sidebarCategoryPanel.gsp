@@ -6,7 +6,7 @@
             <ul class="list-unstyled">
                 <g:each in="${categoryTopicCounts}" var="categoryTopicCount" status="index">
                     <g:if test="${index <= categoryTopicCounts?.size()/2}">
-                        <li><a href="#">${categoryTopicCount?.category} (${categoryTopicCount?.topicCount})</a></li>
+                        <li>%{--<a href="#">--}%${categoryTopicCount?.category} (${categoryTopicCount?.topicCount})%{--</a>--}%</li>
                     </g:if>
                 </g:each>
             </ul>
@@ -16,7 +16,7 @@
             <ul class="list-unstyled">
                 <g:each in="${categoryTopicCounts}" var="categoryTopicCount" status="index">
                     <g:if test="${index > categoryTopicCounts?.size()/2}">
-                        <li><a href="#">${categoryTopicCount?.category} (${categoryTopicCount?.topicCount})</a></li>
+                        <li>%{--<a href="#">--}%${categoryTopicCount?.category} (${categoryTopicCount?.topicCount})%{--</a>--}%</li>
                     </g:if>
                 </g:each>
             </ul>
