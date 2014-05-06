@@ -1,12 +1,11 @@
-
 <%@ page import="com.ig.intellimeet.Survey" %>
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="layout" content="main">
-		<g:set var="entityName" value="${message(code: 'survey.label', default: 'Survey')}" />
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
-	</head>
+<head>
+    <meta name="layout" content="main">
+    <g:set var="entityName" value="${message(code: 'survey.label', default: 'Survey')}"/>
+    <title><g:message code="default.list.label" args="[entityName]"/></title>
+</head>
 
 <body>
 <a href="#list-survey" class="sr-only" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -14,7 +13,7 @@
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#"><g:message code="default.list.label" args="[entityName]" /></a>
+            <a class="navbar-brand" href="#"><g:message code="default.list.label" args="[entityName]"/></a>
         </div>
 
         <form class="navbar-form navbar-right" role="search">
@@ -24,7 +23,7 @@
             <button type="submit" class="btn btn-default">Go!</button>
         </form>
         <ul class="nav navbar-nav navbar-right">
-            <li><g:link action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
+            <li><g:link action="create"><g:message code="default.new.label" args="[entityName]"/></g:link></li>
         </ul>
     </div>
 </nav>
@@ -39,19 +38,21 @@
 <g:if test="${flash.error}">
     <div class="alert alert-danger alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Error!</strong> ${flash.message}.
+        <strong>Error!</strong> ${flash.error}.
     </div>
 </g:if>
 
-<div class="container-fluid"><table class="table table-striped">
+<table class="table table-striped">
     <thead>
     <tr>
 
-        <g:sortableColumn property="title" title="${message(code: 'survey.title.label', default: 'Title')}" />
+        <g:sortableColumn property="title" title="${message(code: 'survey.title.label', default: 'Title')}"/>
 
-        <g:sortableColumn property="date" title="${message(code: 'survey.date.label', default: 'Date')}" />
+        <g:sortableColumn property="date" title="${message(code: 'survey.date.label', default: 'Date')}"/>
 
-        <g:sortableColumn property="intelliMeetId" title="${message(code: 'survey.intelliMeetId.label', default: 'Intelli Meet Id')}" />
+        <g:sortableColumn property="intelliMeetTitle" title="${message(code: 'intelliMeet.label', default: 'Intelli Meet')}"/>
+
+        <g:sortableColumn property="type" title="${message(code: 'survey.type.label', default: 'Type')}"/>
 
     </tr>
     </thead>
@@ -61,9 +62,11 @@
 
             <td><g:link action="show" id="${surveyInstance.id}">${fieldValue(bean: surveyInstance, field: "title")}</g:link></td>
 
-            <td><g:formatDate date="${surveyInstance.date}" /></td>
+            <td><g:formatDate date="${surveyInstance.date}"/></td>
 
-            <td>${fieldValue(bean: surveyInstance, field: "intelliMeetId")}</td>
+            <td>${fieldValue(bean: surveyInstance, field: "intelliMeetTitle")}</td>
+
+            <td>${fieldValue(bean: surveyInstance, field: "type")}</td>
 
         </tr>
     </g:each>
@@ -71,10 +74,7 @@
 </table>
 
 <div class="pagination">
-    <g:paginate total="${surveyInstanceCount ?: 0}" />
-</div></div>
-<r:script>
-    markAsActive("survey");
-</r:script>
+    <g:paginate total="${surveyInstanceCount ?: 0}"/>
+</div>
 </body>
 </html>
