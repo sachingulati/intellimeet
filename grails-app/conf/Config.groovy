@@ -94,6 +94,10 @@ environments {
         grails.logging.jul.usebridge = true
         grails.serverURL = "http://localhost:8585"
     }
+    test {
+        grails.logging.jul.usebridge = false
+        grails.serverURL = "http://intellimeet.qa3.intelligrape.net"
+    }
     production {
         grails.logging.jul.usebridge = false
         grails.serverURL = "http://intellimeet.intelligrape.com"
