@@ -9,15 +9,15 @@ class SurveyRecipientInfo {
 
     Long userId
     String email
-    SurveyStatus status
+    SurveyStatus status =SurveyStatus.PENDING
 
     static constraints = {
         email email: true, blank: false
         status nullable: true
     }
 
-    void setUserId(Long userId) {
-        this.userId = userId
-        this.email = User.get(userId)?.username
+    void setEmail(String email) {
+        this.email = email
+        this.userId = User.findByUsername(email)?.id
     }
 }
