@@ -65,7 +65,7 @@ environments {
 
 
         dataSource {
-            logSql = Utils.getenv("hibernate_log_sql", "false").toBoolean()
+//            logSql = Utils.getenv("hibernate_log_sql", "false").toBoolean()
             dbCreate = "update" // one of 'create', 'create-drop','update'
             String mysqlUrl = System.getenv("CLEARDB_DATABASE_URL")
             if (mysqlUrl) {

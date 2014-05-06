@@ -18,6 +18,7 @@ class UserPreference {
     String thirdPreferredSessionTitle
 
     static constraints = {
+        fullName nullable: true
         firstPreferredSessionId validator: {val, obj->
             if(val == obj?.secondPreferredSessionId || val == obj?.thirdPreferredSessionId) {
                 return ['preference.unique.error']
@@ -53,5 +54,10 @@ class UserPreference {
 
     static String findSessionTitleByIdAndIntelliMeetId(Long sessionId, Long intelliMeetId) {
         IMSession.findByIdAndIntelliMeetId(sessionId, intelliMeetId)?.title
+    }
+
+    void setUserId(Long userId) {
+        this.userId = userId
+        this.emailAddress  = User.findById(userId)?.username
     }
 }

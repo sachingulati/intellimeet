@@ -22,7 +22,7 @@ class Topic {
 
     static embedded = ['statusInfoList']
 
-    static transients = ['createdByUsername']
+    static transients = ['createdByUsername', 'interestedUsersEmail']
 
     static constraints = {
         name blank: false
@@ -35,5 +35,9 @@ class Topic {
 
     String getCreatedByUsername() {
         User.get(createdBy)?.username
+    }
+
+    List<String> getInterestedUsersEmail() {
+        interestedUsers?.collect {User.get(it)?.username}
     }
 }

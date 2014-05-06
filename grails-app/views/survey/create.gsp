@@ -14,7 +14,7 @@
             <a class="navbar-brand" href="#"><g:message code="default.create.label" args="[entityName]"/></a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><g:link action="index"><span class="glyphicon glyphicon-list"></span>&nbsp;<g:message code="default.list.label" args="[entityName]"/></g:link></li>
+            <li><g:link action="index"><g:message code="default.list.label" args="[entityName]"/></g:link></li>
         </ul>
     </div>
 </nav>
@@ -41,13 +41,14 @@
             </ul>
         </div>
     </g:hasErrors>
-    <g:form role="form" url="[resource: surveyInstance, action: 'save']">
+    <g:form class="form-horizontal" url="[resource: surveyInstance, action: 'save']">
         <g:render template="form"/>
-        <g:submitButton name="create" class="btn btn-lg btn-primary" value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <g:submitButton name="create" class="btn btn-lg btn-primary" value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+            </div>
+        </div>
     </g:form>
 </div>
-<r:script>
-    markAsActive("survey");
-</r:script>
 </body>
 </html>
