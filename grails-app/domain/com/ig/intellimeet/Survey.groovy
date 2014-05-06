@@ -1,6 +1,7 @@
 package com.ig.intellimeet
 
 import com.ig.intellimeet.embedded.SurveyRecipientInfo
+import com.ig.intellimeet.enums.SurveyType
 
 class Survey {
 
@@ -8,6 +9,7 @@ class Survey {
 
     String title
     Date date
+    SurveyType type
 
     List<SurveyRecipientInfo> recipients
     List<Question> questions
