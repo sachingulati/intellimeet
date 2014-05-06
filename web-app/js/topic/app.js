@@ -84,4 +84,14 @@ var searchInTopics = function(input) {
     else {
         $(".searchable div.zone").parent().show();
     }
-}
+};
+
+var searchTopicByCategory = function(searchText) {
+    if (searchText != "") {
+        $(".searchable .topic-entry .category").parents('.entry').hide();
+        $('.searchable .topic-entry .category:icontains("' + searchText + '")').parents('.entry').show();
+    }
+    else {
+        $(".searchable div.zone").parent().show();
+    }
+};
