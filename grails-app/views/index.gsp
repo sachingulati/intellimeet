@@ -110,7 +110,7 @@
             <div class="col-md-4">
                 <h3>Latest tweet</h3>
 
-                <div class="latest-tweets" data-number="10" data-username="ansonika" data-mode="fade" data-pager="false" data-nextselector=".tweets-next" data-prevselector=".tweets-prev" data-adaptiveheight="true"><p class="loading"> loading tweets...</p></div>
+                <div class="latest-tweets" data-number="10" data-username="intelligrape" data-mode="fade" data-pager="false" data-nextselector=".tweets-next" data-prevselector=".tweets-prev" data-adaptiveheight="true"><p class="loading"> loading tweets...</p></div>
 
                 <div class="tweet-control">
                     <div class="tweets-prev"></div>
@@ -129,19 +129,19 @@
             <div class="row">
                 <div class="col-md-6">
                     <ul id="footer-nav">
-                        <li>Copyright © 2014 <a href="#">IntelliGrape</a>. All rights reserved.</li>
-                        <li><a href="#">Terms of Use</a></li>
-                        <li><a href="#">Privacy</a></li>
+                        <li>Copyright © 2014 <a href="http://www.intelligrape.com" target="_blank">IntelliGrape</a>. All rights reserved.</li>
+                        %{--<li><a href="#">Terms of Use</a></li>--}%
+                        %{--<li><a href="#">Privacy</a></li>--}%
                     </ul>
                 </div>
 
                 <div class="col-md-6" style="text-align:center">
                     <ul class="social-bookmarks clearfix">
-                        <li class="facebook"><a href="#">facebook</a></li>
-                        <li class="googleplus"><a href="#">googleplus</a></li>
-                        <li class="twitter"><a href="#">twitter</a></li>
-                        <li class="linkedin"><a href="#">linkedin</a></li>
-                        <li class="blogger"><a href="#">blogger</a></li>
+                        <li class="facebook"><a href="https://www.facebook.com/intelligrape.software" target="_blank">facebook</a></li>
+                        <li class="googleplus"><a href="https://plus.google.com/102688776692809350794/posts" target="_blank">googleplus</a></li>
+                        <li class="twitter"><a href="https://twitter.com/IntelliGrape" target="_blank">twitter</a></li>
+                        <li class="linkedin"><a href="http://www.linkedin.com/company/intelligrape" target="_blank">linkedin</a></li>
+                        <li class="blogger"><a href="http://www.intelligrape.com/blog/" target="_blank">blogger</a></li>
                     </ul>
                 </div>
             </div>
