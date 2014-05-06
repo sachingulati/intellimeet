@@ -11,5 +11,6 @@ public enum TopicCategory {
     CQ5,
     ANDROID,
     IOS,
+    UI,
     OTHERS
 }
