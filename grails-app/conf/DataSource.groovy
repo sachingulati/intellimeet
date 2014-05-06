@@ -45,12 +45,14 @@ environments {
             URI mongoDBURI = new URI(mongoURL);
             String mongoUsername = mongoDBURI.userInfo.split(":")[0]
             String mongoPassword = mongoDBURI.userInfo.split(":")[1]
+            String dbPath = mongoDBURI.path
+            dbPath = dbPath.substring(1,dbPath.size())
             println "mongoDBURI.host:::${mongoDBURI.host}"
             println "mongoDBURI.port:::::${mongoDBURI.port}"
 
             println ">>>>>> mongoUsername: ${mongoUsername}"
             println "mongoPassword:::::${mongoPassword}"
-            println "mongoDBURI.path:::::${mongoDBURI.path}"
+            println "mongoDBURI.path:::::${dbPath}"
 
             grails {
                 mongo {
@@ -58,7 +60,7 @@ environments {
                     port = mongoDBURI.port
                     username = mongoUsername
                     password = mongoPassword
-                    databaseName = mongoDBURI.path
+                    databaseName = dbPath
                 }
             }
         }
