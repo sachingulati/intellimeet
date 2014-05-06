@@ -93,14 +93,63 @@ environments {
     development {
         grails.logging.jul.usebridge = true
         grails.serverURL = "http://localhost:8585"
+
+        def appName = grails.util.Metadata.current.'app.name'
+        def baseURL = grails.serverURL ?: "http://127.0.0.1:${System.getProperty('server.port', '8585')}/${appName}"
+
+        oauth {
+            providers {
+                google {
+                    api = org.grails.plugin.springsecurity.oauth.GoogleApi20
+                    key = '369979967640.apps.googleusercontent.com'
+                    secret = 'ABwQ35TPxqdgKpF86QsGvhb9'
+                    successUri = '/oauth/google/success'
+                    failureUri = '/oauth/google/error'
+                    callback = "${baseURL}/oauth/google/callback"
+                    scope = 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'
+                }
+            }
+        }
+
     }
     test {
         grails.logging.jul.usebridge = false
         grails.serverURL = "http://intellimeet.qa3.intelligrape.net"
+
+        def baseURL = grails.serverURL
+        oauth {
+            providers {
+                google {
+                    api = org.grails.plugin.springsecurity.oauth.GoogleApi20
+                    key = '347120528792-r0857doj06q9mpv0e3fhcopd667v70r0.apps.googleusercontent.com'
+                    secret = 'uzGINOfUXfiQh9fowhElHzQn'
+                    successUri = '/oauth/google/success'
+                    failureUri = '/oauth/google/error'
+                    callback = "${baseURL}/oauth/google/callback"
+                    scope = 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'
+                }
+            }
+        }
+
     }
     production {
         grails.logging.jul.usebridge = false
         grails.serverURL = "http://intellimeet.intelligrape.com"
+        def baseURL = grails.serverURL
+        oauth {
+            providers {
+                google {
+                    api = org.grails.plugin.springsecurity.oauth.GoogleApi20
+                    key = '347120528792-ksfh6nuu1makmmne418gisvj4qgtsnfg.apps.googleusercontent.com'
+                    secret = 'T55-HKodwz_PgcCov5wStRPg'
+                    successUri = '/oauth/google/success'
+                    failureUri = '/oauth/google/error'
+                    callback = "${baseURL}/oauth/google/callback"
+                    scope = 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'
+                }
+            }
+        }
+
     }
 }
 
@@ -155,20 +204,6 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/**':                            ['permitAll']
 ]
 
-def appName = grails.util.Metadata.current.'app.name'
-def baseURL = grails.serverURL ?: "http://127.0.0.1:${System.getProperty('server.port', '8585')}/${appName}"
-oauth {
-    providers {
-        google {
-            api = org.grails.plugin.springsecurity.oauth.GoogleApi20
-            key = '369979967640.apps.googleusercontent.com'
-            secret = 'ABwQ35TPxqdgKpF86QsGvhb9'
-            successUri = '/oauth/google/success'
-            failureUri = '/oauth/google/error'
-            callback = "${baseURL}/oauth/google/callback"
-            scope = 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'
-        }
-    }
-}
+
 // Added by the Spring Security OAuth plugin:
 grails.plugin.springsecurity.oauth.domainClass = 'com.ig.intellimeet.OauthId'
