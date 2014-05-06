@@ -18,6 +18,19 @@ class Topic {
     Date dateCreated
     Date lastUpdated
 
+    static final String SAMPLE_DESCRIPTION_TEMPLATE = """
+As an attendee I would like to learn how to:
+<ol>
+<li>Do this</li>
+<li>Do that</li>
+</ol>
+After attending this session I should be able to:
+<ul>
+<li>Do this</li>
+<li>Do that</li>
+</ul>
+"""
+
     static mapWith = "mongo"
 
     static embedded = ['statusInfoList']
@@ -38,6 +51,6 @@ class Topic {
     }
 
     List<String> getInterestedUsersEmail() {
-        interestedUsers?.collect {User.get(it)?.username}
+        interestedUsers?.collect { User.get(it)?.username }
     }
 }

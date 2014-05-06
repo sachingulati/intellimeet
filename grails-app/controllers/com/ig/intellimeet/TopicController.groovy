@@ -7,7 +7,7 @@ import grails.transaction.Transactional
 @Secured(['ROLE_USER'])
 import static org.springframework.http.HttpStatus.*
 
-@Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
+@Secured(['ROLE_USER'])
 @Transactional(readOnly = true)
 class TopicController {
 
@@ -16,20 +16,23 @@ class TopicController {
     def topicService
     def springSecurityService
 
-    def delete() {
+    def delete (){
         flash.error = message(code: "topic.not.deleted")
         redirect action: "index"
     }
 
     def plusOne() {
-        Map mapToRender = ['status': 'success']
+        Map mapToRender = ['status':'success']
         Integer currentInterestedUsersCount
-        User currentUser = springSecurityService?.currentUser
+        User currentUser  = springSecurityService?.currentUser
         mapToRender.username = currentUser?.username
         Topic topic = Topic.get(params.topicId)
-        if (topic?.interestedUsers?.contains(currentUser?.id)) {
+        if(!currentUser) {
             mapToRender.status = 'error'
-            mapToRender.message = message(code: 'topic.interest.already.shown.message')
+            mapToRender.message = message(code: 'access.denied.message')
+        } else if (topic?.interestedUsers?.contains(currentUser?.id)) {
+            mapToRender.status = 'error'
+            mapToRender.message = message(code:'topic.interest.already.shown.message')
         } else if (topic) {
             topic = topicService.increaseInterestCount topic
             topicService.save topic
@@ -46,7 +49,9 @@ class TopicController {
     }
 
     def create() {
-        respond new Topic(params)
+        Topic topic = new Topic(params)
+        topic.description=Topic.SAMPLE_DESCRIPTION_TEMPLATE
+        respond topic
     }
 
     @Transactional
@@ -61,7 +66,7 @@ class TopicController {
             return
         }
         topicInstance.save flush: true
-        redirect controller: 'topic', action: 'index'
+        redirect controller: 'topic', action:'index'
     }
 
     def edit(Topic topicInstance) {
@@ -82,7 +87,7 @@ class TopicController {
 
         topicInstance.save flush: true
 
-        redirect controller: 'topic', action: 'index'
+        redirect controller: 'topic', action:'index'
     }
 
     protected void notFound() {

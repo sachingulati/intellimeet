@@ -5,6 +5,12 @@ modules = {
         resource url: '/css/docs.min.css'
     }
 
+    footer {
+        dependsOn 'bootstrap'
+        resource url: '/css/survey/style.css'
+        resource url: '/css/survey/socialize-bookmarks.css'
+    }
+
     application {
         dependsOn 'jquery'
         resource url: 'js/application.js'

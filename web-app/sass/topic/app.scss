@@ -3,4 +3,16 @@ body {
 }
 .bs-docs-sidebar.affix {width: 340px;top:100px;}
 #sidebar-categories li a {text-transform: capitalize;}
-.entry .desc {padding-bottom: 15px;}
+.entry .desc {padding:15px 0;}
+.entry .topic-entry {
+//  color: #9D7573;
+  padding: 20px 30px 20px 0;
+  border-top: 1px solid #E6E6E6;
+  border-bottom: 1px solid #E6E6E6;
+  font-size: 15px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+.entry .meta-sep {
+  padding: 0 3px;
+}

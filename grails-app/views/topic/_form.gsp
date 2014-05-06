@@ -17,7 +17,7 @@
 
 <div class="form-group ${hasErrors(bean: topicInstance, field: 'description', 'has-error')} required">
     <label for="description" class="col-sm-2 control-label">
-        <g:message code="topic.description.label" default="Want to learn"/>:
+        <g:message code="topic.description.label" default="Expectations"/>:
         <span class="required-indicator">*</span>
     </label>
 
