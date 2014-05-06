@@ -27,7 +27,10 @@ class TopicController {
         User currentUser  = springSecurityService?.currentUser
         mapToRender.username = currentUser?.username
         Topic topic = Topic.get(params.topicId)
-        if(topic?.interestedUsers?.contains(currentUser?.id)) {
+        if(!currentUser) {
+            mapToRender.status = 'error'
+            mapToRender.message = message(code: 'access.denied.message')
+        } else if (topic?.interestedUsers?.contains(currentUser?.id)) {
             mapToRender.status = 'error'
             mapToRender.message = message(code:'topic.interest.already.shown.message')
         } else if (topic) {
