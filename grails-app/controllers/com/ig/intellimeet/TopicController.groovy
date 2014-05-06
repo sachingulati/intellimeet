@@ -7,7 +7,7 @@ import grails.transaction.Transactional
 @Secured(['ROLE_USER'])
 import static org.springframework.http.HttpStatus.*
 
-@Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
+@Secured(['ROLE_USER'])
 @Transactional(readOnly = true)
 class TopicController {
 
@@ -40,12 +40,15 @@ class TopicController {
     }
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+//        params.max = Math.min(max ?: 10, 100)
+        params.sort = "name"
         respond Topic.list(params), model: [topicInstanceCount: Topic.count()]
     }
 
     def create() {
-        respond new Topic(params)
+        Topic topic = new Topic(params)
+        topic.description=Topic.SAMPLE_DESCRIPTION_TEMPLATE
+        respond topic
     }
 
     @Transactional
