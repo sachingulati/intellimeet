@@ -3,6 +3,11 @@
 <head>
     <meta name="layout" content="public"/>
     <title>Welcome to IntelliMeet</title>
+    <r:style>
+        header {
+        padding: 0;
+        }
+    </r:style>
 </head>
 
 <body class="bs-docs-home">
@@ -29,64 +34,120 @@
     </div>
 </main>
 
-%{--<div class="bs-docs-featurette">
+<div class="bs-docs-featurette">
     <div class="container">
-        <h2 class="bs-docs-featurette-title">Designed for everyone, everywhere.</h2>
+        <h2 class="bs-docs-featurette-title" style="text-transform: inherit;">Learning is part of IntelliGrape ethos </h2>
 
-        <p class="lead">Bootstrap makes front-end web development faster and easier. It's made for folks of all skill levels, devices of all shapes, and projects of all sizes.</p>
+        <p class="lead">By providing training and development programmes, on-the-job learning, coaching and feedback, we make sure that everyone who works with us has the resources they need to learn more and build their careers.</p>
 
         <hr class="half-rule">
 
         <div class="row">
-            <div class="col-sm-4">
-                <img src="http://getbootstrap.com/assets/img/sass-less.png" alt="Sass and Less support" class="img-responsive">
+            <div class="col-sm-3">
+                <img src="${resource(dir: 'images/logo', file:'grails-logo.png')}" alt="Groovy & Grails Logo" class="img-responsive">
 
-                <h3>Preprocessors</h3>
+                <h3>Groovy & Grails.</h3>
 
-                <p>In addition to vanilla CSS, Bootstrap includes support for the two most popular CSS preprocessors, <a href="../css/#less">Less</a> and <a
-                        href="#">Sass</a>.</p>
+                <p>We are one of the largest team of Grails developers in the world. We have been working on Groovy & Grails since early 2008 and have developed more than 50 live applications on Grails.</p>
             </div>
 
-            <div class="col-sm-4">
-                <img src="http://getbootstrap.com/assets/img/devices.png" alt="Responsive across devices" class="img-responsive">
+            <div class="col-sm-3">
+                <img src="${resource(dir: 'images/logo', file:'nodejs-logo.png')}" alt="Node JS Logo" class="img-responsive" style="height: 115px;">
 
-                <h3>One framework, every device.</h3>
+                <h3>Node JS</h3>
 
-                <p>Bootstrap easily and efficiently scales your project with one code base, from phones to tablets to desktops.</p>
+                <p>We are one of the earliest adopters of Node.js and have gained extensive experience in delivering rich, high performance and scalable web applications using Node.js.</p>
             </div>
 
-            <div class="col-sm-4">
-                <img src="http://getbootstrap.com/assets/img/components.png" alt="Components" class="img-responsive">
+            <div class="col-sm-3">
+                <img src="${resource(dir: 'images/logo', file:'adobe-cq.png')}" alt="Adobe CQ5 Logo" class="img-responsive">
 
-                <h3>Comprehensive docs</h3>
+                <h3>Adobe CQ5</h3>
 
-                <p>With Bootstrap, you get extensive and beautiful documentation with hundreds of live examples, code snippets, and more.</p>
+                <p>We help our clients with custom development, multi-channel content delivery and large-scale data migrations on Adobe CQ.</p>
+            </div>
+
+            <div class="col-sm-3">
+                <img src="${resource(dir: 'images/logo', file:'aws-logo.png')}" alt="AWS Logo" class="img-responsive">
+
+                <h3>AWS</h3>
+
+                <p>We provide consulting, implementation and managed services on Amazon Web Services. We help and manage cloud infrastructure for some of the Fortune 500 companies as well as SMBs.</p>
             </div>
         </div>
 
     </div>
-</div>--}%
+</div>
 
 <!-- Footer
 ================================================== -->
-<footer class="bs-docs-footer" role="contentinfo">
-    <div class="container">
-        <div class="bs-docs-social">
-            <ul class="bs-docs-social-buttons">
-                <li class="follow-btn">
-                    <a href="https://twitter.com/IntelliGrape " class="twitter-follow-button" data-link-color="#0069D6" data-show-count="true">Follow @IntelliGrape</a>
-                </li>
-            </ul>
+<footer>
+    <section class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h3>About us</h3>
+
+                <p>A leader in Groovy and Grails Development,
+                the company was one of the earliest adopters of the framework and is an expert on the entire Spring
+                Source suite of products. IntelliGrape is also is an Advanced Consulting Partner and Channel
+                Reseller for Amazon Web Services (AWS).
+                </p>
+            </div>
+
+            <div class="col-md-4" id="contact">
+                <h3>Contact info</h3>
+
+                <p>IntelliGrape Software (P) Ltd</p>
+                <ul>
+                    <li><i class="icon-home"></i> SDF L-6, NSEZ, Noida Phase 2, India</li>
+                    <li><i class="icon-phone"></i> Telephone: (+91) 120-6493668</li>
+                    <li><i class="icon-print">Fax: (+91) 120-4207689</i></li>
+                    <li><i class="icon-envelope"></i> Email: <a href="mailto:info@intelligrape.com">info@intelligrape.com</a></li>
+                    <li><i class="icon-skype"></i> Skype name: IntelliMeet</li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h3>Latest tweet</h3>
+
+                <div class="latest-tweets" data-number="10" data-username="ansonika" data-mode="fade" data-pager="false" data-nextselector=".tweets-next" data-prevselector=".tweets-prev" data-adaptiveheight="true"><p class="loading"> loading tweets...</p></div>
+
+                <div class="tweet-control">
+                    <div class="tweets-prev"></div>
+
+                    <div class="tweets-next"></div>
+                </div>
+                <!-- End .tweet-control -->
+            </div>
+
         </div>
+        <!-- end row -->
+    </section>
 
+    <section id="footer_2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <ul id="footer-nav">
+                        <li>Copyright © 2014 <a href="#">IntelliGrape</a>. All rights reserved.</li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
 
-        <p>Designed and built with all the love in the world by <a href="http://twitter.com/puneetbhl" target="_blank">@puneetbhl</a> and <a href="http://twitter.com/faridiflex"
-                                                                                                                                             target="_blank">@faridiflex</a>.</p>
+                <div class="col-md-6" style="text-align:center">
+                    <ul class="social-bookmarks clearfix">
+                        <li class="facebook"><a href="#">facebook</a></li>
+                        <li class="googleplus"><a href="#">googleplus</a></li>
+                        <li class="twitter"><a href="#">twitter</a></li>
+                        <li class="linkedin"><a href="#">linkedin</a></li>
+                        <li class="blogger"><a href="#">blogger</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <p>Maintained by the <a href="/about#coreTeam">core team</a></p>
-
-        <p>Copyright © 2014 <a href="http://intelligrape.com/" target="_blank">Intelligrape</a>. All rights reserved.</p>
-    </div>
 </footer>
 <r:script>
     $("#topNav li").removeClass("active");
