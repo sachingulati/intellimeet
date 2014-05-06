@@ -20,7 +20,7 @@
         <div class="col-md-9" role="main">
             <!-- Application Status
 ================================================== -->
-            <div class="bs-docs-section">
+            %{--<div class="bs-docs-section">
                 <div class="page-header">
                     <h1 id="applicationStatus">Application Status</h1>
                 </div>
@@ -37,11 +37,11 @@
                     <li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
                 </ul>
             </div>
-
+--}%
 
             <!-- Installed Plugins
 ================================================== -->
-            <div class="bs-docs-section">
+            %{--<div class="bs-docs-section">
                 <div class="page-header">
                     <h1 id="installedPlugins">Installed Plugins</h1>
                 </div>
@@ -51,12 +51,12 @@
                         <li>${plugin.name} - ${plugin.version}</li>
                     </g:each>
                 </ul>
-            </div>
+            </div>--}%
 
 
             <!-- Available Controllers
 ================================================== -->
-            <div class="bs-docs-section">
+            %{--<div class="bs-docs-section">
                 <div class="page-header">
                     <h1 id="availableCtrl">Available Controllers</h1>
                 </div>
@@ -67,7 +67,7 @@
                         <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
                     </g:each>
                 </ul>
-            </div>
+            </div>--}%
 
 
             <!-- Core Team
@@ -111,7 +111,7 @@
             <div class="bs-docs-sidebar hidden-print" role="complementary">
                 <ul class="nav bs-docs-sidenav">
 
-                    <li>
+                    %{--<li>
                         <a href="#applicationStatus">Application Status</a>
                     </li>
                     <li>
@@ -119,7 +119,7 @@
                     </li>
                     <li>
                         <a href="#availableCtrl">Available Controllers</a>
-                    </li>
+                    </li>--}%
                     <li>
                         <a href="#coreTeam">Core Team</a>
                     </li>

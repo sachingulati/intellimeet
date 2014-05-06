@@ -34,7 +34,7 @@
                 <div class="input-group">
                     <input type="text" class="form-control" id="search-input">
                     <span class="input-group-btn">
-                        <button class="btn btn-default plusOneBtn" type="button">
+                        <button class="btn btn-default" type="button">
                             <span class="glyphicon glyphicon-search"></span>
                         </button>
                     </span>
@@ -86,6 +86,8 @@
             jqxhr.fail(function() {console.log("Failed doing plusOne ");});
             return false;
         });
+
+
     });
 </r:script>
 </body>

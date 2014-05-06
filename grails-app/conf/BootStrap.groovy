@@ -14,7 +14,7 @@ class BootStrap {
 
     def init = { servletContext ->
 
-        bootstrapSomeDummyDataForDev()
+        //bootstrapSomeDummyDataForDev()
     }
 
     def destroy = {

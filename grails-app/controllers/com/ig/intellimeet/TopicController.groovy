@@ -16,6 +16,11 @@ class TopicController {
     def topicService
     def springSecurityService
 
+    def delete (){
+        flash.error = message(code: "topic.not.deleted")
+        redirect action: "index"
+    }
+
     def plusOne() {
         Map mapToRender = ['status':'success']
         Integer currentInterestedUsersCount
