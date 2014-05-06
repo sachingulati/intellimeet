@@ -10,5 +10,6 @@ public enum TopicCategory {
     SALES,
     CQ5,
     ANDROID,
-    IOS
+    IOS,
+    OTHERS
 }

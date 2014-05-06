@@ -15,9 +15,11 @@
         <p class="lead">Let's learn together</p>
 
         <p class="lead">
-            <g:link controller="topic" action="index" class="btn btn-outline-inverse btn-lg">
-                Register Now
-            </g:link>
+            <sec:ifLoggedIn>
+                <g:link controller="topic" action="index" class="btn btn-outline-inverse btn-lg">
+                    View Topics
+                </g:link>
+            </sec:ifLoggedIn>
             <sec:ifNotLoggedIn>
                 <oauth:connect provider="google" id="google-connect-link" class="btn btn-outline-inverse btn-lg btn-google-plus">
                     <i class="fa fa-google-plus"></i> <g:message code="google.signin"/>
@@ -27,7 +29,7 @@
     </div>
 </main>
 
-<div class="bs-docs-featurette">
+%{--<div class="bs-docs-featurette">
     <div class="container">
         <h2 class="bs-docs-featurette-title">Designed for everyone, everywhere.</h2>
 
@@ -63,7 +65,7 @@
         </div>
 
     </div>
-</div>
+</div>--}%
 
 <!-- Footer
 ================================================== -->
