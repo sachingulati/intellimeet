@@ -17,7 +17,7 @@ class TopicService {
     Topic increaseInterestCount(Topic topic) {
         User user = springSecurityService.currentUser as User
         if (!topic?.interestedUsers?.contains(user?.id)) {
-            topic?.interestedUsers = topic?.interestedUsers ?: []
+            topic?.interestedUsers = topic?.interestedUsers?.findAll {it} ?: []
             topic.interestedUsers << user?.id
         }
         topic

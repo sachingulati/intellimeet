@@ -5,6 +5,7 @@
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'topic.label', default: 'Topic')}"/>
     <title><g:message code="default.edit.label" args="[entityName]"/></title>
+    <r:require module="wysi_html5" />
 </head>
 
 <body>

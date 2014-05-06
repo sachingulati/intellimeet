@@ -7,7 +7,7 @@ import grails.transaction.Transactional
 @Secured(['ROLE_USER'])
 import static org.springframework.http.HttpStatus.*
 
-@Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
+@Secured(['ROLE_USER'])
 @Transactional(readOnly = true)
 class TopicController {
 
@@ -27,7 +27,10 @@ class TopicController {
         User currentUser  = springSecurityService?.currentUser
         mapToRender.username = currentUser?.username
         Topic topic = Topic.get(params.topicId)
-        if(topic?.interestedUsers?.contains(currentUser?.id)) {
+        if(!currentUser) {
+            mapToRender.status = 'error'
+            mapToRender.message = message(code: 'access.denied.message')
+        } else if (topic?.interestedUsers?.contains(currentUser?.id)) {
             mapToRender.status = 'error'
             mapToRender.message = message(code:'topic.interest.already.shown.message')
         } else if (topic) {
@@ -40,12 +43,15 @@ class TopicController {
     }
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+//        params.max = Math.min(max ?: 10, 100)
+        params.sort = "name"
         respond Topic.list(params), model: [topicInstanceCount: Topic.count()]
     }
 
     def create() {
-        respond new Topic(params)
+        Topic topic = new Topic(params)
+        topic.description=Topic.SAMPLE_DESCRIPTION_TEMPLATE
+        respond topic
     }
 
     @Transactional
