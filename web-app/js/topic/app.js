@@ -38,7 +38,7 @@ $(function() {
                     return (this.top = offsetTop - navOuterHeight - sideBarMargin)
                 }
                 , bottom: function () {
-                    return (this.bottom = $('.bs-footer').outerHeight(true))
+                    return (this.bottom = $('.bs-docs-footer').outerHeight(true))
                 }
             }
         })
