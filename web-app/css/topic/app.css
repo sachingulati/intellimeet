@@ -16,5 +16,20 @@ body {
 
 /* line 6, ../../sass/topic/app.scss */
 .entry .desc {
-  padding-bottom: 15px;
+  padding: 15px 0;
+}
+
+/* line 7, ../../sass/topic/app.scss */
+.entry .topic-entry {
+  padding: 20px 30px 20px 0;
+  border-top: 1px solid #E6E6E6;
+  border-bottom: 1px solid #E6E6E6;
+  font-size: 15px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+/* line 15, ../../sass/topic/app.scss */
+.entry .meta-sep {
+  padding: 0 3px;
 }

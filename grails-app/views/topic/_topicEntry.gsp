@@ -5,16 +5,18 @@
     </im:ifLoggedInUsername>
     ${topic?.name}
 </h1>
-
 <p class="lead">created by <a href="mailto:${topic?.createdByUsername}">${topic?.createdByUsername}</a>
 </p>
-<hr>
+<div class="topic-entry">
+    <span class="dateCreated">${topic?.dateCreated?.format("MMM dd, yyyy")}</span> <span class="meta-sep">/</span> <span class="category">POSTED IN: ${topic?.category}</span>
+</div>
 
 %{--<img src="http://placehold.it/900x300" class="img-responsive">--}%
-%{--<hr>--}%
+    %{--<hr>--}%
 <div class="desc"><p>${raw(topic?.description)}</p></div>
 <topic:displayInterestedUsersCount topic="${topic}"/>
-&nbsp;%{--<g:link controller="IMSession" action="createNewSessionFromTopic" params="[topicId: topic?.id]" class="btn btn-default">
+&nbsp;
+%{--<g:link controller="IMSession" action="createNewSessionFromTopic" params="[topicId: topic?.id]" class="btn btn-default">
      <g:message code="btn.register.presenter.label" default="Register as Presenter"/>
 <span class="fa fa-sign-in"></span></g:link>--}%
 
