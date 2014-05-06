@@ -37,28 +37,73 @@ environments {
         }
     }
     production {
+
+        String mongoURL = System.getenv("MONGOLAB_URI")
+        if (mongoURL) {
+            println ">>>>>> Got MONGOLAB_URI: ${mongoURL}"
+            println "Applying CLEARDB_DATABASE_URL settings"
+            URI mongoDBURI = new URI(mongoURL);
+            String mongoUsername = mongoDBURI.userInfo.split(":")[0]
+            String mongoPassword = mongoDBURI.userInfo.split(":")[1]
+            println "mongoDBURI.host:::${mongoDBURI.host}"
+            println "mongoDBURI.port:::::${mongoDBURI.port}"
+
+            println ">>>>>> mongoUsername: ${mongoUsername}"
+            println "mongoPassword:::::${mongoPassword}"
+            println "mongoDBURI.path:::::${mongoDBURI.path}"
+
+            grails {
+                mongo {
+                    host = mongoDBURI.host
+                    port = mongoDBURI.port
+                    username = mongoUsername
+                    password = mongoPassword
+                    databaseName = mongoDBURI.path
+                }
+            }
+        }
+
+
         dataSource {
-            dbCreate = "update"
-            url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+            logSql = Utils.getenv("hibernate_log_sql", "false").toBoolean()
+            dbCreate = "update" // one of 'create', 'create-drop','update'
+            String mysqlUrl = System.getenv("CLEARDB_DATABASE_URL")
+            if (mysqlUrl) {
+                println ">>>>>> Got CLEARDB_DATABASE_URL: ${mysqlUrl}"
+                println "Applying CLEARDB_DATABASE_URL settings"
+                URI dbUri = new URI(mysqlUrl);
+                username = dbUri.userInfo.split(":")[0]
+                password = dbUri.userInfo.split(":")[1]
+                String databaseUrl = "jdbc:${dbUri.scheme}:-//${dbUri.host}${dbUri.path}"
+                if (dbUri.port > 0) {
+                    databaseUrl += ":${dbUri.port}"
+                }
+                String query = dbUri.query ?: "reconnect=true"
+                query += "&autoReconnect=true&useUnicode=yes&characterEncoding=UTF-8"
+                databaseUrl += "?${query}"
+                url = databaseUrl
+            }
+
+
             properties {
-               // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation
-               jmxEnabled = true
-               initialSize = 5
-               maxActive = 50
-               minIdle = 5
-               maxIdle = 25
-               maxWait = 10000
-               maxAge = 10 * 60000
-               timeBetweenEvictionRunsMillis = 5000
-               minEvictableIdleTimeMillis = 60000
-               validationQuery = "SELECT 1"
-               validationQueryTimeout = 3
-               validationInterval = 15000
-               testOnBorrow = true
-               testWhileIdle = true
-               testOnReturn = false
-               jdbcInterceptors = "ConnectionState"
-               defaultTransactionIsolation = java.sql.Connection.TRANSACTION_READ_COMMITTED
+                // See http://grails.org/doc/latest/guide/conf.html#dataSource for documentation
+                jmxEnabled = true
+                initialSize = 5
+                maxActive = 10
+                minIdle = 5
+                maxIdle = 10
+                maxWait = 10000
+                maxAge = 10 * 60000
+                timeBetweenEvictionRunsMillis = 5000
+                minEvictableIdleTimeMillis = 60000
+                validationQuery = "SELECT 1"
+                validationQueryTimeout = 3
+                validationInterval = 15000
+                testOnBorrow = true
+                testWhileIdle = true
+                testOnReturn = false
+                jdbcInterceptors = "ConnectionState"
+                defaultTransactionIsolation = java.sql.Connection.TRANSACTION_READ_COMMITTED
             }
         }
     }
