@@ -6,6 +6,11 @@
     <g:set var="entityName" value="${message(code: 'topic.label', default: 'Topic')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
     <r:require modules="topic,block_ui"/>
+    <style>
+    hr{
+        margin-bottom: 0px!important;
+    }
+    </style>
 </head>
 
 <body>
@@ -19,7 +24,6 @@
                 <div class="entry">
                     <div id="topic${index}" class="topic zone"></div>
                     <g:render template="topicEntry" model="[topic: topic, index: index]"/>
-                    <hr/>
                 </div>
             </g:each>
         </div>
