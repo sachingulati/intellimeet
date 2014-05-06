@@ -50,7 +50,7 @@
             <topic:sideBarCategoriesPanel/>
 
             <!-- /well -->
-            <div class="bs-docs-sidebar hidden-print">
+            <div class="bs-docs-sidebar hidden-print pre-scrollable">
                 <ul class="nav bs-docs-sidenav">
                     <g:each in="${topicInstanceList}" var="topic" status="index">
                         <li><a href="#topic${index}">${topic?.name}</a></li>
