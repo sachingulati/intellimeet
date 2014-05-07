@@ -8,7 +8,7 @@
 <p class="lead">created by <a href="mailto:${topic?.createdByUsername}">${topic?.createdByUsername}</a>
 </p>
 <div class="topic-entry">
-    <span class="dateCreated">${topic?.dateCreated?.format("MMM dd, yyyy")}</span> <span class="meta-sep">/</span> <span class="category">POSTED IN: ${topic?.category}</span>
+    <span class="dateCreated">${topic?.dateCreated?.format("MMM dd, yyyy")}</span> <span class="meta-sep">/</span> <span class="category">POSTED IN: ${topic?.category?.displayName}</span>
 </div>
 
 %{--<img src="http://placehold.it/900x300" class="img-responsive">--}%
