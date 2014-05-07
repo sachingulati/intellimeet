@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
     // IE10 viewport hack for Surface/desktop Windows 8 bug
     //
     // See Getting Started docs for more information
@@ -15,9 +15,10 @@ $(function() {
 
 
     var $window = $(window);
-    var $body   = $(document.body);
+    var $body = $(document.body);
 
-    var navHeight = $('.navbar').outerHeight(true)+100;
+    var navHeight = $('.navbar').outerHeight(true) + 100;
+    var sidebarCategories = $('#sidebar-categories');
 
     $body.scrollspy({
         target: '.bs-docs-sidebar',
@@ -31,17 +32,18 @@ $(function() {
         $sideBar.affix({
             offset: {
                 top: function () {
-                    var offsetTop      = $sideBar.offset().top;
-                    var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10);
+                    var offsetTop = $sideBar.offset().top;
+                    var sideBarMargin = parseInt($sideBar.children(0).css('margin-top'), 10);
                     var navOuterHeight = $('.navbar').height();
 
                     return (this.top = offsetTop - navOuterHeight - sideBarMargin)
-                }
-                , bottom: function () {
-                    return (this.bottom = $('.bs-docs-footer').outerHeight(true))
+                }, bottom: function () {
+                    if (!sidebarCategories.isOnScreen()) {
+                        return (this.bottom = $('.bs-docs-footer').outerHeight(true))
+                    }
                 }
             }
-        })
+        });
     }, 100);
 
     setTimeout(function () {
@@ -65,6 +67,7 @@ $(function() {
         else {
             $(".searchable div.zone").parent().show();
         }
+        updateRightNav();
     });
 
     $.expr[':'].icontains = $.expr.createPseudo(function (text) {
@@ -75,7 +78,7 @@ $(function() {
 
 });
 
-var searchInTopics = function(input) {
+var searchInTopics = function (input) {
     var searchText = $(this).val();
     if (searchText != "") {
         $(".searchable div.zone").parent().hide();
@@ -86,12 +89,20 @@ var searchInTopics = function(input) {
     }
 };
 
-var searchTopicByCategory = function(searchText) {
+var searchTopicByCategory = function (searchText) {
     if (searchText != "") {
         $(".searchable .topic-entry .category").parents('.entry').hide();
         $('.searchable .topic-entry .category:icontains("' + searchText + '")').parents('.entry').show();
-    }
-    else {
+    } else {
         $(".searchable div.zone").parent().show();
     }
+    updateRightNav();
 };
+
+var updateRightNav = function () {
+    $(".bs-docs-sidebar ul.bs-docs-sidenav li").hide();
+    $('.searchable .entry:visible .topic').each(function () {
+        var idVal = $(this).attr('id');
+        $('.bs-docs-sidebar ul.bs-docs-sidenav li>a[href=#' + idVal + ']').parent().show();
+    });
+}
