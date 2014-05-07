@@ -70,6 +70,10 @@ class TopicController {
     }
 
     def edit(Topic topicInstance) {
+        if(topicInstance?.createdBy!=springSecurityService.currentUser?.id) {
+            redirect(controller: 'login', action: 'denied')
+            return
+        }
         respond topicInstance
     }
 
