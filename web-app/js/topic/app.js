@@ -76,6 +76,21 @@ $(function () {
         };
     });
 
+    $('div.desc-content').editable({
+        type: 'wysihtml5',
+        mode:'inline',
+        wysihtml5:{html:true},
+        name:'description',
+        url: '/api/v1.0/topic/updateDescription',
+        error: function(response, newValue) {
+        if(response.status === 500) {
+            blockUIWithMsg('Service unavailable. Please try later.');
+        } else {
+            return blockUIWithMsg('Sorry for inconvenience. Please contact site admin.');
+        }
+    }
+    });
+
 });
 
 var searchInTopics = function (input) {

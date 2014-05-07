@@ -3,23 +3,23 @@ body {
   padding-top: 100px;
 }
 
-/* line 4, ../../sass/topic/app.scss */
+/* line 5, ../../sass/topic/app.scss */
 .bs-docs-sidebar.affix {
   width: 340px;
   top: 100px;
 }
 
-/* line 5, ../../sass/topic/app.scss */
+/* line 10, ../../sass/topic/app.scss */
 #sidebar-categories li a {
   text-transform: capitalize;
 }
 
-/* line 6, ../../sass/topic/app.scss */
+/* line 14, ../../sass/topic/app.scss */
 .entry .desc {
   padding: 15px 0;
 }
 
-/* line 7, ../../sass/topic/app.scss */
+/* line 18, ../../sass/topic/app.scss */
 .entry .topic-entry {
   padding: 20px 30px 20px 0;
   border-top: 1px solid #E6E6E6;
@@ -29,7 +29,57 @@ body {
   text-transform: uppercase;
 }
 
-/* line 16, ../../sass/topic/app.scss */
+/* line 28, ../../sass/topic/app.scss */
 .entry .meta-sep {
   padding: 0 3px;
+}
+
+/* line 32, ../../sass/topic/app.scss */
+.entry .wysihtml5-sandbox {
+  width: 100% !important;
+}
+
+/* line 36, ../../sass/topic/app.scss */
+.entry .control-group.form-group {
+  width: 100%;
+}
+
+/* line 40, ../../sass/topic/app.scss */
+.entry .editable-input {
+  width: 100%;
+}
+
+@media (max-width: 679px) {
+  /* line 45, ../../sass/topic/app.scss */
+  .entry .editable-buttons {
+    display: block;
+  }
+}
+@media (min-width: 680px) and (max-width: 767px) {
+  /* line 51, ../../sass/topic/app.scss */
+  .entry .editable-buttons {
+    margin-left: -75px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  /* line 57, ../../sass/topic/app.scss */
+  .entry .editable-buttons {
+    margin-left: -75px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* line 63, ../../sass/topic/app.scss */
+  .entry .editable-buttons {
+    margin-left: -75px;
+  }
+}
+@media (min-width: 1200px) {
+  /* line 69, ../../sass/topic/app.scss */
+  .entry .editable-buttons {
+    margin-left: -75px;
+  }
+}
+/* line 74, ../../sass/topic/app.scss */
+.entry span.editable-container.editable-inline {
+  width: 100%;
 }
