@@ -5,7 +5,7 @@
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'topic.label', default: 'Topic')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
-    <r:require modules="topic,block_ui"/>
+    <r:require modules="topic,block_ui,x_editable"/>
 </head>
 
 <body>
