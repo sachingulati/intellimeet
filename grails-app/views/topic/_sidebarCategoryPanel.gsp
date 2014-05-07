@@ -8,7 +8,7 @@
                 <li><a href="javascript:searchTopicByCategory('');">ALL (${Topic.count()})</a></li>
                 <g:each in="${categoryTopicCounts}" var="categoryTopicCount" status="index">
                     <g:if test="${index < categoryTopicCounts?.size()/2}">
-                        <li><a href="javascript:searchTopicByCategory('${categoryTopicCount?.category}');">${categoryTopicCount?.category} (${categoryTopicCount?.topicCount})</a></li>
+                        <li><a href="javascript:searchTopicByCategory('${categoryTopicCount?.category?.displayName}');">${categoryTopicCount?.category?.displayName} (${categoryTopicCount?.topicCount})</a></li>
                     </g:if>
                 </g:each>
             </ul>
@@ -18,7 +18,7 @@
             <ul class="list-unstyled">
                 <g:each in="${categoryTopicCounts}" var="categoryTopicCount" status="index">
                     <g:if test="${index >= categoryTopicCounts?.size()/2}">
-                        <li><a href="javascript:searchTopicByCategory('${categoryTopicCount?.category}');">${categoryTopicCount?.category} (${categoryTopicCount?.topicCount})</a></li>
+                        <li><a href="javascript:searchTopicByCategory('${categoryTopicCount?.category?.displayName}');">${categoryTopicCount?.category?.displayName} (${categoryTopicCount?.topicCount})</a></li>
                     </g:if>
                 </g:each>
             </ul>

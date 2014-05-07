@@ -1,6 +1,7 @@
 package com.ig.intellimeet
 
 import com.ig.intellimeet.dto.CategoryTopicCount
+import com.ig.intellimeet.enums.TopicCategory
 import com.mongodb.AggregationOutput
 import com.mongodb.DBCollection
 
@@ -26,6 +27,6 @@ class TopicService {
     List<CategoryTopicCount> countTopicGroupedByCategory() {
         DBCollection topicCollection = Topic.collection
         AggregationOutput aggregationOutput = topicCollection?.aggregate(['$group': ['_id': '$category', 'count': ['$sum': 1]]])
-        aggregationOutput?.results()?.collect { new CategoryTopicCount(category: it['_id'], topicCount: it['count']) }
+        aggregationOutput?.results()?.collect { new CategoryTopicCount(category: TopicCategory.valueOf(it['_id']?.toString()), topicCount: it['count']) }
     }
 }

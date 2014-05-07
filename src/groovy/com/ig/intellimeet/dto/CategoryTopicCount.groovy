@@ -1,6 +1,8 @@
 package com.ig.intellimeet.dto
 
+import com.ig.intellimeet.enums.TopicCategory
+
 class CategoryTopicCount {
-    String category
+    TopicCategory category
     String topicCount
 }
