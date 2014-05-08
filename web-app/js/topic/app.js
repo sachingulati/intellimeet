@@ -1,4 +1,32 @@
 $(function () {
+
+    $('.interested-users-link').popover({
+        html: true,
+        trigger: 'hover',
+        title: 'Interested Users',
+        content:  function(){
+            return $('.plusOneBtn').siblings('.attendeesList').html();
+        }});
+
+    $('.plusOneBtn').on('click', function() {
+        var plusOneLink = $(this);
+        var data = plusOneLink.data();
+        var jqxhr = $.post( "/api/v1.0/topic/plusOne", { topicId: data.topicid });
+        jqxhr.done(function(data) {
+            if(data.status =='success') {
+                plusOneLink.removeClass('btn-default');
+                plusOneLink.text("+"+data.count);
+                plusOneLink.addClass('btn-primary');
+                plusOneLink.siblings('.attendeesList').append(data.username);
+            } else if(data.status=='error') {
+                blockUIWithMsg(data.message);
+            }
+        });
+        jqxhr.fail(function() {console.log("Failed doing plusOne ");});
+        return false;
+    });
+
+
     // IE10 viewport hack for Surface/desktop Windows 8 bug
     //
     // See Getting Started docs for more information
@@ -82,6 +110,12 @@ $(function () {
         wysihtml5:{html:true},
         name:'description',
         url: '/api/v1.0/topic/updateDescription',
+        success: function(response, newValue) {
+            if(response.status=='error') {
+                blockUIWithMsg(response.message)
+                return response.message
+            }
+        },
         error: function(response, newValue) {
         if(response.status === 500) {
             blockUIWithMsg('Service unavailable. Please try later.');
