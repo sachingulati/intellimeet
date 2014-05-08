@@ -45,7 +45,7 @@ class IMSessionController {
         }
 
         if (!imSessionCO.validate()) {
-            respond  view:'create', model: [imSessionCO: imSessionCO]
+            render  view:'create', model: [imSessionCO: imSessionCO]
             return
         }
         IMSession imSession = new IMSession()

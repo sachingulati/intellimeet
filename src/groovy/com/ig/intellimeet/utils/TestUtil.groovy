@@ -48,10 +48,10 @@ class TestUtil {
         imSession.topicId = topic?.id
         imSession.title = topic?.name
         imSession.description = topic?.description
-        imSession.minCapacity = 0
-        imSession.maxCapacity = 5
+        imSession.minCapacity = 6
+        imSession.maxCapacity = 7
         Object[] userIdList = User.list()*.id
-        imSession.ownerIds = [(Long) getRandom(userIdList)]
+        imSession.ownerId = (Long) getRandom(userIdList)
         imSession.attendeeIds = User.list()*.id
         imSession.sessionStatus  =SessionStatus.PROPOSED
         imSession.intelliMeetId = intelliMeetId

@@ -58,15 +58,16 @@
     ${raw(IMSessionInstance?.description)}
     %{--<img src="http://placehold.it/900x300" class="img-responsive">--}%
     %{--<hr>--}%
-    <h4 style="text-transform: uppercase;">List of Attendees:</h4>
+    <g:if test="${IMSessionInstance?.attendeesEmails}" >
+        <h4 style="text-transform: uppercase;">List of Attendees:</h4>
+        <ul class="list-unstyled">
+            <g:each in="${IMSessionInstance?.attendeesEmails}" var="attendeeEmail">
+                <li><span class="fa fa-angle-double-right"></span>&nbsp;${attendeeEmail}</li>
+            </g:each>
+        </ul>
 
-    <ul class="list-unstyled">
-        <g:each in="${IMSessionInstance?.attendeesEmails}" var="attendeeEmail">
-            <li><span class="fa fa-angle-double-right"></span>&nbsp;${attendeeEmail}</li>
-        </g:each>
-    </ul>
-
-    <br/>
+        <br/>
+    </g:if>
 
 </div>
 </body>
