@@ -10,9 +10,13 @@ class BootStrap {
 
     def init = { servletContext ->
 
+        log.info("Current Env: ${Environment?.current?.name}. DB Name: ${IntelliMeet.collection.getDB()}")
         switch (Environment?.current?.name) {
             case 'development':
             case 'qa':
+                log.info("Dropping database... ")
+                IntelliMeet.collection.getDB().dropDatabase()
+                log.info("Bootstraping data... ")
                 bootstrapSomeDummyDataForDev()
                 break;
             case 'test':
