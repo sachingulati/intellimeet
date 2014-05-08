@@ -8,7 +8,7 @@
     <a href="${createLink(controller: 'IMSession', action: 'show', id: imSession?.id)}">${imSession?.title}</a>
 </h1>
 
-<p class="lead">owned by <a href="#">${imSession?.ownersEmail?.join(", ")}</a>
+<p class="lead">owned by <a href="#">${imSession?.ownersEmail}</a>
 </p>
 <hr>
 
