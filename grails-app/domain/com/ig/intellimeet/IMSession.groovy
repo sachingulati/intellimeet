@@ -15,6 +15,7 @@ class IMSession {
     Integer score
 
     List <Long> ownerIds
+    Long ownerId
     List <Long> attendeeIds
     List <Feedback> feedbackList
 
@@ -31,11 +32,15 @@ class IMSession {
 
     static constraints = {
         title blank: false
-        maxCapacity nullable: true
-        minCapacity nullable: true
+        maxCapacity nullable: true, min: 5, validator: {val, obj ->
+            return (val >= obj.minCapacity)
+        }
+        minCapacity nullable: true, min: 4
         score nullable: true, range: 1..5
         topicId nullable:true
         score: nullable: true
+        ownerIds nullable: true
+        ownerId nullable: true, unique: ['topicId', 'intelliMeetId']
     }
 
     static mapping = {

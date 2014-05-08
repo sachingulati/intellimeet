@@ -55,7 +55,27 @@
     </g:form>
 </div>
     <r:script>
-    markAsActive("session");
+        markAsActive("session");
+
+        $('.numeric').keypress(function(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            //console.log(charCode);
+            if (charCode < 48 || charCode > 57) {
+                return false;
+            }
+            return true;
+
+        });
+
+        $('.minCapacity').change(function() {
+            var minValue = parseInt($(this).val());
+            var maxValue = parseInt($('.maxCapacity').val());
+
+            if (minValue > maxValue) {
+                $('.maxCapacity').val(minValue);
+            }
+        });
+
     </r:script>
 </body>
 </html>
