@@ -10,10 +10,13 @@
 <p class="lead">owned by <a href="#">${imSession?.ownersEmail}</a>
 </p>
 
-<div class="session-entry"><span class="fa fa-arrow-up"></span> Maximum Capacity: ${imSession?.maxCapacity ?: 'undefined'}, <span
-        class="fa fa-arrow-down"></span> Minimum Capacity: ${imSession?.minCapacity ?: 'undefined'}
-</div>
-
+<g:if test="${imSession?.maxCapacity && imSession?.minCapacity}">
+    <div class="session-entry">
+            <strong>Capacity:</strong>  ${imSession?.minCapacity?:'NA'} - ${imSession?.maxCapacity?:'NA'} people
+    </div>
+</g:if><g:else>
+    <hr/>
+</g:else>
 <div class="desc"><h4 style="text-transform: uppercase;">Agenda:</h4>
 
     <div class="desc-agenda">${raw(imSession?.description)}</div>
@@ -21,12 +24,14 @@
     %{--<hr>--}%
 </div>
 
+<g:if test="${imSession.attendeesEmails}">
 <div class="desc-attendees">
     <h4 style="text-transform: uppercase;">List of Attendees:</h4>
 
     <ul class="list-unstyled attendee-list">
         <g:each in="${imSession?.attendeesEmails}" var="attendeeEmail">
-            <li><span class="fa fa-angle-double-right"></span>&nbsp;${attendeeEmail}</li>
+            <li>&nbsp;${attendeeEmail}</li>
         </g:each>
     </ul>
 </div>
+    </g:if>
