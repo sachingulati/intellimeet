@@ -16,12 +16,12 @@
 <div class="desc"><strong>Expectations:</strong><div class="desc-content" data-title="Enter Expectations" data-pk="${topic?.id}"><p>${raw(topic?.description)}</p></div></div>
 <topic:displayInterestedUsersCount topic="${topic}"/>
 &nbsp;
-<g:link controller="IMSession" action="createNewSessionFromTopic" params="[topicId: topic?.id]" class="btn btn-default">
-     <g:message code="btn.register.presenter.label" default="Register as Presenter"/>
-<span class="fa fa-sign-in"></span></g:link>
 
 <div style="display: none;" class="attendeesList">
     <g:each in="${topic?.interestedUsers}" var="interestedUserId">
         <span>${User.get(interestedUserId)?.username}</span> <br/>
     </g:each>
 </div>
+<g:link controller="IMSession" action="createNewSessionFromTopic" params="[topicId: topic?.id]" class="btn btn-primary pull-right">
+    <g:message code="btn.register.presenter.label" default="Register as Presenter"/>
+    </g:link>

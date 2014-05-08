@@ -13,6 +13,7 @@
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
                 <li id="topic"><g:link controller="topic" action="index"><g:message code="topic.label" default="Topic" /></g:link></li>
+                <li id="session"><g:link controller="IMSession" action="index"><g:message code="topic.label" default="Session" /></g:link></li>
                 %{--<li id="session"><g:link controller="IMSession" action="index"><g:message code="session.label" default="Session" /></g:link></li>
                 <li id="survey"><g:link controller="survey" action="index"><g:message code="survey.label" default="Survey" /></g:link></li>
                 <li id="intellimeet"><g:link controller="intelliMeet" action="index"><g:message code="intellimeet.label" default="IntelliMeet" /></g:link></li>--}%
