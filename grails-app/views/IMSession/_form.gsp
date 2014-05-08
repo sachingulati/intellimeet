@@ -35,7 +35,7 @@
         %{--<span class="required-indicator">*</span>--}%
     </label>
     <div class="col-sm-10">
-        <g:field class="form-control" name="minCapacity" type="number" value="${imSessionCO?.minCapacity}"/>
+        <g:field class="form-control numeric minCapacity" name="minCapacity" type="number" maxlength="2" min="4" value="${imSessionCO?.minCapacity ?:4}"/>
 
         <g:if test="${hasErrors(bean: imSessionCO, field: 'minCapacity', 'has-error')}">
             <span class="help-block"><g:fieldError bean='${imSessionCO}' field='minCapacity' /></span>
@@ -48,7 +48,7 @@
         %{--<span class="required-indicator">*</span>--}%
 	</label>
     <div class="col-sm-10">
-	    <g:field class="form-control" name="maxCapacity" type="number" value="${imSessionCO?.maxCapacity}"/>
+	    <g:field class="form-control numeric maxCapacity" name="maxCapacity" type="number" maxlength="2" min="5" value="${imSessionCO?.maxCapacity ?: 10}"/>
 
         <g:if test="${hasErrors(bean: imSessionCO, field: 'maxCapacity', 'has-error')}">
             <span class="help-block"><g:fieldError bean='${imSessionCO}' field='maxCapacity' /></span>
