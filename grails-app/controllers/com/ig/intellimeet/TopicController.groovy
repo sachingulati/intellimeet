@@ -16,23 +16,23 @@ class TopicController {
     def topicService
     def springSecurityService
 
-    def delete (){
+    def delete() {
         flash.error = message(code: "topic.not.deleted")
         redirect action: "index"
     }
 
     def plusOne() {
-        Map mapToRender = ['status':'success']
+        Map mapToRender = ['status': 'success']
         Integer currentInterestedUsersCount
-        User currentUser  = springSecurityService?.currentUser
+        User currentUser = springSecurityService?.currentUser
         mapToRender.username = currentUser?.username
         Topic topic = Topic.get(params.topicId)
-        if(!currentUser) {
+        if (!currentUser) {
             mapToRender.status = 'error'
             mapToRender.message = message(code: 'access.denied.message')
         } else if (topic?.interestedUsers?.contains(currentUser?.id)) {
             mapToRender.status = 'error'
-            mapToRender.message = message(code:'topic.interest.already.shown.message')
+            mapToRender.message = message(code: 'topic.interest.already.shown.message')
         } else if (topic) {
             topic = topicService.increaseInterestCount topic
             topicService.save topic
@@ -50,7 +50,7 @@ class TopicController {
 
     def create() {
         Topic topic = new Topic(params)
-        topic.description=Topic.SAMPLE_DESCRIPTION_TEMPLATE
+        topic.description = Topic.SAMPLE_DESCRIPTION_TEMPLATE
         respond topic
     }
 
@@ -66,15 +66,33 @@ class TopicController {
             return
         }
         topicInstance.save flush: true
-        redirect controller: 'topic', action:'index'
+        redirect controller: 'topic', action: 'index'
     }
 
     def edit(Topic topicInstance) {
-        if(topicInstance?.createdBy!=springSecurityService.currentUser?.id) {
+        if (topicInstance?.createdBy != springSecurityService.currentUser?.id) {
             redirect(controller: 'login', action: 'denied')
             return
         }
         respond topicInstance
+    }
+
+    def updateDescription() {
+        Map mapToRender = ['status': 'success', 'message': '']
+        Long topicId = params.long('pk')
+        Topic topic = Topic.get(topicId)
+        if (!params.value) {
+            mapToRender.status = 'error'
+            mapToRender.message = message(code: 'topic.description.nullable.error')
+        } else if (topic && params.name == 'description') {
+            topic.description = params.value
+            topicService.save(topic)
+            mapToRender.message = message(code: 'topic.description.updated.message')
+        } else {
+            mapToRender.status = 'error'
+            mapToRender.message = message(code: 'topic.not.found')
+        }
+        render mapToRender as JSON
     }
 
     @Transactional
@@ -91,7 +109,7 @@ class TopicController {
 
         topicInstance.save flush: true
 
-        redirect controller: 'topic', action:'index'
+        redirect controller: 'topic', action: 'index'
     }
 
     protected void notFound() {
