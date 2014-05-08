@@ -27,12 +27,13 @@ class IMSessionCO {
     static constraints = {
         topicId nullable: true
         ownerId validator: {val, obj->
-            if(IMSession.findByTopicIdAndIntelliMeetIdAndOwnerId(obj?.topicId, obj?.intelliMeetId, val)) {
+            if(obj?.topicId && IMSession.findByTopicIdAndIntelliMeetIdAndOwnerId(obj?.topicId, obj?.intelliMeetId, val)) {
                 return ['ownerId.unique.error']
             }
         }
         title blank: false
         description blank: false
+        copresenterId nullable: true
         minCapacity nullable: true, min: 4
         maxCapacity nullable: true, min: 5, validator: {val, obj ->
             return (val >= obj.minCapacity)
