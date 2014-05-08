@@ -17,6 +17,7 @@ $(function () {
 
     var $window = $(window);
     var $body = $(document.body);
+    var $sidebarSearch = $('.sidebar-search');
 
     var navHeight = $('.navbar').outerHeight(true) + 100;
 
@@ -38,7 +39,7 @@ $(function () {
 
                     return (this.top = offsetTop - navOuterHeight - sideBarMargin)
                 }, bottom: function () {
-                    if (!sidebarCategories.isOnScreen()) {
+                    if (!$sidebarSearch.isOnScreen()) {
                         return (this.bottom = $('.bs-docs-footer').outerHeight(true))
                     }
                 }
@@ -75,50 +76,7 @@ $(function () {
             return $(elem).text().toLowerCase().indexOf(text.trim().toLowerCase()) > -1;
         };
     });
-
-    $('div.desc-content').editable({
-        type: 'wysihtml5',
-        mode:'inline',
-        wysihtml5:{html:true},
-        name:'description',
-        url: '/api/v1.0/topic/updateDescription',
-        success: function(response, newValue) {
-            if(response.status=='error') {
-                blockUIWithMsg(response.message)
-                return response.message
-            }
-        },
-        error: function(response, newValue) {
-        if(response.status === 500) {
-            blockUIWithMsg('Service unavailable. Please try later.');
-        } else {
-            return blockUIWithMsg('Sorry for inconvenience. Please contact site admin.');
-        }
-    }
-    });
-
 });
-
-var searchInTopics = function (input) {
-    var searchText = $(this).val();
-    if (searchText != "") {
-        $(".searchable div.zone").parent().hide();
-        $('.searchable div.zone').parent(':icontains("' + searchText + '")').show();
-    }
-    else {
-        $(".searchable div.zone").parent().show();
-    }
-};
-
-var searchTopicByCategory = function (searchText) {
-    if (searchText != "") {
-        $(".searchable .topic-entry .category").parents('.entry').hide();
-        $('.searchable .topic-entry .category:icontains("' + searchText + '")').parents('.entry').show();
-    } else {
-        $(".searchable div.zone").parent().show();
-    }
-    updateRightNav();
-};
 
 var updateRightNav = function () {
     $(".bs-docs-sidebar ul.bs-docs-sidenav li").hide();

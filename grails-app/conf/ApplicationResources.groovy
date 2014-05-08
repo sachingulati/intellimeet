@@ -42,7 +42,7 @@ modules = {
 
     session {
         resource url: 'css/session/app.css'
-        resource url: 'js/topic/app.js'
+        resource url: 'js/session/app.js'
     }
 
     about {

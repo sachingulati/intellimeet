@@ -27,7 +27,7 @@
 
         <div class="col-lg-4">
 
-            <div class="well">
+            <div class="well sidebar-search">
 
                 <h4><g:message code="session.sidebar.search.label" default="Session Search" /></h4>
 
