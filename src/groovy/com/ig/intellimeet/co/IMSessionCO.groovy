@@ -17,6 +17,8 @@ class IMSessionCO {
     Long ownerId
     Long copresenterId
 
+    List<Integer> attendeeIds
+
     Date dateCreated
     Date lastUpdated
 

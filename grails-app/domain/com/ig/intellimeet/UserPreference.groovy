@@ -9,6 +9,8 @@ class UserPreference {
     Date dateCreated
     Date lastUpdated
 
+    Long purposedSessionId
+
     Long firstPreferredSessionId
     Long secondPreferredSessionId
     Long thirdPreferredSessionId
@@ -21,6 +23,7 @@ class UserPreference {
 
     static constraints = {
         fullName nullable: true
+        purposedSessionId nullable: true
         firstPreferredSessionId nullable:true, validator: { val, obj ->
             if (val && (val == obj?.secondPreferredSessionId || val == obj?.thirdPreferredSessionId)) {
                 return ['preference.unique.error']
