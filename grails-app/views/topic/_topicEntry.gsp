@@ -13,7 +13,7 @@
 
 %{--<img src="http://placehold.it/900x300" class="img-responsive">--}%
     %{--<hr>--}%
-<div class="desc"><strong>Expectations:</strong><p>${raw(topic?.description)}</p></div>
+<div class="desc"><strong>Expectations:</strong><div class="desc-content" data-title="Enter Expectations" data-pk="${topic?.id}"><p>${raw(topic?.description)}</p></div></div>
 <topic:displayInterestedUsersCount topic="${topic}"/>
 &nbsp;
 %{--<g:link controller="IMSession" action="createNewSessionFromTopic" params="[topicId: topic?.id]" class="btn btn-default">

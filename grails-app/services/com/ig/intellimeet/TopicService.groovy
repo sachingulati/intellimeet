@@ -10,6 +10,7 @@ class TopicService {
 
     Topic save(Topic topic) {
         if (!topic?.validate() || !topic?.save(flush: true)) {
+            log.error("Topic Validation Error: "+topic.errors.allErrors.join("\n"))
             topic = null
         }
         topic
