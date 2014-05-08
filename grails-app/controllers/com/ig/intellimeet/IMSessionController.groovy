@@ -67,10 +67,10 @@ class IMSessionController {
     def edit(IMSession IMSessionInstance) {
         IMSessionInstance = IMSession.get(IMSessionInstance.id)
         if (IMSessionInstance?.ownerId == springSecurityService.currentUser?.id || IMSessionInstance?.copresenterId == springSecurityService.currentUser?.id) {
-            redirect(controller: 'login', action: 'denied')
-            return
+            render view: 'edit', model: [IMSessionInstance: IMSessionInstance]
         }
-        render view: 'edit', model: [IMSessionInstance: IMSessionInstance]
+        redirect(controller: 'login', action: 'denied')
+        return
     }
 
     @Transactional
