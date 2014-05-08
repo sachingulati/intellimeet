@@ -49,7 +49,7 @@
         </div>
         <div class="col-lg-6">
             <p>Status: ${fieldValue(bean: IMSessionInstance, field: 'sessionStatus')}</p>
-            <p>Min Cap: ${fieldValue(bean: IMSessionInstance, field: 'minCapacity')}, Max Cap: ${fieldValue(bean: IMSessionInstance, field: 'maxCapacity')}</p>
+            <p>Capacity: ${fieldValue(bean: IMSessionInstance, field: 'minCapacity')} - ${fieldValue(bean: IMSessionInstance, field: 'maxCapacity')} people</p>
         </div>
     </div>
     <hr>
