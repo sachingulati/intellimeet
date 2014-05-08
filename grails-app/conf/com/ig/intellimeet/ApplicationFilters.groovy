@@ -19,6 +19,12 @@ class ApplicationFilters {
             }
         }
 
+        setOwnewIdWhileSavingSession(controller: 'IMSession', action:'save') {
+            before = {
+                params.ownerId = springSecurityService?.currentUser?.id
+            }
+        }
+
         all(controller:'*', action:'*') {
             before = {
                 log.info(params)

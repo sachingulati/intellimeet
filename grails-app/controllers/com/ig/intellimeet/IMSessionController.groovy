@@ -14,7 +14,8 @@ class IMSessionController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    IntelliMeetService intelliMeetService
+    def intelliMeetService
+    def springSecurityService
 
     def createNewSessionFromTopic(Long topicId) {
         Topic topic = Topic.get(topicId)
@@ -30,6 +31,7 @@ class IMSessionController {
     }
 
     def show(IMSession IMSessionInstance) {
+        springSecurityService.currentUser.id in [IMSessionInstance.ownerId, IMSessionInstance.copresenterId]
         respond IMSessionInstance
     }
 
@@ -45,7 +47,7 @@ class IMSessionController {
         }
 
         if (!imSessionCO.validate()) {
-            respond  view:'create', model: [imSessionCO: imSessionCO]
+            render  view:'create', model: [imSessionCO: imSessionCO]
             return
         }
         IMSession imSession = new IMSession()
@@ -65,7 +67,13 @@ class IMSessionController {
 
     def edit(IMSession IMSessionInstance) {
         IMSessionInstance = IMSession.get(IMSessionInstance.id)
-        render view: 'edit', model: [IMSessionInstance: IMSessionInstance]
+        Long currentUserId = springSecurityService.currentUser?.id
+        if (currentUserId in [IMSessionInstance?.ownerId, IMSessionInstance?.copresenterId]) {
+            render view: 'edit', model: [IMSessionInstance: IMSessionInstance]
+            return
+        }
+        redirect(controller: 'login', action: 'denied')
+        return
     }
 
     @Transactional
