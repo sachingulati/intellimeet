@@ -56,13 +56,13 @@
     </div>
 </div>
 
-<div class="form-group ${hasErrors(bean: userPreferenceInstance, field: 'firstPreferredSessionTitle', 'has-error')} ">
+<div class="form-group ">
 	<label for="firstPreferredSessionTitle" class="col-sm-2 control-label">
 		<g:message code="userPreference.firstPreferredSessionTitle.label" default="First Preferred Session Title" />
-		
+
 	</label>
     <div class="col-sm-10">
-	    <g:textField name="firstPreferredSessionTitle" value="${userPreferenceInstance?.firstPreferredSessionTitle}"class="form-control" />
+	    <g:textField name="firstPreferredSessionTitle" value="${UserPreference.findSessionTitleByIdAndIntelliMeetId(userPreferenceInstance.firstPreferredSessionId,userPreferenceInstance.intelliMeetId)}"class="form-control" />
 
         <g:if test="${hasErrors(bean: userPreferenceInstance, field: 'firstPreferredSessionTitle', 'has-error')}">
             <span class="help-block"><g:fieldError bean='${userPreferenceInstance}' field='firstPreferredSessionTitle' /></span>
@@ -98,13 +98,13 @@
     </div>
 </div>
 
-<div class="form-group ${hasErrors(bean: userPreferenceInstance, field: 'secondPreferredSessionTitle', 'has-error')} ">
+<div class="form-group">
 	<label for="secondPreferredSessionTitle" class="col-sm-2 control-label">
 		<g:message code="userPreference.secondPreferredSessionTitle.label" default="Second Preferred Session Title" />
-		
+
 	</label>
     <div class="col-sm-10">
-	    <g:textField name="secondPreferredSessionTitle" value="${userPreferenceInstance?.secondPreferredSessionTitle}"class="form-control" />
+	    <g:textField name="secondPreferredSessionTitle" value="${UserPreference.findSessionTitleByIdAndIntelliMeetId(userPreferenceInstance.secondPreferredSessionId,userPreferenceInstance.intelliMeetId)}"class="form-control" />
 
         <g:if test="${hasErrors(bean: userPreferenceInstance, field: 'secondPreferredSessionTitle', 'has-error')}">
             <span class="help-block"><g:fieldError bean='${userPreferenceInstance}' field='secondPreferredSessionTitle' /></span>
@@ -112,13 +112,13 @@
     </div>
 </div>
 
-<div class="form-group ${hasErrors(bean: userPreferenceInstance, field: 'thirdPreferredSessionTitle', 'has-error')} ">
+<div class="form-group ">
 	<label for="thirdPreferredSessionTitle" class="col-sm-2 control-label">
 		<g:message code="userPreference.thirdPreferredSessionTitle.label" default="Third Preferred Session Title" />
-		
+
 	</label>
     <div class="col-sm-10">
-	    <g:textField name="thirdPreferredSessionTitle" value="${userPreferenceInstance?.thirdPreferredSessionTitle}"class="form-control" />
+	    <g:textField name="thirdPreferredSessionTitle" value="${UserPreference.findSessionTitleByIdAndIntelliMeetId(userPreferenceInstance.thirdPreferredSessionId,userPreferenceInstance.intelliMeetId)}"class="form-control" />
 
         <g:if test="${hasErrors(bean: userPreferenceInstance, field: 'thirdPreferredSessionTitle', 'has-error')}">
             <span class="help-block"><g:fieldError bean='${userPreferenceInstance}' field='thirdPreferredSessionTitle' /></span>
