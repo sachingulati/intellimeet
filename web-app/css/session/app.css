@@ -49,14 +49,15 @@ body {
   text-transform: uppercase;
 }
 
-/* line 45, ../../sass/session/app.scss */
+/* line 46, ../../sass/session/app.scss */
 .attendee-list li {
   width: 33.33%;
   float: left;
 }
 
-/* line 50, ../../sass/session/app.scss */
+/* line 51, ../../sass/session/app.scss */
 ol.attendee-list {
   overflow: hidden;
   list-style-type: decimal;
+  padding: 20px;
 }

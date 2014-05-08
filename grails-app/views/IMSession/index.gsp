@@ -19,8 +19,8 @@
                 <div class="entry">
                     <div id="imSession${index}" class="session zone"></div>
                     <g:render template="sessionEntry" model="[imSession: imSession, index: index]"/>
+                    <hr/>
                 </div>
-                <hr/>
             </g:each>
         </div>
 
@@ -51,7 +51,7 @@
                         <li><a href="#imSession${index}">${fieldValue(bean: imSession, field: 'title')}</a></li>
                     </g:each>
                 </ul>
-                <a class="back-to-top" href="#list-topic"><g:message code="back.top.label" default="Back to top"/></a>
+                <a class="back-to-top" href="#list-session"><g:message code="back.top.label" default="Back to top"/></a>
             </div>
             <!-- /well -->
         </div>
