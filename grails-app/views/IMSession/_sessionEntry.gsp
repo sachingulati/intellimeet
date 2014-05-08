@@ -1,6 +1,5 @@
 <%@ page import="com.ig.intellimeet.User" %>
 <h1>
-
     <im:ifLoggedInUsername username="${imSession?.ownersEmail}">
         <g:link controller="IMSession" action="edit" id="${imSession?.id}"><i class="glyphicon glyphicon-pencil"></i></g:link>&nbsp;
     </im:ifLoggedInUsername>
@@ -12,9 +11,8 @@
 </p>
 <hr>
 
-<p><span class="glyphicon glyphicon-time"></span> Posted on ${imSession?.dateCreated?.format("EEE dd, yyyy 'at' hh:mm a")}</p>
+<p style="text-transform: uppercase;"><span class="fa fa-arrow-up"></span> Maximum Capacity: ${imSession?.maximumCapacity?:'undefined'}, <span class="fa fa-arrow-down"></span> Minimum Capacity: ${imSession?.minimumCapacity?:'undefined'}</p>
 
-<p></p><span class="glyphicon glyphicon-time"></span> Last updated on ${imSession?.lastUpdated?.format("EEE dd, yyyy 'at' hh:mm a")}</p>
 <hr>
 <h4 style="text-transform: uppercase;">Agenda:</h4>
 
