@@ -11,18 +11,23 @@
 </p>
 <hr>
 
-<p style="text-transform: uppercase;"><span class="fa fa-arrow-up"></span> Maximum Capacity: ${imSession?.maxCapacity?:'undefined'}, <span class="fa fa-arrow-down"></span> Minimum Capacity: ${imSession?.minCapacity?:'undefined'}</p>
+<p style="text-transform: uppercase;">
+    <g:if test="${imSession?.maxCapacity && imSession?.minCapacity}">
+      <strong>Capacity:</strong>  ${imSession?.minCapacity?:'NA'} - ${imSession?.maxCapacity?:'NA'} people
+    </g:if>
+</p>
 
 <hr>
 <h4 style="text-transform: uppercase;">Agenda:</h4>
 
 ${raw(imSession?.description)}
-%{--<img src="http://placehold.it/900x300" class="img-responsive">--}%
-%{--<hr>--}%
-<h4 style="text-transform: uppercase;">List of Attendees:</h4>
 
-<ul class="list">
-    <g:each in="${imSession?.attendeesEmails?.sort()}" var="attendeeEmail">
-        <li>&nbsp;${attendeeEmail}</li>
-    </g:each>
-</ul>
+<g:if test="${imSession.attendeesEmails}">
+    <h4 style="text-transform: uppercase;">List of Attendees:</h4>
+
+    <ul class="list">
+        <g:each in="${imSession?.attendeesEmails?.sort()}" var="attendeeEmail">
+            <li>&nbsp;${attendeeEmail}</li>
+        </g:each>
+    </ul>
+</g:if>
