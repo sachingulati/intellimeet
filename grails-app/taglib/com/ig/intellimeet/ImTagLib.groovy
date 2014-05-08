@@ -28,4 +28,12 @@ class ImTagLib {
             out << body()
         }
     }
+
+    def canEdit = {attrs, body->
+        Long userId= springSecurityService?.currentUser?.id
+        IMSession imSession = attrs.imSession
+        if (userId in [imSession.ownerId, imSession.copresenterId]) {
+            out << body()
+        }
+    }
 }
