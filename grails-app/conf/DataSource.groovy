@@ -30,9 +30,9 @@ environments {
             url = "jdbc:mysql://localhost:3306/intellimeet"
         }
     }
-    test {
+    qa {
         dataSource {
-            dbCreate = "update"
+            dbCreate = "create-drop"
             url = "jdbc:mysql://localhost:3306/intellimeet"
         }
     }
