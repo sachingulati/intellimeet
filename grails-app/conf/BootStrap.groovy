@@ -1,18 +1,27 @@
-import com.ig.intellimeet.IMSession
-import com.ig.intellimeet.IntelliMeet
-import com.ig.intellimeet.Role
-import com.ig.intellimeet.Topic
-import com.ig.intellimeet.User
-import com.ig.intellimeet.UserPreference
+import com.ig.intellimeet.*
 import com.ig.intellimeet.enums.IntelliMeetStatus
 import com.ig.intellimeet.utils.TestUtil
 import com.mongodb.DBCollection
+import grails.util.Environment
 
 class BootStrap {
 
     def intelliMeetService
 
     def init = { servletContext ->
+
+        switch (Environment?.current?.name) {
+            case 'development':
+            case 'qa':
+                bootstrapSomeDummyDataForDev()
+                break;
+            case 'test':
+                break
+            case 'production':
+                break
+            default:
+                break
+        }
 
         //bootstrapSomeDummyDataForDev()
     }
