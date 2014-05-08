@@ -29,7 +29,7 @@
         <h4 style="text-transform: uppercase;">List of Attendees:</h4>
 
         <ol class="attendee-list">
-            <g:each in="${imSession?.attendeesEmails}" var="attendeeEmail">
+            <g:each in="${imSession?.attendeesEmails?.sort()}" var="attendeeEmail">
                 <li>${attendeeEmail}</li>
             </g:each>
         </ol>
