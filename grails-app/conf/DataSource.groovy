@@ -37,23 +37,13 @@ environments {
         }
     }
     production {
-
         String mongoURL = System.getenv("MONGOLAB_URI")
         if (mongoURL) {
-            println ">>>>>> Got MONGOLAB_URI: ${mongoURL}"
-            println "Applying CLEARDB_DATABASE_URL settings"
             URI mongoDBURI = new URI(mongoURL);
             String mongoUsername = mongoDBURI.userInfo.split(":")[0]
             String mongoPassword = mongoDBURI.userInfo.split(":")[1]
             String dbPath = mongoDBURI.path
-            dbPath = dbPath.substring(1,dbPath.size())
-            println "mongoDBURI.host:::${mongoDBURI.host}"
-            println "mongoDBURI.port:::::${mongoDBURI.port}"
-
-            println ">>>>>> mongoUsername: ${mongoUsername}"
-            println "mongoPassword:::::${mongoPassword}"
-            println "mongoDBURI.path:::::${dbPath}"
-
+            dbPath = dbPath.substring(1, dbPath.size())
             grails {
                 mongo {
                     host = mongoDBURI.host
@@ -65,14 +55,11 @@ environments {
             }
         }
 
-
         dataSource {
 //            logSql = Utils.getenv("hibernate_log_sql", "false").toBoolean()
             dbCreate = "update" // one of 'create', 'create-drop','update'
             String mysqlUrl = System.getenv("CLEARDB_DATABASE_URL")
             if (mysqlUrl) {
-                println ">>>>>> Got CLEARDB_DATABASE_URL: ${mysqlUrl}"
-                println "Applying CLEARDB_DATABASE_URL settings"
                 URI dbUri = new URI(mysqlUrl);
                 username = dbUri.userInfo.split(":")[0]
                 password = dbUri.userInfo.split(":")[1]
