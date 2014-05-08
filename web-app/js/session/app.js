@@ -80,7 +80,7 @@ $(function () {
 
 var updateRightNav = function () {
     $(".bs-docs-sidebar ul.bs-docs-sidenav li").hide();
-    $('.searchable .entry:visible .topic').each(function () {
+    $('.searchable .entry:visible .session').each(function () {
         var idVal = $(this).attr('id');
         $('.bs-docs-sidebar ul.bs-docs-sidenav li>a[href=#' + idVal + ']').parent().show();
     });
