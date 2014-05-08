@@ -9,20 +9,24 @@
 
 <p class="lead">owned by <a href="#">${imSession?.ownersEmail}</a>
 </p>
-<hr>
 
-<p style="text-transform: uppercase;"><span class="fa fa-arrow-up"></span> Maximum Capacity: ${imSession?.maxCapacity?:'undefined'}, <span class="fa fa-arrow-down"></span> Minimum Capacity: ${imSession?.minCapacity?:'undefined'}</p>
+<div class="session-entry"><span class="fa fa-arrow-up"></span> Maximum Capacity: ${imSession?.maxCapacity ?: 'undefined'}, <span
+        class="fa fa-arrow-down"></span> Minimum Capacity: ${imSession?.minCapacity ?: 'undefined'}
+</div>
 
-<hr>
-<h4 style="text-transform: uppercase;">Agenda:</h4>
+<div class="desc"><h4 style="text-transform: uppercase;">Agenda:</h4>
 
-${raw(imSession?.description)}
-%{--<img src="http://placehold.it/900x300" class="img-responsive">--}%
-%{--<hr>--}%
-<h4 style="text-transform: uppercase;">List of Attendees:</h4>
+    <div class="desc-agenda">${raw(imSession?.description)}</div>
+    %{--<img src="http://placehold.it/900x300" class="img-responsive">--}%
+    %{--<hr>--}%
+</div>
 
-<ul class="list-unstyled">
-    <g:each in="${imSession?.attendeesEmails}" var="attendeeEmail">
-        <li><span class="fa fa-angle-double-right"></span>&nbsp;${attendeeEmail}</li>
-    </g:each>
-</ul>
+<div class="desc-attendees">
+    <h4 style="text-transform: uppercase;">List of Attendees:</h4>
+
+    <ul class="list-unstyled attendee-list">
+        <g:each in="${imSession?.attendeesEmails}" var="attendeeEmail">
+            <li><span class="fa fa-angle-double-right"></span>&nbsp;${attendeeEmail}</li>
+        </g:each>
+    </ul>
+</div>
