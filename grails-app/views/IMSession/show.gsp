@@ -65,7 +65,7 @@
     <g:if test="${IMSessionInstance?.attendeesEmails}" >
         <h4 style="text-transform: uppercase;">List of Attendees:</h4>
         <ul class="list-unstyled">
-            <g:each in="${IMSessionInstance?.attendeesEmails}" var="attendeeEmail">
+            <g:each in="${IMSessionInstance?.attendeesEmails?.sort()}" var="attendeeEmail">
                 <li><span class="fa fa-angle-double-right"></span>&nbsp;${attendeeEmail}</li>
             </g:each>
         </ul>

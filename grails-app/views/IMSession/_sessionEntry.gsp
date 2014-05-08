@@ -12,7 +12,7 @@
 
 <g:if test="${imSession?.maxCapacity && imSession?.minCapacity}">
     <div class="session-entry">
-        <strong>Capacity:</strong>  ${imSession?.minCapacity ?: 'NA'} - ${imSession?.maxCapacity ?: 'NA'} people
+            <strong>Capacity:</strong>  ${imSession?.minCapacity?:'NA'} - ${imSession?.maxCapacity?:'NA'} people
     </div>
 </g:if><g:else>
     <hr/>
@@ -25,13 +25,13 @@
 </div>
 
 <g:if test="${imSession.attendeesEmails}">
-    <div class="desc-attendees">
-        <h4 style="text-transform: uppercase;">List of Attendees:</h4>
+<div class="desc-attendees">
+    <h4 style="text-transform: uppercase;">List of Attendees:</h4>
 
-        <ol class="attendee-list">
-            <g:each in="${imSession?.attendeesEmails?.sort()}" var="attendeeEmail">
-                <li>${attendeeEmail}</li>
-            </g:each>
-        </ol>
-    </div>
-</g:if>
+    <ul class="list-unstyled attendee-list">
+        <g:each in="${imSession?.attendeesEmails.sort()}" var="attendeeEmail">
+            <li>&nbsp;${attendeeEmail}</li>
+        </g:each>
+    </ul>
+</div>
+    </g:if>
