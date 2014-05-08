@@ -26,7 +26,7 @@ body {
 }
 
 .entry:not(:first-child) {
-  padding-top:20px;
+  padding-top: 20px;
 }
 
 .entry .desc {
@@ -42,9 +42,14 @@ body {
   font-weight: normal;
   text-transform: uppercase;
 }
+
 .attendee-list li {
   width: 33.33%;
   float: left;
 }
 
-ol.attendee-list{overflow: hidden;list-style-type: decimal;}
+ol.attendee-list {
+  overflow: hidden;
+  list-style-type: decimal;
+  padding: 20px;
+}

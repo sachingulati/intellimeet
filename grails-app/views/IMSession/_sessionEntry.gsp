@@ -28,10 +28,10 @@
 <div class="desc-attendees">
     <h4 style="text-transform: uppercase;">List of Attendees:</h4>
 
-    <ul class="list-unstyled attendee-list">
+    <ol class="list-unstyled attendee-list">
         <g:each in="${imSession?.attendeesEmails.sort()}" var="attendeeEmail">
-            <li>&nbsp;${attendeeEmail}</li>
+            <li>${attendeeEmail}</li>
         </g:each>
-    </ul>
+    </ol>
 </div>
     </g:if>
