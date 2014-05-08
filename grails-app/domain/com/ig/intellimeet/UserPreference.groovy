@@ -10,7 +10,7 @@ class UserPreference {
     Date lastUpdated
 
     Long purposedSessionId
-    
+
     Long firstPreferredSessionId
     Long secondPreferredSessionId
     Long thirdPreferredSessionId
@@ -18,6 +18,8 @@ class UserPreference {
     String firstPreferredSessionTitle
     String secondPreferredSessionTitle
     String thirdPreferredSessionTitle
+
+    static mapWith = "mongo"
 
     static constraints = {
         fullName nullable: true
