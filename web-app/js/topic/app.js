@@ -5,7 +5,7 @@ $(function () {
         trigger: 'hover',
         title: 'Interested Users',
         content:  function(){
-            return $('.plusOneBtn').siblings('.attendeesList').html();
+            return $(this).parent().siblings('.attendeesList').html();
         }});
 
     $('.plusOneBtn').on('click', function() {
@@ -14,9 +14,8 @@ $(function () {
         var jqxhr = $.post( "/api/v1.0/topic/plusOne", { topicId: data.topicid });
         jqxhr.done(function(data) {
             if(data.status =='success') {
-                plusOneLink.removeClass('btn-default');
-                plusOneLink.text("+"+data.count);
-                plusOneLink.addClass('btn-primary');
+                plusOneLink.addClass('disabled');
+                plusOneLink.siblings('.like-text').find('span.interestedUserCount').text(data.count);
                 plusOneLink.siblings('.attendeesList').append(data.username);
             } else if(data.status=='error') {
                 blockUIWithMsg(data.message);
