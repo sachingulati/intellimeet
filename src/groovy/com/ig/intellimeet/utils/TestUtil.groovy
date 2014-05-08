@@ -52,7 +52,7 @@ class TestUtil {
         imSession.maxCapacity = 7
         Object[] userIdList = User.list()*.id
         imSession.ownerId = (Long) getRandom(userIdList)
-        imSession.attendeeIds = User.list()*.id
+        imSession.attendeeIds = User.list(max:Math.random()*10)*.id
         imSession.sessionStatus  =SessionStatus.PROPOSED
         imSession.intelliMeetId = intelliMeetId
         imSession
