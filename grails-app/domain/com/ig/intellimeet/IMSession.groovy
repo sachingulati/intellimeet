@@ -14,8 +14,8 @@ class IMSession {
     Integer minCapacity
     Integer score
 
-    List <Long> ownerIds
     Long ownerId
+    Long copresenterId
     List <Long> attendeeIds
     List <Feedback> feedbackList
 
@@ -39,8 +39,8 @@ class IMSession {
         score nullable: true, range: 1..5
         topicId nullable:true
         score: nullable: true
-        ownerIds nullable: true
-        ownerId nullable: true, unique: ['topicId', 'intelliMeetId']
+        ownerId nullable: true, unique: ['topicId', 'intelliMeetId', 'copresenterId']
+        copresenterId nullable: true
     }
 
     static mapping = {
@@ -51,7 +51,7 @@ class IMSession {
         attendeeIds?.collect {User.get(it)?.username}
     }
 
-    List<String> getOwnersEmail() {
-        ownerIds?.collect{User.get(it)?.username}
+    String getOwnersEmail() {
+        User.get(ownerId)?.username + (copresenterId ? (' & '+User.get(copresenterId)?.username):'')
     }
 }
