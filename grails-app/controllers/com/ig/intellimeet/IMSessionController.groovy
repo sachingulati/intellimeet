@@ -31,6 +31,7 @@ class IMSessionController {
     }
 
     def show(IMSession IMSessionInstance) {
+        springSecurityService.currentUser.id in [IMSessionInstance.ownerId, IMSessionInstance.copresenterId]
         respond IMSessionInstance
     }
 
@@ -66,8 +67,10 @@ class IMSessionController {
 
     def edit(IMSession IMSessionInstance) {
         IMSessionInstance = IMSession.get(IMSessionInstance.id)
-        if (IMSessionInstance?.ownerId == springSecurityService.currentUser?.id || IMSessionInstance?.copresenterId == springSecurityService.currentUser?.id) {
+        Long currentUserId = springSecurityService.currentUser?.id
+        if (currentUserId in [IMSessionInstance?.ownerId, IMSessionInstance?.copresenterId]) {
             render view: 'edit', model: [IMSessionInstance: IMSessionInstance]
+            return
         }
         redirect(controller: 'login', action: 'denied')
         return
