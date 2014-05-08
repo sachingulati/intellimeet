@@ -38,7 +38,7 @@
     </label>
 
     <div class="col-sm-10">
-        <g:select class="form-control" name="coprenseterId" from="${User.list([sort: 'username'])}" optionValue="username" optionKey="id" value="${imSessionCO?.copresenterId}"/>
+        <g:select class="form-control" name="coprenseterId" from="${User.list([sort: 'username'])}" optionValue="username" optionKey="id" value="${imSessionCO?.copresenterId}" noSelection="['':'---Select Copresenter---']"/>
 
         <g:if test="${hasErrors(bean: imSessionCO, field: 'coprenseterId', 'has-error')}">
             <span class="help-block"><g:fieldError bean='${imSessionCO}' field='coprenseterId'/></span>
