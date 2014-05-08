@@ -11,7 +11,7 @@
 </p>
 <hr>
 
-<p style="text-transform: uppercase;"><span class="fa fa-arrow-up"></span> Maximum Capacity: ${imSession?.maximumCapacity?:'undefined'}, <span class="fa fa-arrow-down"></span> Minimum Capacity: ${imSession?.minimumCapacity?:'undefined'}</p>
+<p style="text-transform: uppercase;"><span class="fa fa-arrow-up"></span> Maximum Capacity: ${imSession?.maxCapacity?:'undefined'}, <span class="fa fa-arrow-down"></span> Minimum Capacity: ${imSession?.minCapacity?:'undefined'}</p>
 
 <hr>
 <h4 style="text-transform: uppercase;">Agenda:</h4>
