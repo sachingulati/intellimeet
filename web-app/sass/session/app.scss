@@ -25,6 +25,10 @@ body {
   text-transform: capitalize;
 }
 
+.entry:not(:first-child) {
+  padding-top:20px;
+}
+
 .entry .desc {
   padding: 15px 0;
 }
@@ -37,11 +41,10 @@ body {
   font-size: 15px;
   font-weight: normal;
   text-transform: uppercase;
-}/*
+}
 .attendee-list li {
-  display: inline;
   width: 33.33%;
   float: left;
-}*/
+}
 
-//ul.attendee-list{width: 100%;}*/
+ol.attendee-list{overflow: hidden;list-style-type: decimal;}

@@ -30,11 +30,16 @@ body {
 }
 
 /* line 28, ../../sass/session/app.scss */
+.entry:not(:first-child) {
+  padding-top: 20px;
+}
+
+/* line 32, ../../sass/session/app.scss */
 .entry .desc {
   padding: 15px 0;
 }
 
-/* line 32, ../../sass/session/app.scss */
+/* line 36, ../../sass/session/app.scss */
 .entry .session-entry {
   padding: 15px 30px 15px 0;
   border-top: 1px solid #E6E6E6;
@@ -44,9 +49,14 @@ body {
   text-transform: uppercase;
 }
 
- /*
+/* line 45, ../../sass/session/app.scss */
 .attendee-list li {
-  display: inline;
   width: 33.33%;
   float: left;
-}*/
+}
+
+/* line 50, ../../sass/session/app.scss */
+ol.attendee-list {
+  overflow: hidden;
+  list-style-type: decimal;
+}
