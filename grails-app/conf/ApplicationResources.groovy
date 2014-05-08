@@ -117,4 +117,11 @@ modules = {
         resource url: 'js/sessionAllocation/app.js'
         resource  url: 'css/sessionAllocation/sessionAllocation.css'
     }
+
+    x_editable {
+        dependsOn 'jquery,bootstrap,wysi_html5'
+        resource url: '/css/xeditable/bootstrap-editable.css'
+        resource url: '/js/xeditable/bootstrap-editable.js'
+        resource url :'/js/xeditable/wysihtml5.js'
+    }
 }

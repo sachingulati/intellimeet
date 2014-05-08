@@ -1,11 +1,22 @@
 body {
   padding-top: 100px;
 }
-.bs-docs-sidebar.affix {width: 340px;top:100px;}
-#sidebar-categories li a {text-transform: capitalize;}
-.entry .desc {padding:15px 0;}
+
+.bs-docs-sidebar.affix {
+  width: 340px;
+  top: 100px;
+}
+
+#sidebar-categories li a {
+  text-transform: capitalize;
+}
+
+.entry .desc {
+  padding: 15px 0;
+}
+
 .entry .topic-entry {
-//  color: #9D7573;
+  //  color: #9D7573;
   padding: 20px 30px 20px 0;
   border-top: 1px solid #E6E6E6;
   border-bottom: 1px solid #E6E6E6;
@@ -13,6 +24,53 @@ body {
   font-weight: normal;
   text-transform: uppercase;
 }
+
 .entry .meta-sep {
   padding: 0 3px;
+}
+
+.entry .wysihtml5-sandbox {
+  width: 100% !important;
+}
+
+.entry .control-group.form-group {
+  width: 100%;
+}
+
+.entry .editable-input {
+  width: 100%
+}
+
+@media (max-width: 679px) {
+  .entry .editable-buttons {
+    display: block;
+  }
+}
+
+@media (min-width: 680px) and (max-width: 767px) {
+  .entry .editable-buttons {
+    margin-left: -75px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .entry .editable-buttons {
+    margin-left: -75px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .entry .editable-buttons {
+    margin-left: -75px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .entry .editable-buttons {
+    margin-left: -75px;
+  }
+}
+
+.entry span.editable-container.editable-inline {
+  width: 100%
 }

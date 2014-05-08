@@ -1,4 +1,32 @@
-$(function() {
+$(function () {
+
+    $('.interested-users-link').popover({
+        html: true,
+        trigger: 'hover',
+        title: 'Interested Users',
+        content:  function(){
+            return $('.plusOneBtn').siblings('.attendeesList').html();
+        }});
+
+    $('.plusOneBtn').on('click', function() {
+        var plusOneLink = $(this);
+        var data = plusOneLink.data();
+        var jqxhr = $.post( "/api/v1.0/topic/plusOne", { topicId: data.topicid });
+        jqxhr.done(function(data) {
+            if(data.status =='success') {
+                plusOneLink.removeClass('btn-default');
+                plusOneLink.text("+"+data.count);
+                plusOneLink.addClass('btn-primary');
+                plusOneLink.siblings('.attendeesList').append(data.username);
+            } else if(data.status=='error') {
+                blockUIWithMsg(data.message);
+            }
+        });
+        jqxhr.fail(function() {console.log("Failed doing plusOne ");});
+        return false;
+    });
+
+
     // IE10 viewport hack for Surface/desktop Windows 8 bug
     //
     // See Getting Started docs for more information
@@ -15,9 +43,10 @@ $(function() {
 
 
     var $window = $(window);
-    var $body   = $(document.body);
+    var $body = $(document.body);
 
-    var navHeight = $('.navbar').outerHeight(true)+100;
+    var navHeight = $('.navbar').outerHeight(true) + 100;
+    var sidebarCategories = $('#sidebar-categories');
 
     $body.scrollspy({
         target: '.bs-docs-sidebar',
@@ -31,17 +60,18 @@ $(function() {
         $sideBar.affix({
             offset: {
                 top: function () {
-                    var offsetTop      = $sideBar.offset().top;
-                    var sideBarMargin  = parseInt($sideBar.children(0).css('margin-top'), 10);
+                    var offsetTop = $sideBar.offset().top;
+                    var sideBarMargin = parseInt($sideBar.children(0).css('margin-top'), 10);
                     var navOuterHeight = $('.navbar').height();
 
                     return (this.top = offsetTop - navOuterHeight - sideBarMargin)
-                }
-                , bottom: function () {
-                    return (this.bottom = $('.bs-docs-footer').outerHeight(true))
+                }, bottom: function () {
+                    if (!sidebarCategories.isOnScreen()) {
+                        return (this.bottom = $('.bs-docs-footer').outerHeight(true))
+                    }
                 }
             }
-        })
+        });
     }, 100);
 
     setTimeout(function () {
@@ -65,6 +95,7 @@ $(function() {
         else {
             $(".searchable div.zone").parent().show();
         }
+        updateRightNav();
     });
 
     $.expr[':'].icontains = $.expr.createPseudo(function (text) {
@@ -73,9 +104,30 @@ $(function() {
         };
     });
 
+    $('div.desc-content').editable({
+        type: 'wysihtml5',
+        mode:'inline',
+        wysihtml5:{html:true},
+        name:'description',
+        url: '/api/v1.0/topic/updateDescription',
+        success: function(response, newValue) {
+            if(response.status=='error') {
+                blockUIWithMsg(response.message)
+                return response.message
+            }
+        },
+        error: function(response, newValue) {
+        if(response.status === 500) {
+            blockUIWithMsg('Service unavailable. Please try later.');
+        } else {
+            return blockUIWithMsg('Sorry for inconvenience. Please contact site admin.');
+        }
+    }
+    });
+
 });
 
-var searchInTopics = function(input) {
+var searchInTopics = function (input) {
     var searchText = $(this).val();
     if (searchText != "") {
         $(".searchable div.zone").parent().hide();
@@ -86,12 +138,20 @@ var searchInTopics = function(input) {
     }
 };
 
-var searchTopicByCategory = function(searchText) {
+var searchTopicByCategory = function (searchText) {
     if (searchText != "") {
         $(".searchable .topic-entry .category").parents('.entry').hide();
         $('.searchable .topic-entry .category:icontains("' + searchText + '")').parents('.entry').show();
-    }
-    else {
+    } else {
         $(".searchable div.zone").parent().show();
     }
+    updateRightNav();
 };
+
+var updateRightNav = function () {
+    $(".bs-docs-sidebar ul.bs-docs-sidenav li").hide();
+    $('.searchable .entry:visible .topic').each(function () {
+        var idVal = $(this).attr('id');
+        $('.bs-docs-sidebar ul.bs-docs-sidenav li>a[href=#' + idVal + ']').parent().show();
+    });
+}

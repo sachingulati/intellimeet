@@ -8,12 +8,12 @@
 <p class="lead">created by <a href="mailto:${topic?.createdByUsername}">${topic?.createdByUsername}</a>
 </p>
 <div class="topic-entry">
-    <span class="dateCreated">${topic?.dateCreated?.format("MMM dd, yyyy")}</span> <span class="meta-sep">/</span> <span class="category">POSTED IN: ${topic?.category}</span>
+    <span class="dateCreated">${topic?.dateCreated?.format("MMM dd, yyyy")}</span> <span class="meta-sep">/</span> <span class="category">POSTED IN: ${topic?.category?.displayName}</span>
 </div>
 
 %{--<img src="http://placehold.it/900x300" class="img-responsive">--}%
     %{--<hr>--}%
-<div class="desc"><strong>Expectations:</strong><p>${raw(topic?.description)}</p></div>
+<div class="desc"><strong>Expectations:</strong><div class="desc-content" data-title="Enter Expectations" data-pk="${topic?.id}"><p>${raw(topic?.description)}</p></div></div>
 <topic:displayInterestedUsersCount topic="${topic}"/>
 &nbsp;
 %{--<g:link controller="IMSession" action="createNewSessionFromTopic" params="[topicId: topic?.id]" class="btn btn-default">
