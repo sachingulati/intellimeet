@@ -19,8 +19,8 @@
                 <div class="entry">
                     <div id="imSession${index}" class="session zone"></div>
                     <g:render template="sessionEntry" model="[imSession: imSession, index: index]"/>
-                    <hr/>
                 </div>
+                <hr/>
             </g:each>
         </div>
 
