@@ -60,35 +60,6 @@
 </div>
 <r:script>
     markAsActive("topic");
-    $(function () {
-        $('.plusOneBtn').popover({
-            html: true,
-            trigger: 'hover',
-            title: 'Interested Users',
-            content:  function(){
-                return $(this).siblings('.attendeesList').html();
-            }});
-
-        $('.plusOneBtn').on('click', function() {
-            var plusOneLink = $(this);
-            var data = plusOneLink.data();
-            var jqxhr = $.post( "/api/v1.0/topic/plusOne", { topicId: data.topicid });
-            jqxhr.done(function(data) {
-                if(data.status =='success') {
-                    plusOneLink.removeClass('btn-default');
-                    plusOneLink.text("+"+data.count);
-                    plusOneLink.addClass('btn-primary');
-                    plusOneLink.siblings('.attendeesList').append(data.username);
-                } else if(data.status=='error') {
-                    blockUIWithMsg(data.message);
-                }
-            });
-            jqxhr.fail(function() {console.log("Failed doing plusOne ");});
-            return false;
-        });
-
-
-    });
 </r:script>
 </body>
 </html>
