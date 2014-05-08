@@ -27,7 +27,7 @@ class IMSessionCO {
     static constraints = {
         topicId nullable: true
         ownerId validator: {val, obj->
-            if(IMSession.findByTopicIdAndIntelliMeetIdAndOwnerId(obj?.topicId, obj?.intelliMeetId, val)) {
+            if(obj?.topicId && IMSession.findByTopicIdAndIntelliMeetIdAndOwnerId(obj?.topicId, obj?.intelliMeetId, val)) {
                 return ['ownerId.unique.error']
             }
         }
