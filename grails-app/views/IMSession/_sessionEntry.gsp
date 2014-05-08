@@ -1,8 +1,8 @@
 <%@ page import="com.ig.intellimeet.User" %>
 <h1>
-    <im:ifLoggedInUsername username="${imSession?.ownersEmail}">
+    <im:canEdit imSession="${imSession}" >
         <g:link controller="IMSession" action="edit" id="${imSession?.id}"><i class="glyphicon glyphicon-pencil"></i></g:link>&nbsp;
-    </im:ifLoggedInUsername>
+    </im:canEdit>
 
     <a href="${createLink(controller: 'IMSession', action: 'show', id: imSession?.id)}">${imSession?.title}</a>
 </h1>

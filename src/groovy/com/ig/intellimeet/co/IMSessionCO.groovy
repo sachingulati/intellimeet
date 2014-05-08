@@ -33,6 +33,7 @@ class IMSessionCO {
         }
         title blank: false
         description blank: false
+        copresenterId nullable: true
         minCapacity nullable: true, min: 4
         maxCapacity nullable: true, min: 5, validator: {val, obj ->
             return (val >= obj.minCapacity)
