@@ -45,11 +45,11 @@
 
             <td>${fieldValue(bean: userPreferenceInstance, field: "emailAddress")}</td>
 
-            <td>${fieldValue(bean: userPreferenceInstance, field: "firstPreferredSessionTitle")}</td>
+            <td>${UserPreference.findSessionTitleByIdAndIntelliMeetId(userPreferenceInstance.firstPreferredSessionId,userPreferenceInstance.intelliMeetId)}</td>
 
-            <td>${fieldValue(bean: userPreferenceInstance, field: "secondPreferredSessionTitle")}</td>
+            <td>${UserPreference.findSessionTitleByIdAndIntelliMeetId(userPreferenceInstance.secondPreferredSessionId,userPreferenceInstance.intelliMeetId)}</td>
 
-            <td>${fieldValue(bean: userPreferenceInstance, field: "thirdPreferredSessionTitle")}</td>
+            <td>${UserPreference.findSessionTitleByIdAndIntelliMeetId(userPreferenceInstance.thirdPreferredSessionId,userPreferenceInstance.intelliMeetId)}</td>
 
             <td><g:formatDate date="${userPreferenceInstance.dateCreated}"/></td>
 

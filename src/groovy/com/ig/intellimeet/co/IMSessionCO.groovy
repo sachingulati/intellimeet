@@ -17,6 +17,8 @@ class IMSessionCO {
 
     List <Long> ownerIds
 
+    List<Integer> attendeeIds
+
     Date dateCreated
     Date lastUpdated
 

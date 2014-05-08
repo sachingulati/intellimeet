@@ -40,13 +40,13 @@
     </div>
 </div>
 
-<div class="form-group ${hasErrors(bean: userPreferenceInstance, field: 'firstPreferredSessionTitle', 'has-error')} ">
+<div class="form-group">
 	<label for="firstPreferredSessionTitle" class="col-sm-2 control-label">
 		<g:message code="userPreference.firstPreferredSessionTitle.label" default="First Preferred Session Title" />
 		
 	</label>
     <div class="col-sm-10">
-	    <p class="form-control-static">${fieldValue(bean: userPreferenceInstance, field: 'firstPreferredSessionTitle')}</p>
+	    <p class="form-control-static">${${UserPreference.findSessionTitleByIdAndIntelliMeetId(userPreferenceInstance.firstPreferredSessionId,userPreferenceInstance.intelliMeetId)}}</p>
     </div>
 </div>
 
@@ -70,23 +70,23 @@
     </div>
 </div>
 
-<div class="form-group ${hasErrors(bean: userPreferenceInstance, field: 'secondPreferredSessionTitle', 'has-error')} ">
+<div class="form-group ">
 	<label for="secondPreferredSessionTitle" class="col-sm-2 control-label">
 		<g:message code="userPreference.secondPreferredSessionTitle.label" default="Second Preferred Session Title" />
 		
 	</label>
     <div class="col-sm-10">
-	    <p class="form-control-static">${fieldValue(bean: userPreferenceInstance, field: 'secondPreferredSessionTitle')}</p>
+	    <p class="form-control-static">${${UserPreference.findSessionTitleByIdAndIntelliMeetId(userPreferenceInstance.secondPreferredSessionId,userPreferenceInstance.intelliMeetId)}}</p>
     </div>
 </div>
 
-<div class="form-group ${hasErrors(bean: userPreferenceInstance, field: 'thirdPreferredSessionTitle', 'has-error')} ">
+<div class="form-group ">
 	<label for="thirdPreferredSessionTitle" class="col-sm-2 control-label">
 		<g:message code="userPreference.thirdPreferredSessionTitle.label" default="Third Preferred Session Title" />
 		
 	</label>
     <div class="col-sm-10">
-	    <p class="form-control-static">${fieldValue(bean: userPreferenceInstance, field: 'thirdPreferredSessionTitle')}</p>
+	    <p class="form-control-static">${${UserPreference.findSessionTitleByIdAndIntelliMeetId(userPreferenceInstance.thirdPreferredSessionId,userPreferenceInstance.intelliMeetId)}}</p>
     </div>
 </div>
 

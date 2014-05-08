@@ -9,16 +9,15 @@ class UserPreference {
     Date dateCreated
     Date lastUpdated
 
+    Long purposedSessionId
+
     Long firstPreferredSessionId
     Long secondPreferredSessionId
     Long thirdPreferredSessionId
 
-    String firstPreferredSessionTitle
-    String secondPreferredSessionTitle
-    String thirdPreferredSessionTitle
-
     static constraints = {
         fullName nullable: true
+        purposedSessionId nullable: true
         firstPreferredSessionId validator: {val, obj->
             if(val == obj?.secondPreferredSessionId || val == obj?.thirdPreferredSessionId) {
                 return ['preference.unique.error']
@@ -38,17 +37,14 @@ class UserPreference {
 
     void setFirstPreferredSessionId(Long firstPreferredSessionId) {
         this.firstPreferredSessionId = firstPreferredSessionId
-        this.firstPreferredSessionTitle = findSessionTitleByIdAndIntelliMeetId(firstPreferredSessionId, intelliMeetId)
     }
 
     void setSecondPreferredSessionId(Long secondPreferredSessionId) {
         this.secondPreferredSessionId = secondPreferredSessionId
-        this.secondPreferredSessionTitle = findSessionTitleByIdAndIntelliMeetId(secondPreferredSessionId, intelliMeetId)
     }
 
     void setThirdPreferredSessionId(Long thirdPreferredSessionId) {
         this.thirdPreferredSessionId = thirdPreferredSessionId
-        this.thirdPreferredSessionTitle = findSessionTitleByIdAndIntelliMeetId(thirdPreferredSessionId, intelliMeetId)
     }
 
 
