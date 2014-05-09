@@ -30,16 +30,16 @@
                 <strong>Error!</strong> ${flash.message}.
             </div>
         </g:if>
-        <g:hasErrors bean="${intelliMeetInstance}">
+        <g:hasErrors bean="${intelliMeetCO}">
             <div class="alert alert-danger alert-dismissable">
                 <ul class="list-unstyled" role="alert">
-                    <g:eachError bean="${intelliMeetInstance}" var="error">
+                    <g:eachError bean="${intelliMeetCO}" var="error">
                         <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
                     </g:eachError>
                 </ul>
             </div>
         </g:hasErrors>
-		<g:form class="form-horizontal" url="[resource:intelliMeetInstance, action:'save']" >
+		<g:form class="form-horizontal" url="[resource:intelliMeetCO, action:'save']" >
         <g:render template="form"/>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">

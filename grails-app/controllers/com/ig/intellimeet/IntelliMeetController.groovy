@@ -1,5 +1,8 @@
 package com.ig.intellimeet
 
+import com.ig.intellimeet.co.IntelliMeetCO
+import com.ig.intellimeet.enums.IntelliMeetStatus
+import com.ig.intellimeet.enums.UserRoles
 import grails.plugin.springsecurity.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
@@ -8,6 +11,8 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 @Secured(['ROLE_ADMIN'])
 class IntelliMeetController {
+
+    IntelliMeetService intelliMeetService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -25,25 +30,52 @@ class IntelliMeetController {
     }
 
     @Transactional
-    def save(IntelliMeet intelliMeetInstance) {
-        if (intelliMeetInstance == null) {
+    def save(IntelliMeetCO intelliMeetCO) {
+        if (intelliMeetCO == null) {
             notFound()
             return
         }
 
-        if (intelliMeetInstance.hasErrors()) {
-            respond intelliMeetInstance.errors, view: 'create'
+        if (!intelliMeetCO.validate()) {
+            render view: 'create', model: [intelliMeetCO: intelliMeetCO]
             return
         }
 
-        intelliMeetInstance.save flush: true
+        IntelliMeet currentIntelliMeet = intelliMeetService.getCurrentIntelliMeet()
+
+        currentIntelliMeet.status = IntelliMeetStatus.IN_ACTIVE
+        currentIntelliMeet.save(flush: true, failOnError: true)
+
+        IntelliMeet intelliMeet = new IntelliMeet()
+        bindData(intelliMeet, intelliMeetCO)
+        intelliMeet.organizers = [intelliMeetCO.firstOwnerId]
+
+        //Revoking imsession role from all users
+        Role roleImOwner = Role.findByAuthority(UserRoles.ROLE_IM_OWNER.displayName);
+        Role roleUser = Role.findByAuthority(UserRoles.ROLE_USER.displayName)
+
+        List<UserRole> previousIntelliMeetOwners = UserRole.findAllByRole(roleImOwner)
+        println ("previousIntelliMeetOwners: ${previousIntelliMeetOwners.size()}" )
+        previousIntelliMeetOwners.each { UserRole userRole ->
+            UserRole.remove(userRole.user, userRole.role, true)
+        }
+
+        User firstOwner  = User.get(intelliMeetCO.firstOwnerId)
+        UserRole.create(firstOwner, roleImOwner, true)
+        if (intelliMeetCO.secondOwnerId) {
+            User secondOwner  = User.get(intelliMeetCO.secondOwnerId)
+            intelliMeet.organizers.add(intelliMeetCO.secondOwnerId)
+            UserRole.create(secondOwner, roleImOwner, true)
+        }
+
+        intelliMeet.save flush: true, failOnError: true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'intelliMeetInstance.label', default: 'IntelliMeet'), intelliMeetInstance.id])
-                redirect intelliMeetInstance
+                flash.message = message(code: 'default.created.message', args: [message(code: 'intelliMeetInstance.label', default: 'IntelliMeet'), intelliMeet.id])
+                redirect intelliMeet
             }
-            '*' { respond intelliMeetInstance, [status: CREATED] }
+            '*' { respond intelliMeet, [status: CREATED] }
         }
     }
 
