@@ -101,6 +101,7 @@ grails {
                 "mail.smtp.socketFactory.fallback":"false"]
     }
 }
+grails.mail.default.from = grails.mail.username
 
 environments {
     development {
