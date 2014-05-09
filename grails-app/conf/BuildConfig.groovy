@@ -69,6 +69,9 @@ grails.project.dependency.resolution = {
         // For google login
         compile ':spring-security-oauth:2.0.2'
         compile ":spring-security-oauth-google:0.2"
+        compile ':quartz:1.0.1'
+        compile ":mail:1.0.4"
+        compile ":asynchronous-mail:1.0"
 
         // plugins needed at runtime but not for compilation
         runtime ":hibernate:3.6.10.10" // or ":hibernate4:4.3.4"
