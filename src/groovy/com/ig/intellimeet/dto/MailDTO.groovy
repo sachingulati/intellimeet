@@ -1,6 +1,6 @@
 package com.ig.intellimeet.dto
 
-class Mail {
+class MailDTO {
 
     List<String> toList
     List<String> ccList

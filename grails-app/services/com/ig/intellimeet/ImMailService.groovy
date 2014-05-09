@@ -1,22 +1,22 @@
 package com.ig.intellimeet
 
-import com.ig.intellimeet.dto.Mail
+import com.ig.intellimeet.dto.MailDTO
 
 class ImMailService {
 
     def asynchronousMailService
 
-    def sendMail (Mail mail) {
+    def sendMail (MailDTO mailDto) {
         asynchronousMailService.sendMail {
-            to mail.toList
-            if(mail.ccList) {
-                cc mail.ccList
+            to mailDto.toList
+            if(mailDto.ccList) {
+                cc mailDto.ccList
             }
-            if (mail.bccList) {
-                bcc mail.bccList
+            if (mailDto.bccList) {
+                bcc mailDto.bccList
             }
-            subject mail.subject
-            html mail.body
+            subject mailDto.subject
+            html mailDto.body
         }
 
     }
