@@ -16,8 +16,8 @@
             <a class="navbar-brand" href="#"><g:message code="default.create.label" args="[entityName]"/></a>
         </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><g:link action="index"><span class="glyphicon glyphicon-list"></span>&nbsp;<g:message code="list.imSession.label" default="Session List"/></g:link></li>
-            <li><g:link controller="topic" action="index"><span class="glyphicon glyphicon-list"></span>&nbsp;<g:message code="list.topic.label" default="Topic List"/></g:link>
+            %{--<li><g:link action="index"><span class="fa fa-th-list"></span>&nbsp;<g:message code="list.imSession.label" default="Sessions"/></g:link></li>--}%
+            %{--<li><g:link controller="topic" action="index"><span class="fa fa-th-list"></span>&nbsp;<g:message code="list.topic.label" default="Topics"/></g:link>--}%
             </li>
         </ul>
     </div>
@@ -55,7 +55,27 @@
     </g:form>
 </div>
     <r:script>
-    markAsActive("session");
+        markAsActive("session");
+
+        $('.numeric').keypress(function(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            //console.log(charCode);
+            if (charCode < 48 || charCode > 57) {
+                return false;
+            }
+            return true;
+
+        });
+
+        $('.minCapacity').change(function() {
+            var minValue = parseInt($(this).val());
+            var maxValue = parseInt($('.maxCapacity').val());
+
+            if (minValue > maxValue) {
+                $('.maxCapacity').val(minValue);
+            }
+        });
+
     </r:script>
 </body>
 </html>

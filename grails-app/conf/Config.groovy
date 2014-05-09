@@ -112,7 +112,7 @@ environments {
         }
 
     }
-    test {
+    qa {
         grails.logging.jul.usebridge = false
         grails.serverURL = "http://intellimeet.qa3.intelligrape.net"
 

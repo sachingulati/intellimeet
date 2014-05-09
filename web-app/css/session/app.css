@@ -1,0 +1,63 @@
+/* line 1, ../../sass/session/app.scss */
+body {
+  padding-top: 100px;
+}
+
+/* line 5, ../../sass/session/app.scss */
+.bs-docs-sidebar.affix {
+  width: 340px;
+  top: 100px;
+}
+
+/* line 10, ../../sass/session/app.scss */
+.entry .desc {
+  padding: 15px 0;
+}
+
+/* line 14, ../../sass/session/app.scss */
+.entry .session-entry {
+  padding: 20px 30px 20px 0;
+  border-top: 1px solid #E6E6E6;
+  border-bottom: 1px solid #E6E6E6;
+  font-size: 15px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+/* line 24, ../../sass/session/app.scss */
+#sidebar-categories li a {
+  text-transform: capitalize;
+}
+
+/* line 28, ../../sass/session/app.scss */
+.entry:not(:first-child) {
+  padding-top: 20px;
+}
+
+/* line 32, ../../sass/session/app.scss */
+.entry .desc {
+  padding: 15px 0;
+}
+
+/* line 36, ../../sass/session/app.scss */
+.entry .session-entry {
+  padding: 15px 30px 15px 0;
+  border-top: 1px solid #E6E6E6;
+  border-bottom: 1px solid #E6E6E6;
+  font-size: 15px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+/* line 46, ../../sass/session/app.scss */
+.attendee-list li {
+  width: 33.33%;
+  float: left;
+}
+
+/* line 51, ../../sass/session/app.scss */
+ol.attendee-list {
+  overflow: hidden;
+  list-style-type: decimal;
+  padding: 20px;
+}

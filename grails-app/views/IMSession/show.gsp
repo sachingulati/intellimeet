@@ -15,7 +15,7 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li><g:link action="create"><g:message code="default.new.label" args="[entityName]"/></g:link></li>
-            <li><g:link action="index"><g:message code="default.list.label" args="[entityName]"/></g:link></li>
+            %{--<li><g:link action="index"><g:message code="default.list.label" args="[entityName]"/></g:link></li>--}%
         </ul>
     </div>
 </nav>
@@ -34,10 +34,14 @@
         </div>
     </g:if>
 
-    <h1><g:link controller="IMSession" action="edit" id="${IMSessionInstance?.id}"><i class="glyphicon glyphicon-pencil"></i></g:link>&nbsp;${IMSessionInstance?.title}
+    <h1>
+        <im:canEdit imSession="${IMSessionInstance}">
+            <g:link controller="IMSession" action="edit" id="${IMSessionInstance?.id}"><i class="glyphicon glyphicon-pencil"></i></g:link>
+        </im:canEdit>
+    &nbsp;${IMSessionInstance?.title}
     </h1>
 
-    <p class="lead">owned by <a href="#">${IMSessionInstance?.ownersEmail?.join(", ")}</a>
+    <p class="lead">owned by <a href="#">${IMSessionInstance?.ownersEmail} </a>
     </p>
     <hr>
 
@@ -49,7 +53,7 @@
         </div>
         <div class="col-lg-6">
             <p>Status: ${fieldValue(bean: IMSessionInstance, field: 'sessionStatus')}</p>
-            <p>Min Cap: ${fieldValue(bean: IMSessionInstance, field: 'minCapacity')}, Max Cap: ${fieldValue(bean: IMSessionInstance, field: 'maxCapacity')}</p>
+            <p>Capacity: ${fieldValue(bean: IMSessionInstance, field: 'minCapacity')} - ${fieldValue(bean: IMSessionInstance, field: 'maxCapacity')} people</p>
         </div>
     </div>
     <hr>
@@ -58,15 +62,16 @@
     ${raw(IMSessionInstance?.description)}
     %{--<img src="http://placehold.it/900x300" class="img-responsive">--}%
     %{--<hr>--}%
-    <h4 style="text-transform: uppercase;">List of Attendees:</h4>
+    <g:if test="${IMSessionInstance?.attendeesEmails}" >
+        <h4 style="text-transform: uppercase;">List of Attendees:</h4>
+        <ul class="list-unstyled">
+            <g:each in="${IMSessionInstance?.attendeesEmails?.sort()}" var="attendeeEmail">
+                <li><span class="fa fa-angle-double-right"></span>&nbsp;${attendeeEmail}</li>
+            </g:each>
+        </ul>
 
-    <ul class="list-unstyled">
-        <g:each in="${IMSessionInstance?.attendeesEmails}" var="attendeeEmail">
-            <li><span class="fa fa-angle-double-right"></span>&nbsp;${attendeeEmail}</li>
-        </g:each>
-    </ul>
-
-    <br/>
+        <br/>
+    </g:if>
 
 </div>
 </body>

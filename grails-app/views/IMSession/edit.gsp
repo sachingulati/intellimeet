@@ -15,10 +15,10 @@
             <div class="navbar-header">
                 <a href="#" class="navbar-brand"><g:message code="default.edit.label" args="[entityName]" /></a>
             </div>
-            <ul class="nav navbar-nav navbar-right">
-                <li><g:link action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-                <li><g:link action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-            </ul>
+            %{--<ul class="nav navbar-nav navbar-right">--}%
+                %{--<li><g:link action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>--}%
+                %{--<li><g:link action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>--}%
+            %{--</ul>--}%
         </div>
     </nav>
 	<div id="edit-IMSession" class="container" role="main">

@@ -5,18 +5,18 @@
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'imSession.label', default: 'Session')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
-    <r:require modules="topic,block_ui"/>
+    <r:require modules="session,block_ui"/>
 </head>
 
 <body>
 <a href="#list-topic" class="sr-only" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
-<div class="container" id="list-topic">
+<div class="container" id="list-session">
 
     <div class="row">
         <div class="col-lg-8 searchable">
             <g:each in="${IMSessionInstanceList}" var="imSession" status="index">
-                <div>
+                <div class="entry">
                     <div id="imSession${index}" class="session zone"></div>
                     <g:render template="sessionEntry" model="[imSession: imSession, index: index]"/>
                     <hr/>
@@ -27,7 +27,7 @@
 
         <div class="col-lg-4">
 
-            <div class="well">
+            <div class="well sidebar-search">
 
                 <h4><g:message code="session.sidebar.search.label" default="Session Search" /></h4>
 
@@ -51,7 +51,7 @@
                         <li><a href="#imSession${index}">${fieldValue(bean: imSession, field: 'title')}</a></li>
                     </g:each>
                 </ul>
-                <a class="back-to-top" href="#list-topic"><g:message code="back.top.label" default="Back to top"/></a>
+                <a class="back-to-top" href="#list-session"><g:message code="back.top.label" default="Back to top"/></a>
             </div>
             <!-- /well -->
         </div>
