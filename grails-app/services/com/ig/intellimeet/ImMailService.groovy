@@ -5,10 +5,12 @@ import com.ig.intellimeet.dto.MailDTO
 class ImMailService {
 
     def asynchronousMailService
+    def grailsApplication
 
     def sendMail (MailDTO mailDto) {
         asynchronousMailService.sendMail {
-            to mailDto.toList
+            to mailDto.to
+            from fromAddress
             if(mailDto.ccList) {
                 cc mailDto.ccList
             }
@@ -19,5 +21,9 @@ class ImMailService {
             html mailDto.body
         }
 
+    }
+
+    String getFromAddress() {
+        grailsApplication?.config?.grails?.mail?.username
     }
 }
