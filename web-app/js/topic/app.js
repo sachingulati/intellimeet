@@ -124,6 +124,12 @@ $(function () {
     }
     });
 
+    $(".editClick").click(function (e) {
+        e.stopPropagation();
+        var id = $(this).attr('id');
+        $('.'+id).editable('toggle');
+    });
+
 });
 
 var searchInTopics = function (input) {
