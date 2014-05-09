@@ -1,5 +1,6 @@
 package com.ig.intellimeet
 
+import com.ig.intellimeet.enums.SessionStatus
 import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
@@ -10,8 +11,16 @@ class SurveyController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def session() {
+    def intelliMeetService
+    def userPreferenceService
 
+    def session() {
+        Boolean hasFilledPreferences = userPreferenceService.hasFilledPreferences()
+        if(hasFilledPreferences) {
+            [hasFilledPreferences: hasFilledPreferences]
+            return
+        }
+        [sessions: IMSession.findAllByIntelliMeetIdAndSessionStatus(intelliMeetService?.currentIntelliMeetId, SessionStatus.PROPOSED), hasFilledPreferences: hasFilledPreferences]
     }
 
     def template() {
