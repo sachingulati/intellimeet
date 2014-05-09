@@ -1,9 +1,7 @@
 package com.ig.intellimeet
 
 import com.ig.intellimeet.dto.Mail
-/**
- * Created by behl on 5/8/14.
- */
+
 class ImMailService {
 
     def asynchronousMailService
