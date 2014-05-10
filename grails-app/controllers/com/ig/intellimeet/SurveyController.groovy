@@ -1,17 +1,27 @@
 package com.ig.intellimeet
-
+import com.ig.intellimeet.enums.SessionStatus
+import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
 
 @Transactional(readOnly = true)
-//@Secured(['ROLE_IM_OWNER'])
+@Secured(['ROLE_IM_OWNER'])
 class SurveyController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def session() {
+    def intelliMeetService
+    def userPreferenceService
 
+    @Secured('ROLE_USER')
+    def session() {
+        Boolean hasFilledPreferences = userPreferenceService.hasFilledPreferences()
+        if(hasFilledPreferences) {
+            render view: '/survey/thankyou'
+            return
+        }
+        [sessions: IMSession.findAllByIntelliMeetIdAndSessionStatus(intelliMeetService?.currentIntelliMeetId, SessionStatus.PROPOSED), hasFilledPreferences: hasFilledPreferences]
     }
 
     def template() {
