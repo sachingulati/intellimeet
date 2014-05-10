@@ -66,20 +66,15 @@
 <div id="survey_container">
 
     <div id="top-wizard">
-        <g:if test="${hasFilledPreferences}">
-            <strong></strong>
-        </g:if>
-        <g:else>
             <strong>Progress <span id="location"></span></strong>
 
             <div id="progressbar"></div>
 
             <div class="shadow"></div>
-        </g:else>
     </div>
 <!-- end top-wizard -->
 
-    <g:form name="example-1" id="wrapped" controller="userPreference" action="save" method="POST">
+    <g:form name="example-1" controller="userPreference" action="save" method="POST">
         <div id="middle-wizard">
             <div class="step row">
                 <div class="col-md-10">
@@ -135,8 +130,10 @@
         <!-- end middle-wizard -->
 
         <div id="bottom-wizard">
+
             <button type="button" name="backward" class="backward">Backward</button>
             <button type="button" name="forward" class="forward">Forward</button>
+
         </div>
         <!-- end bottom-wizard -->
     </g:form>
