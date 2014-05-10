@@ -143,7 +143,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h2>Thank you for your time<span>This help us to improve our service and customer satisfaction.</span></h2>
+        <h2>Thank you for your time<span>This help us to improve our service and your satisfaction.</span></h2>
     </div>
 </div>
 <!-- end row -->
@@ -159,7 +159,7 @@
             Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id.
             No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.
         </p>
-        <a href="#" title="read more" class="button_medium_2">Read more</a>
+        %{--<a href="#" title="read more" class="button_medium_2">Read more</a>--}%
     </div>
 
     <div class="col-md-4 col-sm-4 add_bottom_30 box">
@@ -168,10 +168,9 @@
         <h3>Useful survey data</h3>
 
         <p>
-            Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id.
-            No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.
+            We continuously send surveys for all the sessions and the organizers which helps us improve the quality of IntelliMeet. In addition to this we also conduct surveys to collect preferences of attendees to help decide sessions.
         </p>
-        <a href="#" title="read more" class="button_medium_2">Read more</a>
+        %{--<a href="#" title="read more" class="button_medium_2">Read more</a>--}%
     </div>
 
     <div class="col-md-4 col-sm-4 add_bottom_30 box">
@@ -183,7 +182,7 @@
             Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id.
             No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.
         </p>
-        <a href="#" title="read more" class="button_medium_2">Read more</a>
+        %{--<a href="#" title="read more" class="button_medium_2">Read more</a>--}%
     </div>
 
 </div>
@@ -193,7 +192,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h3>About us<span>This help us to improve our service and customer satisfaction.</span></h3>
+        <h3>About us<span>With a collective experience of more than 750 years between our team across 6 technologies, we are more than technology enablers. We are innovators.</span></h3>
     </div>
 </div>
 <!-- end row -->
@@ -203,11 +202,12 @@
     <div class="col-md-6">
         <h4>Our History</h4>
 
-        <p>
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-            condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-            Donec sed odio dui.
-        </p>
+        <p>IntelliGrape is an agile off-shore development company renowned for quality custom web application development on open source frameworks like Grails.
+
+        It was founded in June 2008. It was started primarily as a Grails development house and has diversified its expertize to mobile application development using PhoneGap, e-commerce solutions using Magento and CMS driven solutions in Magnolia, Drupal etc.
+
+        IntelliGrape follows Agile methodologies for its work. It offers in-house training programmes as well as corporate trainings in domains of its expertize.
+        In December 2011, IntelliGrape became a part of To The New, a digital media solutions provider.</p>
         <h4>Our Vision</h4>
 
         <p>To be the world's most trusted and preferred partner for building mission critical applications and cloud
@@ -216,12 +216,12 @@
 
     <div class="col-md-3">
         <div class="thumbnail">
-            <div class="project-item-image-container"><img src="http://www.ansonika.com/annova/img/team_1.jpg" alt=""/>
+            <div class="project-item-image-container"><img src="${resource(dir: 'images/team', file: 'dm.png')}" alt=""/>
             </div>
 
             <div class="caption">
                 <div class="transit-to-top">
-                    <h4 class="p-title">Patricia Doe
+                    <h4 class="p-title">Deepak Mittal
                         <small>CEO</small>
                     </h4>
 
@@ -234,7 +234,7 @@
                         </ul>
 
                         <div class="phone-info"><i class="icon-phone-sign"></i> + 4 (123) 456-7890</div>
-                    </div>
+                    </div>1
                     <!-- transition top -->
                 </div>
                 <!-- caption -->
@@ -246,13 +246,13 @@
     <div class="col-md-3">
         <div class="thumbnail">
             <div class="project-item-image-container">
-                <img src="http://www.ansonika.com/annova/img/team_2.jpg" alt=""/>
+                <img src="${resource(dir: 'images/team', file: 'nk.png')}" alt=""/>
             </div>
 
             <div class="caption">
                 <div class="transit-to-top">
-                    <h4 class="p-title">Megan Fox
-                        <small>MANAGER</small>
+                    <h4 class="p-title">Narinder Kumar
+                        <small>VP</small>
                     </h4>
 
                     <div class="widget_nav_menu">
