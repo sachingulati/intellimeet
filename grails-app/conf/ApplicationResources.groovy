@@ -67,6 +67,18 @@ modules = {
         resource url: 'js/survey/functions.js'
     }
 
+    suvey_thankyou {
+        dependsOn 'jquery, bootstrap, font_awesome,html5, jquery_ui, modernizer, respond, jquery_tweet'
+        resource url: '/css/survey/style.css'
+        resource url: '/css/survey/thankyou.css'
+        resource url: '/css/survey/socialize-bookmarks.css'
+        resource url: '/css/survey/aero.css'
+    }
+
+    jquery_countdown {
+        resource url:'/js/jquery.countdown.min.js'
+    }
+
     html5 {
         resource url: 'http://html5shim.googlecode.com/svn/trunk/html5.js'
     }
