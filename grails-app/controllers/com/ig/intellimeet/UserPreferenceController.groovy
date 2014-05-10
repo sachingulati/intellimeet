@@ -20,6 +20,8 @@ class UserPreferenceController {
         if(!userPreferenceCO?.hasErrors()) {
             UserPreference userPreference  = userPreferenceService.extractUserPreference(userPreferenceCO)
             userPreferenceService.save userPreference
+            render view:'/survey/thankyou'
+            return
         }
     }
 }
