@@ -82,7 +82,7 @@
                     <ul class="data-list-2">
                         <g:each in="${sessions}" var="session">
                             <li><input name="firstPreferredSessionId" type="radio" class="required check_radio"
-                                       value="0"><label>${session?.title} by ${session?.ownersEmail}</label></li>
+                                       value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail}</label></li>
                         </g:each>
                     </ul>
                 </div>
@@ -96,7 +96,7 @@
                     <ul class="data-list-2">
                         <g:each in="${sessions}" var="session">
                             <li><input name="secondPreferredSessionId" type="radio" class="required check_radio"
-                                       value="0"><label>${session?.title} by ${session?.ownersEmail}</label></li>
+                                       value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail}</label></li>
                         </g:each>
                     </ul>
                 </div>
@@ -110,7 +110,7 @@
                     <ul class="data-list-2">
                         <g:each in="${sessions}" var="session">
                             <li><input name="thirdPreferredSessionId" type="radio" class="required check_radio"
-                                       value="0"><label>${session?.title} by ${session?.ownersEmail}</label></li>
+                                       value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail}</label></li>
                         </g:each>
                     </ul>
                 </div>
