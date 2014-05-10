@@ -19,18 +19,18 @@ class UserPreference {
 
     static constraints = {
         fullName nullable: true
-        firstPreferredSessionId validator: {val, obj->
-            if(val == obj?.secondPreferredSessionId || val == obj?.thirdPreferredSessionId) {
+        firstPreferredSessionId validator: { val, obj ->
+            if (val == obj?.secondPreferredSessionId || val == obj?.thirdPreferredSessionId) {
                 return ['preference.unique.error']
             }
         }
-        secondPreferredSessionId validator: {val, obj->
-            if(val == obj?.firstPreferredSessionId || val == obj?.thirdPreferredSessionId) {
+        secondPreferredSessionId validator: { val, obj ->
+            if (val == obj?.firstPreferredSessionId || val == obj?.thirdPreferredSessionId) {
                 return ['preference.unique.error']
             }
         }
-        thirdPreferredSessionId validator: {val, obj->
-            if(val == obj?.firstPreferredSessionId || val == obj?.secondPreferredSessionId) {
+        thirdPreferredSessionId validator: { val, obj ->
+            if (val == obj?.firstPreferredSessionId || val == obj?.secondPreferredSessionId) {
                 return ['preference.unique.error']
             }
         }
@@ -58,6 +58,14 @@ class UserPreference {
 
     void setUserId(Long userId) {
         this.userId = userId
-        this.emailAddress  = User.findById(userId)?.username
+        this.emailAddress = User.get(userId)?.username
+    }
+
+    Boolean checkIfAlreadyOpted(Long sessionId) {
+        Boolean isOpted = false
+        if (this.firstPreferredSessionId == sessionId || this.secondPreferredSessionId == sessionId || this.thirdPreferredSessionId == sessionId) {
+            isOpted = true
+        }
+        isOpted
     }
 }
