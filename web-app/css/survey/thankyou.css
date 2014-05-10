@@ -1,0 +1,17 @@
+/* line 1, ../../sass/survey/thankyou.scss */
+#main {
+  padding: 60px 0;
+}
+
+/* line 4, ../../sass/survey/thankyou.scss */
+#countdown {
+  font-size: 48px;
+  color: #FFF;
+  line-height: 1.1em;
+  margin: 40px 0px 60px;
+}
+
+/* line 10, ../../sass/survey/thankyou.scss */
+.wrap-cd {
+  text-align: center;
+}
