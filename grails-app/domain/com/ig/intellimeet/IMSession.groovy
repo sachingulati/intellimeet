@@ -2,6 +2,7 @@ package com.ig.intellimeet
 
 import com.ig.intellimeet.embedded.Feedback
 import com.ig.intellimeet.enums.SessionStatus
+import com.mongodb.DBCollection
 
 class IMSession {
 
@@ -45,6 +46,12 @@ class IMSession {
 
     static mapping = {
         description type:"text"
+    }
+
+    static IMSession findSessionAllocated(Long userId) {
+        DBCollection imSessionCollection = IMSession.collection
+        IMSession sessionAllocated = imSessionCollection?.findOne(['attendees': userId]) as IMSession
+        sessionAllocated
     }
 
     List<String> getAttendeesEmails() {
