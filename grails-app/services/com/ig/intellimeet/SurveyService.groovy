@@ -8,6 +8,7 @@ class SurveyService {
 
     def imMailService
     def intelliMeetService
+    def grailsLinkGenerator
 
     def sendSurveyEmail(Survey survey) {
         survey?.recipients?.each {SurveyRecipientInfo surveyRecipientInfo->
@@ -29,10 +30,10 @@ class SurveyService {
 
 
     String getSubjectForPreferenceEmail() {
-        Survey.SAMPLE_SURVEY_SUBJECT_FOR_SESSION_PREFERENCE
+        Survey.SAMPLE_SURVEY_SUBJECT_FOR_SESSION_PREFERENCE?.replace('[date]', intelliMeetService?.currentIntelliMeet?.dateOfEvent?.format("MMM dd, yyyy"))
     }
 
     String getMessageForPreferenceEmail() {
-        Survey.SAMPLE_SURVEY_MESSAGE_FOR_SESSION_PREFERENCE
+        Survey.SAMPLE_SURVEY_MESSAGE_FOR_SESSION_PREFERENCE?.replace('[SurveyLink]',grailsLinkGenerator.link(controller: 'survey', action: 'session', absolute: true))
     }
 }
