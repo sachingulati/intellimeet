@@ -72,206 +72,260 @@
 <!-- Start Survey container -->
 <div id="survey_container">
 
-    <div id="top-wizard">
-        <strong>Progress <span id="location"></span></strong>
+<div id="top-wizard">
+    <strong>Progress <span id="location"></span></strong>
 
-        <div id="progressbar"></div>
+    <div id="progressbar"></div>
 
-        <div class="shadow"></div>
+    <div class="shadow"></div>
+</div>
+<!-- end top-wizard -->
+
+<form name="example-1" id="wrapped" action="survey_send_1.php" method="POST">
+<div id="middle-wizard">
+<div class="step row">
+    <div class="col-md-10">
+        <h3>Did the session went as per schedule?</h3>
+        <ul class="data-list-2">
+            <li><input name="rate" type="checkbox" class="required check_radio" value="0"><label>Session went as per schedule</label></li>
+            <li><input name="rate" type="checkbox" class="required check_radio" value="1"><label>Session started late as session Owner was late</label></li>
+            <li><input name="rate" type="checkbox" class="required check_radio"
+                       value="2"><label>Session started late as some attendees were late / absent without notification (Please specify late comers/ absentees)</label>
+            </li>
+            <li><input name="rate" type="checkbox" class="required check_radio"
+                       value="3"><label>Session started late because of inadequate Infrastructure / Others (Please specify unavailable items)</label></li>
+            <li><strong>Comments (If Any), please describe with few words</strong><textarea name="message_suggest_no" class="form-control"></textarea></li>
+        </ul>
     </div>
-    <!-- end top-wizard -->
-
-    <form name="example-1" id="wrapped" action="survey_send_1.php" method="POST">
-        <div id="middle-wizard">
-            <div class="step row">
-                <div class="col-md-10">
-                    <h3>How would you rate the content quality of the session?</h3>
-                    <ul class="data-list-2">
-                        <li><input name="rate" type="radio" class="required check_radio" value="0"><label>Below
-                        Average</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="1"><label>Pretty
-                        Average</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="2"><label>Good</label>
-                        </li>
-                        <li><input name="rate" type="radio" class="required check_radio"
-                                   value="3"><label>Excellent</label></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- end step -->
+</div>
+<!-- end step -->
 
 
-            <div class="step row">
-                <div class="col-md-10">
-                    <h3>How would you rate the session based on the value addition to your knowledge?</h3>
-                    <ul class="data-list-2">
-                        <li><input name="rate" type="radio" class="required check_radio" value="0"><label>The session
-                        was rather confusing than enhancing knowledge.</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="1"><label>There was
-                        nothing new to learn.</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="2"><label>There were few
-                        new things that I learnt from this session.</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3 Satisfied"><label>I
-                        feel I learnt a lot of new things during the session.</label></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- end step -->
+<div class="step row">
+    <div class="col-md-10">
+        <h3>How would you rate the content quality of the session?</h3>
+        <ul class="data-list-2">
+            <li><input name="rate" type="radio" class="required check_radio" value="0"><label>Content was below average.</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="1"><label>Content was pretty average.</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="2"><label>Content was good and did justice to the topic.</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="3 Satisfied"><label>Content was simply superb. I can refer to it anytime.</label></li>
+            <li><strong>Comments (If Any), please describe with few words</strong><textarea name="message_suggest_no" class="form-control"></textarea></li>
+        </ul>
+    </div>
+</div>
+<!-- end step -->
 
 
-            <div class="step row">
-                <div class="col-md-10">
-                    <h3>Do you feel motivated enough to revisit the topic again on your own?</h3>
-                    <ul class="data-list-2">
-                        <li><input name="rate" type="radio" class="required check_radio" value="0"><label>No, I am
-                        rather confused to look at this again.</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="1"><label>May be some
-                        time, when I feel I can't do without this.</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="2"><label>Yes, I would
-                        like to explore it.</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3 Satisfied"><label>Of
-                        course, I feel an itch to explore it at the earliest.</label></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- end step -->
+<div class="step row">
+    <div class="col-md-10">
+        <h3>Was the presenter able to interact well and involve the audience in the session?</h3>
+        <ul class="data-list-2">
+            <li><input name="rate" type="radio" class="required check_radio"
+                       value="0"><label>He/She was more interested in presenting the things rather than involving the audience.</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="1"><label>Presenter tried to involve the audience but it was not just good enough.</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="2"><label>The presenter was able to interact with only some people.</label></li>
+            <li><input name="rate" type="radio" class="required check_radio"
+                       value="3 Satisfied"><label>The presenter was able to interact with almost everyone and kept the interest alive.</label></li>
+            <li><strong>Comments (If Any), please describe with few words</strong><textarea name="message_suggest_no" class="form-control"></textarea></li>
+        </ul>
+    </div>
+</div>
+<!-- end step -->
 
-            <div class="step row">
-                <div class="col-md-10">
-                    <h3>Given the time that the presenter had, was he able to give enough time to all the topics that
-                    were covered?</h3>
-                    <ul class="data-list-2">
-                        <li><input name="rate" type="radio" class="required check_radio" value="0"><label>Did not
-                        justify the time given.</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="1"><label>Could have
-                        been better.</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="2"><label>It was well
-                        planned.</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3 Satisfied"><label>It
-                        was intricately well planned, managed and executed.</label></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- end step -->
+<div class="step row">
+    <div class="col-md-10">
+        <h3>How would you rate the session based on the value addition to your knowledge?</h3>
+        <ul class="data-list-2">
+            <li><input name="rate" type="radio" class="required check_radio" value="0"><label>The session was rather confusing than enhancing knowledge.</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="1"><label>There was nothing new to learn.</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="2"><label>There were few new things that I learnt from this session.</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="3 Satisfied"><label>I feel I learnt a lot of new things during the session.</label></li>
+            <li><strong>Comments (If Any), please describe with few words</strong><textarea name="message_suggest_no" class="form-control"></textarea></li>
+        </ul>
+    </div>
+</div>
+<!-- end step -->
 
-            <div class="step row">
-                <div class="col-md-10">
-                    <h3>Was the presenter able to interact well and involve the audience in the session?</h3>
-                    <ul class="data-list-2">
-                        <li><input name="rate" type="radio" class="required check_radio" value="0"><label>He/She was
-                        more interested in presenting the things rather than involving the audience.</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="1"><label>Presenter
-                        tried to involve the audience but it was not just good enough.</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="2"><label>The presenter
-                        was able to interact with only some people.</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3 Satisfied"><label>The
-                        presenter was able to interact with almost everyone and kept the interest alive.</label>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- end step -->
+<div class="step row">
+    <div class="col-md-10">
+        <h3>Was the presenter able to interact well and involve the audience in the session?</h3>
+        <ul class="data-list-2">
+            <li><input name="rate" type="radio" class="required check_radio" value="0"><label>He/She was
+            more interested in presenting the things rather than involving the audience.</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="1"><label>Presenter
+            tried to involve the audience but it was not just good enough.</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="2"><label>The presenter
+            was able to interact with only some people.</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="3 Satisfied"><label>The
+            presenter was able to interact with almost everyone and kept the interest alive.</label>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- end step -->
 
-            <div class="step row">
-                <div class="col-md-10">
-                    <h3>How do you feel after attending this session?</h3>
-                    <ul class="data-list-2">
-                        <li><input name="rate" type="radio" class="required check_radio" value="0"><label>I think I've
-                        wasted my time and deeply regret coming to this session.</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="1"><label>I felt like
-                        it was just another day.</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="2"><label>The session
-                        was good and I'm happy that I attended it.</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3 Satisfied"><label>The
-                        session was amazing and I feel I would have missed something exciting if I had not attended
-                        it.</label></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- end step -->
+<div class="step row">
+    <div class="col-md-10">
+        <h3>How do you feel after attending this session?</h3>
+        <ul class="data-list-2">
+            <li><input name="rate" type="radio" class="required check_radio" value="0"><label>I think I've
+            wasted my time and deeply regret coming to this session.</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="1"><label>I felt like
+            it was just another day.</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="2"><label>The session
+            was good and I'm happy that I attended it.</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="3 Satisfied"><label>The
+            session was amazing and I feel I would have missed something exciting if I had not attended
+            it.</label></li>
+            <li><strong>Comments (If Any), please describe with few words</strong><textarea name="message_suggest_no" class="form-control"></textarea></li>
+        </ul>
+    </div>
+</div>
+<!-- end step -->
 
-            <div class="step row">
-                <div class="col-md-10">
-                    <h3>Do you think this session should be repeated and you could own this in future?</h3>
-                    <ul class="data-list-2 clearfix">
-                        <li><input name="question_2" type="radio" class="required check_radio"
-                                   value="No"><label>No</label></li>
-                        <li><input name="question_2" type="radio" class="required check_radio" value="Maybe"><label>Maybe</label>
-                        </li>
-                        <li><input name="question_2" type="radio" class="required check_radio" value="Probably"><label>Probably</label>
-                        </li>
-                        <li><input name="question_2" type="radio" class="required check_radio" value="100% Sure"><label>100%
-                        Sure</label></li>
-                        <li><strong>In no, please describe with few words why</strong><textarea
-                                name="message_suggest_no" class="form-control"></textarea></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- end step -->
+<div class="step row">
+    <div class="col-md-10">
+        <h3>What is your overall satisfaction from the session?</h3>
+        <ul class="data-list-2 clearfix">
+            <li><input name="question_2" type="radio" class="required check_radio" value="1"><label>1</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="2"><label>2</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="3"><label>3</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="4"><label>4</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="5"><label>5</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="6"><label>6</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="7"><label>7</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="8"><label>8</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="9"><label>9</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="10"><label>1o</label></li>
+            <li><strong>Comments (If Any), please describe with few words</strong><textarea name="message_suggest_no" class="form-control"></textarea></li>
+        </ul>
+    </div>
+</div>
+<!-- end step -->
 
-            <div class="step row">
-                <div class="col-md-10">
-                    <h3>Please rate your overall satisfaction with IntelliMeet orgranizers.</h3>
-                    <ul class="data-list-2">
-                        <li><input name="rate" type="radio" class="required check_radio" value="Not Satisfied"><label>Not
-                        Satisfied</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="Quite Satisfied"><label>Quite
-                        Satisfied</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="Satisfied"><label>Satisfied</label>
-                        </li>
-                        <li><input name="rate" type="radio" class="required check_radio"
-                                   value="Completely Satisfied"><label>Completely Satisfied</label></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- end step -->
+<div class="step row">
+    <div class="col-md-10">
+        <h3>*7. How satisfied are you with session allocation (Session agenda was clear to me before making preference. I was allotted session as per my preference / I was consulted while deviating from my preferences)</h3>
+        <ul class="data-list-2">
+            <li><input name="rate" type="radio" class="required check_radio" value="Not Satisfied"><label>Below Average</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="Quite Satisfied"><label>Average</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="Satisfied"><label>Good</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="Completely Satisfied"><label>Fully Satisfied</label></li>
+            <li><strong>Comments (If Any), please describe with few words</strong><textarea name="message_suggest_no" class="form-control"></textarea></li>
+        </ul>
+    </div>
+</div>
+<!-- end step -->
 
-            <div class="step row">
-                <div class="col-md-10">
-                    <h3>Are you satisfied with the session allotted to you?</h3>
-                    <ul class="data-list-2">
-                        <li><input name="rate" type="radio" class="required check_radio" value="Not Satisfied"><label>Not
-                        Satisfied</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="Quite Satisfied"><label>Quite
-                        Satisfied</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="Satisfied"><label>Satisfied</label>
-                        </li>
-                        <li><input name="rate" type="radio" class="required check_radio"
-                                   value="Completely Satisfied"><label>Completely Satisfied</label></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- end step -->
+<div class="step row">
+    <div class="col-md-10">
+        <h3>How satisfied are you with variety of sessions?</h3>
+        <ul class="data-list-2">
+            <li><input name="rate" type="radio" class="required check_radio" value="Not Satisfied"><label>Below Average</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="Quite Satisfied"><label>Average</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="Satisfied"><label>Good</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="Completely Satisfied"><label>Fully Satisfied</label></li>
+            <li><strong>Comments (If Any), please describe with few words</strong><textarea name="message_suggest_no" class="form-control"></textarea></li>
+        </ul>
+    </div>
+</div>
+<!-- end step -->
 
+<div class="step row">
+    <div class="col-md-10">
+        <h3>What is your overall satisfaction from the session?</h3>
+        <ul class="data-list-2 clearfix">
+            <li><input name="question_2" type="radio" class="required check_radio" value="1"><label>1</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="2"><label>2</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="3"><label>3</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="4"><label>4</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="5"><label>5</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="6"><label>6</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="7"><label>7</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="8"><label>8</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="9"><label>9</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="10"><label>1o</label></li>
+            <li><strong>Comments (If Any), please describe with few words</strong><textarea name="message_suggest_no" class="form-control"></textarea></li>
+        </ul>
+    </div>
+</div>
 
-            <div class="step row">
-                <div class="col-md-10">
-                    <h3>Would you like to comment about food arrangements?</h3>
-                    <ul class="data-list-2">
-                        <li><strong>Please describe with few words</strong><textarea
-                                name="message_suggest_no" class="form-control"></textarea></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- end step -->
+<div class="step row">
+    <div class="col-md-10">
+        <h3>What is your satisfaction level from the seating arrangement (Seating space, chair's condition & availability, visibility of slides, white boards, etc.)?</h3>
+        <ul class="data-list-2">
+            <li><input name="rate" type="radio" class="required check_radio" value="Not Satisfied"><label>Below Average</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="Quite Satisfied"><label>Average</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="Satisfied"><label>Good</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="Completely Satisfied"><label>Fully Satisfied</label></li>
+            <li><strong>Comments (If Any), please describe with few words</strong><textarea name="message_suggest_no" class="form-control"></textarea></li>
+        </ul>
+    </div>
+</div>
 
-            <div class="submit step" id="complete">
-                <i class="fa fa-square-o"></i>
+<div class="step row">
+    <div class="col-md-10">
+        <h3>How would you rate the food arrangements for the day (Food/ snacks availability, quality, timings, seating space during lunch/ breaks, etc.)?</h3>
+        <ul class="data-list-2">
+            <li><input name="rate" type="radio" class="required check_radio" value="Not Satisfied"><label>Below Average</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="Quite Satisfied"><label>Average</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="Satisfied"><label>Good</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="Completely Satisfied"><label>Fully Satisfied</label></li>
+            <li><strong>Comments (If Any), please describe with few words</strong><textarea name="message_suggest_no" class="form-control"></textarea></li>
+        </ul>
+    </div>
+</div>
 
-                <h3>Survey complete! Thank you for you time.</h3>
-                <button type="submit" name="process" class="submit">Submit the survey</button>
-            </div>
-            <!-- end submit step -->
+<div class="step row">
+    <div class="col-md-10">
+        <h3>How would you rate the cab arrangement for the day (Cab punctuality, Seat availability, etc. )?</h3>
+        <ul class="data-list-2">
+            <li><input name="rate" type="radio" class="required check_radio" value="Not Satisfied"><label>Not applicable</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="Quite Satisfied"><label>Pathetic</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="Satisfied"><label>Bad</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="Completely Satisfied"><label>Good</label></li>
+            <li><input name="rate" type="radio" class="required check_radio" value="Completely Satisfied"><label>Excellent</label></li>
+            <li><strong>Comments (If Any), please describe with few words</strong><textarea name="message_suggest_no" class="form-control"></textarea></li>
+        </ul>
+    </div>
+</div>
 
-        </div>
-        <!-- end middle-wizard -->
+<div class="step row">
+    <div class="col-md-10">
+        <h3>What is your overall satisfaction from the arrangements?</h3>
+        <ul class="data-list-2 clearfix">
+            <li><input name="question_2" type="radio" class="required check_radio" value="1"><label>1</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="2"><label>2</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="3"><label>3</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="4"><label>4</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="5"><label>5</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="6"><label>6</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="7"><label>7</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="8"><label>8</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="9"><label>9</label></li>
+            <li><input name="question_2" type="radio" class="required check_radio" value="10"><label>1o</label></li>
+            <li><strong>Comments (If Any), please describe with few words</strong><textarea name="message_suggest_no" class="form-control"></textarea></li>
+        </ul>
+    </div>
+</div>
 
-        <div id="bottom-wizard">
-            <button type="button" name="backward" class="backward">Backward</button>
-            <button type="button" name="forward" class="forward">Forward</button>
-        </div>
-        <!-- end bottom-wizard -->
-    </form>
+<div class="submit step" id="complete">
+    <i class="fa fa-square-o"></i>
+
+    <h3>Survey complete! Thank you for you time.</h3>
+    <button type="submit" name="process" class="submit">Submit the survey</button>
+</div>
+<!-- end submit step -->
+
+</div>
+<!-- end middle-wizard -->
+
+<div id="bottom-wizard">
+    <button type="button" name="backward" class="backward">Backward</button>
+    <button type="button" name="forward" class="forward">Forward</button>
+</div>
+<!-- end bottom-wizard -->
+</form>
 
 </div>
 <!-- end Survey container -->

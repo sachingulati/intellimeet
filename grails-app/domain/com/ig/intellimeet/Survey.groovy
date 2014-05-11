@@ -43,15 +43,15 @@ class Survey {
         IntelliMeet.get(intelliMeetId)?.title
     }
 
-    static final String SAMPLE_SURVEY_MESSAGE_FOR_SESSION_PREFERENCE = """
-We are conducting a survey, and your response would be appreciated.
+    static final String SAMPLE_SURVEY_SUBJECT_FOR_SESSION_PREFERENCE ="Session Preference for IntelliMeet - [date]"
+    static final String SAMPLE_SURVEY_MESSAGE_FOR_SESSION_PREFERENCE = """<p>We are conducting a survey, and your response would be appreciated.</p>
 
-Here is a link to the survey:
+<p>Here is a link to the survey:<br/>
 [SurveyLink]
-
+</p>
+<p>
 This link is uniquely tied to this survey and your email address. Please do not forward this message.
-
-
+</p>
 Thanks for your participation!
 """
 }
