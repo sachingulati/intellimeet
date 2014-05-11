@@ -24,6 +24,7 @@ class SurveyController {
         [sessions: IMSession.findAllByIntelliMeetIdAndSessionStatus(intelliMeetService?.currentIntelliMeetId, SessionStatus.PROPOSED), hasFilledPreferences: hasFilledPreferences]
     }
 
+    @Secured('ROLE_USER')
     def template() {
     }
 
