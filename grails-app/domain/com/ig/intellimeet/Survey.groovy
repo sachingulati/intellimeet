@@ -43,6 +43,7 @@ class Survey {
         IntelliMeet.get(intelliMeetId)?.title
     }
 
+    static final String SAMPLE_SURVEY_SUBJECT_FOR_SESSION_PREFERENCE ="Session Preference for IntelliMeet - [date]"
     static final String SAMPLE_SURVEY_MESSAGE_FOR_SESSION_PREFERENCE = """
 We are conducting a survey, and your response would be appreciated.
 
