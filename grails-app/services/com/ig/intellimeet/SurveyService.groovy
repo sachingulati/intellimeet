@@ -9,20 +9,32 @@ class SurveyService {
     def imMailService
     def intelliMeetService
     def grailsLinkGenerator
+    def tokenService
+
+    Survey save(Survey survey) {
+        if(!survey?.validate() || !survey?.save(failOnError: true, flush: true)) {
+            log.error(survey?.errors?.allErrors?.join("\n"))
+            survey = null
+        }
+        survey
+    }
 
     def sendSurveyEmail(Survey survey) {
         survey?.recipients?.each {SurveyRecipientInfo surveyRecipientInfo->
-            sendSurveyEmail(surveyRecipientInfo?.email)
-            surveyRecipientInfo?.status = SurveyStatus.SENT
+            if(surveyRecipientInfo?.email && surveyRecipientInfo?.userId) {
+                sendSurveyEmail(surveyRecipientInfo?.userId, surveyRecipientInfo?.email)
+                surveyRecipientInfo?.status = SurveyStatus.SENT
+            }
         }
+        save(survey)
     }
 
-    def sendSurveyEmail(String emailAddress) {
-        if(emailAddress) {
+    def sendSurveyEmail(Long userId, String emailAddress) {
+        if(emailAddress && userId) {
             MailDTO mailDTO = new MailDTO()
             mailDTO.to = emailAddress
             mailDTO.subject = subjectForPreferenceEmail
-            mailDTO.body = messageForPreferenceEmail
+            mailDTO.body = getMessageForPreferenceEmail(userId)
             log.info("Sending preference email to ${mailDTO?.to}")
             imMailService.sendMail(mailDTO)
         }
@@ -33,7 +45,9 @@ class SurveyService {
         Survey.SAMPLE_SURVEY_SUBJECT_FOR_SESSION_PREFERENCE?.replace('[date]', intelliMeetService?.currentIntelliMeet?.dateOfEvent?.format("MMM dd, yyyy"))
     }
 
-    String getMessageForPreferenceEmail() {
-        Survey.SAMPLE_SURVEY_MESSAGE_FOR_SESSION_PREFERENCE?.replace('[SurveyLink]',grailsLinkGenerator.link(controller: 'survey', action: 'session', absolute: true))
+    String getMessageForPreferenceEmail(Long userId) {
+        Token token = tokenService.generateToken(userId)
+        tokenService.save(token)
+        Survey.SAMPLE_SURVEY_MESSAGE_FOR_SESSION_PREFERENCE?.replace('[SurveyLink]',grailsLinkGenerator.link(controller: 'survey', action: 'session', params: [tokenId: token?.value],absolute: true))
     }
 }

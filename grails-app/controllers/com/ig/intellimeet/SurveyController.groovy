@@ -5,7 +5,7 @@ import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
 
-@Transactional(readOnly = true)
+//@Transactional(readOnly = true)
 @Secured(['ROLE_IM_OWNER'])
 class SurveyController {
 
@@ -13,19 +13,32 @@ class SurveyController {
 
     def intelliMeetService
     def userPreferenceService
+    def surveyService
+    def tokenService
 
-    @Secured('ROLE_USER')
+    @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def session() {
-        Boolean hasFilledPreferences = userPreferenceService.hasFilledPreferences()
+        Token token = tokenService.extractToken(params.tokenId)
+        Boolean hasFilledPreferences = userPreferenceService.hasFilledPreferences(token?.userId)
+        if(!token?.isValid()) {
+            flash.error = message(code: 'token.consumed.message')
+            render view: '/error'
+            return
+        }
         if(hasFilledPreferences) {
             render view: '/survey/thankyou'
             return
         }
-        [sessions: IMSession.findAllByIntelliMeetIdAndSessionStatus(intelliMeetService?.currentIntelliMeetId, SessionStatus.PROPOSED), hasFilledPreferences: hasFilledPreferences]
+        [sessions: IMSession.findAllByIntelliMeetIdAndSessionStatus(intelliMeetService?.currentIntelliMeetId, SessionStatus.PROPOSED), hasFilledPreferences: hasFilledPreferences, tokenId: token?.value]
     }
 
-    @Secured('ROLE_USER')
+    @Secured('ROLE_ADMIN')
     def template() {
+    }
+
+    def send(Long id) {
+        Survey survey = Survey.findByIntelliMeetIdAndId(intelliMeetService.currentIntelliMeetId, id)
+        surveyService.sendSurveyEmail(survey)
     }
 
     def index(Integer max) {

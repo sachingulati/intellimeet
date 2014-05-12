@@ -1,5 +1,8 @@
 package com.ig.intellimeet.dto
 
+import grails.validation.Validateable
+
+@Validateable
 class MailDTO {
 
     String to
