@@ -11,6 +11,14 @@ class SurveyService {
     def grailsLinkGenerator
     def tokenService
 
+    Survey save(Survey survey) {
+        if(!survey?.validate() || !survey?.save(failOnError: true, flush: true)) {
+            log.error(survey?.errors?.allErrors?.join("\n"))
+            survey = null
+        }
+        survey
+    }
+
     def sendSurveyEmail(Survey survey) {
         survey?.recipients?.each {SurveyRecipientInfo surveyRecipientInfo->
             if(surveyRecipientInfo?.email && surveyRecipientInfo?.userId) {
@@ -18,6 +26,7 @@ class SurveyService {
                 surveyRecipientInfo?.status = SurveyStatus.SENT
             }
         }
+        save(survey)
     }
 
     def sendSurveyEmail(Long userId, String emailAddress) {
