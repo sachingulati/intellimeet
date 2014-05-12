@@ -108,6 +108,7 @@ environments {
         grails.mail.disabled=true
         grails.logging.jul.usebridge = true
         grails.serverURL = "http://localhost:8585"
+        grails.mail.overrideAddress="farid@intelligrape.com"
 
         def appName = grails.util.Metadata.current.'app.name'
         def baseURL = grails.serverURL ?: "http://127.0.0.1:${System.getProperty('server.port', '8585')}/${appName}"
@@ -213,6 +214,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/index.gsp':                     ['permitAll'],
         '/about':                         ['ROLE_ADMIN'],
         '/about.gsp':                     ['ROLE_ADMIN'],
+        '/console':                       ['ROLE_ADMIN'],
         '/accessDenied':                  ['permitAll'],
         '/accessDenied.gsp':              ['permitAll'],
         '/**/js/**':                      ['permitAll'],
