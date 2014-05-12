@@ -18,6 +18,7 @@ class UserPreferenceController {
     }
 
     @Transactional
+    @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def save(UserPreferenceCO userPreferenceCO) {
         Token token = tokenService.extractToken(userPreferenceCO?.tokenId)
         if (!token?.isValid()) {
@@ -26,7 +27,7 @@ class UserPreferenceController {
             return
         }
         if (!userPreferenceCO?.hasErrors()) {
-            UserPreference userPreference = userPreferenceService.extractUserPreference(userPreferenceCO)
+            UserPreference userPreference = userPreferenceService.extractUserPreference(userPreferenceCO, token)
             userPreferenceService.save userPreference
             token.isConsumed = true
             tokenService.save(token)
