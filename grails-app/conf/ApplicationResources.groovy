@@ -69,10 +69,11 @@ modules = {
 
     suvey_thankyou {
         dependsOn 'jquery, bootstrap, font_awesome,html5, jquery_ui, modernizer, respond, jquery_tweet'
-        resource url: '/css/survey/style.css'
         resource url: '/css/survey/thankyou.css'
         resource url: '/css/survey/socialize-bookmarks.css'
         resource url: '/css/survey/aero.css'
+        resource url: '/css/docs.min.css'
+        resource url: '/css/survey/style.css'
     }
 
     jquery_countdown {
