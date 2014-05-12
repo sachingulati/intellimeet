@@ -28,4 +28,8 @@ class UserPreferenceService {
     Boolean hasFilledPreferences() {
         UserPreference.countByIntelliMeetIdAndUserId(intelliMeetService?.currentIntelliMeetId, springSecurityService?.currentUser?.id)
     }
+
+    Boolean hasFilledPreferences(Long userId) {
+        UserPreference.countByIntelliMeetIdAndUserId(intelliMeetService?.currentIntelliMeetId, userId)
+    }
 }
