@@ -17,9 +17,10 @@
                     <li id="session"><g:link controller="IMSession" action="index"><g:message code="session.label" default="Proposed Sessions"/></g:link></li>
                 </sec:ifAnyGranted>
                 <sec:ifAnyGranted roles="ROLE_IM_OWNER">
-                <li id="survey"><g:link controller="survey" action="index"><g:message code="survey.label" default="Survey" /></g:link></li>
-                %{--<li id="session"><g:link controller="IMSession" action="index"><g:message code="session.label" default="Session" /></g:link></li>
-                %{--<li id="intellimeet"><g:link controller="intelliMeet" action="index"><g:message code="intellimeet.label" default="IntelliMeet" /></g:link></li>--}%
+                    <li id="survey"><g:link controller="survey" action="index"><g:message code="survey.label" default="Survey"/></g:link></li>
+                </sec:ifAnyGranted>
+                <sec:ifAnyGranted roles="ROLE_ADMIN">
+                    <li id="intellimeet"><g:link controller="intelliMeet" action="index"><g:message code="intellimeet.label" default="IntelliMeet"/></g:link></li>
                 </sec:ifAnyGranted>
             </ul>
             <ul class="nav navbar-nav pull-right">
