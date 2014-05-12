@@ -17,6 +17,7 @@ class TokenService {
     Token generateToken(Long userId) {
         Token token = userId?new Token():null
         if (userId) {
+            token.effectiveDate = new Date()
             token.expiryDate = new Date() + Token.TOKEN_VALIDITY_IN_DAYS
             token.intelliMeetId = intelliMeetService.currentIntelliMeetId
             token.userId = userId
