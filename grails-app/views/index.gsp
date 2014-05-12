@@ -7,6 +7,20 @@
         header {
         padding: 0;
         }
+        #countdown {
+  font-size: 48px;
+  color: #FFF;
+  line-height: 1.1em;
+  margin: 20px 0px 20px;
+}
+        .bs-docs-masthead {
+            padding: 40px 0;
+        }
+
+        .bs-docs-featurette {
+            paddimg
+        }
+
     </r:style>
 </head>
 
@@ -19,7 +33,13 @@
 
         <p class="lead">Let's learn together</p>
 
-        <p class="lead">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 wrap-cd">
+                <im:displayCountdown/>
+            </div>
+        </div>
+
+        <div class="row">
             <sec:ifLoggedIn>
                 <g:link controller="topic" action="index" class="btn btn-outline-inverse btn-lg">
                     View Topics
@@ -30,13 +50,13 @@
                     <i class="fa fa-google-plus"></i> <g:message code="google.signin"/>
                 </oauth:connect>
             </sec:ifNotLoggedIn>
-        </p>
+        </div>
     </div>
 </main>
 
 <div class="bs-docs-featurette">
     <div class="container">
-        <h2 class="bs-docs-featurette-title" style="text-transform: inherit;">Learning is part of IntelliGrape ethos </h2>
+        <h2 class="bs-docs-featurette-title" style="text-transform: inherit;">Learning is part of IntelliGrape ethos</h2>
 
         <p class="lead">By providing training and development programmes, on-the-job learning, coaching and feedback, we make sure that everyone who works with us has the resources they need to learn more and build their careers.</p>
 
@@ -44,7 +64,7 @@
 
         <div class="row">
             <div class="col-sm-3">
-                <img src="${resource(dir: 'images/logo', file:'grails-logo.png')}" alt="Groovy & Grails Logo" class="img-responsive">
+                <img src="${resource(dir: 'images/logo', file: 'grails-logo.png')}" alt="Groovy & Grails Logo" class="img-responsive">
 
                 <h3>Groovy & Grails.</h3>
 
@@ -52,7 +72,7 @@
             </div>
 
             <div class="col-sm-3">
-                <img src="${resource(dir: 'images/logo', file:'nodejs-logo.png')}" alt="Node JS Logo" class="img-responsive" style="height: 115px;">
+                <img src="${resource(dir: 'images/logo', file: 'nodejs-logo.png')}" alt="Node JS Logo" class="img-responsive" style="height: 115px;">
 
                 <h3>Node JS</h3>
 
@@ -60,7 +80,7 @@
             </div>
 
             <div class="col-sm-3">
-                <img src="${resource(dir: 'images/logo', file:'adobe-cq.png')}" alt="Adobe CQ5 Logo" class="img-responsive">
+                <img src="${resource(dir: 'images/logo', file: 'adobe-cq.png')}" alt="Adobe CQ5 Logo" class="img-responsive">
 
                 <h3>Adobe CQ5</h3>
 
@@ -68,7 +88,7 @@
             </div>
 
             <div class="col-sm-3">
-                <img src="${resource(dir: 'images/logo', file:'aws-logo.png')}" alt="AWS Logo" class="img-responsive">
+                <img src="${resource(dir: 'images/logo', file: 'aws-logo.png')}" alt="AWS Logo" class="img-responsive">
 
                 <h3>AWS</h3>
 
@@ -110,7 +130,8 @@
             <div class="col-md-4">
                 <h3>Latest tweet</h3>
 
-                <div class="latest-tweets" data-number="10" data-username="intelligrape" data-mode="fade" data-pager="false" data-nextselector=".tweets-next" data-prevselector=".tweets-prev" data-adaptiveheight="true"><p class="loading"> loading tweets...</p></div>
+                <div class="latest-tweets" data-number="10" data-username="intelligrape" data-mode="fade" data-pager="false" data-nextselector=".tweets-next"
+                     data-prevselector=".tweets-prev" data-adaptiveheight="true"><p class="loading">loading tweets...</p></div>
 
                 <div class="tweet-control">
                     <div class="tweets-prev"></div>
