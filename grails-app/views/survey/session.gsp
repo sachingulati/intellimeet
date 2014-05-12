@@ -152,7 +152,7 @@
 <div class="row">
 
     <div class="col-md-4 col-sm-4 add_bottom_30 box">
-        <p><img src="http://www.ansonika.com/annova/img/icon-1.png" alt="Icon"></p>
+        <p><img src="${resource(dir: 'images/skin', file: 'icon-1.png')}" alt="Icon"></p>
 
         <h3>Fully responsive</h3>
 
@@ -164,7 +164,7 @@
     </div>
 
     <div class="col-md-4 col-sm-4 add_bottom_30 box">
-        <p><img src="http://www.ansonika.com/annova/img/icon-2.png" alt="Icon"></p>
+        <p><img src="${resource(dir: 'images/skin', file: 'icon-2.png')}" alt="Icon"></p>
 
         <h3>Useful survey data</h3>
 
@@ -175,7 +175,7 @@
     </div>
 
     <div class="col-md-4 col-sm-4 add_bottom_30 box">
-        <p><img src="http://www.ansonika.com/annova/img/icon-3.png" alt="Icon"></p>
+        <p><img src="${resource(dir: 'images/skin', file: 'icon-3.png')}" alt="Icon"></p>
 
         <h3>Receive it by email</h3>
 
@@ -332,18 +332,18 @@
                 <div class="col-md-6">
                     <ul id="footer-nav">
                         <li>Copyright © 2014 <a href="#">IntelliGrape</a>. All rights reserved.</li>
-                        <li><a href="#">Terms of Use</a></li>
-                        <li><a href="#">Privacy</a></li>
+                        %{--<li><a href="#">Terms of Use</a></li>--}%
+                        %{--<li><a href="#">Privacy</a></li>--}%
                     </ul>
                 </div>
 
                 <div class="col-md-6" style="text-align:center">
                     <ul class="social-bookmarks clearfix">
-                        <li class="facebook"><a href="#">facebook</a></li>
-                        <li class="googleplus"><a href="#">googleplus</a></li>
-                        <li class="twitter"><a href="#">twitter</a></li>
-                        <li class="linkedin"><a href="#">linkedin</a></li>
-                        <li class="blogger"><a href="#">blogger</a></li>
+                        <li class="facebook"><a href="https://www.facebook.com/intelligrape.software" target="_blank">facebook</a></li>
+                        <li class="googleplus"><a href="https://plus.google.com/102688776692809350794/posts" target="_blank">googleplus</a></li>
+                        <li class="twitter"><a href="https://twitter.com/IntelliGrape" target="_blank">twitter</a></li>
+                        <li class="linkedin"><a href="http://www.linkedin.com/company/intelligrape" target="_blank">linkedin</a></li>
+                        <li class="blogger"><a href="http://www.intelligrape.com/blog/" target="_blank">blogger</a></li>
                     </ul>
                 </div>
             </div>
