@@ -3,6 +3,7 @@ package com.ig.intellimeet
 class Token {
     Long userId
     Long intelliMeetId
+    Long surveyId
     String value
     Boolean isConsumed = false
     Date expiryDate
@@ -12,7 +13,9 @@ class Token {
 
     static final Integer TOKEN_VALIDITY_IN_DAYS=15
     static mapWith = "mongo"
-    static constraints = {}
+    static constraints = {
+        surveyId nullable: true
+    }
 
     Boolean isValid() {
         !isConsumed && expiryDate?.after(new Date()) && effectiveDate?.before(new Date())

@@ -11,6 +11,7 @@ class UserPreferenceController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
     def userPreferenceService
     def tokenService
+    def surveyService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -29,6 +30,7 @@ class UserPreferenceController {
         if (!userPreferenceCO?.hasErrors()) {
             UserPreference userPreference = userPreferenceService.extractUserPreference(userPreferenceCO, token)
             userPreferenceService.save userPreference
+            surveyService.updateSurveyStatusForEmail(token?.surveyId, User.get(token?.userId)?.username)
             token.isConsumed = true
             tokenService.save(token)
             render view: '/survey/thankyou'
