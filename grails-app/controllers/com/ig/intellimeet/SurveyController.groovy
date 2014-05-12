@@ -13,8 +13,9 @@ class SurveyController {
 
     def intelliMeetService
     def userPreferenceService
+    def surveyService
 
-    @Secured('ROLE_USER')
+    @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def session() {
         Boolean hasFilledPreferences = userPreferenceService.hasFilledPreferences()
         if(hasFilledPreferences) {
@@ -24,8 +25,13 @@ class SurveyController {
         [sessions: IMSession.findAllByIntelliMeetIdAndSessionStatus(intelliMeetService?.currentIntelliMeetId, SessionStatus.PROPOSED), hasFilledPreferences: hasFilledPreferences]
     }
 
-    @Secured('ROLE_USER')
+    @Secured('ROLE_ADMIN')
     def template() {
+    }
+
+    def send(Long id) {
+        Survey survey = Survey.findByIntelliMeetIdAndId(intelliMeetService.currentIntelliMeetId, id)
+        surveyService.sendSurveyEmail(survey)
     }
 
     def index(Integer max) {
