@@ -19,11 +19,6 @@ class UtilController {
         render("Success")
     }
 
-    def getUserList() {
-        List<Long> userIds = Topic.list()*.interestedUsers?.unique()?.flatten()
-        render(User.getAll(userIds)*.username)
-    }
-
     def sendTestEmail( ) {
         grailsApplication.config.grails.mail.disabled=false
         surveyService.sendSurveyEmail(params.email)
@@ -39,5 +34,10 @@ class UtilController {
         TestUtil.createUserRole('mohit@intelligrape.com', 'ROLE_IM_OWNER').save(failOnError: true, flush: true)
         TestUtil.createUserRole('vivek.sachdeva@intelligrape.com', 'ROLE_IM_OWNER').save(failOnError: true, flush: true)
         log.info('Finished Assigning roles...')
+    }
+
+    def thankyou() {
+        render view: '/survey/thankyou'
+        return
     }
 }
