@@ -1,5 +1,6 @@
 package com.ig.intellimeet
 import com.ig.intellimeet.enums.SessionStatus
+import com.ig.intellimeet.enums.SurveyStatus
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
@@ -33,7 +34,12 @@ class SurveyController {
 
     def send(Long id) {
         Survey survey = Survey.findByIntelliMeetIdAndId(intelliMeetService.currentIntelliMeetId, id)
-        surveyService.sendSurveyEmail(survey)
+        if(survey?.recipients*.status?.contains(SurveyStatus.PENDING)) {
+            surveyService.sendSurveyEmail(survey)
+        } else {
+            log.info("All survey emails already being sent...")
+        }
+        redirect controller: 'survey', action:'show', id: id
     }
 
     def index(Integer max) {
