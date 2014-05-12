@@ -142,141 +142,46 @@
 </div>
 <!-- end Survey container -->
 
-<div class="row">
-    <div class="col-md-12">
-        <h2>Thank you for your time<span>This help us to improve our service and your satisfaction.</span></h2>
+<h2 class="bs-docs-featurette-title" style="text-transform: inherit;">Learning is part of IntelliGrape ethos </h2>
+
+    <p class="lead">By providing training and development programmes, on-the-job learning, coaching and feedback, we make sure that everyone who works with us has the resources they need to learn more and build their careers.</p>
+
+    <div class="divider"></div>
+
+    <div class="row">
+    <div class="col-sm-3">
+        <img src="${resource(dir: 'images/logo', file:'grails-logo.png')}" alt="Groovy & Grails Logo" class="img-responsive">
+
+        <h3>Groovy & Grails.</h3>
+
+        <p>We are one of the largest team of Grails developers in the world. We have been working on Groovy & Grails since early 2008 and have developed more than 50 live applications on Grails.</p>
+    </div>
+
+    <div class="col-sm-3">
+        <img src="${resource(dir: 'images/logo', file:'nodejs-logo.png')}" alt="Node JS Logo" class="img-responsive" style="height: 115px;">
+
+        <h3>Node JS</h3>
+
+        <p>We are one of the earliest adopters of Node.js and have gained extensive experience in delivering rich, high performance and scalable web applications using Node.js.</p>
+    </div>
+
+    <div class="col-sm-3">
+        <img src="${resource(dir: 'images/logo', file:'adobe-cq.png')}" alt="Adobe CQ5 Logo" class="img-responsive">
+
+        <h3>Adobe CQ5</h3>
+
+        <p>We help our clients with custom development, multi-channel content delivery and large-scale data migrations on Adobe CQ.</p>
+    </div>
+
+    <div class="col-sm-3">
+        <img src="${resource(dir: 'images/logo', file:'aws-logo.png')}" alt="AWS Logo" class="img-responsive">
+
+        <h3>AWS</h3>
+
+        <p>We provide consulting, implementation and managed services on Amazon Web Services. We help and manage cloud infrastructure for some of the Fortune 500 companies as well as SMBs.</p>
     </div>
 </div>
-<!-- end row -->
 
-<div class="row">
-
-    <div class="col-md-4 col-sm-4 add_bottom_30 box">
-        <p><img src="${resource(dir: 'images/skin', file: 'icon-1.png')}" alt="Icon"></p>
-
-        <h3>Fully responsive</h3>
-
-        <p>
-            Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id.
-            No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.
-        </p>
-        %{--<a href="#" title="read more" class="button_medium_2">Read more</a>--}%
-    </div>
-
-    <div class="col-md-4 col-sm-4 add_bottom_30 box">
-        <p><img src="${resource(dir: 'images/skin', file: 'icon-2.png')}" alt="Icon"></p>
-
-        <h3>Useful survey data</h3>
-
-        <p>
-            We continuously send surveys for all the sessions and the organizers which helps us improve the quality of IntelliMeet. In addition to this we also conduct surveys to collect preferences of attendees to help decide sessions.
-        </p>
-        %{--<a href="#" title="read more" class="button_medium_2">Read more</a>--}%
-    </div>
-
-    <div class="col-md-4 col-sm-4 add_bottom_30 box">
-        <p><img src="${resource(dir: 'images/skin', file: 'icon-3.png')}" alt="Icon"></p>
-
-        <h3>Receive it by email</h3>
-
-        <p>
-            Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id.
-            No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.
-        </p>
-        %{--<a href="#" title="read more" class="button_medium_2">Read more</a>--}%
-    </div>
-
-</div>
-<!-- end row -->
-
-<div class="divider"></div>
-
-<div class="row">
-    <div class="col-md-12">
-        <h3>About us<span>With a collective experience of more than 750 years between our team across 6 technologies, we are more than technology enablers. We are innovators.</span></h3>
-    </div>
-</div>
-<!-- end row -->
-
-<div class="row">
-
-    <div class="col-md-6">
-        <h4>Our History</h4>
-
-        <p>IntelliGrape is an agile off-shore development company renowned for quality custom web application development on open source frameworks like Grails.
-
-        It was founded in June 2008. It was started primarily as a Grails development house and has diversified its expertize to mobile application development using PhoneGap, e-commerce solutions using Magento and CMS driven solutions in Magnolia, Drupal etc.
-
-        IntelliGrape follows Agile methodologies for its work. It offers in-house training programmes as well as corporate trainings in domains of its expertize.
-        In December 2011, IntelliGrape became a part of To The New, a digital media solutions provider.</p>
-        <h4>Our Vision</h4>
-
-        <p>To be the world's most trusted and preferred partner for building mission critical applications and cloud
-        adoption.</p>
-    </div>
-
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <div class="project-item-image-container"><img src="${resource(dir: 'images/team', file: 'dm.png')}" alt=""/>
-            </div>
-
-            <div class="caption">
-                <div class="transit-to-top">
-                    <h4 class="p-title">Deepak Mittal
-                        <small>CEO</small>
-                    </h4>
-
-                    <div class="widget_nav_menu">
-                        <ul class="social-bookmarks team">
-                            <li class="facebook"><a href="#">facebook</a></li>
-                            <li class="googleplus"><a href="#">googleplus</a></li>
-                            <li class="twitter"><a href="#">twitter</a></li>
-                            <li class="linkedin"><a href="#">linkedin</a></li>
-                        </ul>
-
-                        <div class="phone-info"><i class="icon-phone-sign"></i> + 4 (123) 456-7890</div>
-                    </div>1
-                    <!-- transition top -->
-                </div>
-                <!-- caption -->
-            </div>
-        </div>
-    </div>
-    <!-- team  item -->
-
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <div class="project-item-image-container">
-                <img src="${resource(dir: 'images/team', file: 'nk.png')}" alt=""/>
-            </div>
-
-            <div class="caption">
-                <div class="transit-to-top">
-                    <h4 class="p-title">Narinder Kumar
-                        <small>VP</small>
-                    </h4>
-
-                    <div class="widget_nav_menu">
-                        <ul class="social-bookmarks team">
-                            <li class="facebook"><a href="#">facebook</a></li>
-                            <li class="googleplus"><a href="#">googleplus</a></li>
-                            <li class="twitter"><a href="#">twitter</a></li>
-                            <li class="linkedin"><a href="#">linkedin</a></li>
-                        </ul>
-
-                        <div class="phone-info">
-                            <i class="icon-phone-sign"></i> + 4 (123) 456-7890
-                        </div>
-                    </div>
-                    <!-- transition top -->
-                </div>
-                <!-- caption -->
-            </div>
-        </div>
-    </div>
-    <!-- team  item -->
-
-</div>
 <!-- end row -->
 </section>
 <!-- end section main container -->
@@ -332,8 +237,6 @@
                 <div class="col-md-6">
                     <ul id="footer-nav">
                         <li>Copyright © 2014 <a href="#">IntelliGrape</a>. All rights reserved.</li>
-                        %{--<li><a href="#">Terms of Use</a></li>--}%
-                        %{--<li><a href="#">Privacy</a></li>--}%
                     </ul>
                 </div>
 
