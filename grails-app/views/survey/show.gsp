@@ -34,13 +34,8 @@
 </g:if>
 <g:form class="form-horizontal" url="[resource: surveyInstance, action: 'delete']" method="DELETE">
     <g:render template="staticForm"/>
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <g:link class="btn btn-lg btn-default" action="edit" resource="${surveyInstance}"><g:message code="default.button.edit.label" default="Edit"/></g:link>
-            <g:actionSubmit class="btn btn-lg btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-                            onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
-        </div>
-    </div>
+
+
     </div>
 </g:form>
 </div>
