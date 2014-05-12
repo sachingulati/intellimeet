@@ -8,7 +8,7 @@ class Token {
     Date dateCreated
     Date lastUpdated
 
-    static final Integer TOKEN_VALIDITY_IN_DAYS=7
+    static final Integer TOKEN_VALIDITY_IN_DAYS=15
     static mapWith = "mongo"
     static constraints = {}
 }
