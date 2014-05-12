@@ -75,6 +75,7 @@
 <!-- end top-wizard -->
 
     <g:form name="example-1" controller="userPreference" action="save" method="POST">
+        <g:hiddenField name="tokenId" value="${tokenId}" />
         <div id="middle-wizard">
             <div class="step row">
                 <div class="col-md-10">
