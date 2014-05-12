@@ -12,7 +12,7 @@ class SurveyService {
     def tokenService
 
     Survey save(Survey survey) {
-        if(!survey?.validate() || !survey?.save(failOnError: true, flush: true)) {
+        if (!survey?.validate() || !survey?.save(failOnError: true, flush: true)) {
             log.error(survey?.errors?.allErrors?.join("\n"))
             survey = null
         }
@@ -20,21 +20,21 @@ class SurveyService {
     }
 
     def sendSurveyEmail(Survey survey) {
-        survey?.recipients?.each {SurveyRecipientInfo surveyRecipientInfo->
-            if(surveyRecipientInfo?.email && surveyRecipientInfo?.userId) {
-                sendSurveyEmail(surveyRecipientInfo?.userId, surveyRecipientInfo?.email)
+        survey?.recipients?.each { SurveyRecipientInfo surveyRecipientInfo ->
+            if (surveyRecipientInfo?.email && surveyRecipientInfo?.userId) {
+                sendSurveyEmail(surveyRecipientInfo?.userId, surveyRecipientInfo?.email, survey?.id)
                 surveyRecipientInfo?.status = SurveyStatus.SENT
             }
         }
         save(survey)
     }
 
-    def sendSurveyEmail(Long userId, String emailAddress) {
-        if(emailAddress && userId) {
+    def sendSurveyEmail(Long userId, String emailAddress, Long surveyId = null) {
+        if (emailAddress && userId) {
             MailDTO mailDTO = new MailDTO()
             mailDTO.to = emailAddress
             mailDTO.subject = subjectForPreferenceEmail
-            mailDTO.body = getMessageForPreferenceEmail(userId)
+            mailDTO.body = getMessageForPreferenceEmail(userId, surveyId)
             log.info("Sending preference email to ${mailDTO?.to}")
             imMailService.sendMail(mailDTO)
         }
@@ -45,9 +45,15 @@ class SurveyService {
         Survey.SAMPLE_SURVEY_SUBJECT_FOR_SESSION_PREFERENCE?.replace('[date]', intelliMeetService?.currentIntelliMeet?.dateOfEvent?.format("MMM dd, yyyy"))
     }
 
-    String getMessageForPreferenceEmail(Long userId) {
-        Token token = tokenService.generateToken(userId)
+    String getMessageForPreferenceEmail(Long userId, Long surveyId = null) {
+        Token token = tokenService.generateToken(userId, surveyId)
         tokenService.save(token)
-        Survey.SAMPLE_SURVEY_MESSAGE_FOR_SESSION_PREFERENCE?.replace('[SurveyLink]',grailsLinkGenerator.link(controller: 'survey', action: 'session', params: [tokenId: token?.value],absolute: true))
+        Survey.SAMPLE_SURVEY_MESSAGE_FOR_SESSION_PREFERENCE?.replace('[SurveyLink]', grailsLinkGenerator.link(controller: 'survey', action: 'session', params: [tokenId: token?.value], absolute: true))
+    }
+
+    void updateSurveyStatusForEmail(Long surveyId, String email) {
+        if (surveyId && email) {
+            Survey.collection.update(['_id': surveyId, 'recipients.email': email], ['$set': ['recipients.$.status': SurveyStatus.COMPLETED.toString()]])
+        }
     }
 }
