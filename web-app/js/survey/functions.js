@@ -65,6 +65,7 @@ jQuery(function($) {
 					afterSelect: function( event, state ) {
 						$("#progressbar").progressbar("value", state.percentComplete);
 						$("#location").text("(" + state.stepsComplete + "/" + state.stepsPossible + ")");
+                        $('body').scrollTop($('#survey_container').offset().top);
 					}
 				});
 

@@ -8,6 +8,7 @@ class ImTagLib {
 
     static namespace = "im"
     def springSecurityService
+    def intelliMeetService
 
     def categories = { attrs ->
         Map<TopicCategory, Integer> categoryCountMap = [:]
@@ -35,5 +36,12 @@ class ImTagLib {
         if (userId in [imSession.ownerId, imSession.copresenterId]) {
             out << body()
         }
+    }
+
+    def displayCountdown = {
+        Date date = intelliMeetService?.currentIntelliMeet?.dateOfEvent
+        String dateString =  date?.format("yyyy/MM/dd")
+        out << render(template: '/templates/countdown', model: [dateString: dateString])
+
     }
 }

@@ -9,19 +9,12 @@
 
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
-    <title>IntelliMeet Survey</title>
+    <title>IntelliMeet Preference Survey</title>
     <meta name="description" content="">
     <meta name="author" content="Puneet">
 
     <!-- Favicons-->
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
-    <link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114"
-          href="img/apple-touch-icon-114x114-precomposed.png">
-    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144"
-          href="img/apple-touch-icon-144x144-precomposed.png">
-
+    <link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.png')}" type="image/x-icon"/>
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -37,7 +30,7 @@
     <header>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-xs-3 navbar-header"><a href="#" class="navbar-brand">IntelliMeet</a></div>
+                <div class="col-md-4 col-xs-3 navbar-header"><a href="/" class="navbar-brand">IntelliMeet</a></div>
 
                 <div class="btn-responsive-menu"><span class="bar"></span> <span class="bar"></span> <span
                         class="bar"></span></div>
@@ -73,31 +66,25 @@
 <div id="survey_container">
 
     <div id="top-wizard">
-        <strong>Progress <span id="location"></span></strong>
+            <strong>Progress <span id="location"></span></strong>
 
-        <div id="progressbar"></div>
+            <div id="progressbar"></div>
 
-        <div class="shadow"></div>
+            <div class="shadow"></div>
     </div>
-    <!-- end top-wizard -->
+<!-- end top-wizard -->
 
-    <form name="example-1" id="wrapped" action="survey_send_1.php" method="POST">
+    <g:form name="example-1" controller="userPreference" action="save" method="POST">
+        <g:hiddenField name="tokenId" value="${tokenId}" />
         <div id="middle-wizard">
             <div class="step row">
                 <div class="col-md-10">
                     <h3>First Preference</h3>
                     <ul class="data-list-2">
-                        <li><input name="rate" type="radio" class="required check_radio" value="0"><label>Getting started with Git</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="1"><label>Angular JS Best Practices</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="2"><label>Moving to Cloud</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Hands on workshop Node JS</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Hands on workshop Node JS</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Business Communication</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Learning test driven development using spock</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Sale Force</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Understanding Meta-programming</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Learn how to write unit test cases for  your javascript code?</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Giving new look to your application using Twitter Bootstrap3</label></li>
+                        <g:each in="${sessions}" var="session">
+                            <li><input name="firstPreferredSessionId" type="radio" class="required check_radio"
+                                       value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail}</label></li>
+                        </g:each>
                     </ul>
                 </div>
             </div>
@@ -108,17 +95,10 @@
                 <div class="col-md-10">
                     <h3>Second Preference</h3>
                     <ul class="data-list-2">
-                        <li><input name="rate" type="radio" class="required check_radio" value="0"><label>Getting started with Git</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="1"><label>Angular JS Best Practices</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="2"><label>Moving to Cloud</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Hands on workshop Node JS</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Hands on workshop Node JS</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Business Communication</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Learning test driven development using spock</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Sale Force</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Understanding Meta-programming</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Learn how to write unit test cases for  your javascript code?</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Giving new look to your application using Twitter Bootstrap3</label></li>
+                        <g:each in="${sessions}" var="session">
+                            <li><input name="secondPreferredSessionId" type="radio" class="required check_radio"
+                                       value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail}</label></li>
+                        </g:each>
                     </ul>
                 </div>
             </div>
@@ -129,17 +109,10 @@
                 <div class="col-md-10">
                     <h3>Third Preference</h3>
                     <ul class="data-list-2">
-                        <li><input name="rate" type="radio" class="required check_radio" value="0"><label>Getting started with Git</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="1"><label>Angular JS Best Practices</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="2"><label>Moving to Cloud</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Hands on workshop Node JS</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Hands on workshop Node JS</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Business Communication</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Learning test driven development using spock</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Sale Force</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Understanding Meta-programming</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Learn how to write unit test cases for  your javascript code?</label></li>
-                        <li><input name="rate" type="radio" class="required check_radio" value="3"><label>Giving new look to your application using Twitter Bootstrap3</label></li>
+                        <g:each in="${sessions}" var="session">
+                            <li><input name="thirdPreferredSessionId" type="radio" class="required check_radio"
+                                       value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail}</label></li>
+                        </g:each>
                     </ul>
                 </div>
             </div>
@@ -149,7 +122,7 @@
 
                 <i class="fa fa-check-square-o"></i>
 
-                <h3>Survey complete! Thank you for you time.</h3>
+                <h3>Survey complete! Please submit & Thank you for you time.</h3>
                 <button type="submit" name="process" class="submit">Submit the survey</button>
             </div>
             <!-- end submit step -->
@@ -158,150 +131,57 @@
         <!-- end middle-wizard -->
 
         <div id="bottom-wizard">
+
             <button type="button" name="backward" class="backward">Backward</button>
             <button type="button" name="forward" class="forward">Forward</button>
+
         </div>
         <!-- end bottom-wizard -->
-    </form>
+    </g:form>
 
 </div>
 <!-- end Survey container -->
 
-<div class="row">
-    <div class="col-md-12">
-        <h2>Thank you for your time<span>This help us to improve our service and customer satisfaction.</span></h2>
+<h2 class="bs-docs-featurette-title" style="text-transform: inherit;">Learning is part of IntelliGrape ethos </h2>
+
+    <p class="lead">By providing training and development programmes, on-the-job learning, coaching and feedback, we make sure that everyone who works with us has the resources they need to learn more and build their careers.</p>
+
+    <div class="divider"></div>
+
+    <div class="row">
+    <div class="col-sm-3">
+        <img src="${resource(dir: 'images/logo', file:'grails-logo.png')}" alt="Groovy & Grails Logo" class="img-responsive">
+
+        <h3>Groovy & Grails.</h3>
+
+        <p>We are one of the largest team of Grails developers in the world. We have been working on Groovy & Grails since early 2008 and have developed more than 50 live applications on Grails.</p>
+    </div>
+
+    <div class="col-sm-3">
+        <img src="${resource(dir: 'images/logo', file:'nodejs-logo.png')}" alt="Node JS Logo" class="img-responsive" style="height: 115px;">
+
+        <h3>Node JS</h3>
+
+        <p>We are one of the earliest adopters of Node.js and have gained extensive experience in delivering rich, high performance and scalable web applications using Node.js.</p>
+    </div>
+
+    <div class="col-sm-3">
+        <img src="${resource(dir: 'images/logo', file:'adobe-cq.png')}" alt="Adobe CQ5 Logo" class="img-responsive">
+
+        <h3>Adobe CQ5</h3>
+
+        <p>We help our clients with custom development, multi-channel content delivery and large-scale data migrations on Adobe CQ.</p>
+    </div>
+
+    <div class="col-sm-3">
+        <img src="${resource(dir: 'images/logo', file:'aws-logo.png')}" alt="AWS Logo" class="img-responsive">
+
+        <h3>AWS</h3>
+
+        <p>We provide consulting, implementation and managed services on Amazon Web Services. We help and manage cloud infrastructure for some of the Fortune 500 companies as well as SMBs.</p>
     </div>
 </div>
-<!-- end row -->
 
-<div class="row">
-
-    <div class="col-md-4 col-sm-4 add_bottom_30 box">
-        <p><img src="http://www.ansonika.com/annova/img/icon-1.png" alt="Icon"></p>
-
-        <h3>Fully responsive</h3>
-
-        <p>
-            Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id.
-            No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.
-        </p>
-        <a href="#" title="read more" class="button_medium_2">Read more</a>
-    </div>
-
-    <div class="col-md-4 col-sm-4 add_bottom_30 box">
-        <p><img src="http://www.ansonika.com/annova/img/icon-2.png" alt="Icon"></p>
-
-        <h3>Useful survey data</h3>
-
-        <p>
-            Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id.
-            No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.
-        </p>
-        <a href="#" title="read more" class="button_medium_2">Read more</a>
-    </div>
-
-    <div class="col-md-4 col-sm-4 add_bottom_30 box">
-        <p><img src="http://www.ansonika.com/annova/img/icon-3.png" alt="Icon"></p>
-
-        <h3>Receive it by email</h3>
-
-        <p>
-            Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id.
-            No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.
-        </p>
-        <a href="#" title="read more" class="button_medium_2">Read more</a>
-    </div>
-
-</div>
-<!-- end row -->
-
-<div class="divider"></div>
-
-<div class="row">
-    <div class="col-md-12">
-        <h3>About us<span>This help us to improve our service and customer satisfaction.</span></h3>
-    </div>
-</div>
-<!-- end row -->
-
-<div class="row">
-
-    <div class="col-md-6">
-        <h4>Our History</h4>
-
-        <p>
-            Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-            condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-            Donec sed odio dui.
-        </p>
-        <h4>Our Vision</h4>
-
-        <p>To be the world's most trusted and preferred partner for building mission critical applications and cloud
-        adoption.</p>
-    </div>
-
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <div class="project-item-image-container"><img src="http://www.ansonika.com/annova/img/team_1.jpg" alt=""/>
-            </div>
-
-            <div class="caption">
-                <div class="transit-to-top">
-                    <h4 class="p-title">Patricia Doe
-                        <small>CEO</small>
-                    </h4>
-
-                    <div class="widget_nav_menu">
-                        <ul class="social-bookmarks team">
-                            <li class="facebook"><a href="#">facebook</a></li>
-                            <li class="googleplus"><a href="#">googleplus</a></li>
-                            <li class="twitter"><a href="#">twitter</a></li>
-                            <li class="linkedin"><a href="#">linkedin</a></li>
-                        </ul>
-
-                        <div class="phone-info"><i class="icon-phone-sign"></i> + 4 (123) 456-7890</div>
-                    </div>
-                    <!-- transition top -->
-                </div>
-                <!-- caption -->
-            </div>
-        </div>
-    </div>
-    <!-- team  item -->
-
-    <div class="col-md-3">
-        <div class="thumbnail">
-            <div class="project-item-image-container">
-                <img src="http://www.ansonika.com/annova/img/team_2.jpg" alt=""/>
-            </div>
-
-            <div class="caption">
-                <div class="transit-to-top">
-                    <h4 class="p-title">Megan Fox
-                        <small>MANAGER</small>
-                    </h4>
-
-                    <div class="widget_nav_menu">
-                        <ul class="social-bookmarks team">
-                            <li class="facebook"><a href="#">facebook</a></li>
-                            <li class="googleplus"><a href="#">googleplus</a></li>
-                            <li class="twitter"><a href="#">twitter</a></li>
-                            <li class="linkedin"><a href="#">linkedin</a></li>
-                        </ul>
-
-                        <div class="phone-info">
-                            <i class="icon-phone-sign"></i> + 4 (123) 456-7890
-                        </div>
-                    </div>
-                    <!-- transition top -->
-                </div>
-                <!-- caption -->
-            </div>
-        </div>
-    </div>
-    <!-- team  item -->
-
-</div>
 <!-- end row -->
 </section>
 <!-- end section main container -->
@@ -357,18 +237,16 @@
                 <div class="col-md-6">
                     <ul id="footer-nav">
                         <li>Copyright © 2014 <a href="#">IntelliGrape</a>. All rights reserved.</li>
-                        <li><a href="#">Terms of Use</a></li>
-                        <li><a href="#">Privacy</a></li>
                     </ul>
                 </div>
 
                 <div class="col-md-6" style="text-align:center">
                     <ul class="social-bookmarks clearfix">
-                        <li class="facebook"><a href="#">facebook</a></li>
-                        <li class="googleplus"><a href="#">googleplus</a></li>
-                        <li class="twitter"><a href="#">twitter</a></li>
-                        <li class="linkedin"><a href="#">linkedin</a></li>
-                        <li class="blogger"><a href="#">blogger</a></li>
+                        <li class="facebook"><a href="https://www.facebook.com/intelligrape.software" target="_blank">facebook</a></li>
+                        <li class="googleplus"><a href="https://plus.google.com/102688776692809350794/posts" target="_blank">googleplus</a></li>
+                        <li class="twitter"><a href="https://twitter.com/IntelliGrape" target="_blank">twitter</a></li>
+                        <li class="linkedin"><a href="http://www.linkedin.com/company/intelligrape" target="_blank">linkedin</a></li>
+                        <li class="blogger"><a href="http://www.intelligrape.com/blog/" target="_blank">blogger</a></li>
                     </ul>
                 </div>
             </div>

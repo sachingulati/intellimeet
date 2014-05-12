@@ -59,12 +59,26 @@ modules = {
 
     survey {
         dependsOn 'jquery, bootstrap, font_awesome, jquery_switch, html5, jquery_ui, jquery_wizard, modernizer, respond,jquery_validate, jquery_placeholder, jquery_tweet ,bx_slider'
-        resource url: '/css/survey/style.css'
         resource url: '/css/survey/socialize-bookmarks.css'
         resource url: '/css/survey/aero.css'
+        resource url: '/css/survey/style.css'
+        resource url: '/css/docs.min.css'
         resource url: '/js/survey/check.min.js'
         resource url: '/js/survey/quantity-bt.js'
         resource url: 'js/survey/functions.js'
+    }
+
+    suvey_thankyou {
+        dependsOn 'jquery, bootstrap, font_awesome,html5, jquery_ui, modernizer, respond, jquery_tweet'
+        resource url: '/css/survey/thankyou.css'
+        resource url: '/css/survey/socialize-bookmarks.css'
+        resource url: '/css/survey/aero.css'
+        resource url: '/css/docs.min.css'
+        resource url: '/css/survey/style.css'
+    }
+
+    jquery_countdown {
+        resource url:'/js/jquery.countdown.min.js'
     }
 
     html5 {

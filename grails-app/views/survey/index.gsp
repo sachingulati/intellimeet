@@ -1,4 +1,4 @@
-<%@ page import="com.ig.intellimeet.Survey" %>
+<%@ page import="com.ig.intellimeet.enums.SurveyStatus; com.ig.intellimeet.Survey" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +60,7 @@
     <g:each in="${surveyInstanceList}" status="i" var="surveyInstance">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
-            <td><g:link action="show" id="${surveyInstance.id}">${fieldValue(bean: surveyInstance, field: "title")}</g:link></td>
+            <td><span class="badge">${surveyInstance?.recipients?.count{it?.status==SurveyStatus.COMPLETED}}/${surveyInstance?.recipients?.size()}</span>&nbsp;<g:link action="show" id="${surveyInstance.id}">${fieldValue(bean: surveyInstance, field: "title")}</g:link></td>
 
             <td><g:formatDate date="${surveyInstance.date}"/></td>
 

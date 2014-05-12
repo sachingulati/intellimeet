@@ -33,17 +33,13 @@ class UserRole implements Serializable {
 	}
 
 	static UserRole create(User user, Role role, boolean flush = false) {
-		new UserRole(user: user, role: role).save(flush: flush, insert: true)
+		new UserRole(user: user, role: role).save(flush: flush, insert: true, failOnError: true)
 	}
 
-	static boolean remove(User u, Role r, boolean flush = false) {
+	static boolean remove(User user, Role role, boolean flush = false) {
 
-		int rowCount = UserRole.where {
-			user == User.load(u.id) &&
-			role == Role.load(r.id)
-		}.deleteAll()
-
-		rowCount > 0
+        UserRole userRole = UserRole.findByUserAndRole(user, role)
+        return userRole ? userRole.delete(flush: flush) : false
 	}
 
 	static void removeAll(User u) {

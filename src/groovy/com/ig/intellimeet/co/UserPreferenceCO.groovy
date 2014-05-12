@@ -4,7 +4,6 @@ import grails.validation.Validateable
 
 @Validateable
 class UserPreferenceCO {
-
     String tokenId
     Long firstPreferredSessionId
     Long secondPreferredSessionId

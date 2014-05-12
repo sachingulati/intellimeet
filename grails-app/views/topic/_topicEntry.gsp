@@ -13,15 +13,17 @@
 
 %{--<img src="http://placehold.it/900x300" class="img-responsive">--}%
     %{--<hr>--}%
-<div class="desc"><strong>Expectations:</strong><div class="desc-content" data-title="Enter Expectations" data-pk="${topic?.id}"><p>${raw(topic?.description)}</p></div></div>
+<div class="desc"><strong>Expectations:</strong> &nbsp;<a href="javascript:void(0)" id="topic${topic?.id}" class="editClick"><i class="glyphicon glyphicon-pencil"></i></a>
+<div class="desc-content topic${topic?.id}" data-title="Enter Expectations" data-pk="${topic?.id}"><p>${raw(topic?.description)}</p></div></div>
 <topic:displayInterestedUsersCount topic="${topic}"/>
 &nbsp;
+<g:link controller="IMSession" action="createNewSessionFromTopic" params="[topicId: topic?.id]" class="btn btn-primary pull-right">
+    <g:message code="btn.register.presenter.label" default="Register as Presenter"/>
+    </g:link>
+
 
 <div style="display: none;" class="attendeesList">
     <g:each in="${topic?.interestedUsers}" var="interestedUserId">
         <span>${User.get(interestedUserId)?.username}</span> <br/>
     </g:each>
 </div>
-<g:link controller="IMSession" action="createNewSessionFromTopic" params="[topicId: topic?.id]" class="btn btn-primary pull-right">
-    <g:message code="btn.register.presenter.label" default="Register as Presenter"/>
-    </g:link>

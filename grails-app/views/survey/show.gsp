@@ -5,6 +5,18 @@
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'survey.label', default: 'Survey')}"/>
     <title><g:message code="default.show.label" args="[entityName]"/></title>
+    <r:style>
+    .attendee-list li {
+        width: 48%;
+        float: left;
+    }
+
+    ol.attendee-list {
+        overflow: hidden;
+        list-style-type: decimal;
+        padding: 20px;
+    }
+    </r:style>
 </head>
 
 <body>
@@ -19,30 +31,23 @@
         </ul>
     </div>
 </nav>
+
 <div id="show-survey" class="container" role="main">
-<g:if test="${flash.message}">
-    <div class="alert alert-success alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Success!</strong> ${flash.message}.
-    </div>
-</g:if>
-<g:if test="${flash.error}">
-    <div class="alert alert-danger alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Error!</strong> ${flash.message}.
-    </div>
-</g:if>
-<g:form class="form-horizontal" url="[resource: surveyInstance, action: 'delete']" method="DELETE">
-    <g:render template="staticForm"/>
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <g:link class="btn btn-lg btn-default" action="edit" resource="${surveyInstance}"><g:message code="default.button.edit.label" default="Edit"/></g:link>
-            <g:actionSubmit class="btn btn-lg btn-danger" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-                            onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
+    <g:if test="${flash.message}">
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Success!</strong> ${flash.message}.
         </div>
-    </div>
-    </div>
-</g:form>
+    </g:if>
+    <g:if test="${flash.error}">
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Error!</strong> ${flash.message}.
+        </div>
+    </g:if>
+    <g:form class="form-horizontal" url="[resource: surveyInstance, action: 'delete']" method="DELETE">
+        <g:render template="staticForm"/>
+    </g:form>
 </div>
 </body>
 </html>

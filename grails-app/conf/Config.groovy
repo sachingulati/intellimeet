@@ -2,10 +2,10 @@
 // config files can be ConfigSlurper scripts, Java properties files, or classes
 // in the classpath in ConfigSlurper format
 
-// grails.config.locations = [ "classpath:${appName}-config.properties",
-//                             "classpath:${appName}-config.groovy",
-//                             "file:${userHome}/.grails/${appName}-config.properties",
-//                             "file:${userHome}/.grails/${appName}-config.groovy"]
+grails.config.locations = [ "classpath:${appName}-config.properties",
+                             "classpath:${appName}-config.groovy",
+                             "file:${userHome}/.grails/${appName}-config.properties",
+                             "file:${userHome}/.grails/${appName}-config.groovy"]
 
 // if (System.properties["${appName}.config.location"]) {
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
@@ -89,10 +89,26 @@ grails.hibernate.pass.readonly = false
 // configure passing read-only to OSIV session by default, requires "singleSession = false" OSIV mode
 grails.hibernate.osiv.readonly = false
 
+grails {
+    mail {
+        host = "smtp.gmail.com"
+        port = 465
+        username = "info.intellimeet@gmail.com"
+        password = "igdefault"
+        props = ["mail.smtp.auth":"true",
+                "mail.smtp.socketFactory.port":"465",
+                "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+                "mail.smtp.socketFactory.fallback":"false"]
+    }
+}
+grails.mail.default.from = grails.mail.username
+
 environments {
     development {
+        grails.mail.disabled=true
         grails.logging.jul.usebridge = true
         grails.serverURL = "http://localhost:8585"
+        grails.mail.overrideAddress="farid@intelligrape.com"
 
         def appName = grails.util.Metadata.current.'app.name'
         def baseURL = grails.serverURL ?: "http://127.0.0.1:${System.getProperty('server.port', '8585')}/${appName}"
@@ -113,6 +129,8 @@ environments {
 
     }
     qa {
+        graisl.mail.disabled=true
+        grails.mail.overrideAddress="farid@intelligrape.com"
         grails.logging.jul.usebridge = false
         grails.serverURL = "http://intellimeet.qa3.intelligrape.net"
 
@@ -130,7 +148,9 @@ environments {
                 }
             }
         }
-
+    }
+    test {
+        grails.mail.disabled=true
     }
     production {
         grails.logging.jul.usebridge = false
@@ -194,6 +214,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/index.gsp':                     ['permitAll'],
         '/about':                         ['ROLE_ADMIN'],
         '/about.gsp':                     ['ROLE_ADMIN'],
+        '/console':                       ['ROLE_ADMIN'],
         '/accessDenied':                  ['permitAll'],
         '/accessDenied.gsp':              ['permitAll'],
         '/**/js/**':                      ['permitAll'],

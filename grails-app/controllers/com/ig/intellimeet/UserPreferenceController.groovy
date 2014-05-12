@@ -1,6 +1,6 @@
 package com.ig.intellimeet
+
 import com.ig.intellimeet.co.UserPreferenceCO
-import com.ig.intellimeet.enums.SessionStatus
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
@@ -11,31 +11,31 @@ class UserPreferenceController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
     def userPreferenceService
     def tokenService
+    def surveyService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond UserPreference.list(params), model: [userPreferenceInstanceCount: UserPreference.count()]
     }
 
-    def show(String tokenId) {
-        Token token = tokenService.extractToken(tokenId)
-        if(!token) {
-            respond null
-        }
-        [sessions: IMSession.findAllByIntelliMeetIdAndSessionStatus(token?.intelliMeetId, SessionStatus.LIVE), tokenId: tokenId]
-    }
-
     @Transactional
+    @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def save(UserPreferenceCO userPreferenceCO) {
         Token token = tokenService.extractToken(userPreferenceCO?.tokenId)
-        if(!token) {
-            respond null
+        if (!token?.isValid()) {
+            flash.error = message(code: 'token.consumed.message')
+            render view: '/error'
+            return
         }
-        else if(!userPreferenceCO?.hasErrors()) {
-            UserPreference userPreference  = userPreferenceService.extractUserPreference(userPreferenceCO)
-            userPreference.userId = token?.userId
-            userPreference.intelliMeetId = token?.intelliMeetId
+        if (!userPreferenceCO?.hasErrors()) {
+            UserPreference userPreference = userPreferenceService.extractUserPreference(userPreferenceCO, token)
             userPreferenceService.save userPreference
+            surveyService.updateSurveyStatusForEmail(token?.surveyId, User.get(token?.userId)?.username)
+            token.isConsumed = true
+            tokenService.save(token)
+            render view: '/survey/thankyou'
+            return
         }
     }
+
 }

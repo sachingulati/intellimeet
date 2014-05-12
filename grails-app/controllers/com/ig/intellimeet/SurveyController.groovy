@@ -1,20 +1,45 @@
 package com.ig.intellimeet
-
+import com.ig.intellimeet.enums.SessionStatus
+import com.ig.intellimeet.enums.SurveyStatus
+import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
 
-@Transactional(readOnly = true)
-//@Secured(['ROLE_IM_OWNER'])
+//@Transactional(readOnly = true)
+@Secured(['ROLE_IM_OWNER'])
 class SurveyController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def session() {
+    def intelliMeetService
+    def userPreferenceService
+    def surveyService
+    def tokenService
 
+    @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
+    def session() {
+        Token token = tokenService.extractToken(params.tokenId)
+        Boolean hasFilledPreferences = userPreferenceService.hasFilledPreferences(token?.userId)
+        if(!token?.isValid() || hasFilledPreferences) {
+            render view: '/survey/thankyou'
+            return
+        }
+        [sessions: IMSession.findAllByIntelliMeetIdAndSessionStatus(intelliMeetService?.currentIntelliMeetId, SessionStatus.PROPOSED), hasFilledPreferences: hasFilledPreferences, tokenId: token?.value]
     }
 
+    @Secured('ROLE_ADMIN')
     def template() {
+    }
+
+    def send(Long id) {
+        Survey survey = Survey.findByIntelliMeetIdAndId(intelliMeetService.currentIntelliMeetId, id)
+        if(survey?.recipients*.status?.contains(SurveyStatus.PENDING)) {
+            surveyService.sendSurveyEmail(survey)
+        } else {
+            log.info("All survey emails already being sent...")
+        }
+        redirect controller: 'survey', action:'show', id: id
     }
 
     def index(Integer max) {
