@@ -20,12 +20,7 @@ class SurveyController {
     def session() {
         Token token = tokenService.extractToken(params.tokenId)
         Boolean hasFilledPreferences = userPreferenceService.hasFilledPreferences(token?.userId)
-        if(!token?.isValid()) {
-            flash.error = message(code: 'token.consumed.message')
-            render view: '/error'
-            return
-        }
-        if(hasFilledPreferences) {
+        if(!token?.isValid() || hasFilledPreferences) {
             render view: '/survey/thankyou'
             return
         }
