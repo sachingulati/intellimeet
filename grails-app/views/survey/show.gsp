@@ -7,7 +7,7 @@
     <title><g:message code="default.show.label" args="[entityName]"/></title>
     <r:style>
     .attendee-list li {
-        width: 50%;
+        width: 48%;
         float: left;
     }
 
