@@ -5,7 +5,7 @@ import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
 
-@Transactional(readOnly = true)
+//@Transactional(readOnly = true)
 @Secured(['ROLE_IM_OWNER'])
 class SurveyController {
 
