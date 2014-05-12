@@ -5,6 +5,18 @@
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'survey.label', default: 'Survey')}"/>
     <title><g:message code="default.show.label" args="[entityName]"/></title>
+    <r:style>
+    .attendee-list li {
+        width: 50%;
+        float: left;
+    }
+
+    ol.attendee-list {
+        overflow: hidden;
+        list-style-type: decimal;
+        padding: 20px;
+    }
+    </r:style>
 </head>
 
 <body>
@@ -19,25 +31,23 @@
         </ul>
     </div>
 </nav>
+
 <div id="show-survey" class="container" role="main">
-<g:if test="${flash.message}">
-    <div class="alert alert-success alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Success!</strong> ${flash.message}.
-    </div>
-</g:if>
-<g:if test="${flash.error}">
-    <div class="alert alert-danger alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Error!</strong> ${flash.message}.
-    </div>
-</g:if>
-<g:form class="form-horizontal" url="[resource: surveyInstance, action: 'delete']" method="DELETE">
-    <g:render template="staticForm"/>
-
-
-    </div>
-</g:form>
+    <g:if test="${flash.message}">
+        <div class="alert alert-success alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Success!</strong> ${flash.message}.
+        </div>
+    </g:if>
+    <g:if test="${flash.error}">
+        <div class="alert alert-danger alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>Error!</strong> ${flash.message}.
+        </div>
+    </g:if>
+    <g:form class="form-horizontal" url="[resource: surveyInstance, action: 'delete']" method="DELETE">
+        <g:render template="staticForm"/>
+    </g:form>
 </div>
 </body>
 </html>
