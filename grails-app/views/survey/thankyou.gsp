@@ -21,6 +21,9 @@
     <!-- Google web font -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
     <r:require module="suvey_thankyou"/>
+    <r:style>
+        #main {padding 0 400px 0 60px !important;}
+    </r:style>
     <r:layoutResources/>
 </head>
 
@@ -49,7 +52,42 @@
     </header>
     <!-- End header -->
 
-    <div class="container">
+    <!-- Page content of course! -->
+    <main class="bs-docs-masthead" id="content" role="main">
+        <div class="container">
+            <span class="bs-docs-booticon bs-docs-booticon-lg bs-docs-booticon-outline">IM</span>
+
+            <p class="lead">Let's learn together</p>
+
+            <div class="row">
+                <div class="col-md-12 main-title">
+                    <h1>Thank you for your time</h1>
+
+                    <p>This help us to improve our service and your satisfaction.</p>
+                </div>
+
+                <div class="col-md-6 col-md-offset-3 wrap-cd">
+                    <im:displayCountdown/>
+                </div>
+            </div>
+
+            %{--<p class="lead">
+                <sec:ifLoggedIn>
+                    <g:link controller="topic" action="index" class="btn btn-outline-inverse btn-lg">
+                        View Topics
+                    </g:link>
+                </sec:ifLoggedIn>
+                <sec:ifNotLoggedIn>
+                    <oauth:connect provider="google" id="google-connect-link" class="btn btn-outline-inverse btn-lg btn-google-plus">
+                        <i class="fa fa-google-plus"></i> <g:message code="google.signin"/>
+                    </oauth:connect>
+                </sec:ifNotLoggedIn>
+            </p>--}%
+        </div>
+    </main>
+
+    %{--<div class="container">
+    <span class="bs-docs-booticon bs-docs-booticon-lg bs-docs-booticon-outline">IM</span>
         <div class="row">
             <div class="col-md-12 main-title">
                 <h1>Thank you for your time</h1>
@@ -61,50 +99,57 @@
               <im:displayCountdown/>
             </div>
         </div>
-    </div>
+    </div>--}%
 </section>
 
 <section class="container" id="main">
 
-    <div class="row">
 
-        <div class="col-md-4 col-sm-4 add_bottom_30 box">
-            <p><img src="http://www.ansonika.com/annova/img/icon-1.png" alt="Icon"></p>
+    %{--<div class="bs-docs-featurette">--}%
+        %{--<div class="container">--}%
+            <h2 class="bs-docs-featurette-title" style="text-transform: inherit;">Learning is part of IntelliGrape ethos </h2>
 
-            <h3>Fully responsive</h3>
+            <p class="lead">By providing training and development programmes, on-the-job learning, coaching and feedback, we make sure that everyone who works with us has the resources they need to learn more and build their careers.</p>
 
-            <p>
-                Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id.
-                No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.
-            </p>
-            %{--<a href="#" title="read more" class="button_medium_2">Read more</a>--}%
-        </div>
+            <hr class="half-rule">
 
-        <div class="col-md-4 col-sm-4 add_bottom_30 box">
-            <p><img src="http://www.ansonika.com/annova/img/icon-2.png" alt="Icon"></p>
+            <div class="row">
+                <div class="col-sm-3">
+                    <img src="${resource(dir: 'images/logo', file:'grails-logo.png')}" alt="Groovy & Grails Logo" class="img-responsive">
 
-            <h3>Useful survey data</h3>
+                    <h3>Groovy & Grails.</h3>
 
-            <p>
-                We continuously send surveys for all the sessions and the organizers which helps us improve the quality of IntelliMeet. In addition to this we also conduct surveys to collect preferences of attendees to help decide sessions.
-            </p>
-            %{--<a href="#" title="read more" class="button_medium_2">Read more</a>--}%
-        </div>
+                    <p>We are one of the largest team of Grails developers in the world. We have been working on Groovy & Grails since early 2008 and have developed more than 50 live applications on Grails.</p>
+                </div>
 
-        <div class="col-md-4 col-sm-4 add_bottom_30 box">
-            <p><img src="http://www.ansonika.com/annova/img/icon-3.png" alt="Icon"></p>
+                <div class="col-sm-3">
+                    <img src="${resource(dir: 'images/logo', file:'nodejs-logo.png')}" alt="Node JS Logo" class="img-responsive" style="height: 115px;">
 
-            <h3>Receive it by email</h3>
+                    <h3>Node JS</h3>
 
-            <p>
-                Lorem ipsum dolor sit amet, in porro albucius qui, in nec quod novum accumsan, mei ludus tamquam dolores id.
-                No sit debitis meliore postulant, per ex prompta alterum sanctus, pro ne quod dicunt sensibus.
-            </p>
-            %{--<a href="#" title="read more" class="button_medium_2">Read more</a>--}%
-        </div>
+                    <p>We are one of the earliest adopters of Node.js and have gained extensive experience in delivering rich, high performance and scalable web applications using Node.js.</p>
+                </div>
 
-    </div>
-    <!-- end row -->
+                <div class="col-sm-3">
+                    <img src="${resource(dir: 'images/logo', file:'adobe-cq.png')}" alt="Adobe CQ5 Logo" class="img-responsive">
+
+                    <h3>Adobe CQ5</h3>
+
+                    <p>We help our clients with custom development, multi-channel content delivery and large-scale data migrations on Adobe CQ.</p>
+                </div>
+
+                <div class="col-sm-3">
+                    <img src="${resource(dir: 'images/logo', file:'aws-logo.png')}" alt="AWS Logo" class="img-responsive">
+
+                    <h3>AWS</h3>
+
+                    <p>We provide consulting, implementation and managed services on Amazon Web Services. We help and manage cloud infrastructure for some of the Fortune 500 companies as well as SMBs.</p>
+                </div>
+            </div>
+
+        %{--</div>--}%
+    %{--</div>--}%
+%{--
 
     <div class="divider"></div>
 
@@ -194,10 +239,12 @@
         <!-- team  item -->
     </div>
     <!-- end row -->
+--}%
 </section>
 <!-- end section main container -->
 
 <footer>
+
     <section class="container">
         <div class="row">
             <div class="col-md-4">

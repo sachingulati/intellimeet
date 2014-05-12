@@ -1,17 +1,22 @@
 /* line 1, ../../sass/survey/thankyou.scss */
 #main {
-  padding: 60px 0;
+  padding: 300px 0 60px 0;
 }
 
-/* line 4, ../../sass/survey/thankyou.scss */
+/* line 5, ../../sass/survey/thankyou.scss */
 #countdown {
   font-size: 48px;
   color: #FFF;
   line-height: 1.1em;
-  margin: 40px 0px 60px;
+  margin: 20px 0px 20px;
 }
 
-/* line 10, ../../sass/survey/thankyou.scss */
+/* line 12, ../../sass/survey/thankyou.scss */
 .wrap-cd {
   text-align: center;
+}
+
+/* line 15, ../../sass/survey/thankyou.scss */
+.main-title h1 {
+  margin-top: 10px !important;
 }
