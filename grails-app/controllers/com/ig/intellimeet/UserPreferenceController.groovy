@@ -1,4 +1,5 @@
 package com.ig.intellimeet
+
 import com.ig.intellimeet.co.UserPreferenceCO
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
@@ -9,6 +10,7 @@ class UserPreferenceController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
     def userPreferenceService
+    def tokenService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -17,11 +19,20 @@ class UserPreferenceController {
 
     @Transactional
     def save(UserPreferenceCO userPreferenceCO) {
-        if(!userPreferenceCO?.hasErrors()) {
-            UserPreference userPreference  = userPreferenceService.extractUserPreference(userPreferenceCO)
+        Token token = tokenService.extractToken(userPreferenceCO?.tokenId)
+        if (!token?.isValid()) {
+            flash.error = message(code: 'token.consumed.message')
+            render view: '/error'
+            return
+        }
+        if (!userPreferenceCO?.hasErrors()) {
+            UserPreference userPreference = userPreferenceService.extractUserPreference(userPreferenceCO)
             userPreferenceService.save userPreference
-            render view:'/survey/thankyou'
+            token.isConsumed = true
+            tokenService.save(token)
+            render view: '/survey/thankyou'
             return
         }
     }
+
 }
