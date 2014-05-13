@@ -85,6 +85,7 @@
                             <li><input name="firstPreferredSessionId" type="radio" class="required check_radio"
                                        value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail}</label></li>
                         </g:each>
+                        <li><input type="radio" class="required check_radio" name="firstPreferredSessionId" value="Not Available"/><label>Not Available</label></li>
                     </ul>
                 </div>
             </div>
@@ -99,6 +100,7 @@
                             <li><input name="secondPreferredSessionId" type="radio" class="required check_radio"
                                        value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail}</label></li>
                         </g:each>
+                        <li><input type="radio" class="required check_radio" name="secondPreferredSessionId" value="Not Available"/><label>Not Available</label></li>
                     </ul>
                 </div>
             </div>
@@ -113,6 +115,7 @@
                             <li><input name="thirdPreferredSessionId" type="radio" class="required check_radio"
                                        value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail}</label></li>
                         </g:each>
+                        <li><input type="radio" class="required check_radio" name="thirdPreferredSessionId" value="Not Available"/><label>Not Available</label></li>
                     </ul>
                 </div>
             </div>
