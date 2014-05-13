@@ -19,18 +19,18 @@ class UserPreference {
 
     static constraints = {
         fullName nullable: true
-        firstPreferredSessionId validator: { val, obj ->
-            if (val == obj?.secondPreferredSessionId || val == obj?.thirdPreferredSessionId) {
+        firstPreferredSessionId nullable:true, validator: { val, obj ->
+            if (val && (val == obj?.secondPreferredSessionId || val == obj?.thirdPreferredSessionId)) {
                 return ['preference.unique.error']
             }
         }
-        secondPreferredSessionId validator: { val, obj ->
-            if (val == obj?.firstPreferredSessionId || val == obj?.thirdPreferredSessionId) {
+        secondPreferredSessionId nullable:true, validator: { val, obj ->
+            if (val && (val == obj?.firstPreferredSessionId || val == obj?.thirdPreferredSessionId)) {
                 return ['preference.unique.error']
             }
         }
-        thirdPreferredSessionId validator: { val, obj ->
-            if (val == obj?.firstPreferredSessionId || val == obj?.secondPreferredSessionId) {
+        thirdPreferredSessionId nullable:true, validator: { val, obj ->
+            if (val && (val == obj?.firstPreferredSessionId || val == obj?.secondPreferredSessionId)) {
                 return ['preference.unique.error']
             }
         }

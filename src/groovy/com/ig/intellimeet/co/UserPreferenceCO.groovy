@@ -9,4 +9,10 @@ class UserPreferenceCO {
     Long secondPreferredSessionId
     Long thirdPreferredSessionId
 
+    static constraints = {
+        firstPreferredSessionId nullable: true
+        secondPreferredSessionId nullable: true
+        thirdPreferredSessionId nullable: true
+    }
+
 }
