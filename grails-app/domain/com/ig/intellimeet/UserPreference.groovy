@@ -34,6 +34,9 @@ class UserPreference {
                 return ['preference.unique.error']
             }
         }
+        firstPreferredSessionTitle nullable: true
+        secondPreferredSessionTitle nullable: true
+        thirdPreferredSessionTitle nullable: true
     }
 
     void setFirstPreferredSessionId(Long firstPreferredSessionId) {
