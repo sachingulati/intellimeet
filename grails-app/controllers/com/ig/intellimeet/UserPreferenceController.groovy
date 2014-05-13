@@ -15,6 +15,8 @@ class UserPreferenceController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+        params.sort='dateCreated'
+        params.order='desc'
         respond UserPreference.list(params), model: [userPreferenceInstanceCount: UserPreference.count()]
     }
 
@@ -29,13 +31,21 @@ class UserPreferenceController {
         }
         if (!userPreferenceCO?.hasErrors()) {
             UserPreference userPreference = userPreferenceService.extractUserPreference(userPreferenceCO, token)
-            userPreferenceService.save userPreference
-            surveyService.updateSurveyStatusForEmail(token?.surveyId, User.get(token?.userId)?.username)
-            token.isConsumed = true
-            tokenService.save(token)
-            render view: '/survey/thankyou'
-            return
+            if (userPreferenceService.save(userPreference)) {
+                surveyService.updateSurveyStatusForEmail(token?.surveyId, User.get(token?.userId)?.username)
+                token.isConsumed = true
+                tokenService.save(token)
+                render view: '/survey/thankyou'
+                return
+            }
         }
+        List<String> errors = []
+        eachError(bean: userPreferenceCO) {
+            errors << message(error: it)
+        }
+        flash.error = errors?.join("<br/>")
+        render view:'/error'
+        return
     }
 
 }
