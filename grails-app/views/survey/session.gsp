@@ -62,130 +62,139 @@
 
 <section class="container" id="main">
 
-<!-- Start Survey container -->
-<div id="survey_container">
+    <!-- Start Survey container -->
+    <div id="survey_container">
 
-    <div id="top-wizard">
+        <div id="top-wizard">
             <strong>Progress <span id="location"></span></strong>
 
             <div id="progressbar"></div>
 
             <div class="shadow"></div>
-    </div>
-<!-- end top-wizard -->
+        </div>
+    <!-- end top-wizard -->
 
     <g:form name="example-1" controller="userPreference" action="save" method="POST">
-        <g:hiddenField name="tokenId" value="${tokenId}" />
-        <div id="middle-wizard">
-            <div class="step row">
-                <div class="col-md-10">
-                    <h3>First Preference</h3>
-                    <ul class="data-list-2">
-                        <g:each in="${sessions}" var="session">
-                            <li><input name="firstPreferredSessionId" type="radio" class="required check_radio"
-                                       value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail} - <small><g:link controller="IMSession" action="show" id="${session?.id}" target="_blank">View Agenda</g:link></small></label></li>
-                        </g:each>
-                        <li><input type="radio" class="required check_radio" name="firstPreferredSessionId" value="Not Available"/><label>Not Available</label></li>
-                    </ul>
+            <g:hiddenField name="tokenId" value="${tokenId}"/>
+            <div id="middle-wizard">
+                <div class="step row">
+                    <div class="col-md-10">
+                        <h3>First Preference</h3>
+                        <ul class="data-list-2">
+                            <g:each in="${sessions}" var="session">
+                                <li><input name="firstPreferredSessionId" type="radio" class="required check_radio"
+                                           value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail} - <small><g:link controller="IMSession" action="show"
+                                                                                                                                       id="${session?.id}"
+                                                                                                                                       target="_blank">View Agenda</g:link></small>
+                                </label></li>
+                            </g:each>
+                            <li><input type="radio" class="required check_radio" name="firstPreferredSessionId" value=""/><label>Not Available</label></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <!-- end step -->
+                <!-- end step -->
 
 
-            <div class="step row">
-                <div class="col-md-10">
-                    <h3>Second Preference</h3>
-                    <ul class="data-list-2">
-                        <g:each in="${sessions}" var="session">
-                            <li><input name="secondPreferredSessionId" type="radio" class="required check_radio"
-                                       value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail} - <small><g:link controller="IMSession" action="show" id="${session?.id}" target="_blank">View Agenda</g:link></small></label></li>
-                        </g:each>
-                        <li><input type="radio" class="required check_radio" name="secondPreferredSessionId" value="Not Available"/><label>Not Available</label></li>
-                    </ul>
+                <div class="step row">
+                    <div class="col-md-10">
+                        <h3>Second Preference</h3>
+                        <ul class="data-list-2">
+                            <g:each in="${sessions}" var="session">
+                                <li><input name="secondPreferredSessionId" type="radio" class="required check_radio"
+                                           value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail} - <small><g:link controller="IMSession" action="show"
+                                                                                                                                       id="${session?.id}"
+                                                                                                                                       target="_blank">View Agenda</g:link></small>
+                                </label></li>
+                            </g:each>
+                            <li><input type="radio" class="required check_radio" name="secondPreferredSessionId" value=""/><label>Not Available</label></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <!-- end step -->
+                <!-- end step -->
 
 
-            <div class="step row">
-                <div class="col-md-10">
-                    <h3>Third Preference</h3>
-                    <ul class="data-list-2">
-                        <g:each in="${sessions}" var="session">
-                            <li><input name="thirdPreferredSessionId" type="radio" class="required check_radio"
-                                       value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail} - <small><g:link controller="IMSession" action="show" id="${session?.id}" target="_blank">View Agenda</g:link></small></label></li>
-                        </g:each>
-                        <li><input type="radio" class="required check_radio" name="thirdPreferredSessionId" value="Not Available"/><label>Not Available</label></li>
-                    </ul>
+                <div class="step row">
+                    <div class="col-md-10">
+                        <h3>Third Preference</h3>
+                        <ul class="data-list-2">
+                            <g:each in="${sessions}" var="session">
+                                <li><input name="thirdPreferredSessionId" type="radio" class="required check_radio"
+                                           value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail} - <small><g:link controller="IMSession" action="show"
+                                                                                                                                       id="${session?.id}"
+                                                                                                                                       target="_blank">View Agenda</g:link></small>
+                                </label></li>
+                            </g:each>
+                            <li><input type="radio" class="required check_radio" name="thirdPreferredSessionId" value=""/><label>Not Available</label></li>
+                        </ul>
+                    </div>
                 </div>
+                <!-- end step -->
+
+                <div class="submit step" id="complete">
+
+                    <i class="fa fa-check-square-o"></i>
+
+                    <h3>Survey complete! Please submit & Thank you for you time.</h3>
+                    <button type="submit" name="process" class="submit">Submit the survey</button>
+                </div>
+                <!-- end submit step -->
+
             </div>
-            <!-- end step -->
+            <!-- end middle-wizard -->
 
-            <div class="submit step" id="complete">
+            <div id="bottom-wizard">
 
-                <i class="fa fa-check-square-o"></i>
+                <button type="button" name="backward" class="backward">Backward</button>
+                <button type="button" name="forward" class="forward">Forward</button>
 
-                <h3>Survey complete! Please submit & Thank you for you time.</h3>
-                <button type="submit" name="process" class="submit">Submit the survey</button>
             </div>
-            <!-- end submit step -->
+            <!-- end bottom-wizard -->
+        </g:form>
 
-        </div>
-        <!-- end middle-wizard -->
+    </div>
+    <!-- end Survey container -->
 
-        <div id="bottom-wizard">
-
-            <button type="button" name="backward" class="backward">Backward</button>
-            <button type="button" name="forward" class="forward">Forward</button>
-
-        </div>
-        <!-- end bottom-wizard -->
-    </g:form>
-
-</div>
-<!-- end Survey container -->
-
-<h2 class="bs-docs-featurette-title" style="text-transform: inherit;">Learning is part of IntelliGrape ethos </h2>
+    <h2 class="bs-docs-featurette-title" style="text-transform: inherit;">Learning is part of IntelliGrape ethos</h2>
 
     <p class="lead">By providing training and development programmes, on-the-job learning, coaching and feedback, we make sure that everyone who works with us has the resources they need to learn more and build their careers.</p>
 
     <div class="divider"></div>
 
     <div class="row">
-    <div class="col-sm-3">
-        <img src="${resource(dir: 'images/logo', file:'grails-logo.png')}" alt="Groovy & Grails Logo" class="img-responsive">
+        <div class="col-sm-3">
+            <img src="${resource(dir: 'images/logo', file: 'grails-logo.png')}" alt="Groovy & Grails Logo" class="img-responsive">
 
-        <h3>Groovy & Grails.</h3>
+            <h3>Groovy & Grails.</h3>
 
-        <p>We are one of the largest team of Grails developers in the world. We have been working on Groovy & Grails since early 2008 and have developed more than 50 live applications on Grails.</p>
+            <p>We are one of the largest team of Grails developers in the world. We have been working on Groovy & Grails since early 2008 and have developed more than 50 live applications on Grails.</p>
+        </div>
+
+        <div class="col-sm-3">
+            <img src="${resource(dir: 'images/logo', file: 'nodejs-logo.png')}" alt="Node JS Logo" class="img-responsive" style="height: 115px;">
+
+            <h3>Node JS</h3>
+
+            <p>We are one of the earliest adopters of Node.js and have gained extensive experience in delivering rich, high performance and scalable web applications using Node.js.</p>
+        </div>
+
+        <div class="col-sm-3">
+            <img src="${resource(dir: 'images/logo', file: 'adobe-cq.png')}" alt="Adobe CQ5 Logo" class="img-responsive">
+
+            <h3>Adobe CQ5</h3>
+
+            <p>We help our clients with custom development, multi-channel content delivery and large-scale data migrations on Adobe CQ.</p>
+        </div>
+
+        <div class="col-sm-3">
+            <img src="${resource(dir: 'images/logo', file: 'aws-logo.png')}" alt="AWS Logo" class="img-responsive">
+
+            <h3>AWS</h3>
+
+            <p>We provide consulting, implementation and managed services on Amazon Web Services. We help and manage cloud infrastructure for some of the Fortune 500 companies as well as SMBs.</p>
+        </div>
     </div>
 
-    <div class="col-sm-3">
-        <img src="${resource(dir: 'images/logo', file:'nodejs-logo.png')}" alt="Node JS Logo" class="img-responsive" style="height: 115px;">
-
-        <h3>Node JS</h3>
-
-        <p>We are one of the earliest adopters of Node.js and have gained extensive experience in delivering rich, high performance and scalable web applications using Node.js.</p>
-    </div>
-
-    <div class="col-sm-3">
-        <img src="${resource(dir: 'images/logo', file:'adobe-cq.png')}" alt="Adobe CQ5 Logo" class="img-responsive">
-
-        <h3>Adobe CQ5</h3>
-
-        <p>We help our clients with custom development, multi-channel content delivery and large-scale data migrations on Adobe CQ.</p>
-    </div>
-
-    <div class="col-sm-3">
-        <img src="${resource(dir: 'images/logo', file:'aws-logo.png')}" alt="AWS Logo" class="img-responsive">
-
-        <h3>AWS</h3>
-
-        <p>We provide consulting, implementation and managed services on Amazon Web Services. We help and manage cloud infrastructure for some of the Fortune 500 companies as well as SMBs.</p>
-    </div>
-</div>
-
-<!-- end row -->
+    <!-- end row -->
 </section>
 <!-- end section main container -->
 
