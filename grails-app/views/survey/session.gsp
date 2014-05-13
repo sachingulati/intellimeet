@@ -83,7 +83,7 @@
                     <ul class="data-list-2">
                         <g:each in="${sessions}" var="session">
                             <li><input name="firstPreferredSessionId" type="radio" class="required check_radio"
-                                       value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail}</label></li>
+                                       value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail} - <small><g:link controller="IMSession" action="show" id="${session?.id}" target="_blank">View Agenda</g:link></small></label></li>
                         </g:each>
                         <li><input type="radio" class="required check_radio" name="firstPreferredSessionId" value="Not Available"/><label>Not Available</label></li>
                     </ul>
@@ -98,7 +98,7 @@
                     <ul class="data-list-2">
                         <g:each in="${sessions}" var="session">
                             <li><input name="secondPreferredSessionId" type="radio" class="required check_radio"
-                                       value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail}</label></li>
+                                       value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail} - <small><g:link controller="IMSession" action="show" id="${session?.id}" target="_blank">View Agenda</g:link></small></label></li>
                         </g:each>
                         <li><input type="radio" class="required check_radio" name="secondPreferredSessionId" value="Not Available"/><label>Not Available</label></li>
                     </ul>
@@ -113,7 +113,7 @@
                     <ul class="data-list-2">
                         <g:each in="${sessions}" var="session">
                             <li><input name="thirdPreferredSessionId" type="radio" class="required check_radio"
-                                       value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail}</label></li>
+                                       value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail} - <small><g:link controller="IMSession" action="show" id="${session?.id}" target="_blank">View Agenda</g:link></small></label></li>
                         </g:each>
                         <li><input type="radio" class="required check_radio" name="thirdPreferredSessionId" value="Not Available"/><label>Not Available</label></li>
                     </ul>
