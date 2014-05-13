@@ -45,11 +45,11 @@
 
             <td>${fieldValue(bean: userPreferenceInstance, field: "emailAddress")}</td>
 
-            <td>${fieldValue(bean: userPreferenceInstance, field: "firstPreferredSessionTitle")}</td>
+            <td>${fieldValue(bean: userPreferenceInstance, field: "firstPreferredSessionTitle")?:'Not Available'}</td>
 
-            <td>${fieldValue(bean: userPreferenceInstance, field: "secondPreferredSessionTitle")}</td>
+            <td>${fieldValue(bean: userPreferenceInstance, field: "secondPreferredSessionTitle")?:'Not Available'}</td>
 
-            <td>${fieldValue(bean: userPreferenceInstance, field: "thirdPreferredSessionTitle")}</td>
+            <td>${fieldValue(bean: userPreferenceInstance, field: "thirdPreferredSessionTitle")?:'Not Available'}</td>
 
             <td><g:formatDate date="${userPreferenceInstance.dateCreated}"/></td>
 
