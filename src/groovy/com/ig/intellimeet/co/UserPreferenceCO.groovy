@@ -10,9 +10,13 @@ class UserPreferenceCO {
     Long thirdPreferredSessionId
 
     static constraints = {
-        firstPreferredSessionId nullable: true
-        secondPreferredSessionId nullable: true
-        thirdPreferredSessionId nullable: true
+        firstPreferredSessionId nullable:true, validator: { val, obj ->
+            if (val && (val == obj?.secondPreferredSessionId || val == obj?.thirdPreferredSessionId || obj?.secondPreferredSessionId == obj?.thirdPreferredSessionId)) {
+                return ['preference.unique.error']
+            }
+        }
+        secondPreferredSessionId nullable:true
+        thirdPreferredSessionId nullable:true
     }
 
 }
