@@ -25,7 +25,7 @@ class SurveyController {
             render view: '/survey/thankyou'
             return
         }
-        [sessions: IMSession.findAllByIntelliMeetIdAndSessionStatus(intelliMeetService?.currentIntelliMeetId, SessionStatus.PROPOSED), hasFilledPreferences: hasFilledPreferences, tokenId: token?.value]
+        [sessions: IMSession.findAllByIntelliMeetIdAndSessionStatus(intelliMeetService?.currentIntelliMeetId, SessionStatus.PROPOSED,[sort:'title', order:'asc']), hasFilledPreferences: hasFilledPreferences, tokenId: token?.value]
     }
 
     @Secured('ROLE_ADMIN')

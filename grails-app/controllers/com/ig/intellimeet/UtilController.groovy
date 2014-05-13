@@ -43,6 +43,6 @@ class UtilController {
 
     def pref() {
         Boolean hasFilledPreferences = false
-        render view: '/survey/session', model: [sessions: IMSession.findAllByIntelliMeetIdAndSessionStatus(intelliMeetService?.currentIntelliMeetId, SessionStatus.PROPOSED), hasFilledPreferences: hasFilledPreferences, tokenId: "Dummy Token"]
+        render view: '/survey/session', model: [sessions: IMSession.findAllByIntelliMeetIdAndSessionStatus(intelliMeetService?.currentIntelliMeetId, SessionStatus.PROPOSED,[sort:'title', order:'asc']), hasFilledPreferences: hasFilledPreferences, tokenId: "Dummy Token"]
     }
 }
