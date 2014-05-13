@@ -36,9 +36,9 @@
 
     <h1>
         <im:canEdit imSession="${IMSessionInstance}">
-            <g:link controller="IMSession" action="edit" id="${IMSessionInstance?.id}"><i class="glyphicon glyphicon-pencil"></i></g:link>
+            <g:link controller="IMSession" action="edit" id="${IMSessionInstance?.id}"><i class="glyphicon glyphicon-pencil"></i></g:link>&nbsp;
         </im:canEdit>
-    &nbsp;${IMSessionInstance?.title}
+    ${IMSessionInstance?.title}
     </h1>
 
     <p class="lead">owned by <a href="#">${IMSessionInstance?.ownersEmail} </a>

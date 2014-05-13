@@ -1,16 +1,16 @@
 package com.ig.intellimeet
 
+import com.ig.intellimeet.enums.SessionStatus
 import com.ig.intellimeet.utils.TestUtil
-import grails.plugin.springsecurity.annotation.Secured
 
-@Secured(['ROLE_USER'])
 class UtilController {
 
     def surveyService
     def springSecurityService
+    def intelliMeetService
 
     def beforeInterceptor = {
-        if(!['farid@intelligrape.com', 'puneet.behl@intelligrape.com']?.contains(springSecurityService?.currentUser?.username)) {
+        if (!['farid@intelligrape.com', 'puneet.behl@intelligrape.com']?.contains(springSecurityService?.currentUser?.username)) {
             return
         }
     }
@@ -19,8 +19,8 @@ class UtilController {
         render("Success")
     }
 
-    def sendTestEmail( ) {
-        grailsApplication.config.grails.mail.disabled=false
+    def sendTestEmail() {
+        grailsApplication.config.grails.mail.disabled = false
         surveyService.sendSurveyEmail(params.email)
     }
 
@@ -39,5 +39,10 @@ class UtilController {
     def thankyou() {
         render view: '/survey/thankyou'
         return
+    }
+
+    def pref() {
+        Boolean hasFilledPreferences = false
+        render view: '/survey/session', model: [sessions: IMSession.findAllByIntelliMeetIdAndSessionStatus(intelliMeetService?.currentIntelliMeetId, SessionStatus.PROPOSED,[sort:'title', order:'asc']), hasFilledPreferences: hasFilledPreferences, tokenId: "Dummy Token"]
     }
 }

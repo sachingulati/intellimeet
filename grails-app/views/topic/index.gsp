@@ -59,6 +59,19 @@
     </div>
 </div>
 <r:script>
+    $('a[href^=#]:not([href=#])').on('click',function() {
+        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('div[id=' + this.hash.slice(1) +']');
+            if (target.length) {
+                var offsetTop = target.offset().top-60;
+                $('html,body').animate({
+                    scrollTop: offsetTop
+                }, 1000);
+                return false;
+            }
+        }
+    });
     markAsActive("topic");
 </r:script>
 </body>

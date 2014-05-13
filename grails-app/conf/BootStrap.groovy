@@ -34,7 +34,7 @@ class BootStrap {
     }
 
     void bootstrapSomeDummyDataForDev() {
-        ((DBCollection) Topic.collection).getDB().dropDatabase()
+//        ((DBCollection) Topic.collection).getDB().dropDatabase()
         createRoles()
         createUsers()
         if(User.count()) {
