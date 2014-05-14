@@ -17,6 +17,8 @@ class UserPreference {
     String secondPreferredSessionTitle
     String thirdPreferredSessionTitle
 
+    static mapWith = "mongo"
+
     static constraints = {
         fullName nullable: true
         firstPreferredSessionId nullable:true, validator: { val, obj ->
