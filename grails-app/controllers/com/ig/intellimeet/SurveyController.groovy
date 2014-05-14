@@ -42,6 +42,16 @@ class SurveyController {
         redirect controller: 'survey', action:'show', id: id
     }
 
+    def sendReminder(Long id) {
+        Survey survey = Survey.findByIntelliMeetIdAndId(intelliMeetService.currentIntelliMeetId, id)
+        if(survey?.recipients*.status?.count{!SurveyStatus.COMPLETED}) {
+            surveyService.sendSurveyReminder(survey)
+        } else {
+            log.info("All survey filled already...")
+        }
+        redirect controller: 'survey', action:'show', id: id
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Survey.list(params), model:[surveyInstanceCount: Survey.count()]
