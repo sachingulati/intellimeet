@@ -15,8 +15,8 @@ class UserPreferenceController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        params.sort='dateCreated'
-        params.order='desc'
+        params.sort = params.sort ?: 'dateCreated'
+        params.order = params.order ?: 'desc'
         respond UserPreference.list(params), model: [userPreferenceInstanceCount: UserPreference.count()]
     }
 
@@ -44,7 +44,7 @@ class UserPreferenceController {
             errors << message(error: it)
         }
         flash.error = errors?.join("<br/>")
-        render view:'/error'
+        render view: '/error'
         return
     }
 
