@@ -48,10 +48,12 @@
 
     <div class="form-group">
         <div class="col-sm-offset-4 col-sm-6">
-            <g:link class="btn btn-lg btn-primary" action="edit" resource="${surveyInstance}"><g:message code="default.button.edit.label" default="Edit"/></g:link>
-            <g:link class="${surveyInstance?.recipients*.status?.contains(SurveyStatus.PENDING) ?: 'disabled'} btn btn-lg btn-primary" action="send" controller="survey"
+            <g:link class="${surveyInstance?.recipients*.status?.contains(SurveyStatus.PENDING) ?: 'hidden'} btn btn-lg btn-primary" action="send" controller="survey"
                     id="${surveyInstance?.id}"><span class="glyphicon glyphicon-send"></span>&nbsp;<g:message code="default.button.email.label"
                                                                                                               default="Email"/></g:link>
+            <g:link class="${surveyInstance?.recipients*.status?.contains(SurveyStatus.SENT) ?: 'hidden'} btn btn-lg btn-primary" action="sendReminder" controller="survey"
+                    id="${surveyInstance?.id}"><span class="glyphicon glyphicon-send"></span>&nbsp;<g:message code="default.button.reminder.email.label"
+                                                                                                              default="Reminder Email"/></g:link>
         </div>
     </div>
 </div>
