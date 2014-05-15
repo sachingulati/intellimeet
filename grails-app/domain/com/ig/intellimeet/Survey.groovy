@@ -17,6 +17,8 @@ class Survey {
     List<Question> questions
     String recipientsEmail
 
+    Boolean isClosed = false
+
     static transients = ['recipientsEmail', 'intelliMeetTitle']
 
     static embedded = ['questions', 'recipients']
