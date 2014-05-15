@@ -6,6 +6,9 @@
     <g:set var="entityName" value="${message(code: 'imSession.label', default: 'Session')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
     <r:require modules="session,block_ui"/>
+    <r:style>
+        body { padding-top: 100px !important; }
+    </r:style>
 </head>
 
 <body>
