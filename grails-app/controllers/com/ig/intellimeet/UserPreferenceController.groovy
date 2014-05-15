@@ -24,12 +24,18 @@ class UserPreferenceController {
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def save(UserPreferenceCO userPreferenceCO) {
         Token token = tokenService.extractToken(userPreferenceCO?.tokenId)
-        if (!token?.isValid()) {
+        if (Survey.get(token?.surveyId)?.isClosed) {
+            log.info("Cannot save preference as the survey is already closed.")
+            flash.error = message(code: 'survey.closed.error.message')
+        } else if (!token?.isValid()) {
             flash.error = message(code: 'token.consumed.message')
-            render view: '/error'
-            return
-        }
-        if (!userPreferenceCO?.hasErrors()) {
+        } else if (userPreferenceCO?.hasErrors()) {
+            List<String> errors = []
+            eachError(bean: userPreferenceCO) {
+                errors << message(error: it)
+            }
+            flash.error = errors?.join("<br/>")
+        } else {
             UserPreference userPreference = userPreferenceService.extractUserPreference(userPreferenceCO, token)
             if (userPreferenceService.save(userPreference)) {
                 surveyService.updateSurveyStatusForEmail(token?.surveyId, User.get(token?.userId)?.username)
@@ -39,11 +45,6 @@ class UserPreferenceController {
                 return
             }
         }
-        List<String> errors = []
-        eachError(bean: userPreferenceCO) {
-            errors << message(error: it)
-        }
-        flash.error = errors?.join("<br/>")
         render view: '/error'
         return
     }
