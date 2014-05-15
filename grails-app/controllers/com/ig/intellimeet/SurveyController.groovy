@@ -28,6 +28,11 @@ class SurveyController {
     def session() {
         Token token = tokenService.extractToken(params.tokenId)
         Boolean hasFilledPreferences = userPreferenceService.hasFilledPreferences(token?.userId)
+        if (Survey.get(token?.surveyId)?.isClosed) {
+            flash.error = message(code: 'survey.closed.error.message')
+            render view: '/error'
+            return
+        }
         if (!token?.isValid() || hasFilledPreferences) {
             render view: '/survey/thankyou'
             return
@@ -41,7 +46,9 @@ class SurveyController {
 
     def send(Long id) {
         Survey survey = Survey.findByIntelliMeetIdAndId(intelliMeetService.currentIntelliMeetId, id)
-        if (survey?.recipients*.status?.contains(SurveyStatus.PENDING)) {
+        if(survey?.isClosed) {
+            log.info("Cannot send reminder email as survey already closed.")
+        } else if (survey?.recipients*.status?.contains(SurveyStatus.PENDING)) {
             surveyService.sendSurveyEmail(survey)
         } else {
             log.info("All survey emails already being sent...")
@@ -51,7 +58,9 @@ class SurveyController {
 
     def sendReminder(Long id) {
         Survey survey = Survey.findByIntelliMeetIdAndId(intelliMeetService.currentIntelliMeetId, id)
-        if (survey?.recipients*.status?.count { it!=SurveyStatus.COMPLETED }) {
+        if(survey?.isClosed) {
+            log.info("Cannot send reminder email as survey already closed.")
+        } else if (survey?.recipients*.status?.count { it!=SurveyStatus.COMPLETED }) {
             surveyService.sendSurveyReminder(survey)
         } else {
             log.info("All survey filled already...")
