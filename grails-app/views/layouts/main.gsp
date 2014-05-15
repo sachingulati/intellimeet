@@ -14,9 +14,9 @@
     <link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}">
     <g:layoutHead/>
     <r:require module="core"/>
-    <style>
-    body { padding-top: 50px; }
-    </style>
+    <r:style>
+        body { padding-top: 50px; }
+    </r:style>
     <r:layoutResources/>
 </head>
 

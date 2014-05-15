@@ -1,7 +1,7 @@
 modules = {
     core {
-        dependsOn 'bootstrap, holder, font_awesome, datepicker, application'
-        defaultBundle 'ui'
+        dependsOn 'jquery, bootstrap, holder, font_awesome, datepicker, application'
+        defaultBundle 'core'
         resource url: '/css/docs.min.css'
     }
 
@@ -58,6 +58,7 @@ modules = {
     }
 
     survey {
+        defaultBundle 'survey'
         dependsOn 'jquery, bootstrap, font_awesome, jquery_switch, html5, jquery_ui, jquery_wizard, modernizer, respond,jquery_validate, jquery_placeholder, jquery_tweet ,bx_slider'
         resource url: '/css/survey/socialize-bookmarks.css'
         resource url: '/css/survey/aero.css'
@@ -69,6 +70,7 @@ modules = {
     }
 
     suvey_thankyou {
+        defaultBundle 'survey_thankyou'
         dependsOn 'jquery, bootstrap, font_awesome,html5, jquery_ui, modernizer, respond, jquery_tweet'
         resource url: '/css/survey/thankyou.css'
         resource url: '/css/survey/socialize-bookmarks.css'

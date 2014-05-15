@@ -5,18 +5,6 @@
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'survey.label', default: 'Survey')}"/>
     <title><g:message code="default.show.label" args="[entityName]"/></title>
-    <r:style>
-    .attendee-list li {
-        width: 48%;
-        float: left;
-    }
-
-    ol.attendee-list {
-        overflow: hidden;
-        list-style-type: decimal;
-        padding: 20px;
-    }
-    </r:style>
 </head>
 
 <body>
@@ -46,8 +34,25 @@
         </div>
     </g:if>
     <g:form class="form-horizontal" url="[resource: surveyInstance, action: 'delete']" method="DELETE">
-        <g:render template="staticForm"/>
+        <div class="col-lg-6">
+            <g:render template="staticForm"/>
+        </div>
+
+        <div class="col-lg-6 recipient-survey-stat">
+            <legend>Recipient's Email Addresses</legend>
+            <ul class="nav nav-tabs nav-justified rs-nav">
+                <li class="active"><a href="#" data-trigger="all">All</a></li>
+                <li><a href="#" data-trigger="completed">Completed</a></li>
+                <li><a href="#" data-trigger="waiting">Response Waiting</a></li>
+            </ul>
+            <ol class="attendee-list list-group">
+                <g:each in="${surveyInstance?.recipients?.sort{it.email}}" var="recipient">
+                    <li class="list-group-item ${recipient?.status}">${recipient.email}<span class="badge pull-right">${recipient?.status}</span></li>
+                </g:each>
+            </ol>
+        </div>
     </g:form>
+    <script type="text/javascript" src="${resource(dir: '/js/survey', file: 'show.js')}"></script>
 </div>
 </body>
 </html>

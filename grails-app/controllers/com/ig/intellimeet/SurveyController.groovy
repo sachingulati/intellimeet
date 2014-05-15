@@ -1,12 +1,13 @@
 package com.ig.intellimeet
+
 import com.ig.intellimeet.enums.SessionStatus
 import com.ig.intellimeet.enums.SurveyStatus
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
-import static org.springframework.http.HttpStatus.*
+import static org.springframework.http.HttpStatus.CREATED
+import static org.springframework.http.HttpStatus.NOT_FOUND
 
-//@Transactional(readOnly = true)
 @Secured(['ROLE_IM_OWNER'])
 class SurveyController {
 
@@ -38,6 +39,16 @@ class SurveyController {
             surveyService.sendSurveyEmail(survey)
         } else {
             log.info("All survey emails already being sent...")
+        }
+        redirect controller: 'survey', action:'show', id: id
+    }
+
+    def sendReminder(Long id) {
+        Survey survey = Survey.findByIntelliMeetIdAndId(intelliMeetService.currentIntelliMeetId, id)
+        if(survey?.recipients*.status?.count{!SurveyStatus.COMPLETED}) {
+            surveyService.sendSurveyReminder(survey)
+        } else {
+            log.info("All survey filled already...")
         }
         redirect controller: 'survey', action:'show', id: id
     }
@@ -77,52 +88,6 @@ class SurveyController {
                 redirect surveyInstance
             }
             '*' { respond surveyInstance, [status: CREATED] }
-        }
-    }
-
-    def edit(Survey surveyInstance) {
-        respond surveyInstance
-    }
-
-    @Transactional
-    def update(Survey surveyInstance) {
-        if (surveyInstance == null) {
-            notFound()
-            return
-        }
-
-        if (surveyInstance.hasErrors()) {
-            respond surveyInstance.errors, view:'edit'
-            return
-        }
-
-        surveyInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Survey.label', default: 'Survey'), surveyInstance.id])
-                redirect surveyInstance
-            }
-            '*'{ respond surveyInstance, [status: OK] }
-        }
-    }
-
-    @Transactional
-    def delete(Survey surveyInstance) {
-
-        if (surveyInstance == null) {
-            notFound()
-            return
-        }
-
-        surveyInstance.delete flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Survey.label', default: 'Survey'), surveyInstance.id])
-                redirect action:"index", method:"GET"
-            }
-            '*'{ render status: NO_CONTENT }
         }
     }
 
