@@ -6,6 +6,9 @@
     <g:set var="entityName" value="${message(code: 'topic.label', default: 'Topic')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
     <r:require modules="topic,block_ui,x_editable"/>
+    <r:style>
+        body { padding-top: 100px !important; }
+    </r:style>
 </head>
 
 <body>
