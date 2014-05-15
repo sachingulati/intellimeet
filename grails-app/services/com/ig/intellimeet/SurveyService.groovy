@@ -1,8 +1,8 @@
 package com.ig.intellimeet
-
 import com.ig.intellimeet.dto.MailDTO
 import com.ig.intellimeet.embedded.SurveyRecipientInfo
 import com.ig.intellimeet.enums.SurveyStatus
+import com.mongodb.DBCollection
 
 class SurveyService {
 
@@ -10,6 +10,11 @@ class SurveyService {
     def intelliMeetService
     def grailsLinkGenerator
     def tokenService
+
+    void close(Long surveyId) {
+        DBCollection surveyCollection  = Survey.collection
+        surveyCollection.update(['_id': surveyId], ['$set': ['isClosed': true]])
+    }
 
     Survey save(Survey survey) {
         if (!survey?.validate() || !survey?.save(failOnError: true, flush: true)) {
