@@ -21,10 +21,9 @@
 </nav>
 
 <div id="show-survey" class="container" role="main">
-    <g:if test="${flash.message}">
-        <div class="alert alert-success alert-dismissable">
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-            <strong>Success!</strong> ${flash.message}.
+    <g:if test="${surveyInstance?.isClosed}">
+        <div class="alert alert-info">
+            <g:message code="survey.closed.message"/>
         </div>
     </g:if>
     <g:if test="${flash.error}">
