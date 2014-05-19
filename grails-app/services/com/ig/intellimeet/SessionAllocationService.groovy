@@ -69,7 +69,7 @@ class SessionAllocationService {
         AllocationCO allocationCO = new AllocationCO()
         PreferenceDTO preferenceDTO
         userPreferenceList?.each { UserPreference userPreference ->
-            preferenceDTO=new PreferenceDTO(value: userPreference?.userId)
+            preferenceDTO=new PreferenceDTO(value: userPreference?.userId,email: userPreference?.emailAddress)
             SessionPreferenceDTO firstSessionPreferenceDTO = allocationCO?.preferenceDTOList?.find { it.sessionId == userPreference?.firstPreferredSessionId }
             if (!firstSessionPreferenceDTO) {
                 firstSessionPreferenceDTO = new SessionPreferenceDTO(sessionId: userPreference?.firstPreferredSessionId, sessionTitle: userPreference?.firstPreferredSessionTitle, firstPreferenceUserIdList: [], secondPreferenceUserIdList: [], thirdPreferenceUserIdList: [])
