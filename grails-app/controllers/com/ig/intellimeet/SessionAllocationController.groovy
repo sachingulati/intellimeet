@@ -1,5 +1,6 @@
 package com.ig.intellimeet
 
+import com.ig.intellimeet.co.AllocationCO
 import com.ig.intellimeet.dto.SessionPreference
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
@@ -12,8 +13,10 @@ class SessionAllocationController {
 
     def show() {
         IntelliMeet intelliMeet = intelliMeetService.getCurrentIntelliMeet()
+        List<UserPreference> userPreferences = UserPreference.findAllByIntelliMeetId(intelliMeet?.id)
+        AllocationCO allocationCO = sessionAllocationService.generateAllocationCO(userPreferences)
         Map<Long, SessionPreference> sessionPreferenceMap = sessionAllocationService.getSessionPreferences();
-        render(view: "sessionAllocation", model: [sessionPreferenceMap: sessionPreferenceMap, intelliMeet: intelliMeet] )
+        render(view: "sessionAllocation", model: [sessionPreferenceMap: sessionPreferenceMap, intelliMeet: intelliMeet, allocationCO: allocationCO])
     }
 
     @Transactional
@@ -25,7 +28,7 @@ class SessionAllocationController {
                 sessionAllocationService.savePurposedSessionAllocation(sessionId as Integer, attendeeIds)
             }
         }
-        redirect( action: "show")
+        redirect(action: "show")
     }
 
     @Transactional
@@ -37,7 +40,7 @@ class SessionAllocationController {
                 sessionAllocationService.freezeSessionAllocation(sessionId as Integer, attendeeIds)
             }
         }
-        redirect( action: "show")
+        redirect(action: "show")
     }
 
 
