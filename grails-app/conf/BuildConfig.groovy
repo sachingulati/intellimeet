@@ -57,6 +57,7 @@ grails.project.dependency.resolution = {
         compile 'org.grails:grails-datastore-gorm:3.0.4.RELEASE'
         compile 'org.grails:grails-datastore-core:3.0.4.RELEASE'
         test 'org.grails:grails-datastore-simple:3.0.4.RELEASE'
+        test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
     }
 
     plugins {
@@ -95,6 +96,8 @@ grails.project.dependency.resolution = {
         //compile ":coffee-asset-pipeline:1.5.0"
         //compile ":handlebars-asset-pipeline:1.3.0.1"
 
-        test ":spock:0.7"
+        test(":spock:0.7") {
+            exclude "spock-grails-support"
+        }
     }
 }
