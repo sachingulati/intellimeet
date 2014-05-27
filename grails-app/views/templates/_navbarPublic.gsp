@@ -1,5 +1,5 @@
 <!-- Docs master nav -->
-<header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+<header class="navbar navbar-fixed-top bs-docs-nav" id="top" role="banner">
     <div class="container">
         <div class="navbar-header">
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".bs-navbar-collapse">
@@ -10,16 +10,19 @@
             </button>
             <a href="/" class="navbar-brand">IntelliMeet</a>
         </div>
-        <nav class="collapse navbar-collapse bs-navbar-collapse" id="topNav" role="navigation">
+        <nav class="collapse navbar-collapse bs-navbar-collapse col-sm-8" id="topNav" role="navigation">
             <ul class="nav navbar-nav">
                 <li id="home"><a href="/">Home</a></li>
-                %{--<li><a href="#">Features</a></li>--}%
-                %{--<li><a href="#">Contact Us</a></li>--}%
+                <li><a href="#">Sessions</a></li>
+                <li><a href="#">About Us</a></li>
                 %{--<li id="about"><a href="/about">About</a></li></ul>--}%
             <ul class="nav navbar-nav navbar-right">
                 %{--<li><a href="#">Expo</a></li>--}%
                 %{--<li><a href="#">Blog</a></li>--}%
             </ul>
         </nav>
+        <div class="col-sm-4 navbar-right">
+            <a class="brand" href="/"> <img class="pull-right" src="${resource(dir:'images/logo', file: 'ig-logo.png')}"></a>
+        </div>
     </div>
 </header>

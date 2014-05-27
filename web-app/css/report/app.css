@@ -1,0 +1,22 @@
+/* line 1, ../../sass/report/app.scss */
+header {
+  padding: 0 !important;
+}
+
+/* line 5, ../../sass/report/app.scss */
+#countdown {
+  font-size: 48px;
+  color: #FFF;
+  line-height: 1.1em;
+  margin: 20px 0px 20px;
+}
+
+/* line 12, ../../sass/report/app.scss */
+.bs-docs-masthead {
+  padding: 40px 0 !important;
+}
+
+/* line 16, ../../sass/report/app.scss */
+body {
+  padding-top: 50px !important;
+}
