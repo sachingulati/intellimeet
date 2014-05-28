@@ -45,4 +45,9 @@ $(function () {
 
     // fancybox
     $(".fancybox").fancybox();
+    $("#public-nav").find("li a").on('click', function(){
+        var $anchor=$(this);
+        $("#public-nav").find("li").removeClass("active");
+        $anchor.parents("li").addClass("active");
+    });
 });
