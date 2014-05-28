@@ -3,7 +3,9 @@
 <head>
     <meta name="layout" content="public"/>
     <title>Welcome to IntelliMeet</title>
-    <link rel="stylesheet" href="${resource(dir:'css/report', file: 'app.css')}"/>
+    <link rel="stylesheet" href="${resource(dir: 'css/report', file: 'app.css')}"/>
+    <link rel="stylesheet" href="${resource(dir: 'css/report', file: 'isotope.css')}"/>
+    <r:require modules="fancybox, iso_topes"/>
 </head>
 
 <body class="bs-docs-home">
@@ -28,7 +30,8 @@
                 </g:link>
             </sec:ifLoggedIn>
             <sec:ifNotLoggedIn>
-                <oauth:connect provider="google" id="google-connect-link" class="btn btn-outline-inverse btn-lg btn-google-plus">
+                <oauth:connect provider="google" id="google-connect-link"
+                               class="btn btn-outline-inverse btn-lg btn-google-plus">
                     <i class="fa fa-google-plus"></i> <g:message code="google.signin"/>
                 </oauth:connect>
             </sec:ifNotLoggedIn>
@@ -38,15 +41,15 @@
 
 <div class="bs-docs-featurette">
     <div class="container">
-        <h2 class="bs-docs-featurette-title" style="text-transform: inherit;">Learning is part of IntelliGrape ethos</h2>
+        <h2 class="bs-docs-featurette-title"
+            style="text-transform: inherit;">Learning is part of IntelliGrape ethos</h2>
 
         <p class="lead">By providing training and development programmes, on-the-job learning, coaching and feedback, we make sure that everyone who works with us has the resources they need to learn more and build their careers.</p>
 
-        <hr class="half-rule">
-
         <div class="row">
             <div class="col-sm-3">
-                <img src="${resource(dir: 'images/logo', file: 'grails-logo.png')}" alt="Groovy & Grails Logo" class="img-responsive">
+                <img src="${resource(dir: 'images/logo', file: 'grails-logo.png')}" alt="Groovy & Grails Logo"
+                     class="img-responsive">
 
                 <h3>Groovy & Grails.</h3>
 
@@ -54,7 +57,8 @@
             </div>
 
             <div class="col-sm-3">
-                <img src="${resource(dir: 'images/logo', file: 'nodejs-logo.png')}" alt="Node JS Logo" class="img-responsive" style="height: 115px;">
+                <img src="${resource(dir: 'images/logo', file: 'nodejs-logo.png')}" alt="Node JS Logo"
+                     class="img-responsive" style="height: 115px;">
 
                 <h3>Node JS</h3>
 
@@ -62,7 +66,8 @@
             </div>
 
             <div class="col-sm-3">
-                <img src="${resource(dir: 'images/logo', file: 'adobe-cq.png')}" alt="Adobe CQ5 Logo" class="img-responsive">
+                <img src="${resource(dir: 'images/logo', file: 'adobe-cq.png')}" alt="Adobe CQ5 Logo"
+                     class="img-responsive">
 
                 <h3>Adobe CQ5</h3>
 
@@ -78,6 +83,186 @@
             </div>
         </div>
 
+    </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="bs-docs-featurette">
+    <div class="container">
+        <div class="row pbtm50">
+            <div class="col-md-12">
+                <h2 class="bs-docs-featurette-title"
+                                       style="text-transform: inherit;">Sessions</h2>
+
+                <p class="lead">Please hover over session to view agenda</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="portfolio-items isotopeWrapper clearfix" id="3">
+
+                <article class="col-md-4 isotopeItem webdesign">
+                    <div class="portfolio-item">
+                        <div class="portfolio-title">Advanced Excel
+                        & Macros
+                            <br/>(External Training)</div>
+
+                        <div class="portfolio-desc align-center">
+                            <div class="folio-info">
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'excel.png')}" class="fancybox"><i
+                                        class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="col-md-4 isotopeItem photography">
+                    <div class="portfolio-item">
+                        <div class="portfolio-title">Amazon Auto Scaling
+                            <br/>(Manoj Mohan)</div>
+
+                        <div class="portfolio-desc align-center">
+                            <div class="folio-info">
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'auto_scaling.png')}"
+                                       class="fancybox"><i
+                                            class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="col-md-4 isotopeItem print">
+                    <div class="portfolio-item">
+                        <div class="portfolio-title">An Introduction
+                        to AngularJS <br/>(Bhagwat Kumar)</div>
+
+                        <div class="portfolio-desc align-center">
+                            <div class="folio-info">
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'angular.png')}" class="fancybox"><i
+                                        class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="col-md-4 isotopeItem photography">
+                    <div class="portfolio-item">
+                        <div class="portfolio-title">Build Automation
+                        using Maven<br/>(Ankit Gurbani & Ankur Chauhan)</div>
+
+                        <div class="portfolio-desc align-center">
+                            <div class="folio-info">
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'maven.png')}" class="fancybox"><i
+                                        class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="col-md-4 isotopeItem webdesign">
+                    <div class="portfolio-item">
+                        <div class="portfolio-title">Introduction to Node JS
+                            <br/>(Sahil Chitkara)</div>
+
+                        <div class="portfolio-desc align-center">
+                            <div class="folio-info">
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'node.png')}" class="fancybox"><i
+                                        class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="col-md-4 isotopeItem print">
+                    <div class="portfolio-item">
+                        <div class="portfolio-title">Google Analytics <br/>(Gaurav Bagla)</div>
+
+                        <div class="portfolio-desc align-center">
+                            <div class="folio-info">
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'google_analytics.png')}"
+                                       class="fancybox"><i
+                                            class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="col-md-4 isotopeItem photography">
+                    <div class="portfolio-item">
+                        <div class="portfolio-title">HTML 5 Canvas Game with physics<br/>(Kushal Likhi)</div>
+
+                        <div class="portfolio-desc align-center">
+                            <div class="folio-info">
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'html5.png')}" class="fancybox"><i
+                                        class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="col-md-4 isotopeItem print">
+                    <div class="portfolio-item">
+                        <div class="portfolio-title">Introduction to Android Programming <br/>(Anand Rai)</div>
+
+                        <div class="portfolio-desc align-center">
+                            <div class="folio-info">
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'android.png')}" class="fancybox"><i
+                                        class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="col-md-4 isotopeItem print">
+                    <div class="portfolio-item">
+                        <div class="portfolio-title">Introduction to Kanban
+                            <br/>(Roni C Thomas)</div>
+
+                        <div class="portfolio-desc align-center">
+                            <div class="folio-info">
+                                <h5>
+                                    <a href="${resource(dir: 'images/agenda', file: 'kanban.png')}" class="fancybox"><i
+                                            class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+
+                <article class="col-md-4 isotopeItem print">
+                    <div class="portfolio-item">
+                        <div class="portfolio-title">Javascript Design Pattern
+                            <br/>(Shreyance Jain)</div>
+
+                        <div class="portfolio-desc align-center">
+                            <div class="folio-info">
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'design_javascript.png')}"
+                                       class="fancybox"><i
+                                            class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="col-md-4 isotopeItem print">
+                    <div class="portfolio-item">
+                        <div class="portfolio-title">Programming with R
+                            <br/>(Narinder Kumar)</div>
+
+                        <div class="portfolio-desc align-center">
+                            <div class="folio-info">
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'r.png')}" class="fancybox"><i
+                                        class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+        </div>
     </div>
 </div>
 
@@ -104,7 +289,8 @@
                     <li><i class="icon-home"></i> SDF L-6, NSEZ, Noida Phase 2, India</li>
                     <li><i class="icon-phone"></i> Telephone: (+91) 120-6493668</li>
                     <li><i class="icon-print">Fax: (+91) 120-4207689</i></li>
-                    <li><i class="icon-envelope"></i> Email: <a href="mailto:info@intelligrape.com">info@intelligrape.com</a></li>
+                    <li><i class="icon-envelope"></i> Email: <a
+                            href="mailto:info@intelligrape.com">info@intelligrape.com</a></li>
                     <li><i class="icon-skype"></i> Skype name: IntelliMeet</li>
                 </ul>
             </div>
@@ -112,8 +298,10 @@
             <div class="col-md-4">
                 <h3>Latest tweet</h3>
 
-                <div class="latest-tweets" data-number="10" data-username="intelligrape" data-mode="fade" data-pager="false" data-nextselector=".tweets-next"
-                     data-prevselector=".tweets-prev" data-adaptiveheight="true"><p class="loading">loading tweets...</p></div>
+                <div class="latest-tweets" data-number="10" data-username="intelligrape" data-mode="fade"
+                     data-pager="false" data-nextselector=".tweets-next"
+                     data-prevselector=".tweets-prev" data-adaptiveheight="true"><p
+                        class="loading">loading tweets...</p></div>
 
                 <div class="tweet-control">
                     <div class="tweets-prev"></div>
@@ -132,7 +320,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <ul id="footer-nav">
-                        <li>Copyright © 2014 <a href="http://www.intelligrape.com" target="_blank">IntelliGrape</a>. All rights reserved.</li>
+                        <li>Copyright © 2014 <a href="http://www.intelligrape.com"
+                                                target="_blank">IntelliGrape</a>. All rights reserved.</li>
                         %{--<li><a href="#">Terms of Use</a></li>--}%
                         %{--<li><a href="#">Privacy</a></li>--}%
                     </ul>
@@ -140,10 +329,13 @@
 
                 <div class="col-md-6" style="text-align:center">
                     <ul class="social-bookmarks clearfix">
-                        <li class="facebook"><a href="https://www.facebook.com/intelligrape.software" target="_blank">facebook</a></li>
-                        <li class="googleplus"><a href="https://plus.google.com/102688776692809350794/posts" target="_blank">googleplus</a></li>
+                        <li class="facebook"><a href="https://www.facebook.com/intelligrape.software"
+                                                target="_blank">facebook</a></li>
+                        <li class="googleplus"><a href="https://plus.google.com/102688776692809350794/posts"
+                                                  target="_blank">googleplus</a></li>
                         <li class="twitter"><a href="https://twitter.com/IntelliGrape" target="_blank">twitter</a></li>
-                        <li class="linkedin"><a href="http://www.linkedin.com/company/intelligrape" target="_blank">linkedin</a></li>
+                        <li class="linkedin"><a href="http://www.linkedin.com/company/intelligrape"
+                                                target="_blank">linkedin</a></li>
                         <li class="blogger"><a href="http://www.intelligrape.com/blog/" target="_blank">blogger</a></li>
                     </ul>
                 </div>
@@ -152,6 +344,7 @@
     </section>
 
 </footer>
+<script type="text/javascript" src="${resource(dir: 'js/report', file: 'app.js')}"></script>
 <r:script>
     $("#topNav li").removeClass("active");
     $("#topNav li#home").addClass("active");
