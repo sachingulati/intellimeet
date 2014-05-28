@@ -23,7 +23,7 @@ class UrlMappings {
         "/api/v1.0/$controller/$action"(parseRequest: true)
         "/api/v1.0/$controller/$action/$id"(parseRequest: true)
 
-        "/"(view:"/index")
+        "/"(view:"/intelliMeet/report")
         "/about"(view:"/about")
         "500"(view:'/error')
 	}
