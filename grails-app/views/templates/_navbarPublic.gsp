@@ -15,13 +15,9 @@
                 <li id="home"><a href="/">Home</a></li>
                 <li><a href="#">Sessions</a></li>
                 <li><a href="#">About Us</a></li>
-                %{--<li id="about"><a href="/about">About</a></li></ul>--}%
-            <ul class="nav navbar-nav navbar-right">
-                %{--<li><a href="#">Expo</a></li>--}%
-                %{--<li><a href="#">Blog</a></li>--}%
             </ul>
         </nav>
-        <div class="col-sm-4 navbar-right">
+        <div class="navbar-right">
             <a class="brand" href="/"> <img class="pull-right" src="${resource(dir:'images/logo', file: 'ig-logo.png')}"></a>
         </div>
     </div>
