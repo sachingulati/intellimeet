@@ -212,6 +212,8 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/':                              ['permitAll'],
         '/index':                         ['permitAll'],
         '/index.gsp':                     ['permitAll'],
+        '/intellimeet/report':            ['permitAll'],
+        '/intellimeet/report.gsp':        ['permitAll'],
         '/about':                         ['ROLE_ADMIN'],
         '/about.gsp':                     ['ROLE_ADMIN'],
         '/console':                       ['ROLE_ADMIN'],

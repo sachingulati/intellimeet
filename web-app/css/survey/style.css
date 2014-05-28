@@ -670,11 +670,12 @@ ul#footer-nav li {
   transition: all 0.2s ease-in-out;
   -webkit-border-radius: 0px;
   -webkit-box-shadow: none;
-  -webkit-transition: all 0.2s ease-in-out;
-}
-/* line 595, ../../sass/survey/style.scss */
-.thumbnail:hover h4 {
-  margin-top: -40px;
+  /* -webkit-transition: all 0.2s ease-in-out;
+   &:hover {
+     h4 {
+       margin-top: -40px;
+     }
+   }*/
 }
 
 /* line 601, ../../sass/survey/style.scss */

@@ -80,7 +80,7 @@ modules = {
     }
 
     jquery_countdown {
-        resource url:'/js/jquery.countdown.min.js'
+        resource url: '/js/jquery.countdown.min.js'
     }
 
     html5 {
@@ -126,23 +126,32 @@ modules = {
     datepicker {
         dependsOn 'jquery'
         resource url: '/css/datepicker/datepicker3.css'
-        resource url:'/js/datepicker/bootstrap-datepicker.js'
+        resource url: '/js/datepicker/bootstrap-datepicker.js'
     }
 
     block_ui {
-        resource url:'/js/jquery.blockUI.js'
+        resource url: '/js/jquery.blockUI.js'
     }
 
     session_allocation {
         dependsOn 'jquery'
         resource url: 'js/sessionAllocation/app.js'
-        resource  url: 'css/sessionAllocation/sessionAllocation.css'
+        resource url: 'css/sessionAllocation/sessionAllocation.css'
     }
 
     x_editable {
         dependsOn 'jquery,bootstrap,wysi_html5'
         resource url: '/css/xeditable/bootstrap-editable.css'
         resource url: '/js/xeditable/bootstrap-editable.js'
-        resource url :'/js/xeditable/wysihtml5.js'
+        resource url: '/js/xeditable/wysihtml5.js'
+    }
+
+    fancybox {
+        resource url: 'js/fancybox/jquery.fancybox.css'
+        resource url: 'js/fancybox/jquery.fancybox.pack.js'
+    }
+
+    iso_topes {
+        resource url: 'js/jquery.isotope.min.js'
     }
 }
