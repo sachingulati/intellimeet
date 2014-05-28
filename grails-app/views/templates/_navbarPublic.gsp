@@ -14,7 +14,7 @@
             <ul class="nav navbar-nav">
                 <li id="home"><a href="/">Home</a></li>
                 <li><a href="#">Sessions</a></li>
-                <li><a href="#">About Us</a></li>
+                <li><a href="#">Meet the Team</a></li>
             </ul>
         </nav>
         <div class="navbar-right">
