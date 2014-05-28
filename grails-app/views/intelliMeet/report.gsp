@@ -272,7 +272,7 @@
         <h2 class="bs-docs-featurette-title"
             style="text-transform: inherit;">Meet the Team</h2>
 
-        <p class="lead">We are group of awesome agile enthusiast.</p>
+        <p class="lead">We are group of agile enthusiast.</p>
 
         <div class="row">
                 <g:render template="/intelliMeet/teamMember" model="[name:'Mohit Garg', designation: 'IntelliMeet Owner', imgSrc: resource(dir: 'images/team', file: 'mohit_garg.jpg')]" />
