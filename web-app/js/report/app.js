@@ -50,4 +50,18 @@ $(function () {
         $("#public-nav").find("li").removeClass("active");
         $anchor.parents("li").addClass("active");
     });
+
+    $('a[href^=#]:not([href=#])').on('click', function () {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('div[id=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                var offsetTop = target.offset().top-90;
+                $('html,body').animate({
+                    scrollTop: offsetTop
+                }, 1000);
+                return false;
+            }
+        }
+    });
 });
