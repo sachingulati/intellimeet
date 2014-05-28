@@ -88,7 +88,7 @@
 
 <div class="divider"></div>
 
-<div class="bs-docs-featurette">
+<div class="bs-docs-featurette" id="sessions">
     <div class="container">
         <div class="row pbtm50">
             <div class="col-md-12">
@@ -267,7 +267,7 @@
 </div>
 
 <div class="divider"></div>
-<div class="bs-docs-featurette">
+<div class="bs-docs-featurette" id="team">
     <div class="container">
         <h2 class="bs-docs-featurette-title"
             style="text-transform: inherit;">Meet the Team</h2>
