@@ -181,3 +181,8 @@ nav#filter a {
   color: #ffffff;
   font-size: 12px;
 }
+
+/* line 142, ../../sass/report/app.scss */
+.thumbnail .project-item-image-container img {
+  height: 263px !important;
+}
