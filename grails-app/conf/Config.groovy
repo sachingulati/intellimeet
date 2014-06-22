@@ -129,7 +129,7 @@ environments {
 
     }
     qa {
-        graisl.mail.disabled=true
+        grails.mail.disabled=true
         grails.mail.overrideAddress="farid@intelligrape.com"
         grails.logging.jul.usebridge = false
         grails.serverURL = "http://intellimeet.qa3.intelligrape.net"
