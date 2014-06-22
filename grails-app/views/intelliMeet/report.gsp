@@ -104,13 +104,12 @@
 
                 <article class="col-md-4 isotopeItem webdesign">
                     <div class="portfolio-item">
-                        <div class="portfolio-title">Advanced Excel
-                        & Macros
-                            <br/>(External Training)</div>
+                        <div class="portfolio-title">Photoshop
+                            <br/>(Kapil)</div>
 
                         <div class="portfolio-desc align-center">
                             <div class="folio-info">
-                                <h5><a href="${resource(dir: 'images/agenda', file: 'excel.png')}" class="fancybox"><i
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'Photoshop.jpg')}" class="fancybox"><i
                                         class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
                             </div>
                         </div>
@@ -119,12 +118,12 @@
 
                 <article class="col-md-4 isotopeItem photography">
                     <div class="portfolio-item">
-                        <div class="portfolio-title">Amazon Auto Scaling
-                            <br/>(Manoj Mohan)</div>
+                        <div class="portfolio-title">Business Communication
+                            <br/>(Abhishek Tejpaul)</div>
 
                         <div class="portfolio-desc align-center">
                             <div class="folio-info">
-                                <h5><a href="${resource(dir: 'images/agenda', file: 'auto_scaling.png')}"
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'business-communication.jpg')}"
                                        class="fancybox"><i
                                             class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
                             </div>
@@ -134,12 +133,11 @@
 
                 <article class="col-md-4 isotopeItem print">
                     <div class="portfolio-item">
-                        <div class="portfolio-title">An Introduction
-                        to AngularJS <br/>(Bhagwat Kumar)</div>
+                        <div class="portfolio-title">Elastic Search <br/>(Mohit Garg)</div>
 
                         <div class="portfolio-desc align-center">
                             <div class="folio-info">
-                                <h5><a href="${resource(dir: 'images/agenda', file: 'angular.png')}" class="fancybox"><i
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'Introduction-to-Elasticsearch.jpg')}" class="fancybox"><i
                                         class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
                             </div>
                         </div>
@@ -148,12 +146,11 @@
 
                 <article class="col-md-4 isotopeItem photography">
                     <div class="portfolio-item">
-                        <div class="portfolio-title">Build Automation
-                        using Maven<br/>(Ankit Gurbani & Ankur Chauhan)</div>
+                        <div class="portfolio-title">Gradle<br/>(Sachin Ananad)</div>
 
                         <div class="portfolio-desc align-center">
                             <div class="folio-info">
-                                <h5><a href="${resource(dir: 'images/agenda', file: 'maven.png')}" class="fancybox"><i
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'gradle.jpg')}" class="fancybox"><i
                                         class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
                             </div>
                         </div>
@@ -162,12 +159,39 @@
 
                 <article class="col-md-4 isotopeItem webdesign">
                     <div class="portfolio-item">
-                        <div class="portfolio-title">Introduction to Node JS
-                            <br/>(Sahil Chitkara)</div>
+                        <div class="portfolio-title">Gridle and SASS CSS framework
+                            <br/>(Umar)</div>
 
                         <div class="portfolio-desc align-center">
                             <div class="folio-info">
-                                <h5><a href="${resource(dir: 'images/agenda', file: 'node.png')}" class="fancybox"><i
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'Gridle-&-SASS-CSS-framework.jpg')}" class="fancybox"><i
+                                        class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="col-md-4 isotopeItem print">
+                    <div class="portfolio-item">
+                        <div class="portfolio-title">Functional Programming & Clojure<br/>(Prakash & Geetika)</div>
+
+                        <div class="portfolio-desc align-center">
+                            <div class="folio-info">
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'Introduction-to-Functional-Programming-&-Clojure.jpg')}"
+                                       class="fancybox"><i
+                                            class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="col-md-4 isotopeItem photography">
+                    <div class="portfolio-item">
+                        <div class="portfolio-title">Cassandra<br/>(Salil Kalia)</div>
+
+                        <div class="portfolio-desc align-center">
+                            <div class="folio-info">
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'cassandra-in-1-day.jpg')}" class="fancybox"><i
                                         class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
                             </div>
                         </div>
@@ -180,21 +204,7 @@
 
                         <div class="portfolio-desc align-center">
                             <div class="folio-info">
-                                <h5><a href="${resource(dir: 'images/agenda', file: 'google_analytics.png')}"
-                                       class="fancybox"><i
-                                            class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="col-md-4 isotopeItem photography">
-                    <div class="portfolio-item">
-                        <div class="portfolio-title">HTML 5 Canvas Game with physics<br/>(Kushal Likhi)</div>
-
-                        <div class="portfolio-desc align-center">
-                            <div class="folio-info">
-                                <h5><a href="${resource(dir: 'images/agenda', file: 'html5.png')}" class="fancybox"><i
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'Google-Analtyics.jpg')}" class="fancybox"><i
                                         class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
                             </div>
                         </div>
@@ -203,26 +213,13 @@
 
                 <article class="col-md-4 isotopeItem print">
                     <div class="portfolio-item">
-                        <div class="portfolio-title">Introduction to Android Programming <br/>(Anand Rai)</div>
-
-                        <div class="portfolio-desc align-center">
-                            <div class="folio-info">
-                                <h5><a href="${resource(dir: 'images/agenda', file: 'android.png')}" class="fancybox"><i
-                                        class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="col-md-4 isotopeItem print">
-                    <div class="portfolio-item">
-                        <div class="portfolio-title">Introduction to Kanban
+                        <div class="portfolio-title">Grails Getting Ready for Cloud
                             <br/>(Roni C Thomas)</div>
 
                         <div class="portfolio-desc align-center">
                             <div class="folio-info">
                                 <h5>
-                                    <a href="${resource(dir: 'images/agenda', file: 'kanban.png')}" class="fancybox"><i
+                                    <a href="${resource(dir: 'images/agenda', file: 'Grails-Getting-Ready-for-the-Cloud.jpg')}" class="fancybox"><i
                                             class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a>
                                 </h5>
                             </div>
@@ -234,11 +231,11 @@
                 <article class="col-md-4 isotopeItem print">
                     <div class="portfolio-item">
                         <div class="portfolio-title">Javascript Design Pattern
-                            <br/>(Shreyance Jain)</div>
+                            <br/>(Amit Thakkar)</div>
 
                         <div class="portfolio-desc align-center">
                             <div class="folio-info">
-                                <h5><a href="${resource(dir: 'images/agenda', file: 'design_javascript.png')}"
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'JS-Design-Pattern.jpg')}"
                                        class="fancybox"><i
                                             class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
                             </div>
@@ -248,18 +245,31 @@
 
                 <article class="col-md-4 isotopeItem print">
                     <div class="portfolio-item">
-                        <div class="portfolio-title">Programming with R
-                            <br/>(Narinder Kumar)</div>
+                        <div class="portfolio-title">Introduction to Amazon EC2 Windows Server
+                            <br/>(Vikash Jha)</div>
 
                         <div class="portfolio-desc align-center">
                             <div class="folio-info">
-                                <h5><a href="${resource(dir: 'images/agenda', file: 'r.png')}" class="fancybox"><i
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'Introduction-to-Amazon-EC2-Windows-Server.jpg')}" class="fancybox"><i
                                         class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
                             </div>
                         </div>
                     </div>
                 </article>
 
+                <article class="col-md-4 isotopeItem print">
+                    <div class="portfolio-item">
+                        <div class="portfolio-title">Front-end Engineer
+                            <br/>(Kushal Likhi)</div>
+
+                        <div class="portfolio-desc align-center">
+                            <div class="folio-info">
+                                <h5><a href="${resource(dir: 'images/agenda', file: 'Front-End-Engineering.jpg')}" class="fancybox"><i
+                                        class="fa fa-eye fa-2x"></i>&nbsp; View Agenda</a></h5>
+                            </div>
+                        </div>
+                    </div>
+                </article>
             </div>
 
         </div>
