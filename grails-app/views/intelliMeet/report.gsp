@@ -275,25 +275,27 @@
         <p class="lead">We are group of agile enthusiast.</p>
 
         <div class="row">
-                <g:render template="/intelliMeet/teamMember" model="[name:'Mohit Garg', designation: 'IntelliMeet Owner', imgSrc: resource(dir: 'images/team', file: 'mohit_garg.jpg')]" />
-                <g:render template="/intelliMeet/teamMember" model="[name:'Vivek Sachdeva', designation: 'IntelliMeet Owner', imgSrc: resource(dir: 'images/team', file: 'vivek_sachdeva.jpg')]" />
-                <g:render template="/intelliMeet/teamMember" model="[name:'Bhagwat Kumar', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'bhagwat_kumar.jpg')]" />
-                <g:render template="/intelliMeet/teamMember" model="[name:'Roni C Thomas', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'roni.jpg')]" />
+                <g:render template="/intelliMeet/teamMember" model="[name:'Abhishek Tejpaul', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'abhishek.jpg')]" />
+                <g:render template="/intelliMeet/teamMember" model="[name:'Amit Thakkar', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'amit_thakkar.jpg')]" />
+                <g:render template="/intelliMeet/teamMember" model="[name:'Gaurav Bagla', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'gaurav_bagla.jpg')]" />
+                <g:render template="/intelliMeet/teamMember" model="[name:'Geetika', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'geet.jpg')]" />
         </div>
         <div class="row">
-            <g:render template="/intelliMeet/teamMember" model="[name:'Ankit Gurbani', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'ankit.jpg')]" />
-            <g:render template="/intelliMeet/teamMember" model="[name:'Ankur Chauhan', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'ankur.jpg')]" />
-            <g:render template="/intelliMeet/teamMember" model="[name:'Narinder Kumar', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'narinder.jpg')]" />
-            <g:render template="/intelliMeet/teamMember" model="[name:'Anand Rai', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'anand.jpg')]" />
+            <g:render template="/intelliMeet/teamMember" model="[name:'Prakash', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'prakash.jpg')]" />
+            <g:render template="/intelliMeet/teamMember" model="[name:'Kapil', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'kapil.jpg')]" />
+            <g:render template="/intelliMeet/teamMember" model="[name:'Kushal', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'kushal.jpg')]" />
+            <g:render template="/intelliMeet/teamMember" model="[name:'Mohit', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'mohit.jpg')]" />
         </div>
         <div class="row">
-            <g:render template="/intelliMeet/teamMember" model="[name:'Manoj Mohan', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'manoj_mohan.jpg')]" />
-            <g:render template="/intelliMeet/teamMember" model="[name:'Kushal Likhi', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'kushal.jpg')]" />
-            <g:render template="/intelliMeet/teamMember" model="[name:'Shreyance Jain', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'shreyance.jpg')]" />
-            <g:render template="/intelliMeet/teamMember" model="[name:'Gaurav Bagla', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'gaurav_bagla.jpg')]" />
+            <g:render template="/intelliMeet/teamMember" model="[name:'Roni C Thomas', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'roni.jpg')]" />
+            <g:render template="/intelliMeet/teamMember" model="[name:'Sachin Anand', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'sachin.jpg')]" />
+            <g:render template="/intelliMeet/teamMember" model="[name:'Salil', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'salil.jpg')]" />
+            <g:render template="/intelliMeet/teamMember" model="[name:'Umar', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'umar.jpg')]" />
         </div>
         <div class="row">
-            <g:render template="/intelliMeet/teamMember" model="[name:'Sahil Chitkara', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'sahil.jpg')]" />
+            <g:render template="/intelliMeet/teamMember" model="[name:'Vikash', designation: 'Session Owner', imgSrc: resource(dir: 'images/team', file: 'vikash.jpg')]" />
+            <g:render template="/intelliMeet/teamMember" model="[name:'Neetu', designation: 'IntelliMeet Owner', imgSrc: resource(dir: 'images/team', file: 'neetu.jpg')]" />
+            <g:render template="/intelliMeet/teamMember" model="[name:'Shreyance', designation: 'IntelliMeet Owner', imgSrc: resource(dir: 'images/team', file: 'shreyance.jpg')]" />
         </div>
     </div>
 </div>
