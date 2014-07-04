@@ -42,40 +42,20 @@ class IntelliMeetController {
         }
 
         IntelliMeet currentIntelliMeet = intelliMeetService.getCurrentIntelliMeet()
-
-        currentIntelliMeet.status = IntelliMeetStatus.IN_ACTIVE
-        currentIntelliMeet.save(flush: true, failOnError: true)
-
-        IntelliMeet intelliMeet = new IntelliMeet()
-        bindData(intelliMeet, intelliMeetCO)
-        intelliMeet.organizers = [intelliMeetCO.firstOwnerId]
-
-        //Revoking imsession role from all users
+        intelliMeetService.updateStatus currentIntelliMeet, IntelliMeetStatus.IN_ACTIVE
+        intelliMeetService.removeLikesFromAllTopics()
+        IntelliMeet newIntelliMeet = new IntelliMeet(intelliMeetCO)
         Role roleImOwner = Role.findByAuthority(UserRoles.ROLE_IM_OWNER.displayName);
-        Role roleUser = Role.findByAuthority(UserRoles.ROLE_USER.displayName)
-
-        List<UserRole> previousIntelliMeetOwners = UserRole.findAllByRole(roleImOwner)
-        println ("previousIntelliMeetOwners: ${previousIntelliMeetOwners.size()}" )
-        previousIntelliMeetOwners.each { UserRole userRole ->
-            UserRole.remove(userRole.user, userRole.role, true)
-        }
-
-        User firstOwner  = User.get(intelliMeetCO.firstOwnerId)
-        UserRole.create(firstOwner, roleImOwner, true)
-        if (intelliMeetCO.secondOwnerId) {
-            User secondOwner  = User.get(intelliMeetCO.secondOwnerId)
-            intelliMeet.organizers.add(intelliMeetCO.secondOwnerId)
-            UserRole.create(secondOwner, roleImOwner, true)
-        }
-
-        intelliMeet.save flush: true, failOnError: true
+        intelliMeetService.revokeRoleFromAllUsers roleImOwner
+        intelliMeetService.assignOrgranizerRoles newIntelliMeet
+        intelliMeetService.save newIntelliMeet
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'intelliMeetInstance.label', default: 'IntelliMeet'), intelliMeet.id])
-                redirect intelliMeet
+                flash.message = message(code: 'default.created.message', args: [message(code: 'intelliMeetInstance.label', default: 'IntelliMeet'), newIntelliMeet.id])
+                redirect newIntelliMeet
             }
-            '*' { respond intelliMeet, [status: CREATED] }
+            '*' { respond newIntelliMeet, [status: CREATED] }
         }
     }
 

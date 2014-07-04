@@ -1,5 +1,6 @@
 package com.ig.intellimeet
 
+import com.ig.intellimeet.co.IntelliMeetCO
 import com.ig.intellimeet.enums.IntelliMeetStatus
 import org.grails.databinding.BindingFormat
 
@@ -33,5 +34,16 @@ class IntelliMeet {
 
     static mapping = {
         description type: 'text'
+    }
+
+    IntelliMeet() {}
+
+    IntelliMeet(IntelliMeetCO intelliMeetCO) {
+        title = intelliMeetCO?.title
+        description = intelliMeetCO?.description
+        place = intelliMeetCO?.place
+        status = intelliMeetCO?.status
+        organizers = [intelliMeetCO?.firstOwnerId, intelliMeetCO?.secondOwnerId]?.findAll {it}
+        dateOfEvent = intelliMeetCO?.dateOfEvent
     }
 }
