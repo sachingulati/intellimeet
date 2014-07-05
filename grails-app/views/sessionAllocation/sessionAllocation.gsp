@@ -11,24 +11,6 @@
 <body>
 <a href="#list-IMSession" class="sr-only" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
-<nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#"><g:message code="default.list.label" args="[entityName]"/></a>
-        </div>
-
-        <form class="navbar-form navbar-right" role="search">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Go!</button>
-        </form>
-        <ul class="nav navbar-nav navbar-right">
-            <li><g:link action="create"><g:message code="default.new.label" args="[entityName]"/></g:link></li>
-        </ul>
-    </div>
-</nav>
-
 <g:if test="${flash.message}">
     <div class="alert alert-success alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -103,7 +85,7 @@
 </g:form>
 
 <r:script>
-    markAsActive("session");
+    markAsActive("allocation");
 
     $(document).ready(function () {
         $('.allocationChck:checked').each(function() {

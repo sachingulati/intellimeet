@@ -11,13 +11,6 @@ class SessionAllocationService {
 
     def intelliMeetService
 
-    /**
-     * <p>Returns the session preference of users for current intellimeet
-     * in map where session id is as key and {@link SessionPreference} is as value</p>
-     * <p>Session preference contain user ids for first, second and third preference in seperate list.
-     * It also contains purposed attendee ids.</p>
-     * @return {@link Map} of {@link SessionPreference} with session id as key
-     */
     Map<Long, SessionPreference> getSessionPreferences() {
 
         Long currentIntelliMeetId = intelliMeetService.getCurrentIntelliMeetId()
