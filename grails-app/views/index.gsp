@@ -4,19 +4,21 @@
     <meta name="layout" content="public"/>
     <title>Welcome to IntelliMeet</title>
     <r:style>
+        .bs-docs-home {
+            padding-top:50px;
+        }
         header {
-        padding: 0;
+            padding: 0;
         }
         #countdown {
-  font-size: 48px;
-  color: #FFF;
-  line-height: 1.1em;
-  margin: 20px 0px 20px;
-}
+            font-size: 48px;
+            color: #FFF;
+            line-height: 1.1em;
+            margin: 20px 0px 20px;
+        }
         .bs-docs-masthead {
             padding: 40px 0;
         }
-
         .bs-docs-featurette {
             paddimg
         }
