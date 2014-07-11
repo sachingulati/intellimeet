@@ -2,6 +2,7 @@ package com.ig.intellimeet
 
 import com.ig.intellimeet.co.IMSessionCO
 import com.ig.intellimeet.enums.SessionStatus
+import grails.gorm.PagedResultList
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
@@ -23,11 +24,10 @@ class IMSessionController {
         render view: 'create', model: [imSessionCO: imSessionCO]
     }
 
-    def index(Integer max) {
-        //params.max = Math.min(max ?: 10, 100)
-        //TODO - Fetch session list based on preference survey completed(Live) or not (prposed).
-        IMSessionCO imSessionCO = intelliMeetService.getIMSessionList(null)
-        respond imSessionCO.sessionList, model:[IMSessionInstanceCount: imSessionCO.totalCount]
+    def index() {
+        Long intelliMeetId = intelliMeetService.getCurrentIntelliMeetId()
+        List<IMSession> imSesssionList = IMSession.findAllByIntelliMeetIdAndSessionStatus intelliMeetId, SessionStatus.PROPOSED
+        respond imSesssionList
     }
 
     def show(IMSession IMSessionInstance) {
