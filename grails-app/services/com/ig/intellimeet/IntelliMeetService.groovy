@@ -7,6 +7,8 @@ import com.ig.intellimeet.enums.UserRoles
 
 class IntelliMeetService {
 
+    def grailsApplication
+
     IntelliMeet save(IntelliMeet intelliMeet) {
         if (!intelliMeet?.validate() || !intelliMeet?.save(failOnError: true, flush: true)) {
             log.error(intelliMeet?.errors?.allErrors?.join("\n"))
@@ -33,6 +35,10 @@ class IntelliMeetService {
 
     List<UserRole> revokeRoleFromAllUsers(Role role) {
         List<UserRole> previousUserRoles = UserRole.findAllByRole role
+        List<String> adminUsernames = listAdminUserRoles()
+        previousUserRoles.removeAll { UserRole userRole->
+            !adminUsernames.any { userRole.user.username }
+        }
         List<UserRole> userRolesRemoved = []
         previousUserRoles?.each { UserRole userRole ->
             userRole.delete(flush: true)
@@ -67,6 +73,10 @@ class IntelliMeetService {
         imSessionCO.totalCount = IMSession.countByIntelliMeetIdAndSessionStatus(intelliMeetId, SessionStatus.PROPOSED)
         imSessionCO.sessionList = IMSession.findAllByIntelliMeetIdAndSessionStatus(intelliMeetId, SessionStatus.PROPOSED)
         return imSessionCO
+    }
+
+    List<String> listAdminUserRoles() {
+        grailsApplication.config.grails.intellimeet.adminUsernames
     }
 
 }
