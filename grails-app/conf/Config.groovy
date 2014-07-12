@@ -93,7 +93,7 @@ grails {
     mail {
         host = "smtp.gmail.com"
         port = 465
-        username = "info.intellimeet@gmail.com"
+        username = "intellimeet@gmail.com"
         password = "igdefault"
         props = ["mail.smtp.auth":"true",
                 "mail.smtp.socketFactory.port":"465",
