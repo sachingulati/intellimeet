@@ -1,6 +1,7 @@
 package com.ig.intellimeet
 
 import com.ig.intellimeet.co.UserPreferenceCO
+import grails.gorm.PagedResultList
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
@@ -12,12 +13,17 @@ class UserPreferenceController {
     def userPreferenceService
     def tokenService
     def surveyService
+    def intelliMeetService
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         params.sort = params.sort ?: 'dateCreated'
         params.order = params.order ?: 'desc'
-        respond UserPreference.list(params), model: [userPreferenceInstanceCount: UserPreference.count()]
+        Long intelliMeetId = intelliMeetService.getCurrentIntelliMeetId()
+        PagedResultList pagedUserPreferences = UserPreference.createCriteria().list(params) {
+            eq('intelliMeetId', intelliMeetId)
+        }
+        respond pagedUserPreferences, model: [userPreferenceInstanceCount: pagedUserPreferences?.totalCount]
     }
 
     @Transactional
