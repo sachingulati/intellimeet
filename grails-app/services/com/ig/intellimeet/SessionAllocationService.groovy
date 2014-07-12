@@ -109,8 +109,9 @@ class SessionAllocationService {
         IMSession session
         for (DBObject object : output?.results()) {
             sessionPreference = new SessionPreference()
+            session = IMSession.get((Long)object['_id'])
+            session.intelliMeetId = intelliMeetId
             sessionPreference?.with {
-                session = IMSession.get((Long)object['_id'])
                 if(session) {
                     sessionId = object['_id'] as Long
                     sessionTitle = session?.title

@@ -2,6 +2,7 @@ package com.ig.intellimeet
 
 class SessionPreference {
 
+    Long intelliMeetId
     Long sessionId
     String sessionTitle
     String sessionOwners
