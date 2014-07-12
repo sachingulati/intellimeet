@@ -4,6 +4,7 @@ class SessionPreference {
 
     Long sessionId
     String sessionTitle
+    String sessionOwners
 
     List<Long> purposedAttendees
     List<Long> preferenceOneUserIds

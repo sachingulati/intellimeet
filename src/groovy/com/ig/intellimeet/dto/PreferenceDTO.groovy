@@ -8,8 +8,4 @@ class PreferenceDTO {
     String email
     Long userId
     Long value
-
-    void setUserId(Long userId) {
-        this.userId = userId
-    }
 }

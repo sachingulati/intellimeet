@@ -2,14 +2,15 @@ package com.ig.intellimeet
 
 import com.ig.intellimeet.co.AllocationCO
 import com.ig.intellimeet.dto.PreferenceDTO
-import com.ig.intellimeet.dto.SessionPreference
 import com.ig.intellimeet.dto.SessionPreferenceDTO
+import com.mongodb.*
 import grails.transaction.Transactional
 
 @Transactional
 class SessionAllocationService {
 
     def intelliMeetService
+    def sessionPreferenceService
 
     Map<Long, SessionPreference> getSessionPreferences() {
 
@@ -62,8 +63,11 @@ class SessionAllocationService {
         AllocationCO allocationCO = new AllocationCO()
         PreferenceDTO preferenceDTO
         userPreferenceList?.each { UserPreference userPreference ->
-            preferenceDTO=new PreferenceDTO(value: userPreference?.userId,email: userPreference?.emailAddress)
-            SessionPreferenceDTO firstSessionPreferenceDTO = allocationCO?.preferenceDTOList?.find { it.sessionId == userPreference?.firstPreferredSessionId }
+            preferenceDTO = new PreferenceDTO(email: userPreference?.emailAddress, value: userPreference?.userId)
+
+            SessionPreferenceDTO firstSessionPreferenceDTO = allocationCO?.preferenceDTOList?.find {
+                it.sessionId == userPreference?.firstPreferredSessionId
+            }
             if (!firstSessionPreferenceDTO) {
                 firstSessionPreferenceDTO = new SessionPreferenceDTO(sessionId: userPreference?.firstPreferredSessionId, sessionTitle: userPreference?.firstPreferredSessionTitle, firstPreferenceUserIdList: [], secondPreferenceUserIdList: [], thirdPreferenceUserIdList: [])
                 firstSessionPreferenceDTO?.firstPreferenceUserIdList << preferenceDTO
@@ -72,7 +76,9 @@ class SessionAllocationService {
                 firstSessionPreferenceDTO?.firstPreferenceUserIdList << preferenceDTO
             }
 
-            SessionPreferenceDTO secondSessionPreferenceDTO = allocationCO?.preferenceDTOList?.find { it.sessionId == userPreference?.secondPreferredSessionId }
+            SessionPreferenceDTO secondSessionPreferenceDTO = allocationCO?.preferenceDTOList?.find {
+                it.sessionId == userPreference?.secondPreferredSessionId
+            }
             if (!secondSessionPreferenceDTO) {
                 secondSessionPreferenceDTO = new SessionPreferenceDTO(sessionId: userPreference?.secondPreferredSessionId, sessionTitle: userPreference?.secondPreferredSessionTitle, firstPreferenceUserIdList: [], secondPreferenceUserIdList: [], thirdPreferenceUserIdList: [])
                 secondSessionPreferenceDTO?.secondPreferenceUserIdList << preferenceDTO
@@ -82,7 +88,9 @@ class SessionAllocationService {
             }
 
 
-            SessionPreferenceDTO thirdSessionPreferenceDTO = allocationCO?.preferenceDTOList?.find { it.sessionId == userPreference?.thirdPreferredSessionId }
+            SessionPreferenceDTO thirdSessionPreferenceDTO = allocationCO?.preferenceDTOList?.find {
+                it.sessionId == userPreference?.thirdPreferredSessionId
+            }
             if (!thirdSessionPreferenceDTO) {
                 thirdSessionPreferenceDTO = new SessionPreferenceDTO(sessionId: userPreference?.thirdPreferredSessionId, sessionTitle: userPreference?.thirdPreferredSessionTitle, firstPreferenceUserIdList: [], secondPreferenceUserIdList: [], thirdPreferenceUserIdList: [])
                 thirdSessionPreferenceDTO?.thirdPreferenceUserIdList << preferenceDTO
@@ -95,6 +103,57 @@ class SessionAllocationService {
         allocationCO
     }
 
+    void saveSessionWisePreference(Long intelliMeetId) {
+        MapReduceOutput output = calculateUserPreferencesGroupedBySession intelliMeetId
+        SessionPreference sessionPreference
+        IMSession session
+        for (DBObject object : output?.results()) {
+            sessionPreference = new SessionPreference()
+            sessionPreference?.with {
+                session = IMSession.get((Long)object['_id'])
+                if(session) {
+                    sessionId = object['_id'] as Long
+                    sessionTitle = session?.title
+                    sessionOwners = session?.ownersEmail
+                    preferenceOneUserIds = object['value']['preferenceOneUserIds'] as List<Long>
+                    preferenceTwoUserIds = object['value']['preferenceTwoUserIds'] as List<Long>
+                    preferenceThreeUserIds = object['value']['preferenceThreeUserIds'] as List<Long>
+                }
+            }
+            sessionPreferenceService.save sessionPreference
+        }
+    }
+
+    MapReduceOutput calculateUserPreferencesGroupedBySession(Long intelliMeeId) {
+        DBCollection userPreferenceCollection = UserPreference.collection
+        String map = """
+function() {
+    emit(this.firstPreferredSessionId, {'preferenceOneUserIds': [this.userId]});
+    emit(this.secondPreferredSessionId, {'preferenceTwoUserIds': [this.userId]});
+    emit(this.thirdPreferredSessionId, {'preferenceThreeUserIds': [this.userId]});
+}
+"""
+        String reduce = """
+function(key,values) {
+    var result = {'preferenceOneUserIds': [], 'preferenceTwoUserIds': [], 'preferenceThreeUserIds': []};
+    values.forEach(function(val) {
+        if('preferenceOneUserIds' in val) {
+            result.preferenceOneUserIds = result.preferenceOneUserIds.concat(val.preferenceOneUserIds);
+        }
+        if('preferenceTwoUserIds' in val) {
+            result.preferenceTwoUserIds = result.preferenceTwoUserIds.concat(val.preferenceTwoUserIds);
+        }
+        if('preferenceThreeUserIds' in val) {
+            result.preferenceThreeUserIds = result.preferenceThreeUserIds.concat(val.preferenceThreeUserIds);
+        }
+    });
+    return result;
+}
+"""
+        BasicDBObject query = new BasicDBObject('intelliMeetId', intelliMeeId)
+        MapReduceCommand cmd = new MapReduceCommand(userPreferenceCollection, map, reduce, null, MapReduceCommand.OutputType.INLINE, query);
+        userPreferenceCollection.mapReduce(cmd);
+    }
 
     UserPreference savePurposedSessionAllocation(Integer sessionId, List attendeeIds) {
         Long intelliMeetId = intelliMeetService.getCurrentIntelliMeetId()
