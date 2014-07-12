@@ -13,8 +13,8 @@
         <nav class="collapse navbar-collapse bs-navbar-collapse col-sm-8" id="topNav" role="navigation">
             <ul class="nav navbar-nav" id="public-nav">
                 <li id="home"><a href="/">Home</a></li>
-                <li><a href="#sessions">Sessions</a></li>
-                <li><a href="#team">Meet the Team</a></li>
+                %{--<li><a href="#sessions">Sessions</a></li>--}%
+                %{--<li><a href="#team">Meet the Team</a></li>--}%
             </ul>
         </nav>
         <div class="navbar-right">
