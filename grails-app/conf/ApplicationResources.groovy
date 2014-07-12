@@ -154,4 +154,10 @@ modules = {
     iso_topes {
         resource url: 'js/jquery.isotope.min.js'
     }
+
+    iCheck {
+        dependsOn 'jquery'
+        resource url: 'css/iCheck/square/blue.css'
+        resource url: 'js/iCheck/icheck.min.js'
+    }
 }
