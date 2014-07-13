@@ -30,9 +30,9 @@
     <thead>
     <tr>
         <g:sortableColumn property="title" title="${message(code: 'IMSession.title.label', default: 'Title')}"/>
-        <g:sortableColumn property="maxCapacity" title="${message(code: 'IMSession.first.preference.label', default: 'First Preference')}"/>
-        <g:sortableColumn property="minCapacity" title="${message(code: 'IMSession.second.preference.label', default: 'Second Preference')}"/>
-        <g:sortableColumn property="score" title="${message(code: 'IMSession.third.preference.label', default: 'Third Preference')}"/>
+        <th><g:message code="IMSession.first.preference.label" default="First Preference" /></th>
+        <th><g:message code="IMSession.second.preference.label" default="Second Preference" /></th>
+        <th><g:message code="IMSession.third.preference.label" default="Third Preference" /></th>
     </tr>
     </thead>
     <tbody>
