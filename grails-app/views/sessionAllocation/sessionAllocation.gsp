@@ -38,38 +38,38 @@
     <tbody>
     <g:each in="${sessionPreferenceMap}" status="i" var="sessionPreference">
         <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-            <td >${sessionPreference?.value?.sessionTitle}</td>
+            <td class="span4">${sessionPreference?.value?.sessionTitle}</td>
             <td>
                 <g:each in="${sessionPreference?.value?.preferenceOneUserIds}" status="j" var="userId">
-                    <span class="user${userId}Span interestedUserSpan">
+                    <label class="user${userId}Span interestedUserSpan">
                         <g:checkBox name="imsession[${sessionPreference?.value?.sessionId}].attendeeIds"
                                     value="${userId}" class="allocationChck user${userId} i-check-square"
                                     checked="false"
                                     sessionName="${sessionPreference?.value?.sessionTitle}"/>
-                        ${User.get(userId)?.username}
-                    </span>
+                        <span>${User.get(userId)?.username}</span>
+                    </label>
                 </g:each>
             </td>
             <td>
                 <g:each in="${sessionPreference?.value?.preferenceTwoUserIds}" status="k" var="userId">
-                    <span class="user${userId}Span interestedUserSpan">
+                    <label class="user${userId}Span interestedUserSpan">
                         <g:checkBox name="imsession[${sessionPreference?.value?.sessionId}].attendeeIds"
                                     value="${userId}" class="allocationChck user${userId} i-check-square"
                                     checked="false"
                                     sessionName="${sessionPreference?.value?.sessionTitle}"/>
-                        ${User.get(userId)?.username}
-                    </span>
+                        <span>${User.get(userId)?.username}</span>
+                    </label>
                 </g:each>
             </td>
             <td>
                 <g:each in="${sessionPreference?.value?.preferenceThreeUserIds}" status="l" var="userId">
-                    <span class="user${userId}Span interestedUserSpan">
+                    <label class="user${userId}Span interestedUserSpan">
                         <g:checkBox name="imsession[${sessionPreference?.value?.sessionId}].attendeeIds"
                                     value="${userId}" class="allocationChck user${userId} i-check-square"
                                     checked="false"
                                     sessionName="${sessionPreference?.value?.sessionTitle}"/>
-                        ${User.get(userId)?.username}
-                    </span>
+                        <span>${User.get(userId)?.username}</span>
+                    </label>
                 </g:each>
             </td>
         </tr>

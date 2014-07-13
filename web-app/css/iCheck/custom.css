@@ -1,0 +1,16 @@
+/* line 1, ../../sass/iCheck/custom.scss */
+label {
+  cursor: pointer;
+  font-weight: normal;
+  padding-bottom: 15px;
+}
+
+/* line 6, ../../sass/iCheck/custom.scss */
+label > span {
+  padding-left: 5px;
+}
+
+/* line 10, ../../sass/iCheck/custom.scss */
+td:first-child {
+  width: 30%;
+}

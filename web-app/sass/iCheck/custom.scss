@@ -1,0 +1,12 @@
+label {
+  cursor: pointer;
+  font-weight: normal;
+  padding-bottom: 15px;
+}
+label > span {
+  padding-left: 5px;
+}
+
+td:first-child {
+  width: 30%;
+}
