@@ -108,11 +108,12 @@ class SessionAllocationService {
         SessionPreference sessionPreference
         IMSession session
         for (DBObject object : output?.results()) {
-            sessionPreference = new SessionPreference()
-            session = IMSession.get((Long)object['_id'])
-            session.intelliMeetId = intelliMeetId
+            sessionPreference = SessionPreference.findBySessionIdAndIntelliMeetId((Long) object['_id'], intelliMeetId) ?:
+                    new SessionPreference(intelliMeetId: intelliMeetId)
+
+            session = IMSession.get((Long) object['_id'])
             sessionPreference?.with {
-                if(session) {
+                if (session) {
                     sessionId = object['_id'] as Long
                     sessionTitle = session?.title
                     sessionOwners = session?.ownersEmail
