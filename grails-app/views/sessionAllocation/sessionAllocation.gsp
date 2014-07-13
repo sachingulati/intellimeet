@@ -6,6 +6,7 @@
     <g:set var="entityName" value="${message(code: 'IMSession.label', default: 'IMSession')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
     <r:require module="session_allocation"/>
+    <r:require module="iCheck" />
 </head>
 
 <body>
@@ -42,7 +43,7 @@
                 <g:each in="${sessionPreference?.value?.preferenceOneUserIds}" status="j" var="userId">
                     <span class="user${userId}Span interestedUserSpan">
                         <g:checkBox name="imsession[${sessionPreference?.value?.sessionId}].attendeeIds"
-                                    value="${userId}" class="allocationChck user${userId}"
+                                    value="${userId}" class="allocationChck user${userId} i-check-square"
                                     checked="false"
                                     sessionName="${sessionPreference?.value?.sessionTitle}"/>
                         ${User.get(userId)?.username}
@@ -53,7 +54,7 @@
                 <g:each in="${sessionPreference?.value?.preferenceTwoUserIds}" status="k" var="userId">
                     <span class="user${userId}Span interestedUserSpan">
                         <g:checkBox name="imsession[${sessionPreference?.value?.sessionId}].attendeeIds"
-                                    value="${userId}" class="allocationChck user${userId}"
+                                    value="${userId}" class="allocationChck user${userId} i-check-square"
                                     checked="false"
                                     sessionName="${sessionPreference?.value?.sessionTitle}"/>
                         ${User.get(userId)?.username}
@@ -64,7 +65,7 @@
                 <g:each in="${sessionPreference?.value?.preferenceThreeUserIds}" status="l" var="userId">
                     <span class="user${userId}Span interestedUserSpan">
                         <g:checkBox name="imsession[${sessionPreference?.value?.sessionId}].attendeeIds"
-                                    value="${userId}" class="allocationChck user${userId}"
+                                    value="${userId}" class="allocationChck user${userId} i-check-square"
                                     checked="false"
                                     sessionName="${sessionPreference?.value?.sessionTitle}"/>
                         ${User.get(userId)?.username}

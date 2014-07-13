@@ -159,5 +159,6 @@ modules = {
         dependsOn 'jquery'
         resource url: 'css/iCheck/square/blue.css'
         resource url: 'js/iCheck/icheck.min.js'
+        resource url: 'js/iCheck/app.js'
     }
 }
