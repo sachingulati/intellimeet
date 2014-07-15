@@ -1,84 +1,79 @@
 package com.ig.intellimeet
 
 import com.ig.intellimeet.co.AllocationCO
-import com.ig.intellimeet.dto.PreferenceDTO
-import com.ig.intellimeet.dto.SessionPreferenceDTO
+import com.ig.intellimeet.dto.IMSessionPreference
+import com.ig.intellimeet.utils.TestUtil
 import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import spock.lang.Specification
+import spock.lang.Unroll
 
 @TestFor(SessionAllocationService)
-@Mock([UserPreference])
+@Mock([UserPreference, SessionPreference])
 class SessionAllocationServiceSpec extends Specification {
 
-    def setup() {
-        def intelliMeetServiceMock = mockFor(IntelliMeetService)
-        intelliMeetServiceMock.demand.getCurrentIntelliMeetId() {->
-            return 1l
+    void setup() {
+        def sessionPreferenceServiceMock = mockFor(SessionPreferenceService)
+        sessionPreferenceServiceMock.demand.save() { SessionPreference sessionPreference ->
+            sessionPreference?.save(failOnError: true, flush: true)
         }
-        service.intelliMeetService = intelliMeetServiceMock?.createMock()
+        service.sessionPreferenceService = sessionPreferenceServiceMock.createMock()
     }
 
-    def cleanup() {
-    }
+    def "SessionAllocationService: allocate(AllocationCO allocationCO), void"() {
 
-    void "test for generateAllocationCO(List<UserPreference>): AllocationCO"() {
         setup:
+        Long intelliMeetId = 11l
+        loadSomeSessionPreferences intelliMeetId
         AllocationCO allocationCO
-        List<UserPreference> userPreferenceList = []
-        List<SessionPreferenceDTO> expectedPreferenceDTOList = []
 
         when:
-        userPreferenceList.add createUserPreference(1l, 1l, 2l, 3l)
-        userPreferenceList.add createUserPreference(2l, 4l, 2l, 5l)
-        userPreferenceList.add createUserPreference(3l, 1l, 4l, 5l)
-        userPreferenceList.add createUserPreference(4l, 3l, 4l, 5l)
-        userPreferenceList.add createUserPreference(5l, 6l, 9l, 5l)
-        userPreferenceList.add createUserPreference(6l, 6l, 8l, 2l)
-        allocationCO = service.generateAllocationCO(userPreferenceList)
-        expectedPreferenceDTOList << new SessionPreferenceDTO(sessionId: 1l, sessionTitle: "Session1", firstPreferenceUserIdList: [new PreferenceDTO(value: 1l), new PreferenceDTO(value: 3l)],
-                secondPreferenceUserIdList: [],
-                thirdPreferenceUserIdList: [])
-        expectedPreferenceDTOList << new SessionPreferenceDTO(sessionId: 2l, sessionTitle: "Session2", firstPreferenceUserIdList: [],
-                secondPreferenceUserIdList: [new PreferenceDTO(value: 1l), new PreferenceDTO(value: 2l)],
-                thirdPreferenceUserIdList: [new PreferenceDTO(value: 6l)])
-        expectedPreferenceDTOList << new SessionPreferenceDTO(sessionId: 3l, sessionTitle: "Session3", firstPreferenceUserIdList: [new PreferenceDTO(value: 4l)],
-                secondPreferenceUserIdList: [],
-                thirdPreferenceUserIdList: [new PreferenceDTO(value: 1l)])
-        expectedPreferenceDTOList << new SessionPreferenceDTO(sessionId: 4l, sessionTitle: "Session4", firstPreferenceUserIdList:[new PreferenceDTO(value: 2l)],
-                secondPreferenceUserIdList: [new PreferenceDTO(value: 3l), new PreferenceDTO(value: 4l)],
-                thirdPreferenceUserIdList: [])
-        expectedPreferenceDTOList << new SessionPreferenceDTO(sessionId: 5l, sessionTitle: "Session5", firstPreferenceUserIdList: [],
-                secondPreferenceUserIdList: [],
-                thirdPreferenceUserIdList: [new PreferenceDTO(value: 2l), new PreferenceDTO(value: 3l), new PreferenceDTO(value: 4l), new PreferenceDTO(value: 5l)])
-        expectedPreferenceDTOList << new SessionPreferenceDTO(sessionId: 6l, sessionTitle: "Session6", firstPreferenceUserIdList: [new PreferenceDTO(value: 5l), new PreferenceDTO(value: 6l)],
-                secondPreferenceUserIdList: [],
-                thirdPreferenceUserIdList: [])
-        expectedPreferenceDTOList << new SessionPreferenceDTO(sessionId: 8l, sessionTitle: "Session8", firstPreferenceUserIdList: [],
-                secondPreferenceUserIdList: [new PreferenceDTO(value: 6l)],
-                thirdPreferenceUserIdList: [])
-        expectedPreferenceDTOList << new SessionPreferenceDTO(sessionId: 9l, sessionTitle: "Session9", firstPreferenceUserIdList: [],
-                secondPreferenceUserIdList: [new PreferenceDTO(value: 5l)],
-                thirdPreferenceUserIdList: [])
+        allocationCO = new AllocationCO()
+        allocationCO.preferences = []
+        allocationCO.preferences << new IMSessionPreference(sessionId: 1l, attendees: [11, 21, 31])
+        allocationCO.preferences << new IMSessionPreference(sessionId: 2l, attendees: [51, 61])
+        service.allocate allocationCO
 
         then:
-        assert userPreferenceList
-        allocationCO.preferenceDTOList.size()  == expectedPreferenceDTOList.size()
-        allocationCO.preferenceDTOList.sort{it.sessionTitle}  == expectedPreferenceDTOList.sort{it.sessionTitle}
+        SessionPreference.get(1l).purposedAttendees == [11, 21, 31] // Check if attendees being saved into IMSession
 
     }
 
-    UserPreference createUserPreference(Long userId, Long firstPreferredSessionId, Long secondPreferredSessionId, Long thirdPreferredSessionId) {
-        new UserPreference(
-                userId: userId,
-                intelliMeetId: 1l,
-                emailAddress: "${userId}@ig.com",
-                firstPreferredSessionId: firstPreferredSessionId,
-                firstPreferredSessionTitle: "Session${firstPreferredSessionId}",
-                secondPreferredSessionId: secondPreferredSessionId,
-                secondPreferredSessionTitle: "Session${secondPreferredSessionId}",
-                thirdPreferredSessionId: thirdPreferredSessionId,
-                thirdPreferredSessionTitle: "Session${thirdPreferredSessionId}"
+    @Unroll("#sno, Testing SessionAllocationService: allocate(IMSessionPreference imSessionPreference), void")
+    def "SessionAllocationService: allocate(IMSessionPreference imSessionPreference), void"() {
+        setup:
+        Long intelliMeetId = 10l
+        loadSomeSessionPreferences intelliMeetId
+        IMSessionPreference imSessionPreference
+
+        when:
+        imSessionPreference = new IMSessionPreference(
+                sessionId: sessionId,
+                attendees: attendees
         )
+        service.allocate imSessionPreference
+
+        then:
+        SessionPreference.get(sessionId)?.purposedAttendees == attendees
+
+        where:
+        sno | sessionId | attendees
+        1   | 1l        | [2l, 3l]
+        2   | 2l        | [4l, 5l]
+        3   | null      | null
+    }
+
+    static void loadSomeSessionPreferences(Long intelliMeetId) {
+        createSessionPreferences intelliMeetId, 1l
+        createSessionPreferences intelliMeetId, 2l
+        createSessionPreferences intelliMeetId, 3l
+        createSessionPreferences intelliMeetId, 4l
+        createSessionPreferences intelliMeetId, 5l
+    }
+
+    static void createSessionPreferences(Long intelliMeetId, Long sessionId) {
+        SessionPreference sessionPreference = TestUtil.createSessionPreference intelliMeetId
+        sessionPreference.sessionId = sessionId
+        sessionPreference.save(failOnError: true, flush: true)
     }
 }

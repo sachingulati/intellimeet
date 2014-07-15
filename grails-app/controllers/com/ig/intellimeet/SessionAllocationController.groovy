@@ -18,8 +18,9 @@ class SessionAllocationController {
 
     def saveAsDraft(AllocationCO allocationCO) {
         if(!allocationCO.hasErrors()) {
-            return
+            flash.error =  message code: 'allocation.error.message', default: 'Error allocating sessions! Please contact site administrator.'
         }
+
         redirect action: 'show'
     }
 
@@ -27,8 +28,7 @@ class SessionAllocationController {
         params.imsession.each { sessionId, ids ->
             if (sessionId.isInteger()) {
                 List<Integer> attendeeIds = ids.get("attendeeIds") as List
-                sessionAllocationService.savePurposedSessionAllocation(sessionId as Integer, attendeeIds)
-                sessionAllocationService.freezeSessionAllocation(sessionId as Integer, attendeeIds)
+
             }
         }
         redirect(action: "show")
