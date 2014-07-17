@@ -242,4 +242,5 @@ cloudinary.config = [
 cloudinary {
     baseUrl = "http://res.cloudinary.com/intelligrape/image/upload/"
     dir = "intelliMeet"
+    mimeType = ".jpg"
 }
