@@ -2,6 +2,6 @@ package com.ig.intellimeet.enums
 
 public enum IntelliMeetStatus {
 
-    ACTIVE, IN_ACTIVE
+    ACTIVE, IN_ACTIVE, SEATS_ALLOTED
 
 }

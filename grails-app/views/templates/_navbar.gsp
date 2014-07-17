@@ -19,6 +19,7 @@
                 <sec:ifAnyGranted roles="ROLE_IM_OWNER">
                     <li id="preference"><g:link controller="userPreference" action="index"><g:message code="preference.label" default="Preferences"/></g:link></li>
                     <li id="survey"><g:link controller="survey" action="index"><g:message code="survey.label" default="Survey"/></g:link></li>
+                    <li id="allocation"><g:link controller="sessionAllocation" action="show"><g:message code="allocation.label" default="Allocations"/></g:link></li>
                 </sec:ifAnyGranted>
                 <sec:ifAnyGranted roles="ROLE_ADMIN">
                     <li id="intellimeet"><g:link controller="intelliMeet" action="index"><g:message code="intellimeet.label" default="IntelliMeet"/></g:link></li>
