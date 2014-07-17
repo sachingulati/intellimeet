@@ -58,6 +58,7 @@ grails.project.dependency.resolution = {
         compile 'org.grails:grails-datastore-core:3.0.4.RELEASE'
         test 'org.grails:grails-datastore-simple:3.0.4.RELEASE'
         test "org.spockframework:spock-grails-support:0.7-groovy-2.0"
+        compile 'com.cloudinary:cloudinary:1.0.3'
     }
 
     plugins {
