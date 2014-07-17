@@ -12,7 +12,9 @@ class CloudinaryService {
         if ((bytesOrString instanceof byte[]) || (bytesOrString instanceof String)) {
             try {
                 return client.uploader().upload(bytesOrString, ['public_id': getPublicId(imageName),
-                        'tags': tags.collect { replaceSpaces(it) }.join(',')])
+                                                                'tags'     : tags.collect {
+                                                                    replaceSpaces(it)
+                                                                }.join(',')])
             } catch (Exception e) {
                 log.debug("file not found")
             }
