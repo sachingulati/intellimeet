@@ -228,7 +228,6 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/**':                            ['permitAll']
 ]
 
-
 // Added by the Spring Security OAuth plugin:
 grails.plugin.springsecurity.oauth.domainClass = 'com.ig.intellimeet.OauthId'
 grails.intellimeet.adminUsernames = ['puneet.behl@intelligrape.com',
