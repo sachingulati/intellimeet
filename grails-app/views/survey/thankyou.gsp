@@ -118,7 +118,6 @@
 <!-- end section main container -->
 
 <footer>
-
     <section class="container">
         <div class="row">
             <div class="col-md-4">

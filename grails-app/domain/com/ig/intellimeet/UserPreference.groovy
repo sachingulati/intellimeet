@@ -9,18 +9,24 @@ class UserPreference {
     Date dateCreated
     Date lastUpdated
 
+    Long purposedSessionId
+
     Long firstPreferredSessionId
     Long secondPreferredSessionId
     Long thirdPreferredSessionId
 
     String firstPreferredSessionTitle
+    String firstPreferredSessionOwners
     String secondPreferredSessionTitle
+    String secondPreferredSessionOwners
     String thirdPreferredSessionTitle
+    String thirdPreferredSessionOwners
 
     static mapWith = "mongo"
 
     static constraints = {
         fullName nullable: true
+        purposedSessionId nullable: true
         firstPreferredSessionId nullable:true, validator: { val, obj ->
             if (val && (val == obj?.secondPreferredSessionId || val == obj?.thirdPreferredSessionId)) {
                 return ['preference.unique.error']
@@ -37,28 +43,41 @@ class UserPreference {
             }
         }
         firstPreferredSessionTitle nullable: true
+        firstPreferredSessionOwners nullable: true
         secondPreferredSessionTitle nullable: true
+        secondPreferredSessionOwners nullable: true
         thirdPreferredSessionTitle nullable: true
+        thirdPreferredSessionOwners nullable: true
     }
 
     void setFirstPreferredSessionId(Long firstPreferredSessionId) {
         this.firstPreferredSessionId = firstPreferredSessionId
-        this.firstPreferredSessionTitle = findSessionTitleByIdAndIntelliMeetId(firstPreferredSessionId, intelliMeetId)
+        IMSession imSession = findSessionByIdAndIntelliMeetId firstPreferredSessionId, intelliMeetId
+        this.firstPreferredSessionTitle = imSession?.title
+        this.firstPreferredSessionOwners = imSession?.ownersEmail
     }
 
     void setSecondPreferredSessionId(Long secondPreferredSessionId) {
         this.secondPreferredSessionId = secondPreferredSessionId
-        this.secondPreferredSessionTitle = findSessionTitleByIdAndIntelliMeetId(secondPreferredSessionId, intelliMeetId)
+        IMSession imSession = findSessionByIdAndIntelliMeetId firstPreferredSessionId, intelliMeetId
+        this.secondPreferredSessionTitle = imSession?.title
+        this.secondPreferredSessionOwners = imSession?.ownersEmail
     }
 
     void setThirdPreferredSessionId(Long thirdPreferredSessionId) {
         this.thirdPreferredSessionId = thirdPreferredSessionId
-        this.thirdPreferredSessionTitle = findSessionTitleByIdAndIntelliMeetId(thirdPreferredSessionId, intelliMeetId)
+        IMSession imSession = findSessionByIdAndIntelliMeetId firstPreferredSessionId, intelliMeetId
+        this.thirdPreferredSessionTitle = imSession?.title
+        this.thirdPreferredSessionOwners = imSession?.ownersEmail
     }
 
 
     static String findSessionTitleByIdAndIntelliMeetId(Long sessionId, Long intelliMeetId) {
-        IMSession.findByIdAndIntelliMeetId(sessionId, intelliMeetId)?.title
+        findSessionByIdAndIntelliMeetId(sessionId, intelliMeetId)?.title
+    }
+
+    static IMSession findSessionByIdAndIntelliMeetId(Long sessionId, Long intelliMeetId) {
+        IMSession.findByIdAndIntelliMeetId(sessionId, intelliMeetId)
     }
 
     void setUserId(Long userId) {

@@ -65,12 +65,12 @@ $(function() {
         var userId = $(this).val();
         var sessionName = $(this).attr('sessionName');
         if ($(this).is(":checked")) {
-            $('.user'+userId).attr('disabled', 'disabled');
+            $('.user'+userId).attr('disabled', 'disabled').removeClass('unchecked');
             $('.user'+userId+'Span').attr('title', 'Already allocated session:' + sessionName).addClass('locked');
             $(this).parent('span').attr('title', '').removeClass('locked');
             $(this).removeAttr('disabled');
         } else {
-            $('.user'+userId).removeAttr('disabled');
+            $('.user'+userId).removeAttr('disabled').addClass('unchecked');
             $('.user'+userId+'Span').attr('title', '').removeClass('locked');
         }
     });

@@ -1,7 +1,6 @@
 import com.ig.intellimeet.*
 import com.ig.intellimeet.enums.IntelliMeetStatus
 import com.ig.intellimeet.utils.TestUtil
-import com.mongodb.DBCollection
 import grails.util.Environment
 
 class BootStrap {
