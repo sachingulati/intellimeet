@@ -43,10 +43,9 @@
 <div class="form-group">
 	<label for="firstPreferredSessionTitle" class="col-sm-2 control-label">
 		<g:message code="userPreference.firstPreferredSessionTitle.label" default="First Preferred Session Title" />
-		
 	</label>
     <div class="col-sm-10">
-	    <p class="form-control-static">${${UserPreference.findSessionTitleByIdAndIntelliMeetId(userPreferenceInstance.firstPreferredSessionId,userPreferenceInstance.intelliMeetId)}}</p>
+	    <p class="form-control-static">${UserPreference.findSessionTitleByIdAndIntelliMeetId(userPreferenceInstance.firstPreferredSessionId,userPreferenceInstance.intelliMeetId)}</p>
     </div>
 </div>
 
