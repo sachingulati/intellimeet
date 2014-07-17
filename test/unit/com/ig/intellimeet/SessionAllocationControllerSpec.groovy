@@ -27,6 +27,23 @@ class SessionAllocationControllerSpec extends Specification {
         response.redirectedUrl == '/sessionAllocation/show'
     }
 
+    def "SessionAllocationController: saveAsDraft(AllocationCO), Data Binding"() {
+
+        setup:
+        Long intelliMeetId = 10l
+        loadSomeSessionPreferences intelliMeetId
+        Map paramsMap
+        AllocationCO allocationCO = new AllocationCO()
+
+        when:
+        params.preferences = SAMPLE_PARAMS_MAP.preferences
+        controller.saveAsDraft allocationCO
+
+        then:
+        flash.error == 'Error allocating sessions! Please contact site administrator.'
+        response.redirectedUrl == '/sessionAllocation/show'
+    }
+
     static final Map<String, ?> SAMPLE_PARAMS_MAP = [
             "preferences": [
                     ["sessionId": 1l, "attendees": [1, 2, 3, 4]],

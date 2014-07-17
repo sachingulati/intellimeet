@@ -39,8 +39,8 @@ class SessionAllocationServiceSpec extends Specification {
 
     }
 
-    @Unroll("#sno, Testing SessionAllocationService: allocate(IMSessionPreference imSessionPreference), void")
-    def "SessionAllocationService: allocate(IMSessionPreference imSessionPreference), void"() {
+    @Unroll("#sno, Testing SessionAllocationService: updateProposedAttendees(IMSessionPreference imSessionPreference), void")
+    def "SessionAllocationService: updateProposedAttendees(IMSessionPreference imSessionPreference), void"() {
         setup:
         Long intelliMeetId = 10l
         loadSomeSessionPreferences intelliMeetId
@@ -51,7 +51,7 @@ class SessionAllocationServiceSpec extends Specification {
                 sessionId: sessionId,
                 attendees: attendees
         )
-        service.allocate imSessionPreference
+        service.updateProposedAttendees imSessionPreference
 
         then:
         SessionPreference.get(sessionId)?.purposedAttendees == attendees

@@ -2,8 +2,6 @@ package com.ig.intellimeet
 
 import com.ig.intellimeet.co.AllocationCO
 import com.ig.intellimeet.dto.IMSessionPreference
-import com.ig.intellimeet.dto.PreferenceDTO
-import com.ig.intellimeet.dto.SessionPreferenceDTO
 import com.mongodb.*
 import grails.transaction.Transactional
 
@@ -14,13 +12,13 @@ class SessionAllocationService {
     def sessionPreferenceService
 
     void allocate(AllocationCO allocationCO) {
-        allocationCO?.preferences?.every {IMSessionPreference imSessionPreference->
-            allocate imSessionPreference
+        allocationCO?.preferences?.each {IMSessionPreference imSessionPreference->
+            updateProposedAttendees imSessionPreference
         }
     }
 
-    void allocate(IMSessionPreference imSessionPreference) {
-        SessionPreference sessionPreference = SessionPreference.get(imSessionPreference?.sessionId)
+    void updateProposedAttendees(IMSessionPreference imSessionPreference) {
+        SessionPreference sessionPreference = SessionPreference.findBySessionId(imSessionPreference?.sessionId)
         if(sessionPreference) {
             sessionPreference.purposedAttendees = imSessionPreference.attendees
         }

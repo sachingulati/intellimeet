@@ -10,17 +10,18 @@ class SessionAllocationController {
     SessionAllocationService sessionAllocationService
 
     def show() {
+        params?.sort = params?.sort?:'id'
         Long intelliMeetId = intelliMeetService.currentIntelliMeetId
         sessionAllocationService.saveSessionWisePreference intelliMeetId
-        List<SessionPreference> sessionPreferenceList = SessionPreference.findAllByIntelliMeetId intelliMeetId
+        List<SessionPreference> sessionPreferenceList = SessionPreference.findAllByIntelliMeetId(intelliMeetId,params)
         render(view: "show", model: [sessionPreferenceList: sessionPreferenceList])
     }
 
     def saveAsDraft(AllocationCO allocationCO) {
-        if(!allocationCO.hasErrors()) {
+        if(allocationCO.hasErrors()) {
             flash.error =  message code: 'allocation.error.message', default: 'Error allocating sessions! Please contact site administrator.'
         }
-
+        sessionAllocationService.allocate allocationCO
         redirect action: 'show'
     }
 
