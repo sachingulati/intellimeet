@@ -233,3 +233,9 @@ grails.plugin.springsecurity.oauth.domainClass = 'com.ig.intellimeet.OauthId'
 grails.intellimeet.adminUsernames = ['puneet.behl@intelligrape.com',
 'farid@intelligrape.com',
 'dmittal@intelligrape.com']
+
+cloudinary.config = [
+        cloud_name: "intelligrape",
+        api_key: "379861255117262",
+        api_secret: "CdY09ZNil3MKflwUoG25SIz5WDg",
+]
