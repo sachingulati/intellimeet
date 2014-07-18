@@ -52,9 +52,15 @@ class SessionAllocationService {
         DBCollection userPreferenceCollection = UserPreference.collection
         String map = """
 function() {
-    emit(this.firstPreferredSessionId, {'preferenceOneUserIds': [this.userId]});
-    emit(this.secondPreferredSessionId, {'preferenceTwoUserIds': [this.userId]});
-    emit(this.thirdPreferredSessionId, {'preferenceThreeUserIds': [this.userId]});
+    if(this.firstPreferredSessionId) {
+        emit(this.firstPreferredSessionId, {'preferenceOneUserIds': [this.userId]});
+    }
+    if(this.secondPreferredSessionId) {
+        emit(this.secondPreferredSessionId, {'preferenceTwoUserIds': [this.userId]});
+    }
+    if(this.thirdPreferredSessionId) {
+        emit(this.thirdPreferredSessionId, {'preferenceThreeUserIds': [this.userId]});
+    }
 }
 """
         String reduce = """
