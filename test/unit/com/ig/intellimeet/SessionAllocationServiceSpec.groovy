@@ -14,7 +14,7 @@ class SessionAllocationServiceSpec extends Specification {
 
     void setup() {
         def sessionPreferenceServiceMock = mockFor(SessionPreferenceService)
-        sessionPreferenceServiceMock.demand.save() { SessionPreference sessionPreference ->
+        sessionPreferenceServiceMock.demand.save(1..10) { SessionPreference sessionPreference ->
             sessionPreference?.save(failOnError: true, flush: true)
         }
         service.sessionPreferenceService = sessionPreferenceServiceMock.createMock()
