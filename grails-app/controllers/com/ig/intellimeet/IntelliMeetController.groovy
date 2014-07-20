@@ -86,12 +86,6 @@ class IntelliMeetController {
         }
     }
 
-    @Transactional
-    def delete(IntelliMeet intelliMeet) {
-        flash.error = message(code: "intellimeet.deletion.restricted")
-        redirect( view: "index")
-    }
-
     protected void notFound() {
         request.withFormat {
             form multipartForm {
