@@ -8,10 +8,10 @@ class CloudinaryService {
 
     static transactional = false
 
-    Map uploadImage(Object bytesOrString, String dir, String imageName, List<String> tags) throws Exception {
+    Map uploadImage(Object bytesOrString, String imageName, List<String> tags) throws Exception {
         if ((bytesOrString instanceof byte[]) || (bytesOrString instanceof String)) {
             try {
-                return client.uploader().upload(bytesOrString, ['public_id': getPublicId(dir, imageName),
+                return client.uploader().upload(bytesOrString, ['public_id': getPublicId(imageName),
                         'tags': tags.collect { replaceSpaces(it) }.join(',')])
             } catch (Exception e) {
                 log.debug("file not found")
@@ -21,8 +21,8 @@ class CloudinaryService {
         }
     }
 
-    String getPublicId(String dir, String imageName) {
-        "${dir.replaceAll('/', '-')}-${imageName}"
+    String getPublicId(String imageName) {
+        imageName
     }
 
     String replaceSpaces(String name) {
