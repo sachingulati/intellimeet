@@ -14,7 +14,7 @@
         <!-- left column -->
         <div class="col-md-3">
             <div class="text-center">
-                <user:displayUserImage email="${sec?.username()}" />
+                <user:displayUserImage email="${userInstance?.username}" />
                 <h6>Upload a different photo...</h6>
 
 
@@ -29,23 +29,24 @@
         <div class="col-md-9 personal-info">
             <h3>Personal info</h3>
 
-            <form class="form-horizontal" role="form">
+            <g:form class="form-horizontal" role="form" controller="user" action="save">
+                <g:hiddenField name="id" value="${userInstance?.id}" />
                 <div class="form-group">
                     <label class="col-lg-3 control-label">First name:</label>
                     <div class="col-lg-8">
-                        <input class="form-control" type="text" value="Jane">
+                        <g:textField name="firstName" class="form-control" type="text" value="${userInstance?.firstName}" />
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Last name:</label>
                     <div class="col-lg-8">
-                        <input class="form-control" type="text" value="Bishop">
+                        <g:textField name="lastName" class="form-control" type="text" value="${userInstance?.lastName}">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">Username:</label>
                     <div class="col-lg-8">
-                        <input class="form-control" type="text" value="${sec.username()}" disabled/>
+                        <input class="form-control" type="text" value="${userInstance?.username}" disabled/>
                     </div>
                 </div>
                 <div class="form-group">
