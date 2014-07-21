@@ -4,9 +4,9 @@ import com.ig.intellimeet.co.IntelliMeetCO
 import com.ig.intellimeet.enums.IntelliMeetStatus
 import com.ig.intellimeet.enums.UserRoles
 import grails.plugin.springsecurity.annotation.Secured
+import grails.transaction.Transactional
 
 import static org.springframework.http.HttpStatus.*
-import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
 @Secured(['ROLE_ADMIN'])
@@ -42,13 +42,19 @@ class IntelliMeetController {
         }
 
         IntelliMeet currentIntelliMeet = intelliMeetService.getCurrentIntelliMeet()
-        intelliMeetService.updateStatus currentIntelliMeet, IntelliMeetStatus.IN_ACTIVE
-        intelliMeetService.removeLikesFromAllTopics()
         IntelliMeet newIntelliMeet = new IntelliMeet(intelliMeetCO)
+        intelliMeetService.updateStatus currentIntelliMeet, IntelliMeetStatus.IN_ACTIVE
+
+        if (!newIntelliMeet.validate()) {
+            respond newIntelliMeet.errors, view: 'edit'
+            return
+        }
+
+        intelliMeetService.removeLikesFromAllTopics()
         Role roleImOwner = Role.findByAuthority(UserRoles.ROLE_IM_OWNER.displayName);
         intelliMeetService.revokeRoleFromAllUsers roleImOwner
         intelliMeetService.assignOrgranizerRoles newIntelliMeet
-        intelliMeetService.save newIntelliMeet
+        intelliMeetService.save(newIntelliMeet)
 
         request.withFormat {
             form multipartForm {
