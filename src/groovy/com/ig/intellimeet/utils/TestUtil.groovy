@@ -76,4 +76,8 @@ class TestUtil {
         sessionPreference
     }
 
+    static Date stringToDate(String dateString) {
+        Date.parse("MM/dd/yyyy",dateString)
+    }
+
 }

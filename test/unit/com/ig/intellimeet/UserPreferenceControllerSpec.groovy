@@ -1,27 +1,20 @@
 package com.ig.intellimeet
 
 import com.ig.intellimeet.co.UserPreferenceCO
+import grails.test.mixin.Mock
 import grails.test.mixin.TestFor
 import grails.test.mixin.TestMixin
 import grails.test.mixin.domain.DomainClassUnitTestMixin
 import grails.test.mixin.support.GrailsUnitTestMixin
 import spock.lang.Specification
 
-/**
- * Created by behl on 18/7/14.
- */
-
 @TestFor(UserPreferenceController)
 @TestMixin([GrailsUnitTestMixin, DomainClassUnitTestMixin])
+@Mock([Token, User])
 class UserPreferenceControllerSpec extends Specification {
 
-    void setupSpec() {
-        mockDomain(Token, [new Token(surveyId: 11l)])
-        def tokenMock = mockFor(Token)
-        tokenMock.demand.isValid(1..1) {
-            return true
-        }
-        tokenMock.createMock()
+    void setup() {
+        new Token(intelliMeetId: 1l, surveyId: 11l, effectiveDate: new Date(), expiryDate: new Date() + 10, userId: 1l, value:'abcde').save(failOnError: true, flush: true)
         mockDomain(Survey, [new Survey(id: 11l, isClosed: false)])
         mockDomain(UserPreference)
         def userPreferenceServiceMock = mockFor(UserPreferenceService, false)
@@ -38,7 +31,7 @@ class UserPreferenceControllerSpec extends Specification {
         }
         controller.surveyService = surveyServiceMock.createMock()
         def tokenServiceMock = mockFor(TokenService)
-        tokenServiceMock.demand.extractToken(1..1) {String tokenId->
+        tokenServiceMock.demand.extractToken(1..1) { String tokenId ->
             Token.findBySurveyId(11l)
         }
         tokenServiceMock.demand.save(1..1) { Token token ->
