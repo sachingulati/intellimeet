@@ -10,21 +10,21 @@ class UserController {
 
     def cloudinaryService
     def springSecurityService
-    def grailsApplication
-    static scaffold = true
 
-    def uploadImage() {
+
+    @Secured(['ROLE_USER'])
+    def profile() {
     }
 
-    def saveImage() {
+    @Secured(['ROLE_USER'])
+    def uploadImage() {
         CommonsMultipartFile userImage = params.userImage
-        log.info("Image name ${userImage.originalFilename}")
-        User currentUser = springSecurityService?.currentUser
+        User currentUser = (User) springSecurityService?.currentUser
         try {
-            cloudinaryService.uploadImage(userImage.bytes, grailsApplication.config.cloudinary.dir as String, currentUser?.username, ['user', 'image'])
+            cloudinaryService.uploadImage(userImage.bytes, currentUser?.username, ['user', 'image'])
         } catch (Exception e) {
             log.info("Exception occurred while saving image")
         }
-        redirect controller: 'user', action: 'uploadImage'
+        redirect controller: 'user', action: 'profile'
     }
 }
