@@ -5,7 +5,9 @@
 grails.config.locations = ["classpath:${appName}-config.properties",
         "classpath:${appName}-config.groovy",
         "file:${userHome}/.grails/${appName}-config.properties",
-        "file:${userHome}/.grails/${appName}-config.groovy"]
+        "file:${userHome}/.grails/${appName}-config.groovy",
+        CloudinaryConfig
+]
 
 // if (System.properties["${appName}.config.location"]) {
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
@@ -231,16 +233,3 @@ grails.plugin.springsecurity.oauth.domainClass = 'com.ig.intellimeet.OauthId'
 grails.intellimeet.adminUsernames = ['puneet.behl@intelligrape.com',
         'farid@intelligrape.com',
         'dmittal@intelligrape.com']
-
-cloudinary.config = [
-        cloud_name: "intelligrape",
-        api_key: "379861255117262",
-        api_secret: "CdY09ZNil3MKflwUoG25SIz5WDg",
-]
-
-
-cloudinary {
-    baseUrl = "http://res.cloudinary.com/intelligrape/image/upload/"
-    dir = "intelliMeet"
-    mimeType = ".jpg"
-}
