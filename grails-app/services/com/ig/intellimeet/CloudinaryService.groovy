@@ -9,12 +9,13 @@ class CloudinaryService {
     static transactional = false
 
     Map uploadImage(Object bytesOrString, String imageName, List<String> tags) throws Exception {
+        def cloudinaryConfig = grailsApplication.config.cloudinary.config
         if ((bytesOrString instanceof byte[]) || (bytesOrString instanceof String)) {
             try {
-                return client.uploader().upload(bytesOrString, ['public_id': getPublicId(imageName),
-                                                                'tags'     : tags.collect {
+                return client.uploader().upload(bytesOrString, ['public_id'          : cloudinaryConfig['folder'] + '/' + getPublicId(imageName),
+                                                                'tags'               : tags.collect {
                                                                     replaceSpaces(it)
-                                                                }.join(',')])
+                                                                }.join(','), 'folder': cloudinaryConfig['folder']])
             } catch (Exception e) {
                 log.debug("file not found")
             }

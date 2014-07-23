@@ -10,8 +10,8 @@ class UserTagLib {
     }
 
     def displayUserImage = { attrs ->
-        def cloudinaryConfig = grailsApplication.config.cloudinary
+        def cloudinaryConfig = grailsApplication.config.cloudinary.config
         String imageUrl = "${cloudinaryConfig.baseUrl}/${attrs.email}.${cloudinaryConfig.mimeType}"
-        out << "<img src='${imageUrl}' width='150px' class='center-block img-circle img-responsive'/>"
+        out << "<img src='${imageUrl}' width='200px' height='200px' class='center-block img-thumbnail img-responsive'/>"
     }
 }

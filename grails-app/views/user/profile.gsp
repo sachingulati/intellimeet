@@ -20,8 +20,13 @@
 
 
                 <g:uploadForm controller="user" action="uploadImage">
-                    <input id="uploadedFile" type="file" name="userImage" class="form-control"/>
-                    <g:submitButton name="save"/>
+                    <div class="form-group">
+                        <input id="uploadedFile" type="file" name="userImage" class="form-control"/>
+                    </div>
+
+                    <div class="form-group">
+                        <g:submitButton name="Upload" class="btn btn-primary"/>
+                    </div>
                 </g:uploadForm>
             </div>
         </div>
@@ -62,7 +67,7 @@
                     <label class="col-md-3 control-label"></label>
 
                     <div class="col-md-8">
-                        <input type="button" class="btn btn-primary" value="Save Changes">
+                        <input type="submit" class="btn btn-primary" value="Save Changes">
                         <span></span>
                         <input type="reset" class="btn btn-default" value="Cancel">
                     </div>
