@@ -25,7 +25,7 @@ class UserController {
         MultipartFile userImage = params.userImage
         User currentUser = (User) springSecurityService?.currentUser
         try {
-            cloudinaryService.uploadImage(userImage.bytes, currentUser?.username, ['user', 'image'])
+            userService.uploadUserImage(userImage.bytes, currentUser)
         } catch (Exception e) {
             log.info("Exception occurred while saving image")
         }

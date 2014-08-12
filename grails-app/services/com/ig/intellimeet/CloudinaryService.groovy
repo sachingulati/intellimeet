@@ -12,10 +12,10 @@ class CloudinaryService {
         def cloudinaryConfig = grailsApplication.config.cloudinary.config
         if ((bytesOrString instanceof byte[]) || (bytesOrString instanceof String)) {
             try {
-                return client.uploader().upload(bytesOrString, ['public_id'          : cloudinaryConfig['folder'] + '/' + getPublicId(imageName),
-                                                                'tags'               : tags.collect {
-                                                                    replaceSpaces(it)
-                                                                }.join(','), 'folder': cloudinaryConfig['folder']])
+                return client.uploader().upload(bytesOrString, ['public_id': cloudinaryConfig['folder'] + '/' + getPublicId(imageName),
+                        'tags': tags.collect {
+                            replaceSpaces(it)
+                        }.join(','), 'folder': cloudinaryConfig['folder']])
             } catch (Exception e) {
                 log.debug("file not found")
             }
@@ -33,8 +33,19 @@ class CloudinaryService {
     }
 
     Cloudinary getClient() {
-        new Cloudinary(grailsApplication.config.cloudinary.config as Map)
+        new Cloudinary(cloudinaryConfig)
     }
 
-}
+    Map getCloudinaryConfig() {
+        grailsApplication.config.cloudinary.config as Map
+    }
 
+    Map deleteByUserName(String userName) {
+        String publicId = cloudinaryConfig.folder + userName
+        return client.uploader().destroy(publicId, [:])
+    }
+
+    Map deleteAllByPublicIds(List<String> publicIds) {
+        return client.api().deleteResources(publicIds, [:])
+    }
+}
