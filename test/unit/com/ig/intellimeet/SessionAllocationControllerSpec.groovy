@@ -10,6 +10,15 @@ import spock.lang.Specification
 @TestFor(SessionAllocationController)
 class SessionAllocationControllerSpec extends Specification {
 
+
+    void setup() {
+        def sessionAllocationServiceMock = mockFor(SessionAllocationService)
+        sessionAllocationServiceMock.demand.allocate(1..1) {AllocationCO allocationCO->
+            return true
+        }
+        controller.sessionAllocationService = sessionAllocationServiceMock.createMock()
+    }
+
     def "SessionAllocationController: saveAsDraft(AllocationCO), Check redirect"() {
 
         setup:
@@ -23,7 +32,7 @@ class SessionAllocationControllerSpec extends Specification {
         controller.saveAsDraft allocationCO
 
         then:
-        flash.error == 'Error allocating sessions! Please contact site administrator.'
+        flash.error == null
         response.redirectedUrl == '/sessionAllocation/show'
     }
 
@@ -40,7 +49,7 @@ class SessionAllocationControllerSpec extends Specification {
         controller.saveAsDraft allocationCO
 
         then:
-        flash.error == 'Error allocating sessions! Please contact site administrator.'
+        flash.error == null
         response.redirectedUrl == '/sessionAllocation/show'
     }
 

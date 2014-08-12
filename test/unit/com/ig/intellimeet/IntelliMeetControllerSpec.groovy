@@ -1,23 +1,61 @@
 package com.ig.intellimeet
 
-
-
-import grails.test.mixin.*
-import spock.lang.*
+import com.ig.intellimeet.co.IntelliMeetCO
+import com.ig.intellimeet.enums.IntelliMeetStatus
+import com.ig.intellimeet.utils.TestUtil
+import grails.test.mixin.Mock
+import grails.test.mixin.TestFor
+import grails.test.mixin.TestMixin
+import grails.test.mixin.domain.DomainClassUnitTestMixin
+import grails.test.mixin.web.ControllerUnitTestMixin
+import spock.lang.Specification
 
 @TestFor(IntelliMeetController)
-@Mock(IntelliMeet)
+@Mock([Role, UserRole])
+@TestMixin([ControllerUnitTestMixin, DomainClassUnitTestMixin])
 class IntelliMeetControllerSpec extends Specification {
+
+    void setup() {
+        mockDomain(IntelliMeet, [[title: "IM", status: IntelliMeetStatus.IN_ACTIVE, dateOfEvent: TestUtil.stringToDate("03/12/1990")]])
+        mockForConstraintsTests(IntelliMeetCO)
+        def intelliMeetServiceMock = mockFor(IntelliMeetService)
+        intelliMeetServiceMock.demand.getCurrentIntelliMeet(1..1) {->
+            IntelliMeet.findByTitle('IM')
+        }
+        intelliMeetServiceMock.demand.updateStatus(1..1) { IntelliMeet currentIntelliMeet, IntelliMeetStatus status ->
+
+        }
+        intelliMeetServiceMock.demand.removeLikesFromAllTopics(1..1) {->
+
+        }
+        intelliMeetServiceMock.demand.revokeRoleFromAllUsers(1..1) { Role roleIMOwner ->
+
+        }
+        intelliMeetServiceMock.demand.assignOrgranizerRoles(1..1) { IntelliMeet intellimeet ->
+
+        }
+        intelliMeetServiceMock.demand.save(1..1) { IntelliMeet intelliMeet ->
+
+        }
+        controller.intelliMeetService = intelliMeetServiceMock.createMock()
+    }
 
     def populateValidParams(params) {
         assert params != null
         // TODO: Populate valid properties like...
         //params["name"] = 'someValidName'
+        params['title'] = 'IntelliMeet - Date'
+        params['status'] = IntelliMeetStatus.ACTIVE
+        params['dateOfEvent'] = "01/15/2014"
+        params['firstOwnerId'] = 1l
+        params['secondOwnerId'] = 2l
     }
 
     void "Test the index action returns the correct model"() {
 
-        when: "The index action is executed"
+        when:
+        "The" +
+                " index action is executed"
         controller.index()
 
         then: "The model is correct"
@@ -35,25 +73,28 @@ class IntelliMeetControllerSpec extends Specification {
 
     void "Test the save action correctly persists an instance"() {
 
+        setup:
+        IntelliMeetCO intelliMeetCO
+
         when: "The save action is executed with an invalid instance"
         request.contentType = FORM_CONTENT_TYPE
-        def intelliMeet = new IntelliMeet()
-        intelliMeet.validate()
-        controller.save(intelliMeet)
+        intelliMeetCO = new IntelliMeetCO()
+        intelliMeetCO.validate()
+        controller.save(intelliMeetCO)
 
         then: "The create view is rendered again with the correct model"
-        model.intelliMeetInstance != null
-        view == 'create'
+        model.intelliMeetCO != null
+        view == '/intelliMeet/create'
 
         when: "The save action is executed with a valid instance"
         response.reset()
         populateValidParams(params)
-        intelliMeet = new IntelliMeet(params)
+        intelliMeetCO = new IntelliMeetCO(params)
+        intelliMeetCO.validate()
+        controller.save(intelliMeetCO)
 
-        controller.save(intelliMeet)
-
-        then: "A redirect is issued to the show action"
-        response.redirectedUrl == '/intelliMeet/show/1'
+        then: "A redirect is issued to index action"
+        response.redirectedUrl == '/index'
         controller.flash.message != null
         IntelliMeet.count() == 1
     }
@@ -116,34 +157,8 @@ class IntelliMeetControllerSpec extends Specification {
         intelliMeet = new IntelliMeet(params).save(flush: true)
         controller.update(intelliMeet)
 
-        then: "A redirect is issues to the show action"
+        then: "A redirect is issues to the index action"
         response.redirectedUrl == "/intelliMeet/show/$intelliMeet.id"
-        flash.message != null
-    }
-
-    void "Test that the delete action deletes an instance if it exists"() {
-        when: "The delete action is called for a null instance"
-        request.contentType = FORM_CONTENT_TYPE
-        controller.delete(null)
-
-        then: "A 404 is returned"
-        response.redirectedUrl == '/intelliMeet/index'
-        flash.message != null
-
-        when: "A domain instance is created"
-        response.reset()
-        populateValidParams(params)
-        def intelliMeet = new IntelliMeet(params).save(flush: true)
-
-        then: "It exists"
-        IntelliMeet.count() == 1
-
-        when: "The domain instance is passed to the delete action"
-        controller.delete(intelliMeet)
-
-        then: "The instance is deleted"
-        IntelliMeet.count() == 0
-        response.redirectedUrl == '/intelliMeet/index'
         flash.message != null
     }
 }
