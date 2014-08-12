@@ -74,7 +74,7 @@
         </div>
     <!-- end top-wizard -->
 
-    <g:form name="example-1" controller="userPreference" action="save" method="POST">
+        <g:form name="example-1" controller="userPreference" action="save" method="POST">
             <g:hiddenField name="tokenId" value="${tokenId}"/>
             <div id="middle-wizard">
                 <div class="step row">
@@ -83,12 +83,14 @@
                         <ul class="data-list-2">
                             <g:each in="${sessions}" var="session">
                                 <li><input name="firstPreferredSessionId" type="radio" class="required check_radio"
-                                           value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail} - <small><g:link controller="IMSession" action="show"
-                                                                                                                                       id="${session?.id}"
-                                                                                                                                       target="_blank">View Agenda</g:link></small>
+                                           value="${session?.id}"><label><span>${session?.title} by ${session?.ownersEmail}</span> - <small><g:link
+                                        controller="IMSession" action="show"
+                                        id="${session?.id}"
+                                        target="_blank">View Agenda</g:link></small>
                                 </label></li>
                             </g:each>
-                            <li><input type="radio" class="required check_radio" name="firstPreferredSessionId" value=""/><label>Not Available</label></li>
+                            <li><input type="radio" class="required check_radio" name="firstPreferredSessionId"
+                                       value=""/><label>Not Available</label></li>
                         </ul>
                     </div>
                 </div>
@@ -101,12 +103,14 @@
                         <ul class="data-list-2">
                             <g:each in="${sessions}" var="session">
                                 <li><input name="secondPreferredSessionId" type="radio" class="required check_radio"
-                                           value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail} - <small><g:link controller="IMSession" action="show"
-                                                                                                                                       id="${session?.id}"
-                                                                                                                                       target="_blank">View Agenda</g:link></small>
+                                           value="${session?.id}"><label><span>${session?.title} by ${session?.ownersEmail}</span> - <small><g:link
+                                        controller="IMSession" action="show"
+                                        id="${session?.id}"
+                                        target="_blank">View Agenda</g:link></small>
                                 </label></li>
                             </g:each>
-                            <li><input type="radio" class="required check_radio" name="secondPreferredSessionId" value=""/><label>Not Available</label></li>
+                            <li><input type="radio" class="required check_radio" name="secondPreferredSessionId"
+                                       value=""/><label>Not Available</label></li>
                         </ul>
                     </div>
                 </div>
@@ -119,12 +123,14 @@
                         <ul class="data-list-2">
                             <g:each in="${sessions}" var="session">
                                 <li><input name="thirdPreferredSessionId" type="radio" class="required check_radio"
-                                           value="${session?.id}"><label>${session?.title} by ${session?.ownersEmail} - <small><g:link controller="IMSession" action="show"
-                                                                                                                                       id="${session?.id}"
-                                                                                                                                       target="_blank">View Agenda</g:link></small>
+                                           value="${session?.id}"><label><span>${session?.title} by ${session?.ownersEmail}</span> - <small><g:link
+                                        controller="IMSession" action="show"
+                                        id="${session?.id}"
+                                        target="_blank">View Agenda</g:link></small>
                                 </label></li>
                             </g:each>
-                            <li><input type="radio" class="required check_radio" name="thirdPreferredSessionId" value=""/><label>Not Available</label></li>
+                            <li><input type="radio" class="required check_radio" name="thirdPreferredSessionId"
+                                       value=""/><label>Not Available</label></li>
                         </ul>
                     </div>
                 </div>
@@ -132,9 +138,12 @@
 
                 <div class="submit step" id="complete">
 
-                    <i class="fa fa-check-square-o"></i>
+                    <h3>Please confirm! and submit your preferences.</h3>
 
-                    <h3>Survey complete! Please submit & Thank you for you time.</h3>
+                    <ul class="selected">
+
+                    </ul>
+
                     <button type="submit" name="process" class="submit">Submit the survey</button>
                 </div>
                 <!-- end submit step -->
@@ -162,7 +171,8 @@
 
     <div class="row">
         <div class="col-sm-3">
-            <img src="${resource(dir: 'images/logo', file: 'grails-logo.png')}" alt="Groovy & Grails Logo" class="img-responsive">
+            <img src="${resource(dir: 'images/logo', file: 'grails-logo.png')}" alt="Groovy & Grails Logo"
+                 class="img-responsive">
 
             <h3>Groovy & Grails.</h3>
 
@@ -170,7 +180,8 @@
         </div>
 
         <div class="col-sm-3">
-            <img src="${resource(dir: 'images/logo', file: 'nodejs-logo.png')}" alt="Node JS Logo" class="img-responsive" style="height: 115px;">
+            <img src="${resource(dir: 'images/logo', file: 'nodejs-logo.png')}" alt="Node JS Logo"
+                 class="img-responsive" style="height: 115px;">
 
             <h3>Node JS</h3>
 
@@ -178,7 +189,8 @@
         </div>
 
         <div class="col-sm-3">
-            <img src="${resource(dir: 'images/logo', file: 'adobe-cq.png')}" alt="Adobe CQ5 Logo" class="img-responsive">
+            <img src="${resource(dir: 'images/logo', file: 'adobe-cq.png')}" alt="Adobe CQ5 Logo"
+                 class="img-responsive">
 
             <h3>Adobe CQ5</h3>
 
@@ -219,7 +231,8 @@
                     <li><i class="icon-home"></i> SDF L-6, NSEZ, Noida Phase 2, India</li>
                     <li><i class="icon-phone"></i> Telephone: (+91) 120-6493668</li>
                     <li><i class="icon-print">Fax: (+91) 120-4207689</i></li>
-                    <li><i class="icon-envelope"></i> Email: <a href="mailto:info@intelligrape.com">info@intelligrape.com</a></li>
+                    <li><i class="icon-envelope"></i> Email: <a
+                            href="mailto:info@intelligrape.com">info@intelligrape.com</a></li>
                     <li><i class="icon-skype"></i> Skype name: IntelliMeet</li>
                 </ul>
             </div>
@@ -254,10 +267,13 @@
 
                 <div class="col-md-6" style="text-align:center">
                     <ul class="social-bookmarks clearfix">
-                        <li class="facebook"><a href="https://www.facebook.com/intelligrape.software" target="_blank">facebook</a></li>
-                        <li class="googleplus"><a href="https://plus.google.com/102688776692809350794/posts" target="_blank">googleplus</a></li>
+                        <li class="facebook"><a href="https://www.facebook.com/intelligrape.software"
+                                                target="_blank">facebook</a></li>
+                        <li class="googleplus"><a href="https://plus.google.com/102688776692809350794/posts"
+                                                  target="_blank">googleplus</a></li>
                         <li class="twitter"><a href="https://twitter.com/IntelliGrape" target="_blank">twitter</a></li>
-                        <li class="linkedin"><a href="http://www.linkedin.com/company/intelligrape" target="_blank">linkedin</a></li>
+                        <li class="linkedin"><a href="http://www.linkedin.com/company/intelligrape"
+                                                target="_blank">linkedin</a></li>
                         <li class="blogger"><a href="http://www.intelligrape.com/blog/" target="_blank">blogger</a></li>
                     </ul>
                 </div>
