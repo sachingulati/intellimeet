@@ -59,14 +59,14 @@ class UserPreference {
 
     void setSecondPreferredSessionId(Long secondPreferredSessionId) {
         this.secondPreferredSessionId = secondPreferredSessionId
-        IMSession imSession = findSessionByIdAndIntelliMeetId firstPreferredSessionId, intelliMeetId
+        IMSession imSession = findSessionByIdAndIntelliMeetId secondPreferredSessionId, intelliMeetId
         this.secondPreferredSessionTitle = imSession?.title
         this.secondPreferredSessionOwners = imSession?.ownersEmail
     }
 
     void setThirdPreferredSessionId(Long thirdPreferredSessionId) {
         this.thirdPreferredSessionId = thirdPreferredSessionId
-        IMSession imSession = findSessionByIdAndIntelliMeetId firstPreferredSessionId, intelliMeetId
+        IMSession imSession = findSessionByIdAndIntelliMeetId thirdPreferredSessionId, intelliMeetId
         this.thirdPreferredSessionTitle = imSession?.title
         this.thirdPreferredSessionOwners = imSession?.ownersEmail
     }
