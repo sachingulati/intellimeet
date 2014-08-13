@@ -41,7 +41,7 @@ class CloudinaryService {
     }
 
     Map deleteByUserName(String userName) {
-        String publicId = cloudinaryConfig.folder + userName
+        String publicId = cloudinaryConfig.folder + "/" + userName
         return client.uploader().destroy(publicId, [:])
     }
 
