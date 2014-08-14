@@ -56,6 +56,7 @@ grails.project.dependency.resolution = {
         // runtime 'org.postgresql:postgresql:9.3-1100-jdbc41'
         compile 'org.grails:grails-datastore-gorm:3.0.4.RELEASE'
         compile 'org.grails:grails-datastore-core:3.0.4.RELEASE'
+        compile 'com.newrelic.agent.java:newrelic-agent:3.9.0'
         test 'org.grails:grails-datastore-simple:3.0.4.RELEASE'
         compile 'com.cloudinary:cloudinary:1.0.3'
     }
