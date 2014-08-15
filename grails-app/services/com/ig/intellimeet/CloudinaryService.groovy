@@ -15,7 +15,7 @@ class CloudinaryService {
                 String commaSeparatedTags = tags.collect {
                     replaceSpaces(it)
                 }.join(',')
-                String publicId = cloudinaryConfig['folder'] + '/' + getPublicId(imageName)
+                String publicId = cloudinaryConfig['folder'] + '/' + imageName
                 return client.uploader().upload(bytesOrString, [
                         'public_id': publicId,
                         'tags'     : commaSeparatedTags,
@@ -28,10 +28,6 @@ class CloudinaryService {
         } else {
             throw new Exception('data not accepted. Use either byte[] or String URL.')
         }
-    }
-
-    String getPublicId(String imageName) {
-        imageName
     }
 
     String replaceSpaces(String name) {
