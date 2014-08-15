@@ -57,10 +57,7 @@
 
             <td>
                 <user:displayUserImageInMainNav email="${userInstance?.username}"/>
-                <g:link action="show"
-                        id="${userInstance.id}">${fieldValue(bean: userInstance, field: "username")}</g:link></td>
-
-
+                <span>${fieldValue(bean: userInstance, field: "username")}</span>
             <td>
                 <g:if test="${userInstance.enabled}">
                     <span class="fa fa-check-square-o fa-3x toggleAccountEnable" data-userid="${userInstance?.id}" style="cursor:pointer;"></span>
