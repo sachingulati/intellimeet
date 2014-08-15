@@ -46,8 +46,4 @@ class CloudinaryService {
         String publicId = cloudinaryConfig.folder + "/" + userName
         return client.uploader().destroy(publicId, [:])
     }
-
-    Map deleteAllByPublicIds(List<String> publicIds) {
-        return client.api().deleteResources(publicIds, [:])
-    }
 }
