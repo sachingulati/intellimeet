@@ -97,20 +97,20 @@ grails {
         port = 465
         username = "intellimeet@intelligrape.com"
         password = "imdefault"
-        props = ["mail.smtp.auth":"true",
-                "mail.smtp.socketFactory.port":"465",
-                "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
-                "mail.smtp.socketFactory.fallback":"false"]
+        props = ["mail.smtp.auth": "true",
+                "mail.smtp.socketFactory.port": "465",
+                "mail.smtp.socketFactory.class": "javax.net.ssl.SSLSocketFactory",
+                "mail.smtp.socketFactory.fallback": "false"]
     }
 }
 grails.mail.default.from = grails.mail.username
 
 environments {
     development {
-        grails.mail.disabled=true
+        grails.mail.disabled = true
         grails.logging.jul.usebridge = true
         grails.serverURL = "http://localhost:8585"
-        grails.mail.overrideAddress="farid@intelligrape.com"
+        grails.mail.overrideAddress = "farid@intelligrape.com"
 
         def appName = grails.util.Metadata.current.'app.name'
         def baseURL = grails.serverURL ?: "http://127.0.0.1:${System.getProperty('server.port', '8585')}/${appName}"
@@ -131,8 +131,8 @@ environments {
 
     }
     qa {
-        grails.mail.disabled=true
-        grails.mail.overrideAddress="farid@intelligrape.com"
+        grails.mail.disabled = true
+        grails.mail.overrideAddress = "farid@intelligrape.com"
         grails.logging.jul.usebridge = false
         grails.serverURL = "http://intellimeet.qa3.intelligrape.net"
 
@@ -152,7 +152,7 @@ environments {
         }
     }
     test {
-        grails.mail.disabled=true
+        grails.mail.disabled = true
     }
     production {
         grails.logging.jul.usebridge = false
@@ -183,21 +183,21 @@ log4j = {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
 
-    warn   'grails.plugin.springsecurity',
-           'grails.plugin.springsecurity.oauth',
-           'org.springframework.security'
+    warn 'grails.plugin.springsecurity',
+            'grails.plugin.springsecurity.oauth',
+            'org.springframework.security'
 
-    error  'org.codehaus.groovy.grails.web.servlet',        // controllers
-           'org.codehaus.groovy.grails.web.pages',          // GSP
-           'org.codehaus.groovy.grails.web.sitemesh',       // layouts
-           'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-           'org.codehaus.groovy.grails.web.mapping',        // URL mapping
-           'org.codehaus.groovy.grails.commons',            // core / classloading
-           'org.codehaus.groovy.grails.plugins',            // plugins
-           'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
-           'org.springframework',
-           'org.hibernate',
-           'net.sf.ehcache.hibernate'
+    error 'org.codehaus.groovy.grails.web.servlet',        // controllers
+            'org.codehaus.groovy.grails.web.pages',          // GSP
+            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
+            'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
+            'org.codehaus.groovy.grails.web.mapping',        // URL mapping
+            'org.codehaus.groovy.grails.commons',            // core / classloading
+            'org.codehaus.groovy.grails.plugins',            // plugins
+            'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
+            'org.springframework',
+            'org.hibernate',
+            'net.sf.ehcache.hibernate'
     info 'grails.app'
 }
 
@@ -210,26 +210,26 @@ grails.plugin.springsecurity.successHandler.alwaysUseDefault = true
 grails.plugin.springsecurity.logout.postOnly = false
 
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
-        '/':                              ['permitAll'],
-        '/index':                         ['permitAll'],
-        '/index.gsp':                     ['permitAll'],
-        '/intellimeet/report':            ['permitAll'],
-        '/intellimeet/report.gsp':        ['permitAll'],
-        '/about':                         ['ROLE_ADMIN'],
-        '/about.gsp':                     ['ROLE_ADMIN'],
-        '/console/**':                       ['ROLE_ADMIN'],
-        '/accessDenied':                  ['permitAll'],
-        '/accessDenied.gsp':              ['permitAll'],
-        '/**/js/**':                      ['permitAll'],
-        '/**/css/**':                     ['permitAll'],
-        '/**/images/**':                  ['permitAll'],
-        '/**/favicon.ico':                ['permitAll'],
-        '/oauth/**':                      ['permitAll'],
-        '/**':                            ['permitAll']
+        '/': ['permitAll'],
+        '/index': ['permitAll'],
+        '/index.gsp': ['permitAll'],
+        '/intellimeet/report': ['permitAll'],
+        '/intellimeet/report.gsp': ['permitAll'],
+        '/about': ['ROLE_ADMIN'],
+        '/about.gsp': ['ROLE_ADMIN'],
+        '/console/**': ['ROLE_ADMIN'],
+        '/accessDenied': ['permitAll'],
+        '/accessDenied.gsp': ['permitAll'],
+        '/**/js/**': ['permitAll'],
+        '/**/css/**': ['permitAll'],
+        '/**/images/**': ['permitAll'],
+        '/**/favicon.ico': ['permitAll'],
+        '/oauth/**': ['permitAll'],
+        '/**': ['permitAll']
 ]
 
 // Added by the Spring Security OAuth plugin:
 grails.plugin.springsecurity.oauth.domainClass = 'com.ig.intellimeet.OauthId'
 grails.intellimeet.adminUsernames = ['puneet.behl@intelligrape.com',
-'farid@intelligrape.com',
-'dmittal@intelligrape.com']
+        'farid@intelligrape.com',
+        'dmittal@intelligrape.com']
