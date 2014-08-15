@@ -7,13 +7,13 @@ cloudinary.config = [
 ]
 
 environments {
-    dev {
+    development {
         cloudinary.config['folder'] = 'dev'
     }
     qa {
         cloudinary.config['folder'] = 'qa'
     }
-    prod {
+    production {
         cloudinary.config['folder'] = 'prod'
     }
     test {
