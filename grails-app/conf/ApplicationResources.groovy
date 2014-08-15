@@ -3,6 +3,7 @@ modules = {
         dependsOn 'jquery, bootstrap, holder, font_awesome, datepicker, application'
         defaultBundle 'core'
         resource url: '/css/docs.min.css'
+        resource url: '/css/style.css'
     }
 
     footer {
