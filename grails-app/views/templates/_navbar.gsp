@@ -13,21 +13,32 @@
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
                 <sec:ifAnyGranted roles="ROLE_USER">
-                    <li id="topic"><g:link controller="topic" action="index"><g:message code="topic.label" default="Topics"/></g:link></li>
-                    <li id="session"><g:link controller="IMSession" action="index"><g:message code="session.label" default="Proposed Sessions"/></g:link></li>
+                    <li id="topic"><g:link controller="topic" action="index"><g:message code="topic.label"
+                                                                                        default="Topics"/></g:link></li>
+                    <li id="session"><g:link controller="IMSession" action="index"><g:message code="session.label"
+                                                                                              default="Proposed Sessions"/></g:link></li>
                 </sec:ifAnyGranted>
                 <sec:ifAnyGranted roles="ROLE_IM_OWNER">
-                    <li id="preference"><g:link controller="userPreference" action="index"><g:message code="preference.label" default="Preferences"/></g:link></li>
-                    <li id="survey"><g:link controller="survey" action="index"><g:message code="survey.label" default="Survey"/></g:link></li>
-                    <li id="allocation"><g:link controller="sessionAllocation" action="show"><g:message code="allocation.label" default="Allocations"/></g:link></li>
+                    <li id="preference"><g:link controller="userPreference" action="index"><g:message
+                            code="preference.label" default="Preferences"/></g:link></li>
+                    <li id="survey"><g:link controller="survey" action="index"><g:message code="survey.label"
+                                                                                          default="Survey"/></g:link></li>
+                    <li id="allocation"><g:link controller="sessionAllocation" action="show"><g:message
+                            code="allocation.label" default="Allocations"/></g:link></li>
                 </sec:ifAnyGranted>
                 <sec:ifAnyGranted roles="ROLE_ADMIN">
-                    <li id="intellimeet"><g:link controller="intelliMeet" action="index"><g:message code="intellimeet.label" default="IntelliMeet"/></g:link></li>
+                    <li id="intellimeet"><g:link controller="intelliMeet" action="index"><g:message
+                            code="intellimeet.label" default="IntelliMeet"/></g:link></li>
                 </sec:ifAnyGranted>
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <sec:ifLoggedIn>
-                    <li><a href="javascript:void(0);"><sec:username/></a></li>
+                    <li>
+                        <g:link controller="user" action="profile" style="padding:5px 15px;">
+                            <user:displayUserImageInMainNav email="${sec.username()}"/>
+                            <span style="padding: 10px 0;"><sec:username/></span>
+                        </g:link>
+                    </li>
                     <li><g:link controller="logout"><g:message code="logout.label" default="Log Out"/></g:link></li>
                 </sec:ifLoggedIn>
             </ul>

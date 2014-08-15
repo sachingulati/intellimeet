@@ -60,8 +60,13 @@ class TestUtil {
         new User(username: username, password: 'test')
     }
 
+    static Employee createEmployee(Long userId, String username) {
+        new Employee(emailAddress: username, userId: userId)
+    }
+
     static UserRole createUserRole(String username, String authority) {
         User user = User.findByUsername(username) ?: createUser(username).save(flush: true)
+        createEmployee(user?.id, user?.username).save(failOnError: true)
         Role role = Role.findByAuthority(authority)
         UserRole userRole = role ? new UserRole(user: user, role: role) : null
         userRole
