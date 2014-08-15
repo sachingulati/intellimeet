@@ -15,9 +15,19 @@ class UserService {
         userInstance
     }
 
+    def save(Employee employee) {
+        if(!(employee?.validate() && employee?.save(flush: true))) {
+            log.error(employee?.errors?.allErrors?.join('\n'))
+            employee = null
+        }
+        employee
+    }
+
     void uploadUserImage(byte[] bytes, User user) {
         cloudinaryService.deleteByUserName(user?.username)
-        cloudinaryService.uploadImage(bytes, user?.username, ['user', 'image'])
+        Employee employee = Employee.findByUserId(user?.id) ?: new Employee(emailAddress: user?.username, userId: user?.id)
+        employee.cloudinaryImage = cloudinaryService.uploadImage(bytes, user?.username, ['user', 'image'])
+        save employee
     }
 
 }

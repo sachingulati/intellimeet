@@ -8,6 +8,13 @@
 <body>
 
 <div class="container">
+    <g:if test="${flash.message}">
+        <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            ${flash.message}
+        </div>
+    </g:if>
+
     <h1>Edit Profile</h1>
     <hr>
 
@@ -15,7 +22,7 @@
         <!-- left column -->
         <div class="col-md-3">
             <div class="text-center">
-                <user:displayUserImage email="${userInstance?.username}"/>
+                <user:displayUserImage email="${employeeInstance?.emailAddress}"/>
                 <h6>Upload a different photo...</h6>
 
 
@@ -36,13 +43,15 @@
             <h3>Personal info</h3>
 
             <g:form class="form-horizontal" role="form" controller="user" action="save">
-                <g:hiddenField name="id" value="${userInstance?.id}"/>
+                <g:hiddenField name="id" value="${employeeInstance?.id}"/>
+                <g:hiddenField name="userId" value="${employeeInstance?.userId}"/>
+                <g:hiddenField name="version" value="${employeeInstance?.version}"/>
                 <div class="form-group">
                     <label class="col-lg-3 control-label">First name:</label>
 
                     <div class="col-lg-8">
                         <g:textField name="firstName" class="form-control" type="text"
-                                     value="${userInstance?.firstName}"/>
+                                     value="${employeeInstance?.firstName}"/>
                     </div>
                 </div>
 
@@ -51,15 +60,45 @@
 
                     <div class="col-lg-8">
                         <g:textField name="lastName" class="form-control" type="text"
-                                     value="${userInstance?.lastName}"/>
+                                     value="${employeeInstance?.lastName}"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-lg-3 control-label">Username:</label>
+                    <label class="col-lg-3 control-label">Email Address:</label>
 
                     <div class="col-lg-8">
-                        <input class="form-control" type="text" value="${userInstance?.username}" disabled/>
+                        <g:hiddenField name="emailAddress" value="${employeeInstance?.emailAddress}" />
+                        <input class="form-control" type="text" value="${employeeInstance?.emailAddress}" disabled/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Date Of Birth:</label>
+
+                    <div class="col-lg-8">
+                        <g:textField name="dateOfBirth" class="form-control" type="text"
+                                     value="${employeeInstance?.dateOfBirth}" placeholder="MM/dd/YYYY"/>
+                        <p class="help-block"><span class="glyphicon glyphicon-info-sign"></span> Enter date in <code>MM/dd/YYYY</code> format. Example 03/04/1988 (4th March, 1988)</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Employee ID:</label>
+
+                    <div class="col-lg-8">
+                        <g:textField name="employeeId" class="form-control" type="text"
+                                     value="${employeeInstance?.employeeId}"/>
+                        <p class="help-block">Example: IG0027</p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Mobile Number:</label>
+
+                    <div class="col-lg-8">
+                        <g:textField name="cellNumber" class="form-control" type="text"
+                                     value="${employeeInstance?.cellNumber}"/>
                     </div>
                 </div>
 

@@ -4,10 +4,9 @@ class User {
 
 	transient springSecurityService
 
-    String firstName
-    String lastName
 	String username
 	String password
+    String cloudinaryImageUrl
 	boolean enabled = true
 	boolean accountExpired
 	boolean accountLocked
@@ -18,10 +17,9 @@ class User {
 	static transients = ['springSecurityService']
 
 	static constraints = {
-        firstName nullable: true
-        lastName nullable: true
 		username blank: false, unique: true
 		password blank: false
+        cloudinaryImageUrl nullable: true
 	}
 
 	static mapping = {

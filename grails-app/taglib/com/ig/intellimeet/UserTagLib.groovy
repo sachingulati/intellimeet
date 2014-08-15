@@ -10,14 +10,14 @@ class UserTagLib {
     }
 
     def displayUserImage = { attrs ->
-        def cloudinaryConfig = grailsApplication.config.cloudinary.config
-        String imageUrl = "${cloudinaryConfig.baseUrl}/${attrs.email}.${cloudinaryConfig.mimeType}"
+        Employee employee = Employee.findByEmailAddress(attrs.email)
+        String imageUrl = employee?.cloudinaryImage?.url ?: 'http://res.cloudinary.com/intellimeet/image/upload/v1408134423/placeholder_user.png'
         out << "<img src='${imageUrl}' width='200px' height='200px' class='center-block img-thumbnail img-responsive'/>"
     }
 
     def displayUserImageInMainNav = { attrs ->
-        def cloudinaryConfig = grailsApplication.config.cloudinary.config
-        String imageUrl = "${cloudinaryConfig.baseUrl}/${attrs.email}.${cloudinaryConfig.mimeType}"
-        out << "<img src='${imageUrl}' height='30px' class='img-rounded'/>"
+        Employee employee = Employee.findByEmailAddress(attrs.email)
+        String imageUrl = employee?.cloudinaryImage?.url ?: 'http://res.cloudinary.com/intellimeet/image/upload/v1408134423/placeholder_user.png'
+        out << "<img src='${imageUrl}' width=40px height='40px' class='img-circle'/>"
     }
 }

@@ -15,7 +15,8 @@ class UserController {
     @Secured(['ROLE_USER'])
     def profile() {
         User currentUser = (User) springSecurityService.currentUser
-        [userInstance: currentUser]
+        Employee employeeInstance = Employee?.findByUserId(currentUser?.id) ?: new Employee(userId: currentUser?.id, emailAddress: currentUser?.username)
+        [employeeInstance: employeeInstance]
     }
 
     @Secured(['ROLE_USER'])
@@ -31,11 +32,12 @@ class UserController {
     }
 
     @Secured(['ROLE_USER'])
-    def save(User userInstance) {
-        if(userInstance.hasErrors()) {
+    def save(Employee employeeInstance) {
+        if(employeeInstance.hasErrors()) {
            flash.error = 'Validation failed! Please fill all the required fields.'
         }
-        userService.save userInstance
+        userService.save employeeInstance
+        flash.message = "User profile information has been saved successfully."
         redirect controller: 'user', action: 'profile'
     }
 }

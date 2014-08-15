@@ -34,9 +34,9 @@
             <ul class="nav navbar-nav pull-right">
                 <sec:ifLoggedIn>
                     <li>
-                        <g:link controller="user" action="profile" style="padding:10px 15px;">
+                        <g:link controller="user" action="profile" style="padding:5px 15px;">
                             <user:displayUserImageInMainNav email="${sec.username()}"/>
-                            <span style="padding: 5px 0;"><sec:username/></span>
+                            <span style="padding: 10px 0;"><sec:username/></span>
                         </g:link>
                     </li>
                     <li><g:link controller="logout"><g:message code="logout.label" default="Log Out"/></g:link></li>
