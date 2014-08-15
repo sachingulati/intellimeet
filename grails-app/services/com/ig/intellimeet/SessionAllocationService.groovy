@@ -12,14 +12,14 @@ class SessionAllocationService {
     def sessionPreferenceService
 
     void allocate(AllocationCO allocationCO) {
-        allocationCO?.preferences?.each {IMSessionPreference imSessionPreference->
+        allocationCO?.preferences?.each { IMSessionPreference imSessionPreference ->
             updateProposedAttendees imSessionPreference
         }
     }
 
     void updateProposedAttendees(IMSessionPreference imSessionPreference) {
         SessionPreference sessionPreference = SessionPreference.findBySessionId(imSessionPreference?.sessionId)
-        if(sessionPreference) {
+        if (sessionPreference) {
             sessionPreference.purposedAttendees = imSessionPreference.attendees
         }
         sessionPreferenceService.save sessionPreference
@@ -39,9 +39,9 @@ class SessionAllocationService {
                     sessionId = object['_id'] as Long
                     sessionTitle = session?.title
                     sessionOwners = session?.ownersEmail
-                    preferenceOneUserIds = object['value']['preferenceOneUserIds'] as List<Long>
-                    preferenceTwoUserIds = object['value']['preferenceTwoUserIds'] as List<Long>
-                    preferenceThreeUserIds = object['value']['preferenceThreeUserIds'] as List<Long>
+                    preferenceOneUserIds = (List<Long>) object['value']['preferenceOneUserIds']
+                    preferenceTwoUserIds = (List<Long>) object['value']['preferenceTwoUserIds']
+                    preferenceThreeUserIds = (List<Long>) object['value']['preferenceThreeUserIds']
                 }
             }
             sessionPreferenceService.save sessionPreference
