@@ -79,7 +79,7 @@ class SurveyController {
 
     def create() {
         Survey survey = new Survey(params)
-        survey.recipientsEmail = User.list()*.username?.join(", ")
+        survey.recipientsEmail = User.findAllByEnabled(true)*.username?.join(", ")
         respond survey
     }
 

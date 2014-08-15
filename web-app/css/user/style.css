@@ -1,0 +1,8 @@
+/* line 1, ../../sass/user/style.scss */
+.toggleAccountEnable {
+  color: darkgray;
+}
+/* line 3, ../../sass/user/style.scss */
+.toggleAccountEnable:hover {
+  color: #000000;
+}

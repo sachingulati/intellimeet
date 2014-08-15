@@ -29,6 +29,8 @@
                 <sec:ifAnyGranted roles="ROLE_ADMIN">
                     <li id="intellimeet"><g:link controller="intelliMeet" action="index"><g:message
                             code="intellimeet.label" default="IntelliMeet"/></g:link></li>
+                    <li id="users"><g:link controller="user" action="index"><g:message
+                            code="users.label" default="Users"/></g:link></li>
                 </sec:ifAnyGranted>
             </ul>
             <ul class="nav navbar-nav pull-right">
