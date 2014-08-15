@@ -4,12 +4,35 @@ import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 import org.springframework.web.multipart.MultipartFile
 
-@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 @Secured(['ROLE_ADMIN'])
 class UserController {
 
     def springSecurityService
     def userService
+
+    @Secured(['ROLE_ADMIN'])
+    def index() {
+        params.max = Math.min(params.int('max') ?: 10, 100)
+        respond User.list(params), model: [userInstanceCount: User.count()]
+    }
+
+    @Secured(['ROLE_ADMIN'])
+    def toggleAccount(Long id) {
+        User user = User.get(id)
+        user?.enabled = !user?.enabled
+        userService.save(user)
+        render "SUCCESS"
+    }
+
+    @Secured(['ROLE_ADMIN'])
+    def search() {
+        params.max = Math.min(params.int('max') ?: 10, 100)
+        render view: 'index', model: [
+                userInstanceList : User.findAllByUsernameIlike("%${params?.q ?: ''}%", params),
+                userInstanceCount: User.findAllByUsernameIlike("%${params?.q ?: ''}%")?.size()]
+
+    }
 
 
     @Secured(['ROLE_USER'])
@@ -33,8 +56,8 @@ class UserController {
 
     @Secured(['ROLE_USER'])
     def save(Employee employeeInstance) {
-        if(employeeInstance.hasErrors()) {
-           flash.error = 'Validation failed! Please fill all the required fields.'
+        if (employeeInstance.hasErrors()) {
+            flash.error = 'Validation failed! Please fill all the required fields.'
         }
         userService.save employeeInstance
         flash.message = "User profile information has been saved successfully."
