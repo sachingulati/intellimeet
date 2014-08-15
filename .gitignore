@@ -19,7 +19,7 @@ stacktrace.log
 /target-eclipse/
 projectFilesBackup/
 simple-interact-core.ipr
-.sass-cache
+/.sass-cache/
 id_file
 *~
 /temp/
