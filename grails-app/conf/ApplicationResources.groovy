@@ -100,6 +100,11 @@ modules = {
         resource url: '/js/jquery.placeholder.js'
     }
 
+    user_mgmt {
+        resource url: '/css/user/style.css'
+        resource url: '/js/user/app.js'
+    }
+
     jquery_tweet {
         resource url: '/js/survey/jquery.tweet.min.js'
     }
