@@ -2,6 +2,7 @@ package com.ig.intellimeet
 
 import com.ig.intellimeet.co.IMSessionCO
 import com.ig.intellimeet.enums.SessionStatus
+import com.ig.intellimeet.utils.TestUtil
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
@@ -31,12 +32,13 @@ class IMSessionController {
         respond imSesssionList
     }
 
-    def show(IMSession IMSessionInstance) {
-        springSecurityService.currentUser.id in [IMSessionInstance.ownerId, IMSessionInstance.copresenterId]
-        respond IMSessionInstance
+    def show(IMSession imSessionInstance) {
+        springSecurityService.currentUser.id in [imSessionInstance.ownerId, imSessionInstance.copresenterId]
+        respond imSessionInstance
     }
 
     def create() {
+        params.description = params.description ?: TestUtil.SESSION_DUMMY_DESCRIPTION
         respond new IMSession(params)
     }
 
@@ -59,63 +61,62 @@ class IMSessionController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'IMSessionInstance.label', default: 'IMSession'), imSession.id])
+                flash.message = message(code: 'default.created.message', args: [message(code: 'imSessionInstance.label', default: 'IMSession'), imSession.id])
                 redirect imSession
             }
             '*' { respond imSession, [status: CREATED] }
         }
     }
 
-    def edit(IMSession IMSessionInstance) {
-        IMSessionInstance = IMSession.get(IMSessionInstance.id)
-        Long currentUserId = springSecurityService.currentUser?.id
-        if (currentUserId in [IMSessionInstance?.ownerId, IMSessionInstance?.copresenterId]) {
-            render view: 'edit', model: [IMSessionInstance: IMSessionInstance]
+    def edit(Long id) {
+        IMSession imSessionInstance = IMSession.get(id)
+        User currentUser = springSecurityService.currentUser
+        if (currentUser?.id in [imSessionInstance?.ownerId, imSessionInstance?.copresenterId] || currentUser?.isAdminOrImOwner()) {
+            respond imSessionInstance
             return
         }
         redirect(controller: 'login', action: 'denied')
-        return
     }
 
     @Transactional
-    def update(IMSession IMSessionInstance) {
-        if (IMSessionInstance == null) {
+    def update(IMSession imSessionInstance) {
+        if (imSessionInstance == null) {
             notFound()
             return
         }
 
-        if (IMSessionInstance.hasErrors()) {
-            respond IMSessionInstance.errors, view: 'edit'
+        if (imSessionInstance.hasErrors()) {
+            respond imSessionInstance.errors, view: 'edit'
             return
         }
 
-        IMSessionInstance.save flush: true
-
+        imSessionInstance.save flush: true
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'IMSession.label', default: 'IMSession'), IMSessionInstance.id])
-                redirect IMSessionInstance
+                flash.message = message(code: 'default.updated.message', args: [message(code: 'IMSession.label', default: 'IMSession'), imSessionInstance.id])
+                redirect imSessionInstance
             }
-            '*' { respond IMSessionInstance, [status: OK] }
+
+            '*' { respond imSessionInstance, [status: OK] }
         }
     }
 
     @Transactional
-    def delete(IMSession IMSessionInstance) {
+    def delete(IMSession imSessionInstance) {
 
         flash.error = message(code: "session.not.deleted")
         redirect action: "index", method: "GET"
 
-        /*if (IMSessionInstance == null) {
+        /*if (imSessionInstance == null) {
             notFound()
             return
         }
 
-        IMSessionInstance.delete flush:true
+        imSessionInstance.delete flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'IMSession.label', default: 'IMSession'), IMSessionInstance.id])
+                flash.message = message(code: 'default.deleted.message', args: [message(code: 'IMSession.label', default: 'IMSession'), imSessionInstance.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -125,7 +126,7 @@ class IMSessionController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'IMSessionInstance.label', default: 'IMSession'), params.id])
+                flash.message = message(code: 'default.not.found.message', args: [message(code: 'imSessionInstance.label', default: 'IMSession'), params.id])
                 redirect action: "index", method: "GET"
             }
             '*' { render status: NOT_FOUND }

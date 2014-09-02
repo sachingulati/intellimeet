@@ -21,6 +21,39 @@ class TestUtil {
                                                'How to manage Start-ups?',
                                                'Getting started with Test Driven development.']
 
+
+    static final String SESSION_DUMMY_DESCRIPTION = """<div>
+    <b>About Session:</b>
+    <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tincidunt vehicula maximus. Phasellus condimentum quis neque id porta. Nunc accumsan ornare diam quis pellentesque. Maecenas.
+    </div>
+</div>
+<br/>
+<div>
+    <b>Key Takeaways:</b>
+    <ul>
+        <li>Aliquam ut nunc ultrices, tempus magna ullamcorper, imperdiet sapien.</li>
+        <li>Vivamus ac ante quis lorem ullamcorper condimentum at non dolor.</li>
+        <li>Donec molestie magna ac ipsum tincidunt iaculis.</li>
+    </ul>
+</div>
+<br/>
+<div>
+    <b>Target Audience:</b>
+
+    <div>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce lobortis suscipit augue, ac auctor metus.
+    </div>
+</div>
+<br/>
+<div>
+    <b>Pre-requisites:</b>
+
+    <ul>
+        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+        <li>Phasellus dapibus eros nec laoreet scelerisque.</li>
+    </ul>
+</div>"""
     static def getRandom(Object[] array) {
         array[(array.length * Math.random()).toInteger()]
     }
