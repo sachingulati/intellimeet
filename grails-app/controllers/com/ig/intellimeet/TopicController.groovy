@@ -42,9 +42,9 @@ class TopicController {
         render(mapToRender as JSON)
     }
 
-    def index(Integer max) {
-//        params.max = Math.min(max ?: 10, 100)
-        params.sort = "name"
+    def index() {
+        params.sort = params.sort ?: "id"
+        params.order = params.order ?: "desc"
         respond Topic.list(params), model: [topicInstanceCount: Topic.count()]
     }
 

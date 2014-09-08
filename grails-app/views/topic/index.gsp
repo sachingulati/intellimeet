@@ -12,12 +12,21 @@
 </head>
 
 <body>
-<a href="#list-topic" class="sr-only" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+<a href="#list-topic" class="sr-only" tabindex="-1"><g:message code="default.link.skip.label"
+                                                               default="Skip to content&hellip;"/></a>
 
 <div class="container" id="list-topic">
 
     <div class="row">
         <div class="col-lg-8 searchable">
+            <div>
+                <span class="label label-info">Sort By:</span>&nbsp;&nbsp;<g:link class="${params.sort!='name'?'active':''}" controller="${controllerName}" action="${actionName}"
+                                 params="[sort: 'id', order: 'desc']">Latest</g:link> / <g:link
+                    class="${params.sort=='name'?'active':''}"
+                        controller="${controllerName}" action="${actionName}"
+                        params="[sort: 'name', order: 'asc']">A-Z</g:link>
+            </div>
+
             <g:each in="${topicInstanceList}" var="topic" status="index">
                 <div class="entry">
                     <div id="topic${index}" class="topic zone"></div>
@@ -32,7 +41,7 @@
 
             <div class="well">
 
-                <h4><g:message code="topic.sidebar.search.label" default="Topic Search" /></h4>
+                <h4><g:message code="topic.sidebar.search.label" default="Topic Search"/></h4>
 
                 <div class="input-group">
                     <input type="text" class="form-control" id="search-input">
@@ -43,7 +52,9 @@
                     </span>
                 </div>
 
-                <g:link controller="topic" action="create" href="#" class="btn btn-primary btn-block" style="margin-top: 10px;"><g:message code="topic.sidebar.propose.new.label" default="Propose New Topic" /></g:link>
+                <g:link controller="topic" action="create" href="#" class="btn btn-primary btn-block"
+                        style="margin-top: 10px;"><g:message code="topic.sidebar.propose.new.label"
+                                                             default="Propose New Topic"/></g:link>
             </div>
 
             <topic:sideBarCategoriesPanel/>
@@ -62,12 +73,12 @@
     </div>
 </div>
 <r:script>
-    $('a[href^=#]:not([href=#])').on('click',function() {
-        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+    $('a[href^=#]:not([href=#])').on('click', function () {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
             var target = $(this.hash);
-            target = target.length ? target : $('div[id=' + this.hash.slice(1) +']');
+            target = target.length ? target : $('div[id=' + this.hash.slice(1) + ']');
             if (target.length) {
-                var offsetTop = target.offset().top-60;
+                var offsetTop = target.offset().top - 60;
                 $('html,body').animate({
                     scrollTop: offsetTop
                 }, 1000);
