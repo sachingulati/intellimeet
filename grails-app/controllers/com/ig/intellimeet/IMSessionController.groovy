@@ -2,7 +2,6 @@ package com.ig.intellimeet
 
 import com.ig.intellimeet.co.IMSessionCO
 import com.ig.intellimeet.enums.SessionStatus
-import grails.gorm.PagedResultList
 import grails.plugin.springsecurity.annotation.Secured
 import grails.transaction.Transactional
 
@@ -26,7 +25,9 @@ class IMSessionController {
 
     def index() {
         Long intelliMeetId = intelliMeetService.getCurrentIntelliMeetId()
-        List<IMSession> imSesssionList = IMSession.findAllByIntelliMeetIdAndSessionStatus intelliMeetId, SessionStatus.PROPOSED
+        params.sort = params.sort ?: 'id'
+        params.order = params.order ?: 'desc'
+        List<IMSession> imSesssionList = IMSession.findAllByIntelliMeetIdAndSessionStatus intelliMeetId, SessionStatus.PROPOSED, params
         respond imSesssionList
     }
 
@@ -47,14 +48,14 @@ class IMSessionController {
         }
 
         if (!imSessionCO.validate()) {
-            render  view:'create', model: [imSessionCO: imSessionCO]
+            render view: 'create', model: [imSessionCO: imSessionCO]
             return
         }
         IMSession imSession = new IMSession()
         bindData(imSession, imSessionCO)
         imSession.intelliMeetId = intelliMeetService.getCurrentIntelliMeetId()
         imSession.sessionStatus = SessionStatus.PROPOSED
-        imSession.save( flush:true, failOnError: true)
+        imSession.save(flush: true, failOnError: true)
 
         request.withFormat {
             form multipartForm {
@@ -84,18 +85,18 @@ class IMSessionController {
         }
 
         if (IMSessionInstance.hasErrors()) {
-            respond IMSessionInstance.errors, view:'edit'
+            respond IMSessionInstance.errors, view: 'edit'
             return
         }
 
-        IMSessionInstance.save flush:true
+        IMSessionInstance.save flush: true
 
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'IMSession.label', default: 'IMSession'), IMSessionInstance.id])
                 redirect IMSessionInstance
             }
-            '*'{ respond IMSessionInstance, [status: OK] }
+            '*' { respond IMSessionInstance, [status: OK] }
         }
     }
 
@@ -103,7 +104,7 @@ class IMSessionController {
     def delete(IMSession IMSessionInstance) {
 
         flash.error = message(code: "session.not.deleted")
-        redirect action:"index", method:"GET"
+        redirect action: "index", method: "GET"
 
         /*if (IMSessionInstance == null) {
             notFound()
@@ -127,7 +128,7 @@ class IMSessionController {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'IMSessionInstance.label', default: 'IMSession'), params.id])
                 redirect action: "index", method: "GET"
             }
-            '*'{ render status: NOT_FOUND }
+            '*' { render status: NOT_FOUND }
         }
     }
 }
