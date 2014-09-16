@@ -87,14 +87,7 @@ $(function () {
 
     $('#search-input').bind('keyup', function () {
         var searchText = $(this).val();
-        if (searchText != "") {
-            $(".searchable div.zone").parent().hide();
-            $('.searchable div.zone').parent(':icontains("' + searchText + '")').show();
-        }
-        else {
-            $(".searchable div.zone").parent().show();
-        }
-        updateRightNav();
+        filterTopics(searchText);
     });
 
     $.expr[':'].icontains = $.expr.createPseudo(function (text) {
@@ -159,4 +152,15 @@ var updateRightNav = function () {
         var idVal = $(this).attr('id');
         $('.bs-docs-sidebar ul.bs-docs-sidenav li>a[href=#' + idVal + ']').parent().show();
     });
+};
+
+function filterTopics(searchText) {
+    if (searchText != "") {
+        $(".searchable div.zone").parent().hide();
+        $('.searchable div.zone').parent(':icontains("' + searchText + '")').show();
+    }
+    else {
+        $(".searchable div.zone").parent().show();
+    }
+    updateRightNav();
 }
