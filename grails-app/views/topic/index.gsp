@@ -32,7 +32,7 @@
 
                 <div>
                     <span class="label label-info">Filter By:</span>&nbsp;&nbsp;<a href="#"
-                                                                                   onclick="filterTopics('');updateSearchInputValue('');">All</a> | <a
+                                                                                   onclick="filterTopics('');updateSearchInputValue('');">All</a> | <span class="glyphicon glyphicon-thumbs-up"></span> <a
                         href="#" onclick="filterTopics('${sec.username()}');updateSearchInputValue('${sec.username()}')">Liked by me</a>
                 </div>
             </div>
