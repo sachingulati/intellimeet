@@ -20,11 +20,21 @@
     <div class="row">
         <div class="col-lg-8 searchable">
             <div>
-                <span class="label label-info">Sort By:</span>&nbsp;&nbsp;<g:link class="${params.sort!='name'?'active':''}" controller="${controllerName}" action="${actionName}"
-                                 params="[sort: 'id', order: 'desc']">Latest</g:link> / <g:link
-                    class="${params.sort=='name'?'active':''}"
+                <div>
+                    <span class="label label-info">Sort By:</span>&nbsp;&nbsp;<g:link
+                        class="${params.sort != 'name' ? 'active' : ''}" controller="${controllerName}"
+                        action="${actionName}"
+                        params="[sort: 'id', order: 'desc']">Latest</g:link> / <g:link
+                        class="${params.sort == 'name' ? 'active' : ''}"
                         controller="${controllerName}" action="${actionName}"
                         params="[sort: 'name', order: 'asc']">A-Z</g:link>
+                </div>
+
+                <div>
+                    <span class="label label-info">Filter By:</span>&nbsp;&nbsp;<a href="#"
+                                                                                   onclick="filterTopics('');updateSearchInputValue('');">All</a> | <span class="glyphicon glyphicon-thumbs-up"></span> <a
+                        href="#" onclick="filterTopics('${sec.username()}');updateSearchInputValue('${sec.username()}')">Liked by me</a>
+                </div>
             </div>
 
             <g:each in="${topicInstanceList}" var="topic" status="index">
@@ -86,6 +96,9 @@
             }
         }
     });
+            function updateSearchInputValue(inputText) {
+                $("#search-input").val(inputText);
+            }
     markAsActive("topic");
 </r:script>
 </body>
