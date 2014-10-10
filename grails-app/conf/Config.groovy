@@ -205,7 +205,7 @@ log4j = {
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'com.ig.intellimeet.User'
 grails.plugin.springsecurity.userLookup.authorityJoinClassName = 'com.ig.intellimeet.UserRole'
 grails.plugin.springsecurity.authority.className = 'com.ig.intellimeet.Role'
-grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/topic/index'
+grails.plugin.springsecurity.successHandler.defaultTargetUrl = '/user/dashboard'
 grails.plugin.springsecurity.successHandler.alwaysUseDefault = true
 grails.plugin.springsecurity.logout.postOnly = false
 
