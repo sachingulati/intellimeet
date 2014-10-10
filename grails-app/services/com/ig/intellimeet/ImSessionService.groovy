@@ -5,7 +5,9 @@ import grails.transaction.Transactional
 @Transactional
 class ImSessionService {
 
+    def intelliMeetService
+
     def listRecentlyCreatedSessions(Integer max) {
-        IMSession.list([max: max, sort: 'id', order: 'desc'])
+        IMSession.findAllByIntelliMeetId(intelliMeetService?.currentIntelliMeetId, [max: max, sort: 'id', order: 'desc'])
     }
 }
