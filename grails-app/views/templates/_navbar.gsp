@@ -12,6 +12,8 @@
         </div>
         <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
             <ul class="nav navbar-nav">
+                <li id="dashboard"><g:link controller="user" action="dashboard"><g:message code="dashboard.label"
+                                                                                           default="Dashboard"/></g:link></li>
                 <sec:ifAnyGranted roles="ROLE_USER">
                     <li id="topic"><g:link controller="topic" action="index"><g:message code="topic.label"
                                                                                         default="Topics"/></g:link></li>
