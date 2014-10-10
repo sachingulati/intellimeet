@@ -40,6 +40,10 @@ class User {
 		}
 	}
 
+    Boolean isAdminOrImOwner() {
+        ['ROLE_IM_OWNER', 'ROLE_ADMIN']?.any {authorities*.authority?.contains(it)}
+    }
+
 	protected void encodePassword() {
 		password = springSecurityService.encodePassword(password)
 	}

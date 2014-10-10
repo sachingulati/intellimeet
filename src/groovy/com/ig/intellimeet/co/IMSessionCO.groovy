@@ -1,6 +1,7 @@
 package com.ig.intellimeet.co
 import com.ig.intellimeet.IMSession
 import com.ig.intellimeet.Topic
+import com.ig.intellimeet.enums.SessionStatus
 import grails.validation.Validateable
 
 @Validateable
@@ -25,6 +26,8 @@ class IMSessionCO {
     List<IMSession> sessionList
     Integer totalCount      //For pagination
 
+    SessionStatus sessionStatus
+
 
     static constraints = {
         topicId nullable: true
@@ -40,6 +43,7 @@ class IMSessionCO {
         maxCapacity nullable: true, min: 5, validator: {val, obj ->
             return (val >= obj.minCapacity)
         }
+        sessionStatus nullable: true
     }
 
     IMSessionCO() {}
@@ -48,6 +52,7 @@ class IMSessionCO {
         topicId = topic?.id
         title = topic?.name
         description = topic?.description
+        sessionStatus = SessionStatus.PROPOSED
     }
 
 }
