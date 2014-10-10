@@ -55,4 +55,8 @@ class TopicService {
         }
         topics
     }
+
+    List<Topic> listRecentlyCreatedTopics(Integer max) {
+        Topic.list([max:max, sort: 'id', order: 'desc'])
+    }
 }

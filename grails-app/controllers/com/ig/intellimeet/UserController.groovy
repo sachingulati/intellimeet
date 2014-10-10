@@ -10,6 +10,7 @@ class UserController {
 
     def springSecurityService
     def userService
+    def topicService
 
     @Secured(['ROLE_ADMIN'])
     def index() {
@@ -62,5 +63,11 @@ class UserController {
         userService.save employeeInstance
         flash.message = "User profile information has been saved successfully."
         redirect controller: 'user', action: 'profile'
+    }
+
+    @Secured(['IS_AUTHENTICATED_FULLY'])
+    def dashboard() {
+        List<Topic> recentTopics = topicService.listRecentlyCreatedTopics(10)
+        render(view: "dashboard", model:[recentTopics: recentTopics])
     }
 }
