@@ -35,14 +35,13 @@ class IntelliMeetService {
 
     List<UserRole> revokeRoleFromAllUsers(Role role) {
         List<UserRole> previousUserRoles = UserRole.findAllByRole role
-        List<String> adminUsernames = listAdminUserRoles()
-        previousUserRoles.removeAll { UserRole userRole->
-            !adminUsernames.any { userRole.user.username }
-        }
+        List<String> adminUsernames = listAdminUsernames()
         List<UserRole> userRolesRemoved = []
         previousUserRoles?.each { UserRole userRole ->
-            userRole.delete(flush: true)
-            userRolesRemoved << userRole
+            if (!(userRole?.user?.username in adminUsernames)) {
+                userRole.delete(flush: true)
+                userRolesRemoved << userRole
+            }
         }
         userRolesRemoved
     }
@@ -75,7 +74,7 @@ class IntelliMeetService {
         return imSessionCO
     }
 
-    List<String> listAdminUserRoles() {
+    List<String> listAdminUsernames() {
         grailsApplication.config.grails.intellimeet.adminUsernames
     }
 
