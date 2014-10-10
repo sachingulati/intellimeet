@@ -11,9 +11,9 @@
     <a href="#edit-IMSession" class="sr-only" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
     <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a href="#" class="navbar-brand"><g:message code="default.edit.label" args="[entityName]" /></a>
+        <div class="container">
+            <div class="navbar-header navbar-right">
+                <a href="#" class="navbar-brand">Edit Session <em>"${IMSessionInstance?.title}"</em></a>
             </div>
         </div>
     </nav>
