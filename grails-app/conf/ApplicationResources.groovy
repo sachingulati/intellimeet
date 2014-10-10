@@ -58,6 +58,12 @@ modules = {
         resource url: 'js/wysi.js'
     }
 
+    nano_scroller {
+        dependsOn 'jquery'
+        resource url: 'css/nanoscroller/nanoscroller.css'
+        resource url: 'js/nanoscroller/jquery.nanoscroller.js'
+    }
+
     survey {
         defaultBundle 'survey'
         dependsOn 'jquery, bootstrap, font_awesome, jquery_switch, html5, jquery_ui, jquery_wizard, modernizer, respond,jquery_validate, jquery_placeholder, jquery_tweet ,bx_slider'

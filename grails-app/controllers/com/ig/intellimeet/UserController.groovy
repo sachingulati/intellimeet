@@ -11,6 +11,7 @@ class UserController {
     def springSecurityService
     def userService
     def topicService
+    def imSessionService
 
     @Secured(['ROLE_ADMIN'])
     def index() {
@@ -68,6 +69,7 @@ class UserController {
     @Secured(['IS_AUTHENTICATED_FULLY'])
     def dashboard() {
         List<Topic> recentTopics = topicService.listRecentlyCreatedTopics(10)
-        render(view: "dashboard", model:[recentTopics: recentTopics])
+        List<IMSession> recentProposedSessions = imSessionService.listRecentlyCreatedSessions(10)
+        render(view: "dashboard", model:[recentTopics: recentTopics, recentProposedSessions: recentProposedSessions])
     }
 }
