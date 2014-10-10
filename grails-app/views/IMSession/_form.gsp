@@ -54,7 +54,7 @@
         </label>
 
         <div class="col-sm-10">
-            <g:select class="form-control" name="status" noSelection="['': 'Select Status']"
+            <g:select class="form-control" name="sessionStatus" noSelection="['': 'Select Status']"
                       from="${com.ig.intellimeet.enums.SessionStatus.values()}" value="${imSessionCO?.sessionStatus}"/>
 
             <g:if test="${hasErrors(bean: imSessionCO, field: 'sessionStatus', 'has-error')}">
