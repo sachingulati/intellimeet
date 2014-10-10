@@ -66,7 +66,7 @@ class UserController {
         redirect controller: 'user', action: 'profile'
     }
 
-    @Secured(['IS_AUTHENTICATED_FULLY'])
+    @Secured(['ROLE_IM_OWNER', 'ROLE_ADMIN'])
     def dashboard() {
         List<Topic> recentTopics = topicService.listRecentlyCreatedTopics(5)
         List<IMSession> recentProposedSessions = imSessionService.listRecentlyCreatedSessions(10)
