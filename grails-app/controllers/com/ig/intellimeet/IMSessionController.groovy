@@ -80,6 +80,7 @@ class IMSessionController {
 
     @Transactional
     def update(IMSession imSessionInstance) {
+        User currentUser = springSecurityService.currentUser
         if (imSessionInstance == null) {
             notFound()
             return
@@ -90,7 +91,10 @@ class IMSessionController {
             return
         }
 
-        imSessionInstance.save flush: true
+        if (currentUser?.id in [imSessionInstance?.ownerId, imSessionInstance?.copresenterId] || currentUser?.isAdminOrImOwner()) {
+            imSessionInstance.save flush: true
+        }
+
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'IMSession.label', default: 'IMSession'), imSessionInstance.id])
