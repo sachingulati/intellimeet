@@ -66,11 +66,16 @@ class UserController {
         redirect controller: 'user', action: 'profile'
     }
 
-    @Secured(['ROLE_IM_OWNER', 'ROLE_ADMIN'])
+    @Secured(['IS_AUTHENTICATED_FULLY'])
     def dashboard() {
-        List<Topic> recentTopics = topicService.listRecentlyCreatedTopics(5)
-        List<IMSession> recentProposedSessions = imSessionService.listRecentlyCreatedSessions(10)
-        List<User> usersNotLikedAnyTopic = topicService.listUsersNotLikedAnyTopic()
-        render(view: "dashboard", model:[recentTopics: recentTopics, recentProposedSessions: recentProposedSessions, usersNotLikedAnyTopic: usersNotLikedAnyTopic])
+        User currentUser = springSecurityService.currentUser
+        if (currentUser?.isAdminOrImOwner()) {
+            List<Topic> recentTopics = topicService.listRecentlyCreatedTopics(10)
+            List<IMSession> recentProposedSessions = imSessionService.listRecentlyCreatedSessions(10)
+            List<User> usersNotLikedAnyTopic = topicService.listUsersNotLikedAnyTopic()
+            render(view: "dashboard", model: [recentTopics: recentTopics, recentProposedSessions: recentProposedSessions, usersNotLikedAnyTopic: usersNotLikedAnyTopic])
+            return
+        }
+        redirect(controller: 'topic', action: 'index')
     }
 }
