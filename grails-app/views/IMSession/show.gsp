@@ -10,13 +10,8 @@
 <body>
 <a href="#show-IMSession" class="sr-only" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header"><a href="#" class="navbar-brand"><g:message code="default.show.label" args="[entityName]"/></a></div>
+    <div class="container">
 
-        <ul class="nav navbar-nav navbar-right">
-            <li><g:link action="create"><g:message code="default.new.label" args="[entityName]"/></g:link></li>
-            %{--<li><g:link action="index"><g:message code="default.list.label" args="[entityName]"/></g:link></li>--}%
-        </ul>
     </div>
 </nav>
 
