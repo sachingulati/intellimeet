@@ -10,6 +10,25 @@ if (typeof jQuery !== 'undefined') {
         $('.pagination ul').children().wrap('<li>');
         $('.sortable.sorted.asc a').append("\&nbsp\;<span class='glyphicon glyphicon-sort-by-alphabet'></span><i class='cicon-sort-asc'></i>");
         $('.sortable.sorted.desc a').append("\&nbsp\;<span class='glyphicon glyphicon-sort-by-alphabet-alt'></span><i class='cicon-sort-desc'></i>");
+
+
+        $('#searchinput').bind('keyup', function () {
+            var searchText = $(this).val();
+            if (searchText != "") {
+                $(".searchable .search-item").hide();
+                $('.searchable .search-item:icontains("' + searchText + '")').show();
+            }
+            else {
+                $(".searchable .search-item").show();
+            }
+        });
+
+        $.expr[':'].icontains = $.expr.createPseudo(function (text) {
+            return function (elem) {
+                return $(elem).text().toLowerCase().indexOf(text.trim().toLowerCase()) > -1;
+            };
+        });
+
     })(jQuery);
 }
 

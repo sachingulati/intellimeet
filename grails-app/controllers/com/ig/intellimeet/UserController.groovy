@@ -68,8 +68,9 @@ class UserController {
 
     @Secured(['IS_AUTHENTICATED_FULLY'])
     def dashboard() {
-        List<Topic> recentTopics = topicService.listRecentlyCreatedTopics(10)
+        List<Topic> recentTopics = topicService.listRecentlyCreatedTopics(5)
         List<IMSession> recentProposedSessions = imSessionService.listRecentlyCreatedSessions(10)
-        render(view: "dashboard", model:[recentTopics: recentTopics, recentProposedSessions: recentProposedSessions])
+        List<User> usersNotLikedAnyTopic = topicService.listUsersNotLikedAnyTopic()
+        render(view: "dashboard", model:[recentTopics: recentTopics, recentProposedSessions: recentProposedSessions, usersNotLikedAnyTopic: usersNotLikedAnyTopic])
     }
 }
