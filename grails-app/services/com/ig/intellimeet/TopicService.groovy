@@ -49,10 +49,20 @@ class TopicService {
                 break;
         }
 
-        println("After sorting id: ${topics*.id}")
         if(order == 'desc'){
             topics = topics.reverse()
         }
         topics
+    }
+
+    List<Topic> listRecentlyCreatedTopics(Integer max) {
+        Topic.list([max:max, sort: 'id', order: 'desc'])
+    }
+
+    List<User> listUsersNotLikedAnyTopic() {
+        List<Long> allUsersIds = User.list()*.id
+        List<Long> interestedUserIds = Topic.list()*.interestedUsers.flatten().unique()
+        List<Long> notInterestedUserIds =  allUsersIds - interestedUserIds
+        notInterestedUserIds?.collect {User.get(it)}
     }
 }

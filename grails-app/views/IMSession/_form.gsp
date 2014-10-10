@@ -24,7 +24,7 @@
     </label>
 
     <div class="col-sm-10">
-        <g:textArea rows="10" name="description" value="${imSessionCO?.description}" class="form-control"/>
+        <g:textArea rows="15" name="description" value="${imSessionCO?.description}" class="form-control"/>
 
         <g:if test="${hasErrors(bean: imSessionCO, field: 'description', 'has-error')}">
             <span class="help-block"><g:fieldError bean='${imSessionCO}' field='description'/></span>
@@ -38,13 +38,31 @@
     </label>
 
     <div class="col-sm-10">
-        <g:select class="form-control" name="copresenterId" noSelection="['': 'Choose Co-Presenter if applicable' ]" from="${User.list([sort: 'username'])}" optionValue="username" optionKey="id" value="${imSessionCO?.copresenterId}"/>
+        <g:select class="form-control" name="copresenterId" noSelection="['': 'Choose Co-Presenter if applicable']"
+                  from="${User.list([sort: 'username'])}" optionValue="username" optionKey="id"
+                  value="${imSessionCO?.copresenterId}"/>
 
         <g:if test="${hasErrors(bean: imSessionCO, field: 'copresenterId', 'has-error')}">
             <span class="help-block"><g:fieldError bean='${imSessionCO}' field='copresenterId'/></span>
         </g:if>
     </div>
 </div>
+<g:if test="${actionName == 'edit'}">
+    <div class="form-group ${hasErrors(bean: imSessionCO, field: 'sessionStatus', 'has-error')} ">
+        <label for="status" class="col-sm-2 control-label">
+            <g:message code="IMSession.status.label" default="Status"/>
+        </label>
+
+        <div class="col-sm-10">
+            <g:select class="form-control" name="sessionStatus" noSelection="['': 'Select Status']"
+                      from="${com.ig.intellimeet.enums.SessionStatus.values()}" value="${imSessionCO?.sessionStatus}"/>
+
+            <g:if test="${hasErrors(bean: imSessionCO, field: 'sessionStatus', 'has-error')}">
+                <span class="help-block"><g:fieldError bean='${imSessionCO}' field='sessionStatus'/></span>
+            </g:if>
+        </div>
+    </div>
+</g:if>
 
 <div class="form-group ${hasErrors(bean: imSessionCO, field: 'minCapacity', 'has-error')} ">
     <label for="minCapacity" class="col-sm-2 control-label">
@@ -53,7 +71,8 @@
     </label>
 
     <div class="col-sm-10">
-        <g:field class="form-control numeric minCapacity" name="minCapacity" type="number" maxlength="2" min="4" value="${imSessionCO?.minCapacity ?: 4}"/>
+        <g:field class="form-control numeric minCapacity" name="minCapacity" type="number" maxlength="2" min="4"
+                 value="${imSessionCO?.minCapacity ?: 4}"/>
 
         <g:if test="${hasErrors(bean: imSessionCO, field: 'minCapacity', 'has-error')}">
             <span class="help-block"><g:fieldError bean='${imSessionCO}' field='minCapacity'/></span>
@@ -68,7 +87,8 @@
     </label>
 
     <div class="col-sm-10">
-        <g:field class="form-control numeric maxCapacity" name="maxCapacity" type="number" maxlength="2" min="5" value="${imSessionCO?.maxCapacity ?: 10}"/>
+        <g:field class="form-control numeric maxCapacity" name="maxCapacity" type="number" maxlength="2" min="5"
+                 value="${imSessionCO?.maxCapacity ?: 10}"/>
 
         <g:if test="${hasErrors(bean: imSessionCO, field: 'maxCapacity', 'has-error')}">
             <span class="help-block"><g:fieldError bean='${imSessionCO}' field='maxCapacity'/></span>

@@ -10,6 +10,8 @@ class UserController {
 
     def springSecurityService
     def userService
+    def topicService
+    def imSessionService
 
     @Secured(['ROLE_ADMIN'])
     def index() {
@@ -62,5 +64,18 @@ class UserController {
         userService.save employeeInstance
         flash.message = "User profile information has been saved successfully."
         redirect controller: 'user', action: 'profile'
+    }
+
+    @Secured(['IS_AUTHENTICATED_FULLY'])
+    def dashboard() {
+        User currentUser = springSecurityService.currentUser
+        if (currentUser?.isAdminOrImOwner()) {
+            List<Topic> recentTopics = topicService.listRecentlyCreatedTopics(10)
+            List<IMSession> recentProposedSessions = imSessionService.listRecentlyCreatedSessions(10)
+            List<User> usersNotLikedAnyTopic = topicService.listUsersNotLikedAnyTopic()
+            render(view: "dashboard", model: [recentTopics: recentTopics, recentProposedSessions: recentProposedSessions, usersNotLikedAnyTopic: usersNotLikedAnyTopic])
+            return
+        }
+        redirect(controller: 'topic', action: 'index')
     }
 }
