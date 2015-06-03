@@ -27,5 +27,6 @@ class UrlMappings {
 //        "/"(view:"/intelliMeet/report")
         "/about"(view:"/about")
         "500"(view:'/error')
+        "/api/survey"(resources: "surveyApi")
 	}
 }
