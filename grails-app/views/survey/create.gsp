@@ -41,11 +41,11 @@
             </ul>
         </div>
     </g:hasErrors>
-    <g:form class="form-horizontal" url="[resource: surveyInstance, action: 'save']">
+    <g:form class="form-horizontal" controller="surveyApi" action="create" method="post" >
         <g:render template="form"/>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <g:submitButton name="create" class="btn btn-lg btn-primary" value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+                <g:submitButton name="create" class="btn btn-lg btn-primary"/>
             </div>
         </div>
     </g:form>

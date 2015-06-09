@@ -52,9 +52,22 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 main-title">
-                <h1>Preference survey</h1>
-
-                <p>Please select your first, second and third preferences.</p>
+                    <g:if test="${type == com.ig.intellimeet.enums.SurveyType.FEEDBACK}">
+                        <h1>
+                            <g:message code="survey.type.feedback.title"/>
+                        </h1>
+                        <p>
+                            <g:message code="survey.type.feedback.help.text"/>
+                        </p>
+                    </g:if>
+                    <g:else>
+                        <h1>
+                            <g:message code="survey.type.preference.title"/>
+                        </h1>
+                        <p>
+                            <g:message code="survey.type.preference.help.text"/>
+                        </p>
+                    </g:else>
             </div>
         </div>
     </div>
@@ -64,99 +77,59 @@
 
     <!-- Start Survey container -->
     <div id="survey_container">
-
+%{--
         <div id="top-wizard">
             <strong>Progress <span id="location"></span></strong>
 
             <div id="progressbar"></div>
 
             <div class="shadow"></div>
-        </div>
+        </div>--}%
     <!-- end top-wizard -->
 
-        <g:form name="example-1" controller="userPreference" action="save" method="POST">
+        <g:form name="example-1" controller="survey" action="surveyResponse" method="POST">
             <g:hiddenField name="tokenId" value="${tokenId}"/>
             <div id="middle-wizard">
-                <div class="step row">
-                    <div class="col-md-10">
-                        <h3>First Preference</h3>
-                        <ul class="data-list-2">
-                            <g:each in="${sessions}" var="session">
-                                <li><input name="firstPreferredSessionId" type="radio" class="required check_radio"
-                                           value="${session?.id}"><label><span>${session?.title} by ${session?.ownersEmail}</span> - <small><g:link
-                                        controller="IMSession" action="show"
-                                        id="${session?.id}"
-                                        target="_blank">View Agenda</g:link></small>
-                                </label></li>
-                            </g:each>
-                            <li><input type="radio" class="required check_radio" name="firstPreferredSessionId"
-                                       value=""/><label>Not Available</label></li>
-                        </ul>
-                    </div>
-                </div>
+                <g:set var="queNum" value="${1}"/>
+                <g:each in="${questionTemplate.questions.toList().sort{it.id}}" var="question">
+                    %{--<div class="step row">--}%
+                        <div class="col-md-12">
+                            <h3>${question.text}</h3>
+                            <g:if test="${question.options.isEmpty()}">
+                                <g:textArea name="answer${queNum++}" class="required" style="width: 100%"/>
+                            </g:if>
+                            <g:else>
+                                <ul class="data-list-2">
+                                    <g:set var="optionNum" value="1"/>
+                                    <g:each in="${question.options}" var="option">
+                                        <li><input name="answer${queNum.toString()}" type="radio" class="required check_radio" value="${optionNum++}"><label>
+                                            <span>${option.label}</span>
+                                        </label>
+                                        </li>
+                                    </g:each>
+                                    ${queNum++}
+                                </ul>
+                            </g:else>
+                        </div>
+                    %{--</div>--}%
+                </g:each>
                 <!-- end step -->
 
-
-                <div class="step row">
-                    <div class="col-md-10">
-                        <h3>Second Preference</h3>
-                        <ul class="data-list-2">
-                            <g:each in="${sessions}" var="session">
-                                <li><input name="secondPreferredSessionId" type="radio" class="required check_radio"
-                                           value="${session?.id}"><label><span>${session?.title} by ${session?.ownersEmail}</span> - <small><g:link
-                                        controller="IMSession" action="show"
-                                        id="${session?.id}"
-                                        target="_blank">View Agenda</g:link></small>
-                                </label></li>
-                            </g:each>
-                            <li><input type="radio" class="required check_radio" name="secondPreferredSessionId"
-                                       value=""/><label>Not Available</label></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- end step -->
-
-
-                <div class="step row">
-                    <div class="col-md-10">
-                        <h3>Third Preference</h3>
-                        <ul class="data-list-2">
-                            <g:each in="${sessions}" var="session">
-                                <li><input name="thirdPreferredSessionId" type="radio" class="required check_radio"
-                                           value="${session?.id}"><label><span>${session?.title} by ${session?.ownersEmail}</span> - <small><g:link
-                                        controller="IMSession" action="show"
-                                        id="${session?.id}"
-                                        target="_blank">View Agenda</g:link></small>
-                                </label></li>
-                            </g:each>
-                            <li><input type="radio" class="required check_radio" name="thirdPreferredSessionId"
-                                       value=""/><label>Not Available</label></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- end step -->
 
                 <div class="submit step" id="complete">
-
-                    <h3>Please confirm! and submit your preferences.</h3>
-
-                    <ul class="selected">
-
-                    </ul>
-
                     <button type="submit" name="process" class="submit">Submit the survey</button>
                 </div>
                 <!-- end submit step -->
 
             </div>
             <!-- end middle-wizard -->
-
+%{--
             <div id="bottom-wizard">
 
                 <button type="button" name="backward" class="backward">Backward</button>
                 <button type="button" name="forward" class="forward">Forward</button>
 
-            </div>
+            </div>--}%
             <!-- end bottom-wizard -->
         </g:form>
 

@@ -16,9 +16,11 @@ class Survey {
     List<SurveyRecipientInfo> recipients
     List<Question> questions
     String recipientsEmail
+    QuestionTemplate questionTemplate
 
     Boolean isClosed = false
 
+    static hasMany = [responses: SurveyResponse]
     static transients = ['recipientsEmail', 'intelliMeetTitle']
 
     static embedded = ['questions', 'recipients']

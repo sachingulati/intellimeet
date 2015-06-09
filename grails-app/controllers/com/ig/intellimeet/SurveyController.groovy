@@ -28,7 +28,8 @@ class SurveyController {
     def session() {
         Token token = tokenService.extractToken(params.tokenId)
         Boolean hasFilledPreferences = userPreferenceService.hasFilledPreferences(token?.userId)
-        if (Survey.get(token?.surveyId)?.isClosed) {
+        Survey survey = Survey.get(token?.surveyId)
+        if (survey?.isClosed) {
             flash.error = message(code: 'survey.closed.error.message')
             render view: '/error'
             return
@@ -37,9 +38,35 @@ class SurveyController {
             render view: '/survey/thankyou'
             return
         }
-        [sessions: IMSession.findAllByIntelliMeetIdAndSessionStatus(intelliMeetService?.currentIntelliMeetId, SessionStatus.PROPOSED, [sort: 'title', order: 'asc']), hasFilledPreferences: hasFilledPreferences, tokenId: token?.value]
+        [type: survey.type, questionTemplate: survey.questionTemplate, tokenId: token?.value]
+//        [sessions: IMSession.findAllByIntelliMeetIdAndSessionStatus(intelliMeetService?.currentIntelliMeetId, SessionStatus.PROPOSED, [sort: 'title', order: 'asc']), hasFilledPreferences: hasFilledPreferences, tokenId: token?.value]
     }
 
+    @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
+    def surveyResponse(){
+        Token token = tokenService.extractToken(params.tokenId)
+        Boolean hasFilledPreferences = userPreferenceService.hasFilledPreferences(token?.userId)
+        Survey survey = Survey.get(token?.surveyId)
+        if (survey?.isClosed) {
+            flash.error = message(code: 'survey.closed.error.message')
+            render view: '/error'
+            return
+        }
+
+
+
+        if (!token?.isValid() || hasFilledPreferences) {
+            render view: '/survey/thankyou'
+            return
+        }
+        SurveyResponse surveyResponse = new SurveyResponse(survey: survey, answers: [])
+        survey.questionTemplate.questions.size().times {num->
+            surveyResponse.answers.push(params["answer"+(num+1)])
+        }
+        surveyResponse.save()
+        render params
+
+    }
     @Secured('ROLE_ADMIN')
     def template() {
     }
@@ -105,6 +132,7 @@ class SurveyController {
             '*' { respond surveyInstance, [status: CREATED] }
         }
     }
+
 
     protected void notFound() {
         request.withFormat {

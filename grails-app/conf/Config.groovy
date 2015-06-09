@@ -77,7 +77,7 @@ grails.enable.native2ascii = true
 // packages to include in Spring bean scanning
 grails.spring.bean.packages = []
 // whether to disable processing of multi part requests
-grails.web.disable.multipart = false
+grails.web.disable.multipart     = false
 
 // request parameters to mask when logging exceptions
 grails.exceptionresolver.params.exclude = ['password']
@@ -95,8 +95,8 @@ grails {
     mail {
         host = "smtp.gmail.com"
         port = 465
-        username = "intellimeet@intelligrape.com"
-        password = "imdefault"
+        username = "sharehubmailer@gmail.com"
+        password = "mymailer"
         props = ["mail.smtp.auth": "true",
                 "mail.smtp.socketFactory.port": "465",
                 "mail.smtp.socketFactory.class": "javax.net.ssl.SSLSocketFactory",
@@ -107,10 +107,10 @@ grails.mail.default.from = grails.mail.username
 
 environments {
     development {
-        grails.mail.disabled = true
+//        grails.mail.disabled = true
         grails.logging.jul.usebridge = true
         grails.serverURL = "http://localhost:8585"
-        grails.mail.overrideAddress = "farid@intelligrape.com"
+//        grails.mail.overrideAddress = "farid@intelligrape.com"
 
         def appName = grails.util.Metadata.current.'app.name'
         def baseURL = grails.serverURL ?: "http://127.0.0.1:${System.getProperty('server.port', '8585')}/${appName}"

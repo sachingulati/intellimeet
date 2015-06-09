@@ -9,6 +9,8 @@ class ImMailService {
 
     def sendMail(MailDTO mailDto) {
         log.info("Sending email to ${mailDto?.to}")
+        println ">>>>>>>>>>>>>>>>>>>>>>>>>>>"
+        println mailDto.body + "\n\n"
         if (!mailDto?.hasErrors()) {
             asynchronousMailService.sendMail {
                 to mailDto.to

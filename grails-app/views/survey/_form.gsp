@@ -10,7 +10,7 @@
 
     <div class="col-sm-10">
         <g:textField name="title" required="" value="${surveyInstance?.title}" class="form-control"/>
-
+        <g:hiddenField name="token" value="1"/>
         <g:if test="${hasErrors(bean: surveyInstance, field: 'title', 'has-error')}">
             <span class="help-block"><g:fieldError bean='${surveyInstance}' field='title'/></span>
         </g:if>
