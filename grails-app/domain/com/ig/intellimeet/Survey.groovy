@@ -35,7 +35,7 @@ class Survey {
         this.recipientsEmail = recipientsEmail
         this.recipients  = recipientsEmail?.tokenize(",")?.collect {
             it=it?.trim()
-            User.findByUsername(it)? new SurveyRecipientInfo(email: it) : null
+            new SurveyRecipientInfo(email: it)
         }?.findAll {it}
     }
 

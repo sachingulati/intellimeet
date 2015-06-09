@@ -27,7 +27,7 @@ class SurveyController {
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def session() {
         Token token = tokenService.extractToken(params.tokenId)
-        Boolean hasFilledPreferences = userPreferenceService.hasFilledPreferences(token?.userId)
+        Boolean hasFilledPreferences = surveyService.hasFilledSurvey(token)
         Survey survey = Survey.get(token?.surveyId)
         if (survey?.isClosed) {
             flash.error = message(code: 'survey.closed.error.message')
@@ -45,7 +45,7 @@ class SurveyController {
     @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
     def surveyResponse(){
         Token token = tokenService.extractToken(params.tokenId)
-        Boolean hasFilledPreferences = userPreferenceService.hasFilledPreferences(token?.userId)
+        Boolean hasFilledPreferences = surveyService.hasFilledSurvey(token)
         Survey survey = Survey.get(token?.surveyId)
         if (survey?.isClosed) {
             flash.error = message(code: 'survey.closed.error.message')
@@ -64,6 +64,10 @@ class SurveyController {
             surveyResponse.answers.push(params["answer"+(num+1)])
         }
         surveyResponse.save()
+        survey.recipients.find{
+            it.email == token.email
+        }.status = SurveyStatus.COMPLETED
+        survey.save()
         render params
 
     }

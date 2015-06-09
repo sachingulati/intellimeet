@@ -1,7 +1,8 @@
 package com.ig.intellimeet
 
 class Token {
-    Long userId
+//    Long userId
+    String email
     Long intelliMeetId
     Long surveyId
     String value

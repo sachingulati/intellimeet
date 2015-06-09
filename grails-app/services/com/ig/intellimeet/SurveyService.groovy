@@ -24,10 +24,22 @@ class SurveyService {
         survey
     }
 
+    Boolean hasFilledSurvey(long surveyId, String email){
+        Survey survey = Survey.get(surveyId)
+        if(survey){
+            survey.recipients.find{
+                it.email == email && it.status == SurveyStatus.COMPLETED
+            }
+        }
+        else false
+    }
+    Boolean hasFilledSurvey(Token token){
+        hasFilledSurvey(token?.surveyId, token?.email)
+    }
     def sendSurveyReminder(Survey survey) {
         survey?.recipients?.findAll { it.status != SurveyStatus.COMPLETED }?.each { SurveyRecipientInfo surveyRecipientInfo ->
-            if (surveyRecipientInfo?.email && surveyRecipientInfo?.userId) {
-                sendSurveyReminderEmail(surveyRecipientInfo?.userId, surveyRecipientInfo?.email, survey?.id)
+            if (surveyRecipientInfo?.email) {
+                sendSurveyReminderEmail(surveyRecipientInfo?.email, survey?.id)
                 surveyRecipientInfo?.status = SurveyStatus.SENT
             }
         }
@@ -35,31 +47,31 @@ class SurveyService {
 
     def sendSurveyEmail(Survey survey) {
         survey?.recipients?.each { SurveyRecipientInfo surveyRecipientInfo ->
-            if (surveyRecipientInfo?.email && surveyRecipientInfo?.userId) {
-                sendSurveyEmail(surveyRecipientInfo?.userId, surveyRecipientInfo?.email, survey?.id)
+            if (surveyRecipientInfo?.email) {
+                sendSurveyEmail(surveyRecipientInfo?.email, survey?.id)
                 surveyRecipientInfo?.status = SurveyStatus.SENT
             }
         }
         save(survey)
     }
 
-    def sendSurveyEmail(Long userId, String emailAddress, Long surveyId = null) {
-        if (emailAddress && userId) {
+    def sendSurveyEmail(String emailAddress, Long surveyId = null) {
+        if (emailAddress) {
             MailDTO mailDTO = new MailDTO()
             mailDTO.to = emailAddress
             mailDTO.subject = subjectForPreferenceEmail
-            mailDTO.body = getMessageForPreferenceEmail(userId, surveyId)
+            mailDTO.body = getMessageForPreferenceEmail(emailAddress, surveyId)
             log.info("Sending preference email to ${mailDTO?.to}")
             imMailService.sendMail(mailDTO)
         }
     }
 
-    def sendSurveyReminderEmail(Long userId, String emailAddress, Long surveyId = null) {
-        if (emailAddress && userId) {
+    def sendSurveyReminderEmail(String emailAddress, Long surveyId = null) {
+        if (emailAddress) {
             MailDTO mailDTO = new MailDTO()
             mailDTO.to = emailAddress
             mailDTO.subject ="Reminder: " + subjectForPreferenceEmail
-            mailDTO.body = getMessageForPreferenceEmail(userId, surveyId)
+            mailDTO.body = getMessageForPreferenceEmail(emailAddress, surveyId)
             log.info("Sending preference reminder email to ${mailDTO?.to}")
             imMailService.sendMail(mailDTO)
         }
@@ -69,11 +81,11 @@ class SurveyService {
         Survey.SAMPLE_SURVEY_SUBJECT_FOR_SESSION_PREFERENCE?.replace('[date]', intelliMeetService?.currentIntelliMeet?.dateOfEvent?.format("MMM dd, yyyy"))
     }
 
-    String getMessageForPreferenceEmail(Long userId, Long surveyId = null) {
+    String getMessageForPreferenceEmail(String email, Long surveyId = null) {
         Long intelliMeetId = intelliMeetService.currentIntelliMeetId
-        Token token = Token.findByIntelliMeetIdAndUserIdAndSurveyIdAndIsConsumed(intelliMeetId, userId, surveyId, false)
+        Token token = Token.findByIntelliMeetIdAndEmailAndSurveyIdAndIsConsumed(intelliMeetId, email, surveyId, false)
         if (!token) {
-            token = tokenService.generateToken(userId, surveyId)
+            token = tokenService.generateToken(email, surveyId)
             tokenService.save(token)
         }
         Survey.SAMPLE_SURVEY_MESSAGE_FOR_SESSION_PREFERENCE?.replace('[SurveyLink]', grailsLinkGenerator.link(controller: 'survey', action: 'session', params: [tokenId: token?.value], absolute: true))
