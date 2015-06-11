@@ -20,8 +20,12 @@
 
     <!-- Google web font -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
+
     <r:require module="survey"/>
     <r:layoutResources/>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 </head>
 
 <body>
@@ -90,31 +94,35 @@
         <g:form name="example-1" controller="survey" action="surveyResponse" method="POST">
             <g:hiddenField name="tokenId" value="${tokenId}"/>
             <div id="middle-wizard">
-                <g:set var="queNum" value="${1}"/>
                 <g:each in="${questionTemplate.questions.toList().sort{it.id}}" var="question">
                     %{--<div class="step row">--}%
-                        <div class="col-md-12">
-                            <h3>${question.text}</h3>
-                            <g:if test="${question.options.isEmpty()}">
-                                <g:textArea name="answer${queNum++}" class="required" style="width: 100%"/>
-                            </g:if>
-                            <g:else>
-                                <ul class="data-list-2">
+                        <div class="col-md-12" style="margin-bottom: 25px">
+                            <h3>${question.text} <label id="label${question.id}"></label></h3>
+                            <ul class="data-list-2">
+                                <g:if test="${question.type == com.ig.intellimeet.enums.QuestionType.TEXT}">
+                                    <li><g:textArea name="answer${question.id}" class="required" style="width: 100%"/></li>
+                                </g:if>
+                                <g:elseif test="${question.type == com.ig.intellimeet.enums.QuestionType.RANGE}">
+                                    <li><div class="slider" data-id="${question.id}"
+                                             data-min="${question.options.value.min()}"
+                                             data-max="${question.options.value.max()}"></div></li>
+                                    <g:hiddenField class="sliderInputRequired" name="answer${question.id}" value="${1}"/>
+                                </g:elseif>
+                                <g:elseif test="${question.type == com.ig.intellimeet.enums.QuestionType.OPTION}">
                                     <g:set var="optionNum" value="1"/>
                                     <g:each in="${question.options}" var="option">
-                                        <li><input name="answer${queNum.toString()}" type="radio" class="required check_radio" value="${optionNum++}"><label>
+                                        <li><input name="answer${question.id}" type="radio" class="required check_radio" value="${optionNum++}"><label>
                                             <span>${option.label}</span>
                                         </label>
                                         </li>
                                     </g:each>
-                                    ${queNum++}
-                                </ul>
-                            </g:else>
+                                </g:elseif>
+                                <li><strong>Comments (If Any), please describe with few words</strong><textarea name="comment${question.id}" class="form-control"></textarea></li>
+                            </ul>
                         </div>
                     %{--</div>--}%
                 </g:each>
                 <!-- end step -->
-
 
                 <div class="submit step" id="complete">
                     <button type="submit" name="process" class="submit">Submit the survey</button>
@@ -258,5 +266,21 @@
 
 <div id="toTop">Back to Top</div>
 <r:layoutResources/>
+<script>
+    $('.slider').each(function(){
+        var $bar = $(this);
+        $("#label"+$bar.data('id')).text(": 1");
+        $bar.slider({
+            value: 0,
+            min: $bar.data('min'),
+            max: $bar.data('max'),
+            step: 1,
+            slide: function(event,ui){
+                $('#answer'+$bar.data('id')).val(ui.value);
+                $('#label'+$bar.data('id')).text(":  " + ui.value);
+            }
+        })
+    });
+</script>
 </body>
 </html>

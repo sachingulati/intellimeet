@@ -1,5 +1,6 @@
 package com.ig.intellimeet
 
+import com.ig.intellimeet.embedded.Answer
 import com.ig.intellimeet.enums.SessionStatus
 import com.ig.intellimeet.enums.SurveyStatus
 import grails.plugin.springsecurity.annotation.Secured
@@ -52,24 +53,21 @@ class SurveyController {
             render view: '/error'
             return
         }
-
-
-
         if (!token?.isValid() || hasFilledPreferences) {
             render view: '/survey/thankyou'
             return
         }
         SurveyResponse surveyResponse = new SurveyResponse(survey: survey, answers: [])
-        survey.questionTemplate.questions.size().times {num->
-            surveyResponse.answers.push(params["answer"+(num+1)])
+        survey.questionTemplate.questions.each {
+            surveyResponse.answers.push(new Answer(questionId: it.id, answer: params["answer"+it.id], comment: params["comment"+it.id]))
         }
         surveyResponse.save()
         survey.recipients.find{
             it.email == token.email
         }.status = SurveyStatus.COMPLETED
         survey.save()
-        render params
-
+        render view: '/survey/thankyou'
+        return
     }
     @Secured('ROLE_ADMIN')
     def template() {

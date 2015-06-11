@@ -31,7 +31,7 @@ class SurveyApiController extends RestfulController<Survey>{
         Survey survey = createResource(params)
         if(survey.validate()){
             survey.save()
-            respond(survey)
+            redirect(controller: 'survey', action: 'show', params: [id:1])
         }
         else {
             respond(response: "Invalid data!")

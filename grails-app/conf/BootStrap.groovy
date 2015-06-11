@@ -118,16 +118,8 @@ class BootStrap {
                           new Option(label: "I felt like it was just another day.", value: "2"),
                           new Option(label: "The session was good and I'm happy that I attended it.", value: "3"),
                           new Option(label: "The session was amazing and I feel I would have missed something exciting if I had not attended it.", value: "4")]).save(failOnError: true)
-        new Question(text: "What is your overall satisfaction from the session?", type: QuestionType.OPTION, num: 7,
+        new Question(text: "What is your overall satisfaction from the session?", type: QuestionType.RANGE, num: 7,
                 options: [new Option(label: "1", value: "1"),
-                          new Option(label: "2", value: "2"),
-                          new Option(label: "3", value: "3"),
-                          new Option(label: "4", value: "4"),
-                          new Option(label: "5", value: "5"),
-                          new Option(label: "6", value: "6"),
-                          new Option(label: "7", value: "7"),
-                          new Option(label: "8", value: "8"),
-                          new Option(label: "9", value: "9"),
                           new Option(label: "10", value: "10")]).save(failOnError: true)
         new Question(text: "How satisfied are you with session allocation (Session agenda was clear to me before making preference. I was allotted session as per my preference / I was consulted while deviating from my preferences)", type: QuestionType.OPTION, num: 8,
                 options: [new Option(label: "Below Average", value: "1"),
@@ -139,16 +131,8 @@ class BootStrap {
                           new Option(label: "Average", value: "2"),
                           new Option(label: "Good", value: "3"),
                           new Option(label: "Fully Satisfied", value: "4")]).save(failOnError: true)
-        new Question(text: "What is your overall satisfaction from the session?", type: QuestionType.OPTION, num: 10,
+        new Question(text: "What is your overall satisfaction from the session?", type: QuestionType.RANGE, num: 10,
                 options: [new Option(label: "1", value: "1"),
-                          new Option(label: "2", value: "2"),
-                          new Option(label: "3", value: "3"),
-                          new Option(label: "4", value: "4"),
-                          new Option(label: "5", value: "5"),
-                          new Option(label: "6", value: "6"),
-                          new Option(label: "7", value: "7"),
-                          new Option(label: "8", value: "8"),
-                          new Option(label: "9", value: "9"),
                           new Option(label: "10", value: "10")]).save(failOnError: true)
         new Question(text: "What is your satisfaction level from the seating arrangement (Seating space, chair's condition & availability, visibility of slides, white boards, etc.)?", type: QuestionType.OPTION, num: 11,
                 options: [new Option(label: "Below Average", value: "1"),
@@ -166,16 +150,8 @@ class BootStrap {
                           new Option(label: "Bad", value: "3"),
                           new Option(label: "Good", value: "4"),
                           new Option(label: "Excellent", value: "5")]).save(failOnError: true)
-        new Question(text: "What is your overall satisfaction from the arrangements?", type: QuestionType.OPTION, num: 14,
+        new Question(text: "What is your overall satisfaction from the arrangements?", type: QuestionType.RANGE, num: 14,
                 options: [new Option(label: "1", value: "1"),
-                          new Option(label: "2", value: "2"),
-                          new Option(label: "3", value: "3"),
-                          new Option(label: "4", value: "4"),
-                          new Option(label: "5", value: "5"),
-                          new Option(label: "6", value: "6"),
-                          new Option(label: "7", value: "7"),
-                          new Option(label: "8", value: "8"),
-                          new Option(label: "9", value: "9"),
                           new Option(label: "10", value: "10")]).save(failOnError: true)
         new QuestionTemplate(title: "dummy", questions: Question.list()).save()
 

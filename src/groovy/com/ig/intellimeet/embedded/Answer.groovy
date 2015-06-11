@@ -7,10 +7,11 @@ import grails.validation.Validateable
 class Answer {
 
     Long questionId
-    Integer answer
+    String answer
     String questionText
 
-    static embedded = ['question']
+    String comment
+//    static embedded = ['question']
 
     static constraints = {
         questionText blank: false
